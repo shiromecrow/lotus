@@ -1,0 +1,21 @@
+03:04:10 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:8: warning: unused variable 'PI' [-Wunused-variable]
+  102 |  float PI=3.14;
+      |        ^~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  30576	    120	   2296	  32992	   80e0	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+
+03:04:21 Build Finished. 0 errors, 1 warnings. (took 11s.887ms)
+

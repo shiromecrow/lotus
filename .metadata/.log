@@ -1,0 +1,156 @@
+!SESSION 2022-12-12 15:43:18.171 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ja_JP
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-12-12 15:44:22.950
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-12-12 15:44:23.157
+!MESSAGE Log4j initialized with config file C:\Users\sf199\Documents\Mice\halfmouce_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-12-12 15:44:32.849
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-12 16:03:32.274
+!MESSAGE Indexed 'half_mouse1' (21 sources, 81 headers) in 5.36 sec: 4,259 declarations; 17,944 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.009%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-12 16:58:02.394
+!MESSAGE Indexed 'half_mouse2' (21 sources, 81 headers) in 7.48 sec: 4,775 declarations; 19,489 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0082%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-12 17:20:01.552
+!MESSAGE Indexed 'half_mousef4' (21 sources, 81 headers) in 3.25 sec: 4,259 declarations; 17,944 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.009%)
+
+!ENTRY org.eclipse.ui 4 0 2022-12-16 19:47:35.310
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+	at com.st.stm32cube.common.mx.oss.core.awtswtbridge.AwtEnvironment.getShell(AwtEnvironment.java:281)
+	at com.st.stm32cube.common.mx.oss.core.awtswtbridge.SwtInputBlocker.block(SwtInputBlocker.java:98)
+	at com.st.stm32cube.common.mx.oss.core.awtswtbridge.AwtEnvironment.invokeAwt(AwtEnvironment.java:179)
+	at com.st.stm32cube.common.mx.oss.core.awtswtbridge.EmbeddedSwingComposite$3.widgetDisposed(EmbeddedSwingComposite.java:244)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:127)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4243)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1060)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1084)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1065)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:809)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:925)
+	at org.eclipse.swt.widgets.Canvas.releaseChildren(Canvas.java:168)
+	at org.eclipse.swt.widgets.Decorations.releaseChildren(Decorations.java:713)
+	at org.eclipse.swt.widgets.Shell.releaseChildren(Shell.java:1378)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:816)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:423)
+	at org.eclipse.swt.widgets.Decorations.dispose(Decorations.java:392)
+	at org.eclipse.swt.widgets.Display.release(Display.java:3688)
+	at org.eclipse.swt.graphics.Device.dispose(Device.java:324)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:168)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+!SESSION 2022-12-16 22:12:12.946 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ja_JP
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-12-16 22:12:39.175
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-12-16 22:12:39.266
+!MESSAGE Log4j initialized with config file C:\Users\sf199\Documents\Mice\halfmouce_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-12-16 22:12:50.832
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-01-05 20:29:12.310
+!MESSAGE Error in final launch sequence:
+
+Failed to execute MI command:
+target remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+target remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:328)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:803)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-01-05 20:29:12.311
+!MESSAGE Failed to execute MI command:
+target remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2023-01-05 20:29:19.806
+!MESSAGE Could not verify ST device!
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-01-05 20:56:38.720
+!MESSAGE Error in final launch sequence:
+
+Failed to execute MI command:
+target remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+target remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:328)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:803)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-01-05 20:56:38.721
+!MESSAGE Failed to execute MI command:
+target remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)

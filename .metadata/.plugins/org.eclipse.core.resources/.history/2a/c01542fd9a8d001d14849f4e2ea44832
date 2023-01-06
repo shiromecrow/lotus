@@ -1,0 +1,17 @@
+/*
+ * PL_encoder.h
+ *
+ *  Created on: Jan 6, 2023
+ *      Author: sf199
+ */
+
+#ifndef INC_PL_ENCODER_H_
+#define INC_PL_ENCODER_H_
+
+
+
+extern float encoder_R;
+
+void AS5047_DataUpdate();
+
+#endif /* INC_PL_ENCODER_H_ */

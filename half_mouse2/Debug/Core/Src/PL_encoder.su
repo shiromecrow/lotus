@@ -1,0 +1,5 @@
+../Core/Src/PL_encoder.c:15:10:encoder_read_byte_R	40	static
+../Core/Src/PL_encoder.c:51:6:encoder_write_byte_R	40	static
+../Core/Src/PL_encoder.c:87:10:encoder_read_byte_L	40	static
+../Core/Src/PL_encoder.c:123:6:encoder_write_byte_L	40	static
+../Core/Src/PL_encoder.c:160:6:AS5047_DataUpdate	8	static
