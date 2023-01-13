@@ -1,0 +1,10 @@
+../Core/Src/PL_motor.c:14:6:pl_motor_init	8	static
+../Core/Src/PL_motor.c:28:6:pl_DriveMotor_standby	16	static
+../Core/Src/PL_motor.c:32:6:pl_L_DriveMotor_mode	16	static
+../Core/Src/PL_motor.c:51:6:pl_R_DriveMotor_mode	16	static
+../Core/Src/PL_motor.c:72:6:pl_DriveMotor_start	8	static
+../Core/Src/PL_motor.c:77:6:pl_DriveMotor_stop	8	static
+../Core/Src/PL_motor.c:82:6:pl_DriveMotor_duty	16	static
+../Core/Src/PL_motor.c:89:6:pl_FunMotor_start	8	static
+../Core/Src/PL_motor.c:93:6:pl_FunMotor_stop	8	static
+../Core/Src/PL_motor.c:97:6:pl_FunMotor_duty	24	static

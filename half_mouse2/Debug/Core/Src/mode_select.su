@@ -1,0 +1,3 @@
+../Core/Src/mode_select.c:40:15:mode_decision	24	static
+../Core/Src/mode_select.c:118:6:mode_execution	24	static
+../Core/Src/mode_select.c:167:6:mode_PLtest	32	static

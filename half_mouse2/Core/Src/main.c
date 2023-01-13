@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "dma.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -27,8 +28,15 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
+#include "PL_timer.h"
 #include "PL_gyro.h"
 #include "PL_encoder.h"
+#include "PL_sensor.h"
+#include "PL_flash.h"
+#include "CL_gyro.h"
+#include "CL_encoder.h"
+#include "CL_sensor.h"
+#include "mode_select.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -85,7 +93,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  MX_DMA_Init();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -95,12 +103,44 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM8_Init();
   MX_USART1_UART_Init();
+  MX_DMA_Init();
   MX_SPI3_Init();
   MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
+  pl_timer_init();
+  pl_gyro_init();
+  pl_sensor_init();
+  reset_distance();
+  reset_gyro();
+  reset_speed();
+  record_reset();
+  pl_motor_init();
+
 	uint8_t hello[] = "Hello World\n\r";
 	float PI=3.14;
 	uint8_t hoge = 3;
+	float batf;
+	uint16_t bat;
+	HAL_ADC_Start(&hadc1);
+	HAL_ADC_PollForConversion(&hadc1, 100);
+	bat = HAL_ADC_GetValue(&hadc1);
+	HAL_ADC_Stop(&hadc1);
+	batf = 3.3 * (float) bat / 4096 * (10.0 + 10.0) / 10.0*1.15;//* 1.2975
+	printf("BATT=%f\n",batf);
+
+	int mode=0;
+	//èµ·å‹•ã?®ç¢ºèª?
+	int yellow_count=1;
+	for(int i=0;i<8;i++){
+		pl_yellow_LED_count(yellow_count);
+		HAL_Delay(50);
+		yellow_count=yellow_count*2;
+	}
+	for(int i=0;i<9;i++){
+			pl_yellow_LED_count(yellow_count);
+			HAL_Delay(50);
+			yellow_count=yellow_count/2;
+		}
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,6 +150,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	 // loadFlash(start_address, (uint64_t*) mode, sizeof((uint64_t)mode));
+	  	  printf("mode=%d\n\r", mode);
+	  		mode=mode_decision(mode);
+//	  		clear_Ierror();
+	  		reset_distance();
+	  		reset_gyro();
+	  		reset_speed();
+
+	  		mode_execution(mode);
+	  		//writeFlash(start_address, (uint64_t*) mode, sizeof((uint64_t)mode), 1);
+
+//	  		error_mode = 0;
 	  // test LED
 	  	HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_RESET);
 	  	HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_RESET);
@@ -119,27 +171,83 @@ int main(void)
 	  	HAL_GPIO_WritePin(LED6_GPIO_Port,LED6_Pin,GPIO_PIN_RESET);
 	  	HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
 	  	HAL_GPIO_WritePin(LED8_GPIO_Port,LED8_Pin,GPIO_PIN_RESET);
-	  	HAL_Delay(1000);
+//	  	HAL_GPIO_WritePin(BLUE_L_LED_GPIO_Port,BLUE_L_LED_Pin,GPIO_PIN_RESET);
+//	  	HAL_GPIO_WritePin(BLUE_R_LED_GPIO_Port,BLUE_R_LED_Pin,GPIO_PIN_RESET);
+//	  	HAL_GPIO_WritePin(SENSOR_LED1_GPIO_Port,SENSOR_LED1_Pin,GPIO_PIN_RESET);
+//	  	HAL_GPIO_WritePin(SENSOR_LED2_GPIO_Port,SENSOR_LED2_Pin,GPIO_PIN_RESET);
+//	  	HAL_GPIO_WritePin(SENSOR_LED3_GPIO_Port,SENSOR_LED3_Pin,GPIO_PIN_RESET);
+	  	//HAL_Delay(500);
+	  	wait_ms(500);
 	  	HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET);
-	  	HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_SET);
+	  	//HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_SET);
 	  	HAL_GPIO_WritePin(LED3_GPIO_Port,LED3_Pin,GPIO_PIN_SET);
-	  	HAL_GPIO_WritePin(LED4_GPIO_Port,LED4_Pin,GPIO_PIN_SET);
+	  	//HAL_GPIO_WritePin(LED4_GPIO_Port,LED4_Pin,GPIO_PIN_SET);
 	  	HAL_GPIO_WritePin(LED5_GPIO_Port,LED5_Pin,GPIO_PIN_SET);
-	  	HAL_GPIO_WritePin(LED6_GPIO_Port,LED6_Pin,GPIO_PIN_SET);
+	  	//HAL_GPIO_WritePin(LED6_GPIO_Port,LED6_Pin,GPIO_PIN_SET);
 	  	HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-	  	HAL_GPIO_WritePin(LED8_GPIO_Port,LED8_Pin,GPIO_PIN_SET);
-	  	HAL_Delay(1000);
+
+	  	//HAL_GPIO_WritePin(LED8_GPIO_Port,LED8_Pin,GPIO_PIN_SET);
+//	  	HAL_GPIO_WritePin(BLUE_L_LED_GPIO_Port,BLUE_L_LED_Pin,GPIO_PIN_SET);
+//	  	HAL_GPIO_WritePin(BLUE_R_LED_GPIO_Port,BLUE_R_LED_Pin,GPIO_PIN_SET);
+	  	HAL_GPIO_WritePin(SENSOR_LED1_GPIO_Port,SENSOR_LED1_Pin,GPIO_PIN_SET);
+	  	HAL_GPIO_WritePin(SENSOR_LED2_GPIO_Port,SENSOR_LED2_Pin,GPIO_PIN_SET);
+	  	HAL_GPIO_WritePin(SENSOR_LED3_GPIO_Port,SENSOR_LED3_Pin,GPIO_PIN_SET);
+	  	//HAL_Delay(500);
+	  	wait_ms(500);
 	  	// test USART
-	  	printf("hello=%s", hello);
-	  	printf("hoge=%d\n\r", hoge);
+	  	//HAL_UART_Transmit(&huart1, hello, sizeof(hello), 1000);
+	  	//printf("hello=%s", hello);
+	  	//printf("hoge=%d\n\r", hoge);
 	  	//printf("M_PI=%f\n\r", PI);
 	  	// test GYRO
-	  	ICM20602_DataUpdate();
+//	  	ICM20602_DataUpdate();
 //	  	printf("gyro x : %5.5f, y : %5.5f,z : %5.5f, accel x : %5.5f, y :%5.5f, z : %5.5f\r",
 //	  			gyro.omega_x, gyro.omega_y, gyro.omega_z, gyro.accel_x,gyro.accel_y, gyro.accel_z);
 	  	// test ENCODER
-//	  	AS5047_DataUpdate();
-//	  	printf("encoderR : %5.5f, encoderL : %5.5f\r", encoder_R,encoder_L);
+	  	//AS5047_DataUpdate();
+	  	//printf("encoderR : %5.5f, encoderL : %5.5f\r", encoder_R,encoder_L);
+
+	  	//printf("E_distance_R : %5.5f, E_distance_L : %5.5f\r", E_distanceR,E_distanceL);
+		//sensor
+//	  	for(int i=0; i<6; i++){
+//	  	        HAL_ADC_Start(&hadc1);
+//	  	        HAL_ADC_PollForConversion(&hadc1, 100);
+//	  	      g_ADCBuffer[i] = HAL_ADC_GetValue(&hadc1);
+//	  	    }
+	  	//HAL_ADC_Stop(&hadc1);
+//		  HAL_ADC_Stop_DMA(&hadc1);
+//	  	if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*)(g_ADCBuffer),6) != HAL_OK)
+//		  {
+//		    Error_Handler();
+//		  }
+
+//		printf("BATT=%d,SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_ADCBuffer[0],
+//				g_ADCBuffer[1], g_ADCBuffer[2], g_ADCBuffer[3], g_ADCBuffer[4], g_ADCBuffer[5]);
+
+		printf("ON_SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor_on[0],
+								g_sensor_on[1], g_sensor_on[2], g_sensor_on[3], g_sensor_on[4]);
+		printf("OFF_SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor_off[0],
+								g_sensor_off[1], g_sensor_off[2], g_sensor_off[3], g_sensor_off[4]);
+		if(g_sensor_on[0]>800 && g_sensor_on[2]>800 && g_sensor_on[4]>800){
+					HAL_GPIO_WritePin(MOTOR_L_CWCCW_GPIO_Port,MOTOR_L_CWCCW_Pin,GPIO_PIN_RESET);
+					HAL_GPIO_WritePin(MOTOR_R_CWCCW_GPIO_Port,MOTOR_R_CWCCW_Pin,GPIO_PIN_SET);
+					HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
+					HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
+					wait_ms(2000);
+					HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_1);
+					HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_3);
+		}
+//		wait_ms(10000);
+		//HAL_TIM_PWM_Start(&htim16, TIM_CHANNEL_1);
+//		HAL_GPIO_WritePin(MOTOR_L_CWCCW_GPIO_Port,MOTOR_L_CWCCW_Pin,GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(MOTOR_R_CWCCW_GPIO_Port,MOTOR_R_CWCCW_Pin,GPIO_PIN_SET);
+//		HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
+//		HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
+//		wait_ms(6000);
+//		HAL_TIM_PWM_Stop(&htim16, TIM_CHANNEL_1);
+//		HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_1);
+//		HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_3);
+
 
 
   }
@@ -182,8 +290,8 @@ void SystemClock_Config(void)
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
   {

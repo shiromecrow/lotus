@@ -1,0 +1,13 @@
+../Core/Src/PL_LED.c:23:6:pl_yellow_LED_1	16	static
+../Core/Src/PL_LED.c:26:6:pl_yellow_LED_2	16	static
+../Core/Src/PL_LED.c:29:6:pl_yellow_LED_3	16	static
+../Core/Src/PL_LED.c:32:6:pl_yellow_LED_4	16	static
+../Core/Src/PL_LED.c:35:6:pl_yellow_LED_5	16	static
+../Core/Src/PL_LED.c:38:6:pl_yellow_LED_6	16	static
+../Core/Src/PL_LED.c:41:6:pl_yellow_LED_7	16	static
+../Core/Src/PL_LED.c:44:6:pl_yellow_LED_8	16	static
+../Core/Src/PL_LED.c:51:6:pl_yellow_LED_off	8	static
+../Core/Src/PL_LED.c:62:6:pl_yellow_LED_on	8	static
+../Core/Src/PL_LED.c:74:6:pl_yellow_LED_count	24	static
+../Core/Src/PL_LED.c:131:6:pl_r_blue_LED	16	static
+../Core/Src/PL_LED.c:135:6:pl_l_blue_LED	16	static

@@ -1,0 +1,6 @@
+../Core/Src/PL_timer.c:16:6:pl_timer_init	8	static
+../Core/Src/PL_timer.c:22:6:interrupt_timer	8	static
+../Core/Src/PL_timer.c:30:6:tic_timer	4	static
+../Core/Src/PL_timer.c:35:7:toc_timer	16	static
+../Core/Src/PL_timer.c:43:6:wait_ms	24	static
+../Core/Src/PL_timer.c:52:6:wait_ms_NoReset	24	static

@@ -1,0 +1,29 @@
+/*
+ * PL_sensor.h
+ *
+ *  Created on: Jan 10, 2023
+ *      Author: sf199
+ */
+
+#ifndef INC_PL_SENSOR_H_
+#define INC_PL_SENSOR_H_
+
+#include "stm32g4xx_hal.h"
+
+//extern uint16_t g_ADCBuffer[6];
+
+extern uint16_t g_sensor_on[5];
+extern uint16_t g_sensor_off[5];
+
+
+extern float g_V_batt;
+
+void pl_sensor_init();
+
+float pl_getbatt();
+
+void pl_callback_getSensor();
+
+void pl_interupt_getSensor();
+
+#endif /* INC_PL_SENSOR_H_ */

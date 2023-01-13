@@ -1,0 +1,5 @@
+../Core/Src/CL_sensor.c:29:6:battcheak	16	static
+../Core/Src/CL_sensor.c:61:6:interupt_calSensor	16	static
+../Core/Src/CL_sensor.c:102:6:sensor_line	360	static
+../Core/Src/CL_sensor.c:142:6:sensor_line45	360	static
+../Core/Src/CL_sensor.c:181:6:sensor_line45_slant	232	static

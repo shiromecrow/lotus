@@ -1,0 +1,4 @@
+../Core/Src/CL_encoder.c:26:6:reset_distance	4	static
+../Core/Src/CL_encoder.c:36:6:reset_speed	4	static
+../Core/Src/CL_encoder.c:44:6:interupt_calEncoder	16	static
+../Core/Src/CL_encoder.c:68:6:interupt_calFusion	24	static

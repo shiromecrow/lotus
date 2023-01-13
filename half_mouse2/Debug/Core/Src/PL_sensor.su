@@ -1,0 +1,4 @@
+../Core/Src/PL_sensor.c:30:6:pl_sensor_init	8	static
+../Core/Src/PL_sensor.c:42:7:pl_getbatt	16	static
+../Core/Src/PL_sensor.c:60:6:pl_callback_getSensor	16	static
+../Core/Src/PL_sensor.c:151:6:pl_interupt_getSensor	8	static

@@ -1,0 +1,2 @@
+../Core/Src/CL_gyro.c:27:6:reset_gyro	16	static
+../Core/Src/CL_gyro.c:54:6:interrupt_calGyro	24	static
