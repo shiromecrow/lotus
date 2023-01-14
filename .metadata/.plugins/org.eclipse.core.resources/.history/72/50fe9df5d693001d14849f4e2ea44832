@@ -1,0 +1,200 @@
+/*
+ * PID_EncoderGyro.c
+ *
+ *  Created on: Jan 14, 2023
+ *      Author: sf199
+ */
+
+#include "PID_EncoderGyro.h"
+#include "CL_encoder.h"
+#include "CL_gyro.h"
+#include "PL_LED.h"
+#include "define.h"
+
+//#include "fail_safe.h"
+
+#include "stdio.h"
+#include "math.h"
+
+
+struct PID enc;
+struct PID Gyro;
+
+float Ksp,Ksi,Ksd;
+float Ktp,Kti,Ktd;
+
+void PID_Init(void){
+
+	Ksp = 3.1;//3//P項の制御量直進*****************************************************
+	Ksi = 0.08;//80//5//43//I項の制御量直進*****************************************************
+	Ksd = 0.00;//D項の制御量直進*****************************************************
+	Ktp = 1.9;//295//P項の制御量旋回*****************************************************
+	Kti = 0.13;//1//.6//I項の制御量旋回*****************************************************
+	Ktd = 0.002;//205//D項の制御量旋回*****************************************************
+
+}
+
+void clear_Ierror(void){
+	enc.sigma_error = 0;
+	Gyro.sigma_error = 0;
+}
+
+
+
+void motor_PID(float *PID_all_L,float *PID_all_R,float *PID_s,float *PID_t,float *PID_w) {
+	float PID_stra=0;
+	float PID_displacement;
+	float PID_turn=0;
+	float PID_angle;
+	float PID_wall=0;
+	float PID_frontwall_l,PID_frontwall_r;
+//XXXX壁制御OFFFFFFFFF
+//	if(highspeed_mode == 1){
+//		Kti = 0.17;
+//	}
+	*PID_all_R = 0;
+	*PID_all_L = 0;
+
+	if (modeacc == 0) {
+		straight_mode = 0;
+		turning_mode = 0;
+		g_WallControl_mode=0;
+		g_wallCut_mode=0;
+	}
+	if (modeacc == 1) {
+		straight_mode = 1;
+		turning_mode = 1;
+		////wall_control_mode = 0;
+		g_wallCut_mode=1;
+	} //直線
+	if (modeacc == 2) {
+		straight_mode = 1;
+		turning_mode = 1;
+		g_WallControl_mode=0;
+		g_wallCut_mode=0;
+	} //旋回
+	if (modeacc == 3) {
+		straight_mode = 1;
+		turning_mode = 1;
+		g_WallControl_mode=0;
+		g_wallCut_mode=0;
+	} //宴会芸
+	if (modeacc == 4) {
+		straight_mode = 1;
+		turning_mode = 1;
+		g_WallControl_mode=0;
+		g_wallCut_mode=0;
+	} //スラローム
+	if (modeacc == 5) {
+			straight_mode = 0;
+			turning_mode = 0;
+			g_WallControl_mode=0;
+			g_wallCut_mode=0;
+		} //前壁
+
+	//壁制御
+	PID_wall = calWallConrol();
+	calFrontWallConrol(&PID_frontwall_l,&PID_frontwall_r);
+//	*PID_all_R += PID_wall;
+//	*PID_all_L -= PID_wall;
+	*PID_all_R += PID_frontwall_r;
+	*PID_all_L += PID_frontwall_l;//いつか組み込む
+
+	if (straight_mode == 1) {
+		if(highspeed_mode==0){
+			Ksp = 3.1;//3//P項の制御量直進*****************************************************
+			Ksi = 0.08;//80//5//43//I項の制御量直進*****************************************************
+			Ksd = 0.00;//D項の制御量直進*****************************************************
+
+		}else{
+	        if(straight.velocity<4000){
+//	        if(straight.velocity<=3500){
+	        	straight_alpha=0.9;
+	        	if(straight.velocity>4700){
+	        		straight_alpha=0.98;
+	        	}
+	        	Ksp = 4.6;//3//P項の制御量直進
+	        	Ksi = 0.04;
+	        	Ksd = -0.07;//D項の制御量直進
+	        }else{
+	        	Ksp = 2.1;//3//P項の制御量直進
+	            Ksi = 0.04;
+	            Ksd = -0.1;//D項の制御量直進
+//	        	Ktp = 0.9;//295//P項の制御量旋回*****************************************************
+//	        	Kti = 0.001;//1//.6//I項の制御量旋回*****************************************************
+//	        	Ktd = 0.002;
+	        }
+			}
+
+		if(straight.velocity==0){
+			reset_speed();
+		}
+		//straight.velocity>=2500 && fabs(angle_speed)<100
+		if((fabs(angle_speed)<120 && straight.velocity>=300 && highspeed_mode==0) || (straight.velocity>2500 && highspeed_mode==1)){
+			enc.error = (straight.velocity - (fusion_speedR + fusion_speedL) / 2);
+		}else{
+			enc.error = (straight.velocity - (E_speedR + E_speedL) / 2);
+			fusion_speedL=E_speedL;
+			fusion_speedR=E_speedR;
+		}
+		//enc.error = (straight.velocity - (fusion_speedR + fusion_speedL) / 2);
+		enc.delta_error = enc.error - enc.old_error;
+		enc.old_error = enc.error;
+		enc.sigma_error += enc.error;
+		PID_stra = Ksp * enc.error
+						+ Ksi * enc.sigma_error + Ksd * enc.delta_error;
+
+		*PID_all_R += PID_stra;
+		*PID_all_L += PID_stra;
+
+//		PID_displacement = Ksp_dis * (straight.displacement - (E_distanceR + E_distanceL) / 2)
+//				+ Ksi_dis * encDis.sigma_error + Ksd_dis * encDis.delta_error;
+//		encDis.old_error = encDis.error;
+//		encDis.error = (straight.displacement - (E_distanceR + E_distanceL) / 2);
+//		encDis.delta_error = encDis.error - encDis.old_error;
+//		encDis.sigma_error += encDis.error;
+//		*PID_all_R += PID_displacement;
+//		*PID_all_L += PID_displacement;
+	}
+
+	if (turning_mode == 1) {
+		if(highspeed_mode==1){
+			Ktp = 4.3;//295//P項の制御量旋回*****************************************************
+			Kti = 0.14;//1//.6//I項の制御量旋回*****************************************************
+		//	Ktifun = 0.01;//1//.6//I項の制御量旋回*****************************************************
+			Ktd = -0.05;//205//D項の制御量旋回*****************************************************
+		}
+		//if (pulse_turnR_mode == 0 && pulse_turnL_mode == 0) {
+		if((g_WallControl_mode==3 || g_WallControl_mode==1) && (highspeed_mode == 1)){
+			Gyro.error = (turning.velocity - angle_speed);
+			Gyro.delta_error = Gyro.error - Gyro.old_error;
+			Gyro.old_error = Gyro.error;
+			Gyro.sigma_error += Gyro.error;
+			PID_turn = Ktp * Gyro.error
+					+ Kti * Gyro.sigma_error
+					+ Ktd * Gyro.delta_error;
+
+			*PID_all_R += (PID_turn+PID_wall);
+			*PID_all_L -= (PID_turn+PID_wall);
+		}
+		else{
+			Gyro.error = (turning.velocity + PID_wall - angle_speed);
+			Gyro.delta_error = Gyro.error - Gyro.old_error;
+			Gyro.old_error = Gyro.error;
+			Gyro.sigma_error += Gyro.error;
+			PID_turn = Ktp * Gyro.error
+					+ Kti * Gyro.sigma_error
+					+ Ktd * Gyro.delta_error;
+
+			*PID_all_R += PID_turn;
+			*PID_all_L -= PID_turn;
+		}
+
+	}
+
+	*PID_w=PID_wall;
+	*PID_s=PID_stra;
+	*PID_t=PID_turn;
+
+}
+

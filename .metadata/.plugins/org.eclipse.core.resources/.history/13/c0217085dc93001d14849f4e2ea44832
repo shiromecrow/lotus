@@ -1,0 +1,23 @@
+/*
+ * Control_motor.c
+ *
+ *  Created on: Jan 14, 2023
+ *      Author: sf199
+ */
+
+
+#include "Control_motor.h"
+#include "CL_gyro.h"
+#include "CL_sensor.h"
+#include "CL_encoder.h"
+#include "PL_motor.h"
+#include "PL_LED.h"
+#include "PL_timer.h"
+//#include "fail_safe.h"
+
+#include "math.h"
+
+//#include "PID_wall.h"
+
+//#include "maze_wall.h"
+//#include "maze_strategy.h"

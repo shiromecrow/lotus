@@ -10,7 +10,7 @@
 
 #include "stm32g4xx_hal.h"
 
-#define BATTLIMIT 7.5
+#define BATTLIMIT 3.7
 
 #define SENSOR_FINGER_0 800
 #define SENSOR_FINGER_1 800

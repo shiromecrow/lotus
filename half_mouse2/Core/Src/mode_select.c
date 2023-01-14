@@ -32,8 +32,6 @@
 #include "math.h"
 //#include "fail_safe.h"
 
-#include "main.h"
-#include "tim.h"
 
 
 
@@ -164,53 +162,59 @@ switch (main_modeL) {
 
 
 
-void mode_PLtest(unsigned char main_modeR){
+void mode_PLtest(unsigned char main_modeR) {
 
 	switch (main_modeR) {
-		case 0b0000:
-			//飛ばすerror
+	case 0b0000:
+		//飛ばすerror
 		break;
-		case 0b0001://sensor
-			while (1) {
-				printf("SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor[0][0],
-						g_sensor[1][0], g_sensor[2][0], g_sensor[3][0], g_sensor[4][0]);
-				wait_ms(500);
-			}
+	case 0b0001:	//sensor
+		while (1) {
+			printf("SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor[0][0],
+					g_sensor[1][0], g_sensor[2][0], g_sensor[3][0],
+					g_sensor[4][0]);
+			wait_ms(500);
+		}
 		break;
-		case 0b0010://encoder
-			pl_r_blue_LED(ON);
-			pl_l_blue_LED(ON);
-			record_mode = 1;
-			pl_DriveMotor_duty(500,500);
-			pl_R_DriveMotor_mode(MOTOR_FRONT);
-			pl_L_DriveMotor_mode(MOTOR_FRONT);
-			HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
-			HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
-			pl_DriveMotor_start();
-			wait_ms(2500);
-			pl_DriveMotor_stop();
-			pl_r_blue_LED(OFF);
-			pl_l_blue_LED(OFF);
-			record_mode = 0;
-			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
-				wait_ms(1);
-			}
-			record_print();
+	case 0b0010:	//encoder
+		pl_r_blue_LED(ON);
+		pl_l_blue_LED(ON);
+		record_mode = 1;
+		pl_DriveMotor_duty(500, 500);
+		pl_R_DriveMotor_mode(MOTOR_FRONT);
+		pl_L_DriveMotor_mode(MOTOR_FRONT);
+		pl_DriveMotor_start();
+		wait_ms(2500);
+		pl_DriveMotor_stop();
+		pl_r_blue_LED(OFF);
+		pl_l_blue_LED(OFF);
+		record_mode = 0;
+		while (g_sensor[0][0] <= SENSOR_FINGER_0
+				|| g_sensor[2][0] <= SENSOR_FINGER_2
+				|| g_sensor[4][0] <= SENSOR_FINGER_4) {
+			wait_ms(1);
+		}
+		record_print();
 		break;
-		case 0b0011://gyro
-			reset_gyro();
-			reset_speed();
-			pl_r_blue_LED(ON);
-			pl_l_blue_LED(ON);
-			record_mode = 2;
-			wait_ms(2500);
-			pl_r_blue_LED(OFF);
-			pl_l_blue_LED(OFF);
-			record_mode = 0;
-			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
-					wait_ms(1);
-			}
-			record_print();
+	case 0b0011:	//gyro
+		reset_gyro();
+		reset_speed();
+		pl_r_blue_LED(ON);
+		pl_l_blue_LED(ON);
+		record_mode = 2;
+		wait_ms(2500);
+		pl_r_blue_LED(OFF);
+		pl_l_blue_LED(OFF);
+		record_mode = 0;
+		while (g_sensor[0][0] <= SENSOR_FINGER_0
+				|| g_sensor[2][0] <= SENSOR_FINGER_2
+				|| g_sensor[4][0] <= SENSOR_FINGER_4) {
+			wait_ms(1);
+		}
+		record_print();
+		break;
+	case 0b1111:	//record_out
+		record_print();
 		break;
 //		case 0b0011://speaker
 //			pl_play_Music(169, unknow_story);

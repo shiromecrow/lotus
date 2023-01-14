@@ -1,6 +1,8 @@
 "./Core/Src/CL_encoder.o"
 "./Core/Src/CL_gyro.o"
 "./Core/Src/CL_sensor.o"
+"./Core/Src/Control_motor.o"
+"./Core/Src/PID_EncoderGyro.o"
 "./Core/Src/PL_LED.o"
 "./Core/Src/PL_encoder.o"
 "./Core/Src/PL_flash.o"

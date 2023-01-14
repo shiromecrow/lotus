@@ -8,6 +8,8 @@ C_SRCS += \
 ../Core/Src/CL_encoder.c \
 ../Core/Src/CL_gyro.c \
 ../Core/Src/CL_sensor.c \
+../Core/Src/Control_motor.c \
+../Core/Src/PID_EncoderGyro.c \
 ../Core/Src/PL_LED.c \
 ../Core/Src/PL_encoder.c \
 ../Core/Src/PL_flash.c \
@@ -34,6 +36,8 @@ OBJS += \
 ./Core/Src/CL_encoder.o \
 ./Core/Src/CL_gyro.o \
 ./Core/Src/CL_sensor.o \
+./Core/Src/Control_motor.o \
+./Core/Src/PID_EncoderGyro.o \
 ./Core/Src/PL_LED.o \
 ./Core/Src/PL_encoder.o \
 ./Core/Src/PL_flash.o \
@@ -60,6 +64,8 @@ C_DEPS += \
 ./Core/Src/CL_encoder.d \
 ./Core/Src/CL_gyro.d \
 ./Core/Src/CL_sensor.d \
+./Core/Src/Control_motor.d \
+./Core/Src/PID_EncoderGyro.d \
 ./Core/Src/PL_LED.d \
 ./Core/Src/PL_encoder.d \
 ./Core/Src/PL_flash.d \
@@ -90,7 +96,7 @@ Core/Src/%.o Core/Src/%.su: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/CL_encoder.d ./Core/Src/CL_encoder.o ./Core/Src/CL_encoder.su ./Core/Src/CL_gyro.d ./Core/Src/CL_gyro.o ./Core/Src/CL_gyro.su ./Core/Src/CL_sensor.d ./Core/Src/CL_sensor.o ./Core/Src/CL_sensor.su ./Core/Src/PL_LED.d ./Core/Src/PL_LED.o ./Core/Src/PL_LED.su ./Core/Src/PL_encoder.d ./Core/Src/PL_encoder.o ./Core/Src/PL_encoder.su ./Core/Src/PL_flash.d ./Core/Src/PL_flash.o ./Core/Src/PL_flash.su ./Core/Src/PL_gyro.d ./Core/Src/PL_gyro.o ./Core/Src/PL_gyro.su ./Core/Src/PL_motor.d ./Core/Src/PL_motor.o ./Core/Src/PL_motor.su ./Core/Src/PL_sensor.d ./Core/Src/PL_sensor.o ./Core/Src/PL_sensor.su ./Core/Src/PL_timer.d ./Core/Src/PL_timer.o ./Core/Src/PL_timer.su ./Core/Src/adc.d ./Core/Src/adc.o ./Core/Src/adc.su ./Core/Src/dma.d ./Core/Src/dma.o ./Core/Src/dma.su ./Core/Src/gpio.d ./Core/Src/gpio.o ./Core/Src/gpio.su ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/mode_select.d ./Core/Src/mode_select.o ./Core/Src/mode_select.su ./Core/Src/record.d ./Core/Src/record.o ./Core/Src/record.su ./Core/Src/spi.d ./Core/Src/spi.o ./Core/Src/spi.su ./Core/Src/stm32g4xx_hal_msp.d ./Core/Src/stm32g4xx_hal_msp.o ./Core/Src/stm32g4xx_hal_msp.su ./Core/Src/stm32g4xx_it.d ./Core/Src/stm32g4xx_it.o ./Core/Src/stm32g4xx_it.su ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32g4xx.d ./Core/Src/system_stm32g4xx.o ./Core/Src/system_stm32g4xx.su ./Core/Src/tim.d ./Core/Src/tim.o ./Core/Src/tim.su ./Core/Src/usart.d ./Core/Src/usart.o ./Core/Src/usart.su
+	-$(RM) ./Core/Src/CL_encoder.d ./Core/Src/CL_encoder.o ./Core/Src/CL_encoder.su ./Core/Src/CL_gyro.d ./Core/Src/CL_gyro.o ./Core/Src/CL_gyro.su ./Core/Src/CL_sensor.d ./Core/Src/CL_sensor.o ./Core/Src/CL_sensor.su ./Core/Src/Control_motor.d ./Core/Src/Control_motor.o ./Core/Src/Control_motor.su ./Core/Src/PID_EncoderGyro.d ./Core/Src/PID_EncoderGyro.o ./Core/Src/PID_EncoderGyro.su ./Core/Src/PL_LED.d ./Core/Src/PL_LED.o ./Core/Src/PL_LED.su ./Core/Src/PL_encoder.d ./Core/Src/PL_encoder.o ./Core/Src/PL_encoder.su ./Core/Src/PL_flash.d ./Core/Src/PL_flash.o ./Core/Src/PL_flash.su ./Core/Src/PL_gyro.d ./Core/Src/PL_gyro.o ./Core/Src/PL_gyro.su ./Core/Src/PL_motor.d ./Core/Src/PL_motor.o ./Core/Src/PL_motor.su ./Core/Src/PL_sensor.d ./Core/Src/PL_sensor.o ./Core/Src/PL_sensor.su ./Core/Src/PL_timer.d ./Core/Src/PL_timer.o ./Core/Src/PL_timer.su ./Core/Src/adc.d ./Core/Src/adc.o ./Core/Src/adc.su ./Core/Src/dma.d ./Core/Src/dma.o ./Core/Src/dma.su ./Core/Src/gpio.d ./Core/Src/gpio.o ./Core/Src/gpio.su ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/mode_select.d ./Core/Src/mode_select.o ./Core/Src/mode_select.su ./Core/Src/record.d ./Core/Src/record.o ./Core/Src/record.su ./Core/Src/spi.d ./Core/Src/spi.o ./Core/Src/spi.su ./Core/Src/stm32g4xx_hal_msp.d ./Core/Src/stm32g4xx_hal_msp.o ./Core/Src/stm32g4xx_hal_msp.su ./Core/Src/stm32g4xx_it.d ./Core/Src/stm32g4xx_it.o ./Core/Src/stm32g4xx_it.su ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32g4xx.d ./Core/Src/system_stm32g4xx.o ./Core/Src/system_stm32g4xx.su ./Core/Src/tim.d ./Core/Src/tim.o ./Core/Src/tim.su ./Core/Src/usart.d ./Core/Src/usart.o ./Core/Src/usart.su
 
 .PHONY: clean-Core-2f-Src
 

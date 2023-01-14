@@ -1,1 +1,4 @@
 1673497360103	Delete resource 'half_mouse2/Core/Inc/PL_motor.h'
+1673676832929	Delete resource 'half_mouse2/Core/Inc/PID_encoder'
+1673677175846	Delete resource 'half_mouse2/Core/Src/PID_encoder.c'
+1673677180804	Delete resource 'half_mouse2/Core/Inc/PID_encoder.h'

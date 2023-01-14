@@ -129,7 +129,7 @@ int main(void)
 	printf("BATT=%f\n",batf);
 
 	int mode=0;
-	//起動�?�確�?
+	//起動�?�確�?
 	int yellow_count=1;
 	for(int i=0;i<8;i++){
 		pl_yellow_LED_count(yellow_count);
@@ -150,7 +150,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	 // loadFlash(start_address, (uint64_t*) mode, sizeof((uint64_t)mode));
+	  loadFlash(start_address, (uint64_t*) mode, sizeof((uint64_t)mode));
 	  	  printf("mode=%d\n\r", mode);
 	  		mode=mode_decision(mode);
 //	  		clear_Ierror();
@@ -159,7 +159,7 @@ int main(void)
 	  		reset_speed();
 
 	  		mode_execution(mode);
-	  		//writeFlash(start_address, (uint64_t*) mode, sizeof((uint64_t)mode), 1);
+	  		writeFlash(start_address, (uint64_t*) mode, sizeof((uint64_t)mode), 1);
 
 //	  		error_mode = 0;
 	  // test LED
