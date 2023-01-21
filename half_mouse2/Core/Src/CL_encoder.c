@@ -68,8 +68,8 @@ void interupt_calEncoder(void) {
 	//E_speedL0 = E_speedL;
 	//one_countL = pl_count_encoderL();
 	//one_countR = pl_count_encoderR();
-	E_speedL = (angle_L) * TIRE_DIAMETER * 1000 * pi / 180 / 39 * 9 / INTERRUPT_TIME;
-	E_speedR = (angle_R) * TIRE_DIAMETER * 1000 * pi / 180 / 39 * 9 / INTERRUPT_TIME;
+	E_speedL = (angle_L) * pi / 180 * TIRE_DIAMETER_L /2 * 1000  / INTERRUPT_TIME;
+	E_speedR = (angle_R) * pi / 180 * TIRE_DIAMETER_R /2 * 1000 / INTERRUPT_TIME;
 	E_distanceL += E_speedL * INTERRUPT_TIME;
 	E_distanceR += E_speedR * INTERRUPT_TIME;
 

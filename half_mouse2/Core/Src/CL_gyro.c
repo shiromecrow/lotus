@@ -13,7 +13,7 @@
 
 float angle,angle_speed;
 
-float anglex,angle_speedx;
+float anglex,angle_speedx,angle_speedx_set;
 
 float gf_speed,gf_distance,gf_accel;
 
@@ -67,11 +67,12 @@ void interrupt_calGyro(void) {
 	angle_speed = angle_speed_ave[0];
 	//angle_speed=(gyro.omega_z-omegaZ_offset)*90/94;//deg/sec
 	angle_speedx=gyro.omega_x;
+	angle_speedx_set=(gyro.omega_x - omegaX_offset);
 	angle += 0.001 * angle_speed; //deg
 	anglex += 0.001 * (gyro.omega_x - omegaX_offset); //deg
 	//angle_acceleration = (angle_speed - angle_speed0) * 1000; //deg/sec^2
 //+0.12*0.02*angle_speed*angle_speed
-	gf_accel = -(gyro.accel_y - accelY_offset)*ACCEL_COEFFICIENT*1000;
+	gf_accel = (gyro.accel_y - accelY_offset)*ACCEL_COEFFICIENT*1000*GRAVITATION;
 	gf_speed += gf_accel * INTERRUPT_TIME;
 	gf_distance += gf_speed * INTERRUPT_TIME;
 

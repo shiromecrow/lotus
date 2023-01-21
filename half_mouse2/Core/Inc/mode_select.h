@@ -14,6 +14,6 @@ void mode_execution(unsigned char);
 
 void mode_PLtest(unsigned char);
 
-
+void mode_Tuning0(unsigned char);
 
 #endif /* INC_MODE_SELECT_H_ */

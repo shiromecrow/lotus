@@ -1,0 +1,99 @@
+/*
+ * PID_wall.c
+ *
+ *  Created on: 2023/01/17
+ *      Author: sf199
+ */
+
+
+
+PIDW wall_normal;
+PIDW wall_slant90;
+PIDW wall_slant45;
+
+uint8_t g_WallControl_mode; //0で壁制御なし、1で通常の壁制御、2で斜めの制御
+uint8_t g_FrontWallControl_mode;
+uint8_t g_wallCut_mode;
+uint8_t g_WallControlStatus;
+uint8_t g_WallControlStatus45;
+uint8_t StabilityCount_reset;
+uint8_t StabilityCount_L, StabilityCount_R;
+
+float g_sensor_max_l;
+float g_sensor_max_r;
+
+float g_skewer_displacement;
+
+float g_log_CenterSlantR45, g_log_CenterSlantL45; //log用
+float g_log_CenterSlantR90, g_log_CenterSlantL90; //log用
+
+volatile uint32_t NoWallCountR90, NoWallCountL90, NoWallCountR45,
+		NoWallCountL45;
+volatile uint32_t NoWallCountR45slant, NoWallCountL45slant;
+
+volatile float NoWallDisplacementR90, NoWallDisplacementL90,
+		NoWallDisplacementR45, NoWallDisplacementL45;
+volatile float NoWallDisplacementR45slant, NoWallDisplacementL45slant;
+volatile float NoWallDisplacementR45slant2, NoWallDisplacementL45slant2;
+
+uint8_t NoWallCountL45_flag, NoWallCountR45_flag, NoWallCountL45slant_flag,
+		NoWallCountR45slant_flag, slantWallControlL_flag,
+		slantWallControlR_flag;
+
+volatile uint8_t front_wall_break_90, front_wall_break_45,
+		front_wall_break_45slant; //前壁が閾値以上でだ出
+
+float g_sensor_max_fl, g_sensor_max_fr, g_sensor_max_fl_slant,
+		g_sensor_max_fr_slant;
+
+float g_CenterSlantR90[12], g_CenterSlantL90[12], g_CenterSlantR45[12],
+		g_CenterSlantL45[12];
+float g_CenterSlantR90_diff, g_CenterSlantL90_diff, g_CenterSlantR45_diff,
+		g_CenterSlantL45_diff;
+
+
+
+void init_WallControl(void) {
+	g_WallControl_mode = 0;
+	g_FrontWallControl_mode = 0;
+	g_WallControlStatus = 0;
+	g_wallCut_mode = 0;
+	StabilityCount_reset = 0;
+	StabilityCount_L = 0;
+	StabilityCount_R = 0;
+	g_sensor_max_l = CENTER_L;
+	g_sensor_max_r = CENTER_R;
+	g_skewer_displacement = SKEWER_LIMIT;
+
+	NoWallCountL90 = 0;
+	NoWallCountR90 = 0;
+	NoWallCountL45 = 0;
+	NoWallCountR45 = 0;
+	NoWallCountL45slant = 0;
+	NoWallCountR45slant = 0;
+
+	NoWallDisplacementL90 = 0;
+	NoWallDisplacementR90 = 0;
+	NoWallDisplacementL45 = CUTPLACE_THRESHOLD_END_L45;
+	NoWallDisplacementR45 = CUTPLACE_THRESHOLD_END_R45;
+	NoWallDisplacementL45slant = 0;
+	NoWallDisplacementR45slant = 0;
+	NoWallDisplacementL45slant2 = 0;
+	NoWallDisplacementR45slant2 = 0;
+
+	NoWallCountL45_flag = 0;
+	NoWallCountR45_flag = 0;
+	NoWallCountL45slant_flag = 0;
+	NoWallCountR45slant_flag = 0;
+	slantWallControlL_flag = 0;
+	slantWallControlR_flag = 0;
+
+	front_wall_break_90 = 0;
+	front_wall_break_45 = 0;
+	front_wall_break_45slant = 0;
+
+	g_sensor_max_fl = 0;
+	g_sensor_max_fr = 0;
+	g_sensor_max_fl_slant = 0;
+	g_sensor_max_fr_slant = 0;
+}

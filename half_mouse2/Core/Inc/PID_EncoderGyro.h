@@ -28,7 +28,8 @@ void PID_Init();
 
 void clear_Ierror();
 
-void motor_PID(float *, float *, float *, float *, float *,float,float);
+void EncoderGyro_PID(float *, float *,float,float);
+
 
 
 #endif /* INC_PID_ENCODERGYRO_H_ */

@@ -8,14 +8,15 @@
 #ifndef INC_CL_GYRO_H_
 #define INC_CL_GYRO_H_
 
-#define GYRO_COEFFICIENT 0.949359*3520/3600*732/720*3555/3600
-#define ACCEL_COEFFICIENT 1.230*1.1
+#define GYRO_COEFFICIENT 0.97*3690/3600
+#define ACCEL_COEFFICIENT 1.0400725*396/381*400/423
+#define GRAVITATION 9.80665
 
 
 
 extern float angle,angle_speed;
 
-extern float anglex,angle_speedx;
+extern float anglex,angle_speedx,angle_speedx_set;
 
 extern float gf_speed,gf_distance,gf_accel;
 

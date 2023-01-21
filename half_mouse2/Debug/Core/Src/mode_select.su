@@ -1,3 +1,4 @@
-../Core/Src/mode_select.c:38:15:mode_decision	24	static
-../Core/Src/mode_select.c:116:6:mode_execution	24	static
-../Core/Src/mode_select.c:165:6:mode_PLtest	32	static
+../Core/Src/mode_select.c:39:15:mode_decision	24	static
+../Core/Src/mode_select.c:117:6:mode_execution	24	static
+../Core/Src/mode_select.c:167:6:mode_PLtest	96	static
+../Core/Src/mode_select.c:372:6:mode_Tuning0	24	static

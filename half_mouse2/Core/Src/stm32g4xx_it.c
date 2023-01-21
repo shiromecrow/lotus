@@ -29,7 +29,9 @@
 #include "CL_gyro.h"
 #include "CL_encoder.h"
 #include "CL_sensor.h"
+#include "Control_motor.h"
 #include "record.h"
+#include "fail_safe.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,7 +98,8 @@ void HardFault_Handler(void)
   /* USER CODE BEGIN HardFault_IRQn 0 */
 
   /* USER CODE END HardFault_IRQn 0 */
-  while (1)
+
+	while (1)
   {
     /* USER CODE BEGIN W1_HardFault_IRQn 0 */
     /* USER CODE END W1_HardFault_IRQn 0 */
@@ -252,7 +255,13 @@ void TIM6_DAC_IRQHandler(void)
   interrupt_calGyro();
   AS5047_DataUpdate();
   interupt_calEncoder();
+  interupt_calFusion();
+  interupt_DriveMotor();
+
+
+  interrupt_FailSafe();
   interrupt_record();
+
   /* USER CODE END TIM6_DAC_IRQn 1 */
 }
 

@@ -1,0 +1,19 @@
+/*
+ * define.h
+ *
+ *  Created on: Jan 11, 2023
+ *      Author: sf199
+ */
+
+#ifndef INC_DEFINE_H_
+#define INC_DEFINE_H_
+
+
+#define ON 1
+#define OFF 0
+#define CONNECT 2
+
+
+
+
+#endif /* INC_DEFINE_H_ */

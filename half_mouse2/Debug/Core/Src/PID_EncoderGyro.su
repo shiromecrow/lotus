@@ -1,3 +1,3 @@
 ../Core/Src/PID_EncoderGyro.c:26:6:PID_Init	4	static
-../Core/Src/PID_EncoderGyro.c:37:6:clear_Ierror	4	static
-../Core/Src/PID_EncoderGyro.c:42:6:motor_PID	48	static
+../Core/Src/PID_EncoderGyro.c:39:6:clear_Ierror	4	static
+../Core/Src/PID_EncoderGyro.c:45:6:EncoderGyro_PID	32	static

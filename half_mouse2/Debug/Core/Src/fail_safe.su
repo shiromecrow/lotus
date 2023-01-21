@@ -1,0 +1,2 @@
+../Core/Src/fail_safe.c:37:6:init_FailSafe	4	static
+../Core/Src/fail_safe.c:52:6:interrupt_FailSafe	24	static

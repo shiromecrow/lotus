@@ -10,7 +10,10 @@
 
 #include "stm32g4xx_hal.h"
 
-#define TIRE_DIAMETER 0.0118088*562/540*535/540*535/540*520/540//m  dayo*****************************************
+#define TIRE_DIAMETER_L 0.0118088*1.1126*396/399.73*400/398.99//m  dayo*****************************************
+#define TIRE_DIAMETER_R 0.0118088*1.1126*396/399.73*400/402.66//m  dayo*****************************************
+#define TIRE_DIAMETER (TIRE_DIAMETER_L+TIRE_DIAMETER_R)/2
+
 #define pi 3.1415926535
 
 extern float E_distanceR,E_distanceL;

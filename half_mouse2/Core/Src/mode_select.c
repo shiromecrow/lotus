@@ -21,7 +21,8 @@
 #include "CL_gyro.h"
 #include "CL_encoder.h"
 #include "CL_sensor.h"
-//#include "motor_control.h"
+#include "Control_motor.h"
+#include "PID_EncoderGyro.h"
 
 //#include "turning.h"
 
@@ -30,7 +31,7 @@
 //#include "wait_ms.h"
 #include "define.h"
 #include "math.h"
-//#include "fail_safe.h"
+#include "fail_safe.h"
 
 
 
@@ -47,7 +48,7 @@ main_modeL=now_mode >> 4;
 	pl_yellow_LED_count(main_modeL * 16 + main_modeR);
 			//pl_play_oneSound(main_modeR);
 			//モード選択*************************************************************************
-			while (angle_speedx <= 200) {
+			while (angle_speedx <= 400) {
 				HAL_Delay(1);
 				if (E_distanceR >= dis8) {
 					if (main_modeR == 15) {
@@ -96,7 +97,7 @@ main_modeL=now_mode >> 4;
 			HAL_Delay(1000);
 			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {	//
 
-				if (angle_speedx >= 200) {
+				if (angle_speedx >= 400) {
 					main_modeL = 0;
 					main_modeR = 0;
 					break;
@@ -132,6 +133,7 @@ switch (main_modeL) {
 	case 0b0010://実行モード2
 	break;
 	case 0b0011:
+		mode_Tuning0(main_modeR);
 	break;
 	case 0b0100:
 	break;
@@ -213,12 +215,49 @@ void mode_PLtest(unsigned char main_modeR) {
 		}
 		record_print();
 		break;
+	case 0b0100://speaker
+		while (1) {
+		  	printf("gyro x : %5.5f, y : %5.5f,z : %5.5f, accel x : %5.5f, y :%5.5f, z : %5.5f\r",
+				  			gyro.omega_x, gyro.omega_y, gyro.omega_z, gyro.accel_x,gyro.accel_y, gyro.accel_z);
+			wait_ms(500);
+		}
+	break;
+	case 0b1001://fun
+			pl_FunMotor_duty(0.5);
+			pl_FunMotor_start();
+			HAL_Delay(2000);
+			reset_gyro();
+			reset_speed();
+			clear_Ierror();
+			pl_r_blue_LED(ON);
+			pl_l_blue_LED(ON);
+			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
+				HAL_Delay(1);
+			}
+			pl_r_blue_LED(OFF);
+			pl_l_blue_LED(OFF);
+			pl_FunMotor_stop();
+		break;
+	case 0b1010://fun
+			pl_FunMotor_duty(0.99);
+			pl_FunMotor_start();
+			HAL_Delay(2000);
+			reset_gyro();
+			reset_speed();
+			clear_Ierror();
+			pl_r_blue_LED(ON);
+			pl_l_blue_LED(ON);
+			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
+				HAL_Delay(1);
+			}
+			pl_r_blue_LED(OFF);
+			pl_l_blue_LED(OFF);
+			pl_FunMotor_stop();
+		break;
 	case 0b1111:	//record_out
 		record_print();
 		break;
-//		case 0b0011://speaker
-//			pl_play_Music(169, unknow_story);
-//		break;
+
 //		case 0b0100://speaker
 //			speaker_mode = 1;
 //			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
@@ -301,37 +340,7 @@ void mode_PLtest(unsigned char main_modeR) {
 //				//printf("angle=%f,angle_speed=%f\n", angle, angle_speed);
 //			}
 //		break;
-//		case 0b1001://fun
-//			pl_DriveMotor_standby(ON);
-//			pl_R_DriveMotor_mode(MOTOR_BREAK);
-//			pl_L_DriveMotor_mode(MOTOR_BREAK);
-//			wait_ms_NoReset(500);
-//			pl_FunMotor_duty(0.51);
-//			pl_FunMotor_start();
-//			HAL_Delay(2000);
-//			reset_gyro();
-//			reset_speed();
-//			clear_Ierror();
-//			record_mode=2;
-//			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
-//
-//				HAL_Delay(1);
-//			}
-//			record_mode=0;
-//			pl_FunMotor_stop();
-//			pl_R_DriveMotor_mode(MOTOR_BREAK);
-//			pl_L_DriveMotor_mode(MOTOR_BREAK);
-//			wait_ms_NoReset(500);
-//			pl_DriveMotor_standby(OFF);
-//			//pl_FunMotor_stop();
-//				while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
-//					HAL_Delay(1);
-//				}
-//				pl_r_blue_LED(ON);
-//				pl_l_blue_LED(ON);
-//				record_print();
-//
-//		break;
+
 //		case 0b1010://センサーの線形化
 //			sensor_line();
 //		break;
@@ -358,5 +367,199 @@ void mode_PLtest(unsigned char main_modeR) {
 
 }
 
+
+
+void mode_Tuning0(unsigned char main_modeR){
+	MOTOR_MODE mode;
+	mode.WallControlMode=0;
+	mode.WallControlStatus=0;
+	mode.WallCutMode=0;
+	mode.calMazeMode=0;
+	//pl_FunMotor_duty(150);
+	//pl_FunMotor_start();
+	//HAL_Delay(1000);
+	pl_L_DriveMotor_mode(MOTOR_BREAK);
+	pl_R_DriveMotor_mode(MOTOR_BREAK);
+	reset_gyro();
+	reset_speed();
+	reset_distance();
+	clear_Ierror();
+
+	switch (main_modeR) {
+		case 0://タイヤ径　エンコーダ+PID
+			record_mode=3;
+			mode.WallControlMode=0;
+			//straight_table2(720, 0, 0, 3000, 20000,mode);
+			straight_table2(540, 0, 0, 1600, 13000,mode);
+			turning_table2(180, 0, 0, 400, 4000);
+			straight_table2(540, 0, 0, 2000, 15000,mode);
+			turning_table2(180, 0, 0, 400, 4000);
+			straight_table2(540, 0, 0, 2400, 20000,mode);
+			//straight_table2(720, 0, 0, 3000, 20000,mode);
+			//straight_table2(450, 0, 0, 1000, 13000,mode);
+			//control_test_motor2(0,0,10);
+		break;
+		case 1://トレッド幅??ジャイロ
+			record_mode = 5;
+			mode.WallControlMode=0;
+			straight_table2(400, 0, 0, 400, 3000,mode);
+			//turning_table2(360*10, 0, 0, 800, 8000);
+			//control_test_motor2(1,0,5);
+		break;
+		case 2://壁制御
+			record_mode=6;
+			mode.WallControlMode=1;
+			straight_table2(90*8, 0, 0, 300, 6000,mode);
+			//control_test_motor2(0,1,6);
+		break;
+		case 3://右スラローム(探索)
+			straight_table2(180, 0, 300, 300,300 * 300  / 2 / 90,mode);
+			mollifier_slalom_table(300,-90,500);
+			straight_table2(180, 300, 0, 300,300 * 300  / 2 / 90,mode);
+			//testturning(speed500_exploration,0,0,0,0,0);
+		break;
+		case 4://左スラローム(探索)
+			straight_table2(180, 0, 300, 300,300 * 300  / 2 / 90,mode);
+			mollifier_slalom_table(300,90,500);
+			straight_table2(180, 300, 0, 300,300 * 300  / 2 / 90,mode);
+			//testturning(speed500_exploration,1,0,0,0,0);
+		break;
+		case 5://斜め直進(制御なし)
+			record_mode=3;
+			mode.WallControlMode=0;
+			straight_table2(180*3*sqrt(2), 0, 0, 500, 6000,mode);
+		break;
+		case 6://斜め直進(制御あり)
+			record_mode=7;//or3
+			mode.WallControlMode=0;
+			straight_table2(180*3*sqrt(2), 0, 0, 500, 6000,mode);
+		break;
+		case 7://斜め直進(平松さん式制御あり)
+			record_mode=7;
+			mode.WallControlMode=3;
+			straight_table2(180*3*sqrt(2), 0, 0, 2000, 6000,mode);
+		break;
+		case 8://宴会芸
+			record_mode=2;
+			pl_r_blue_LED(ON);
+			pl_l_blue_LED(ON);
+			no_angle();
+			pl_r_blue_LED(OFF);
+			pl_l_blue_LED(OFF);
+		break;
+		case 9://システム同定enc
+			record_mode=1;
+			pl_r_blue_LED(ON);
+			pl_l_blue_LED(ON);
+			straight_table_ff(90, 0, 300, 300, 500);
+			straight_table_ff(90, 300, 600, 600, 1500);
+			straight_table_ff(90, 600, 300, 600, 1500);
+			straight_table_ff(90, 300, 0, 300, 500);
+			//get_duty(1, 1,&duty_L,&duty_R);
+			//pl_DriveMotor_duty(duty_L,duty_R);
+			//pl_DriveMotor_start();
+//			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
+//				wait_ms(1);
+//				if(record_rupe_flag==1){
+//					break;
+//				}
+//			}
+//			pl_DriveMotor_stop();
+			pl_r_blue_LED(OFF);
+			pl_l_blue_LED(OFF);
+		break;
+		case 10://システム同定gyro
+			record_mode=2;
+			pl_r_blue_LED(ON);
+			pl_l_blue_LED(ON);
+			turning_table_ff(90, 0, 300, 300, 500);
+			turning_table_ff(90, 300, 600, 600, 1500);
+			turning_table_ff(90, 600, 300, 600, 1500);
+			turning_table_ff(90, 300, 0, 300, 500);
+//			get_duty(-1.5, 1.5,&duty_L,&duty_R);
+//			pl_DriveMotor_duty(duty_L,duty_R);
+//			pl_DriveMotor_start();
+//			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
+//				wait_ms(1);
+//				if(record_rupe_flag==1){
+//					record_mode=0;
+//					break;
+//				}
+//			}
+//			pl_DriveMotor_stop();
+			pl_r_blue_LED(OFF);
+			pl_l_blue_LED(OFF);
+		break;
+		case 11:
+		record_mode=1;
+		mode.WallControlMode=0;
+		straight_table2(BACK_TO_CENTER, 0, 0, 300, 6000,mode);
+		break;
+		case 12:
+		record_mode=17;
+		for(int i=0;i<40;i++){
+		turning_table2(90, 0, 0, 400, 3000);
+		}
+		break;
+		case 13:
+			pl_r_blue_LED(ON);
+			pl_l_blue_LED(ON);
+			no_frontwall_straight();
+			pl_r_blue_LED(OFF);
+			pl_l_blue_LED(OFF);
+		break;
+		case 14://宴会芸＋吸引
+			highspeed_mode = 1;
+			pl_FunMotor_duty(0.95);
+			pl_FunMotor_start();
+			HAL_Delay(600);
+			reset_gyro();
+			reset_speed();
+			reset_distance();
+			clear_Ierror();
+			record_mode=3;
+//			mode.WallControlMode=0;
+//			straight_table2(90*32, 0, 0, 4000, 17000,mode);
+			mode.WallControlMode=1;
+			straight_table2(90*8, 0, 0, 1000, 7000,mode);
+		break;
+		case 15:
+			highspeed_mode = 1;
+						pl_FunMotor_duty(0.95);
+						//pl_FunMotor_start();
+						HAL_Delay(600);
+						reset_gyro();
+						reset_speed();
+						reset_distance();
+						clear_Ierror();
+						record_mode=3;
+			//			mode.WallControlMode=0;
+			//			straight_table2(90*32, 0, 0, 4000, 17000,mode);
+						mode.WallControlMode=1;
+						straight_table2(90*8, 0, 0, 1000, 7000,mode);
+//			record_mode=1;
+//			mode.WallControlMode=0;
+//			straight_table2(BACK_TO_CENTER_SLANT, 0, 0, 300, 6000,mode);
+		break;
+	}
+	record_mode=0;
+	pl_R_DriveMotor_mode(MOTOR_BREAK);
+	pl_L_DriveMotor_mode(MOTOR_BREAK);
+	wait_ms_NoReset(500);
+	pl_FunMotor_stop();
+	wait_ms_NoReset(500);
+	pl_DriveMotor_standby(OFF);
+	record_mode=0;
+	//pl_FunMotor_stop();
+	while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
+		HAL_Delay(1);
+	}
+	pl_r_blue_LED(ON);
+	pl_l_blue_LED(ON);
+	record_print();
+
+
+
+}
 
 

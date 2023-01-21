@@ -31,6 +31,8 @@ void PID_Init(void) {
 	Ktp = 1.9; //295//P項の制御量旋回*****************************************************
 	Kti = 0.13; //1//.6//I項の制御量旋回*****************************************************
 	Ktd = 0.002; //205//D項の制御量旋回*****************************************************
+	enc.sigma_error = 0;
+	Gyro.sigma_error = 0;
 
 }
 
@@ -39,15 +41,11 @@ void clear_Ierror(void) {
 	Gyro.sigma_error = 0;
 }
 
-void motor_PID(float *PID_all_L, float *PID_all_R, float *PID_s, float *PID_t,
-		float *PID_w,float straight_velocity,float turning_velocity) {
+
+void EncoderGyro_PID(float *PID_s, float *PID_t,float straight_velocity,float turning_velocity) {
 	float PID_stra = 0;
 	float PID_turn = 0;
-	float PID_wall = *PID_w;
 
-
-	*PID_all_R = 0;
-	*PID_all_L = 0;
 
 	if (straight_velocity == 0) {
 		reset_speed();
@@ -66,8 +64,6 @@ void motor_PID(float *PID_all_L, float *PID_all_R, float *PID_s, float *PID_t,
 	enc.sigma_error += enc.error;
 	PID_stra = Ksp * enc.error + Ksi * enc.sigma_error + Ksd * enc.delta_error;
 
-	*PID_all_R += PID_stra;
-	*PID_all_L += PID_stra;
 
 
 
@@ -80,9 +76,7 @@ void motor_PID(float *PID_all_L, float *PID_all_R, float *PID_s, float *PID_t,
 		PID_turn = Ktp * Gyro.error + Kti * Gyro.sigma_error
 				+ Ktd * Gyro.delta_error;
 
-		*PID_all_R += (PID_turn + PID_wall);
-		*PID_all_L -= (PID_turn + PID_wall);
-//	} else {
+	//	} else {
 //		Gyro.error = (turning.velocity + PID_wall - angle_speed);
 //		Gyro.delta_error = Gyro.error - Gyro.old_error;
 //		Gyro.old_error = Gyro.error;
@@ -94,8 +88,12 @@ void motor_PID(float *PID_all_L, float *PID_all_R, float *PID_s, float *PID_t,
 //		*PID_all_L -= PID_turn;
 //	}
 
-	*PID_s = PID_stra;
-	*PID_t = PID_turn;
+	*PID_s = PID_stra / MAXMOTOR * g_V_battery_mean;
+	*PID_t = PID_turn / MAXMOTOR * g_V_battery_mean;
 
 }
+
+
+
+
 

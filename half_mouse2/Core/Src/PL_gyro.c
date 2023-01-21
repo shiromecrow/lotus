@@ -153,17 +153,17 @@ void ICM20602_DataUpdate(void)
 
 // get yawrate
 
-		gyro.omega_x = ICM20602_GYRO_READ(0x43);
+		gyro.omega_y = ICM20602_GYRO_READ(0x43);
 
-		gyro.omega_y = ICM20602_GYRO_READ(0x45);
+		gyro.omega_x = ICM20602_GYRO_READ(0x45);
 
 		gyro.omega_z = ICM20602_GYRO_READ(0x47);
 
 // get accel
 
-		gyro.accel_x = ICM20602_ACCEL_READ(0x3B);
+		gyro.accel_y = ICM20602_ACCEL_READ(0x3B);
 
-		gyro.accel_y = ICM20602_ACCEL_READ(0x3D);
+		gyro.accel_x = ICM20602_ACCEL_READ(0x3D);
 
 		gyro.accel_z = ICM20602_ACCEL_READ(0x3F);
 

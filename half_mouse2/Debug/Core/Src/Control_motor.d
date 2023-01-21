@@ -1,6 +1,5 @@
 Core/Src/Control_motor.o: ../Core/Src/Control_motor.c \
- ../Core/Inc/Control_motor.h ../Core/Inc/CL_gyro.h \
- ../Core/Inc/CL_sensor.h \
+ ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
  ../Core/Inc/stm32g4xx_hal_conf.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
@@ -35,11 +34,12 @@ Core/Src/Control_motor.o: ../Core/Src/Control_motor.c \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- ../Core/Inc/CL_encoder.h ../Core/Inc/PL_motor.h ../Core/Inc/PL_LED.h \
- ../Core/Inc/PL_timer.h
+ ../Core/Inc/CL_gyro.h ../Core/Inc/CL_sensor.h ../Core/Inc/CL_encoder.h \
+ ../Core/Inc/PL_motor.h ../Core/Inc/PL_LED.h ../Core/Inc/PL_timer.h \
+ ../Core/Inc/FF_motor.h ../Core/Inc/PID_wall.h ../Core/Inc/define.h \
+ ../Core/Inc/PID_EncoderGyro.h ../Core/Inc/define.h
 ../Core/Inc/Control_motor.h:
-../Core/Inc/CL_gyro.h:
-../Core/Inc/CL_sensor.h:
+../Core/Inc/cal_acceleration.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h:
@@ -74,7 +74,14 @@ Core/Src/Control_motor.o: ../Core/Src/Control_motor.c \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
+../Core/Inc/CL_gyro.h:
+../Core/Inc/CL_sensor.h:
 ../Core/Inc/CL_encoder.h:
 ../Core/Inc/PL_motor.h:
 ../Core/Inc/PL_LED.h:
 ../Core/Inc/PL_timer.h:
+../Core/Inc/FF_motor.h:
+../Core/Inc/PID_wall.h:
+../Core/Inc/define.h:
+../Core/Inc/PID_EncoderGyro.h:
+../Core/Inc/define.h:

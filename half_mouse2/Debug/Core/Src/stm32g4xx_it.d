@@ -36,7 +36,8 @@ Core/Src/stm32g4xx_it.o: ../Core/Src/stm32g4xx_it.c ../Core/Inc/main.h \
  ../Core/Inc/stm32g4xx_it.h ../Core/Inc/PL_timer.h \
  ../Core/Inc/PL_sensor.h ../Core/Inc/PL_encoder.h ../Core/Inc/PL_gyro.h \
  ../Core/Inc/CL_gyro.h ../Core/Inc/CL_encoder.h ../Core/Inc/CL_sensor.h \
- ../Core/Inc/record.h
+ ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h \
+ ../Core/Inc/record.h ../Core/Inc/fail_safe.h
 ../Core/Inc/main.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
@@ -80,4 +81,7 @@ Core/Src/stm32g4xx_it.o: ../Core/Src/stm32g4xx_it.c ../Core/Inc/main.h \
 ../Core/Inc/CL_gyro.h:
 ../Core/Inc/CL_encoder.h:
 ../Core/Inc/CL_sensor.h:
+../Core/Inc/Control_motor.h:
+../Core/Inc/cal_acceleration.h:
 ../Core/Inc/record.h:
+../Core/Inc/fail_safe.h:

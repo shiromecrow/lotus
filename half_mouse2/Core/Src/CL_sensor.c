@@ -38,7 +38,7 @@ int i;
 	g_V_battery_mean+=g_V_battery[i];
 	}
 	g_V_battery_mean/=20;
-
+	printf("BATT=%f\n",g_V_battery_mean);
 	//printf("%f",g_V_battery_mean);
 	if(g_V_battery_mean <= BATTLIMIT){
 		//pl_stop_Sound();

@@ -17,6 +17,7 @@
 #include "CL_sensor.h"
 #include "CL_encoder.h"
 #include "CL_gyro.h"
+#include "Control_motor.h"
 #include "stdio.h"
 
 //#include "motor_control.h"
@@ -102,6 +103,34 @@ void interrupt_record(void) {
 				r_data[2] = gf_speed;
 				r_data[3] = gf_distance;
 				record_data(r_data, 4);
+		}
+	if (record_mode == 3) {
+			r_data[0] = straight.velocity;
+			r_data[1] = straight.displacement;
+			r_data[2] = (fusion_speedR + fusion_speedL) / 2;
+			r_data[3] = (fusion_distanceR + fusion_distanceL) / 2;
+			record_data(r_data, 4);
+		}
+	if (record_mode == 4) { //距離の比較
+			r_data[0] = straight.displacement;
+			r_data[1] = (E_distanceR + E_distanceL) / 2;
+			r_data[2] = gf_distance;
+			r_data[3] = (fusion_distanceR + fusion_distanceL) / 2;
+			record_data(r_data, 4);
+		}
+	if (record_mode == 5) { //距離の比較
+			r_data[0] = straight.displacement;
+			r_data[1] = E_distanceR;
+			r_data[2] = E_distanceL;
+			r_data[3] = gf_distance;
+			record_data(r_data, 4);
+		}
+	if (record_mode == 5) { //距離の比較
+			r_data[0] = g_V_L;
+			r_data[1] = E_distanceR;
+			r_data[2] = E_distanceL;
+			r_data[3] = gf_distance;
+			record_data(r_data, 4);
 		}
 /*	if (record_mode == 1) {
 		r_data[0] = straight.velocity;
