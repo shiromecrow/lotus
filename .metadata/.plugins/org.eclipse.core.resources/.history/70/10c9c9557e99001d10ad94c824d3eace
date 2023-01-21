@@ -448,7 +448,7 @@ void mode_Tuning0(unsigned char main_modeR){
 			pl_l_blue_LED(OFF);
 		break;
 		case 9://システム同定enc
-			record_mode=6;
+			record_mode=1;
 			pl_r_blue_LED(ON);
 			pl_l_blue_LED(ON);
 			straight_table_ff(90, 0, 300, 300, 500);

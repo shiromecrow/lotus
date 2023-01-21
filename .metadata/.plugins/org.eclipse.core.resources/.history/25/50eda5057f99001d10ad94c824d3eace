@@ -25,7 +25,7 @@
 #define kbT 0.0024767//Vs/rad 逆起電力定数 deg->rad->m変換sitenai
 
 
-#define SS 0.47
+#define SS 0.48
 
 
 void feedforward_const_accel(float *,float,float,float *,float,float);

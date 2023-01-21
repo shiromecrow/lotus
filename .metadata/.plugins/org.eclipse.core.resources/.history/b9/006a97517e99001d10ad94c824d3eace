@@ -136,7 +136,7 @@ void interrupt_record(void) {
 				r_data[0] = straight.velocity;
 				r_data[1] = E_lpf_speedL;
 				r_data[2] = E_lpf_speedR;
-				r_data[3] = gf_speed;
+				r_data[3] = gf_distance;
 				record_data(r_data, 4);
 			}
 /*	if (record_mode == 1) {
