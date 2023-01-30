@@ -33056,3 +33056,94 @@ arm-none-eabi-size   half_mouse2.elf
   86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
 Finished building: default.size.stdout
  
+18:35:04 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+18:35:11 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+18:35:51 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+18:36:03 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+18:42:19 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+18:42:21 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+18:42:29 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+18:45:17 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+18:45:20 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+18:45:24 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
