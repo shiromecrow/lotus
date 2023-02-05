@@ -70,7 +70,8 @@ void get_duty(float V_L, float V_R,int *duty_L,int *duty_R) {
 		pl_R_DriveMotor_mode(MOTOR_BACK);
 	    *duty_R = (int) (-V_R / g_V_battery_mean * MAXMOTOR);
 	}
-
+	*duty_L=*duty_L;
+	*duty_R=*duty_R*1.3*0.9;
 	//XX
 	if (*duty_L >= (int)(MAXMOTOR*MAX_DUTY_RATIO)) {
 		*duty_L = (int)(MAXMOTOR*MAX_DUTY_RATIO);
@@ -92,7 +93,7 @@ void interupt_DriveMotor(void){
 	float PID_w=0;
 	float feedforward_straight=0,feedforward_turning=0;
 
-//	interrupt_WallCut();
+
 
 	if (modeacc == 0) {
 		g_acc_flag=4;
@@ -101,6 +102,7 @@ void interupt_DriveMotor(void){
 
 	}
 	if (modeacc == 1) {
+		g_wallCut_mode=1;
 		g_MotorTimCount++;
 		straight.displacement += straight.velocity*INTERRUPT_TIME + straight.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
 		straight.velocity += straight.acceleration*INTERRUPT_TIME;
@@ -125,6 +127,8 @@ void interupt_DriveMotor(void){
 		pl_DriveMotor_duty(duty_L,duty_R);
 	}
 	if (modeacc == 2 || modeacc == 4) {//旋回とスラローム
+		g_WallControl_mode=0;
+		g_wallCut_mode=0;
 		g_MotorTimCount++;
 		straight.displacement += straight.velocity*INTERRUPT_TIME + straight.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
 		straight.velocity += straight.acceleration*INTERRUPT_TIME;
@@ -148,6 +152,8 @@ void interupt_DriveMotor(void){
 		pl_DriveMotor_duty(duty_L,duty_R);
 	}
 	if (modeacc == 3) {//宴会芸
+		g_WallControl_mode=0;
+				g_wallCut_mode=0;
 		g_MotorTimCount++;
 		straight.displacement += straight.velocity*INTERRUPT_TIME + straight.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
 		straight.velocity += straight.acceleration*INTERRUPT_TIME;
@@ -159,12 +165,16 @@ void interupt_DriveMotor(void){
 		get_duty(V_L, V_R,&duty_L,&duty_R);
 		pl_DriveMotor_duty(duty_L,duty_R);
 	}if (modeacc == 5) {//前壁制御
+		g_WallControl_mode=0;
+				g_wallCut_mode=0;
 		//calFrontWallConrol(&PID_frontwall_l,&PID_frontwall_r);
 		V_L = PID_s-PID_t+feedforward_straight-feedforward_turning;
 		V_R = PID_s+PID_t+feedforward_straight+feedforward_turning;
 		get_duty(V_L, V_R,&duty_L,&duty_R);
 		pl_DriveMotor_duty(duty_L,duty_R);
 	}if (modeacc == 6) {//ネイピア加速
+		g_WallControl_mode=0;
+				g_wallCut_mode=0;
 		straight.displacement += straight.velocity*INTERRUPT_TIME + straight.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
 		straight.velocity += straight.acceleration*INTERRUPT_TIME;
 		turning.displacement += turning.velocity*INTERRUPT_TIME;// + turning.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
@@ -175,13 +185,13 @@ void interupt_DriveMotor(void){
 					angle_speed,turning.acceleration);
 		V_L = PID_s-PID_t+feedforward_straight-feedforward_turning;
 		V_R = PID_s+PID_t+feedforward_straight+feedforward_turning;
-		if(PID_s+feedforward_straight>g_V_battery_mean*MAX_DUTY_RATIO_ST){
-			V_L+=g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
-			V_R+=g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
-		}else if(PID_s+feedforward_straight<-g_V_battery_mean*MAX_DUTY_RATIO_ST){
-			V_L+=-g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
-			V_R+=-g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
-		}
+//		if(PID_s+feedforward_straight>g_V_battery_mean*MAX_DUTY_RATIO_ST){
+//			V_L+=g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
+//			V_R+=g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
+//		}else if(PID_s+feedforward_straight<-g_V_battery_mean*MAX_DUTY_RATIO_ST){
+//			V_L+=-g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
+//			V_R+=-g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
+//		}
 		get_duty(V_L, V_R,&duty_L,&duty_R);
 		pl_DriveMotor_duty(duty_L,duty_R);
 

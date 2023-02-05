@@ -43,6 +43,7 @@
 #include "Control_motor.h"
 #include "record.h"
 #include "mode_select.h"
+#include "turning_parameter.h"
 #include "fail_safe.h"
 /* USER CODE END Includes */
 
@@ -126,6 +127,7 @@ int main(void)
   init_WallControl();
   Control_mode_Init();
   init_FailSafe();
+  input_parameter();
 
 	//uint8_t hello[] = "Hello World\n\r";
   //float PI=3.14;

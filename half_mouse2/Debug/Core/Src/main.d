@@ -41,7 +41,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/CL_sensor.h ../Core/Inc/PID_EncoderGyro.h \
  ../Core/Inc/PID_wall.h ../Core/Inc/define.h ../Core/Inc/Control_motor.h \
  ../Core/Inc/cal_acceleration.h ../Core/Inc/record.h \
- ../Core/Inc/mode_select.h ../Core/Inc/fail_safe.h
+ ../Core/Inc/mode_select.h ../Core/Inc/turning_parameter.h \
+ ../Core/Inc/fail_safe.h
 ../Core/Inc/main.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
@@ -101,4 +102,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/cal_acceleration.h:
 ../Core/Inc/record.h:
 ../Core/Inc/mode_select.h:
+../Core/Inc/turning_parameter.h:
 ../Core/Inc/fail_safe.h:

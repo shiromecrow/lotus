@@ -38,8 +38,9 @@ Core/Src/mode_select.o: ../Core/Src/mode_select.c \
  ../Core/Inc/PL_gyro.h ../Core/Inc/PL_motor.h ../Core/Inc/CL_gyro.h \
  ../Core/Inc/CL_encoder.h ../Core/Inc/CL_sensor.h \
  ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h \
- ../Core/Inc/PID_EncoderGyro.h ../Core/Inc/record.h ../Core/Inc/define.h \
- ../Core/Inc/fail_safe.h
+ ../Core/Inc/PID_EncoderGyro.h ../Core/Inc/maze_Turning.h \
+ ../Core/Inc/turning_parameter.h ../Core/Inc/turning_parameter.h \
+ ../Core/Inc/record.h ../Core/Inc/define.h ../Core/Inc/fail_safe.h
 ../Core/Inc/mode_select.h:
 ../Core/Inc/PL_timer.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
@@ -87,6 +88,9 @@ Core/Src/mode_select.o: ../Core/Src/mode_select.c \
 ../Core/Inc/Control_motor.h:
 ../Core/Inc/cal_acceleration.h:
 ../Core/Inc/PID_EncoderGyro.h:
+../Core/Inc/maze_Turning.h:
+../Core/Inc/turning_parameter.h:
+../Core/Inc/turning_parameter.h:
 ../Core/Inc/record.h:
 ../Core/Inc/define.h:
 ../Core/Inc/fail_safe.h:

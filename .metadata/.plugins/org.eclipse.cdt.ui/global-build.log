@@ -33147,3 +33147,1786 @@ arm-none-eabi-size   half_mouse2.elf
   86628	    484	  51732	 138844	  21e5c	half_mouse2.elf
 Finished building: default.size.stdout
  
+20:12:22 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:91:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   91 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:91:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   91 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86708	    484	  51732	 138924	  21eac	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:12:33 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:14:33 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86716	    484	  51732	 138932	  21eb4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:14:35 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:15:24 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  86716	    484	  51732	 138932	  21eb4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:20:03 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/FF_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/FF_motor.d" -MT"Core/Src/FF_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/FF_motor.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86620	    484	  51732	 138836	  21e54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:20:05 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:20:38 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  86620	    484	  51732	 138836	  21e54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:21:01 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  86620	    484	  51732	 138836	  21e54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+21:06:53 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/CL_encoder.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/CL_encoder.d" -MT"Core/Src/CL_encoder.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/CL_encoder.o"
+arm-none-eabi-gcc "../Core/Src/CL_gyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/CL_gyro.d" -MT"Core/Src/CL_gyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/CL_gyro.o"
+arm-none-eabi-gcc "../Core/Src/CL_sensor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/CL_sensor.d" -MT"Core/Src/CL_sensor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/CL_sensor.o"
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+arm-none-eabi-gcc "../Core/Src/FF_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/FF_motor.d" -MT"Core/Src/FF_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/FF_motor.o"
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc "../Core/Src/PID_wall.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_wall.d" -MT"Core/Src/PID_wall.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_wall.o"
+arm-none-eabi-gcc "../Core/Src/PL_LED.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_LED.d" -MT"Core/Src/PL_LED.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_LED.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+../Core/Src/CL_sensor.c: In function 'battcheak':
+../Core/Src/CL_sensor.c:41:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   41 |  printf("BATT=%f\n",g_V_battery_mean);
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:41:2: warning: incompatible implicit declaration of built-in function 'printf'
+../Core/Src/CL_sensor.c:15:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   14 | #include "define.h"
+  +++ |+#include <stdio.h>
+   15 | 
+../Core/Src/CL_sensor.c: In function 'sensor_line':
+../Core/Src/CL_sensor.c:115:2: warning: incompatible implicit declaration of built-in function 'printf'
+  115 |  printf("SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor[0][0],
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:115:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c:122:2: warning: implicit declaration of function 'pl_play_oneSound' [-Wimplicit-function-declaration]
+  122 |  pl_play_oneSound(ee);
+      |  ^~~~~~~~~~~~~~~~
+../Core/Src/CL_sensor.c:129:2: warning: incompatible implicit declaration of built-in function 'printf'
+  129 |  printf("L_SEN,L_dis,R_SEN,R_dis\n");
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:129:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c: In function 'sensor_line45':
+../Core/Src/CL_sensor.c:155:2: warning: incompatible implicit declaration of built-in function 'printf'
+  155 |  printf("SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor[0][0],
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:155:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c:169:2: warning: incompatible implicit declaration of built-in function 'printf'
+  169 |  printf("L_SEN,L_dis,R_SEN,R_dis\n");
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:169:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c: In function 'sensor_line45_slant':
+../Core/Src/CL_sensor.c:194:2: warning: incompatible implicit declaration of built-in function 'printf'
+  194 |  printf("SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor[0][0],
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:194:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c:208:2: warning: incompatible implicit declaration of built-in function 'printf'
+  208 |  printf("L_SEN,L_dis,R_SEN,R_dis\n");
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:208:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc "../Core/Src/PL_encoder.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_encoder.d" -MT"Core/Src/PL_encoder.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_encoder.o"
+arm-none-eabi-gcc "../Core/Src/PL_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_flash.d" -MT"Core/Src/PL_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_flash.o"
+arm-none-eabi-gcc "../Core/Src/PL_gyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_gyro.d" -MT"Core/Src/PL_gyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_gyro.o"
+arm-none-eabi-gcc "../Core/Src/PL_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_motor.d" -MT"Core/Src/PL_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_motor.o"
+arm-none-eabi-gcc "../Core/Src/PL_sensor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_sensor.d" -MT"Core/Src/PL_sensor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_sensor.o"
+arm-none-eabi-gcc "../Core/Src/PL_timer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_timer.d" -MT"Core/Src/PL_timer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_timer.o"
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/adc.o"
+arm-none-eabi-gcc "../Core/Src/cal_acceleration.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/cal_acceleration.d" -MT"Core/Src/cal_acceleration.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/cal_acceleration.o"
+../Core/Src/PL_sensor.c: In function 'pl_callback_getSensor':
+../Core/Src/PL_sensor.c:134:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  134 |   HAL_ADC_Start_DMA(&hadc1, g_ADCBuffer, sizeof(g_ADCBuffer) / sizeof(uint16_t));
+      |                             ^~~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Inc/PL_sensor.h:11,
+                 from ../Core/Src/PL_sensor.c:9:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:1959:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+ 1959 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
+      |                                                                    ~~~~~~~~~~^~~~~
+../Core/Src/PL_sensor.c: In function 'pl_interupt_getSensor':
+../Core/Src/PL_sensor.c:158:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  158 |   HAL_ADC_Start_DMA(&hadc1, g_ADCBuffer, sizeof(g_ADCBuffer) / sizeof(uint16_t));
+      |                             ^~~~~~~~~~~
+      |                             |
+      |                             uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Inc/PL_sensor.h:11,
+                 from ../Core/Src/PL_sensor.c:9:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:1959:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+ 1959 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
+      |                                                                    ~~~~~~~~~~^~~~~
+../Core/Src/PL_flash.c: In function 'writeFlash':
+../Core/Src/PL_flash.c:56:56: warning: passing argument 3 of 'HAL_FLASH_Program' makes integer from pointer without a cast [-Wint-conversion]
+   56 |   HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, add, (uint64_t *)data); // write byte
+      |                                                        ^~~~~~~~~~~~~~~~
+      |                                                        |
+      |                                                        uint64_t * {aka long long unsigned int *}
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:260,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Src/PL_flash.c:9:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h:820:87: note: expected 'uint64_t' {aka 'long long unsigned int'} but argument is of type 'uint64_t *' {aka 'long long unsigned int *'}
+  820 | HAL_StatusTypeDef  HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
+      |                                                                              ~~~~~~~~~^~~~
+../Core/Src/PL_flash.c: In function 'record_in':
+../Core/Src/PL_flash.c:88:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   88 |  writeFlash(address, (uint64_t*) record.row[0], 1, ON);
+      |                      ^
+../Core/Src/PL_flash.c:93:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   93 |  writeFlash(address, (uint64_t*) record.row[t], 1, OFF);
+      |                      ^
+../Core/Src/PL_flash.c:100:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  100 |  writeFlash(address, (uint64_t*) record.column[t], 1, OFF);
+      |                      ^
+../Core/Src/PL_flash.c:107:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  107 |  writeFlash(address, (uint64_t*) record.row_look[t], 1, OFF);
+      |                      ^
+../Core/Src/PL_flash.c:114:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  114 |  writeFlash(address, (uint64_t*) record.column_look[t], 1, OFF);
+      |                      ^
+../Core/Src/cal_acceleration.c: In function 'cal_mollifier_table':
+../Core/Src/cal_acceleration.c:176:17: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  176 |   mollifier_T=2*fabs(input.displacement)/MOLLIFIER_INTEGRAL*exp(-1)/input.max_turning_velocity;
+      |                 ^~~~
+../Core/Src/cal_acceleration.c:176:17: warning: incompatible implicit declaration of built-in function 'fabs'
+../Core/Src/cal_acceleration.c:11:1: note: include '<math.h>' or provide a declaration of 'fabs'
+   10 | #include "PL_timer.h"
+  +++ |+#include <math.h>
+   11 | 
+../Core/Src/cal_acceleration.c:176:61: warning: implicit declaration of function 'exp' [-Wimplicit-function-declaration]
+  176 |   mollifier_T=2*fabs(input.displacement)/MOLLIFIER_INTEGRAL*exp(-1)/input.max_turning_velocity;
+      |                                                             ^~~
+../Core/Src/cal_acceleration.c:176:61: warning: incompatible implicit declaration of built-in function 'exp'
+../Core/Src/cal_acceleration.c:176:61: note: include '<math.h>' or provide a declaration of 'exp'
+arm-none-eabi-gcc "../Core/Src/dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/dma.d" -MT"Core/Src/dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/dma.o"
+arm-none-eabi-gcc "../Core/Src/fail_safe.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fail_safe.d" -MT"Core/Src/fail_safe.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fail_safe.o"
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+arm-none-eabi-gcc "../Core/Src/record.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/record.d" -MT"Core/Src/record.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/record.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+../Core/Src/maze_Turning.c: In function 'test_mollifier_slalomR':
+../Core/Src/maze_Turning.c:31:20: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+   31 |    straight_table2(BACK_TO_CENTER_FRONT + 270, 0, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:31:20: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/fail_safe.c: In function 'interrupt_FailSafe':
+../Core/Src/fail_safe.c:77:7: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+   77 |       clear_Ierror();
+      |       ^~~~~~~~~~~~
+../Core/Src/maze_Turning.c: In function 'backTurn_hitWall':
+../Core/Src/maze_Turning.c:66:20: error: 'BACK_TO_CENTER' undeclared (first use in this function)
+   66 |   straight_table2(-BACK_TO_CENTER, 0,0,-200,3000, wallmode);
+      |                    ^~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c: In function 'slalomR':
+../Core/Src/maze_Turning.c:119:19: error: 'ON' undeclared (first use in this function)
+  119 |  if (test_mode == ON) {
+      |                   ^~
+../Core/Src/maze_Turning.c:126:20: error: 'BACK_TO_CENTER' undeclared (first use in this function)
+  126 |    straight_table2(BACK_TO_CENTER + 270, 0, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:129:20: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  129 |    straight_table2(BACK_TO_CENTER_FRONT + 270, 0, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:135:20: error: 'MAZE_OFFSET' undeclared (first use in this function)
+  135 |    straight_table2(MAZE_OFFSET+turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~
+../Core/Src/maze_Turning.c: In function 'slalomL':
+../Core/Src/maze_Turning.c:174:19: error: 'ON' undeclared (first use in this function)
+  174 |  if (test_mode == ON) {
+      |                   ^~
+../Core/Src/maze_Turning.c:181:20: error: 'BACK_TO_CENTER' undeclared (first use in this function)
+  181 |    straight_table2(BACK_TO_CENTER + 270, 0, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:184:20: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  184 |    straight_table2(BACK_TO_CENTER_FRONT + 270, 0, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:190:20: error: 'MAZE_OFFSET' undeclared (first use in this function)
+  190 |    straight_table2(MAZE_OFFSET+turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~
+../Core/Src/maze_Turning.c: In function 'turn90R':
+../Core/Src/maze_Turning.c:235:19: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  235 |   straight_table2(BACK_TO_CENTER_FRONT + 180, 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:241:24: error: 'ON' undeclared (first use in this function)
+  241 |   if(mollifier_mode == ON){
+      |                        ^~
+../Core/Src/maze_Turning.c: In function 'turn90L':
+../Core/Src/maze_Turning.c:280:19: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  280 |   straight_table2(BACK_TO_CENTER_FRONT + 180, 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:286:24: error: 'ON' undeclared (first use in this function)
+  286 |   if(mollifier_mode == ON){
+      |                        ^~
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32g4xx_hal_msp.d" -MT"Core/Src/stm32g4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_hal_msp.o"
+../Core/Src/maze_Turning.c: In function 'turn180R':
+../Core/Src/maze_Turning.c:326:19: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  326 |   straight_table2(BACK_TO_CENTER_FRONT + 180, 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:332:24: error: 'ON' undeclared (first use in this function)
+  332 |   if(mollifier_mode == ON){
+      |                        ^~
+../Core/Src/maze_Turning.c: In function 'turn180L':
+../Core/Src/maze_Turning.c:371:19: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  371 |   straight_table2(BACK_TO_CENTER_FRONT + 180, 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:377:24: error: 'ON' undeclared (first use in this function)
+  377 |   if(mollifier_mode == ON){
+      |                        ^~
+../Core/Src/maze_Turning.c: In function 'turn45inR':
+../Core/Src/maze_Turning.c:418:19: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  418 |   straight_table2(BACK_TO_CENTER_FRONT + 180, 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:424:24: error: 'ON' undeclared (first use in this function)
+  424 |   if(mollifier_mode == ON){
+      |                        ^~
+../Core/Src/maze_Turning.c: In function 'turn45inL':
+../Core/Src/maze_Turning.c:488:19: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  488 |   straight_table2(BACK_TO_CENTER_FRONT + 180, 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:494:24: error: 'ON' undeclared (first use in this function)
+  494 |   if(mollifier_mode == ON){
+      |                        ^~
+../Core/Src/maze_Turning.c: In function 'turn135inR':
+../Core/Src/maze_Turning.c:558:19: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  558 |   straight_table2(BACK_TO_CENTER_FRONT + 180, 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:564:24: error: 'ON' undeclared (first use in this function)
+  564 |   if(mollifier_mode == ON){
+      |                        ^~
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
+../Core/Src/maze_Turning.c: In function 'turn135inL':
+../Core/Src/maze_Turning.c:628:19: error: 'BACK_TO_CENTER_FRONT' undeclared (first use in this function)
+  628 |   straight_table2(BACK_TO_CENTER_FRONT + 180, 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:634:24: error: 'ON' undeclared (first use in this function)
+  634 |   if(mollifier_mode == ON){
+      |                        ^~
+../Core/Src/maze_Turning.c: In function 'turn45outR':
+../Core/Src/maze_Turning.c:700:19: error: 'BACK_TO_CENTER_FRONT_SLANT' undeclared (first use in this function)
+  700 |   straight_table2(BACK_TO_CENTER_FRONT_SLANT + 90*sqrt(2), 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:706:24: error: 'ON' undeclared (first use in this function)
+  706 |   if(mollifier_mode == ON){
+      |                        ^~
+../Core/Src/maze_Turning.c: In function 'turn45outL':
+../Core/Src/maze_Turning.c:764:20: error: 'BACK_TO_CENTER_FRONT_SLANT' undeclared (first use in this function)
+  764 |    straight_table2(BACK_TO_CENTER_FRONT_SLANT + 90*sqrt(2), 0, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:770:25: error: 'ON' undeclared (first use in this function)
+  770 |    if(mollifier_mode == ON){
+      |                         ^~
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+../Core/Src/maze_Turning.c: In function 'turn135outR':
+../Core/Src/maze_Turning.c:829:20: error: 'BACK_TO_CENTER_FRONT_SLANT' undeclared (first use in this function)
+  829 |    straight_table2(BACK_TO_CENTER_FRONT_SLANT + 90*sqrt(2), 0, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:835:25: error: 'ON' undeclared (first use in this function)
+  835 |    if(mollifier_mode == ON){
+      |                         ^~
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32g4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32g4xx.d" -MT"Core/Src/system_stm32g4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32g4xx.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/tim.o"
+../Core/Src/maze_Turning.c: In function 'turn135outL':
+../Core/Src/maze_Turning.c:893:19: error: 'BACK_TO_CENTER_FRONT_SLANT' undeclared (first use in this function)
+  893 |   straight_table2(BACK_TO_CENTER_FRONT_SLANT + 90*sqrt(2), 0, turnpara.g_speed, turnpara.g_speed,
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:899:24: error: 'ON' undeclared (first use in this function)
+  899 |   if(mollifier_mode == ON){
+      |                        ^~
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+../Core/Src/maze_Turning.c: In function 'V90R':
+../Core/Src/maze_Turning.c:957:20: error: 'BACK_TO_CENTER_FRONT_SLANT' undeclared (first use in this function)
+  957 |    straight_table2(BACK_TO_CENTER_FRONT_SLANT + 90*sqrt(2), 0, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:963:25: error: 'ON' undeclared (first use in this function)
+  963 |    if(mollifier_mode == ON){
+      |                         ^~
+../Core/Src/maze_Turning.c: In function 'V90L':
+../Core/Src/maze_Turning.c:1020:21: error: 'BACK_TO_CENTER_SLANT' undeclared (first use in this function)
+ 1020 |     straight_table2(BACK_TO_CENTER_SLANT + 90*sqrt(2), 0, turnpara.g_speed, turnpara.g_speed,
+      |                     ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/maze_Turning.c:1026:26: error: 'ON' undeclared (first use in this function)
+ 1026 |     if(mollifier_mode == ON){
+      |                          ^~
+../Core/Src/maze_Turning.c: In function 'testturning':
+../Core/Src/maze_Turning.c:1079:14: error: 'ON' undeclared (first use in this function)
+ 1079 |  if(funmode==ON){
+      |              ^~
+../Core/Src/maze_Turning.c:1085:3: warning: implicit declaration of function 'reset_gyro' [-Wimplicit-function-declaration]
+ 1085 |   reset_gyro();
+      |   ^~~~~~~~~~
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/usart.o"
+../Core/Src/maze_Turning.c:1086:3: warning: implicit declaration of function 'reset_speed' [-Wimplicit-function-declaration]
+ 1086 |   reset_speed();
+      |   ^~~~~~~~~~~
+../Core/Src/maze_Turning.c:1087:3: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+ 1087 |   clear_Ierror();
+      |   ^~~~~~~~~~~~
+../Core/Src/maze_Turning.c:1088:3: error: 'angle' undeclared (first use in this function)
+ 1088 |   angle=0;
+      |   ^~~~~
+../Core/Src/maze_Turning.c:1099:2: error: 'record_mode' undeclared (first use in this function); did you mean 'error_mode'?
+ 1099 |  record_mode=2;
+      |  ^~~~~~~~~~~
+      |  error_mode
+../Core/Src/maze_Turning.c:1130:24: error: 'OFF' undeclared (first use in this function)
+ 1130 |  pl_DriveMotor_standby(OFF);
+      |                        ^~~
+../Core/Src/turning_parameter.c: In function 'input_parameter':
+../Core/Src/turning_parameter.c:134:6: error: 'MAZE_OFFSET' undeclared (first use in this function)
+  134 |    + MAZE_OFFSET; //55;
+      |      ^~~~~~~~~~~
+../Core/Src/turning_parameter.c:134:6: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:112: Core/Src/maze_Turning.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:112: Core/Src/turning_parameter.o] Error 1
+../Core/Src/syscalls.c: In function '_write':
+../Core/Src/syscalls.c:84:33: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   84 |   HAL_UART_Transmit(&huart1, ptr++, 1, 1);
+      |                              ~~~^~
+      |                                 |
+      |                                 char *
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:348,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Inc/usart.h:29,
+                 from ../Core/Src/syscalls.c:32:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:1611:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+ 1611 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:06:59 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:07:20 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+../Core/Src/turning_parameter.c: In function 'input_parameter':
+../Core/Src/turning_parameter.c:134:6: error: 'MAZE_OFFSET' undeclared (first use in this function)
+  134 |    + MAZE_OFFSET; //55;
+      |      ^~~~~~~~~~~
+../Core/Src/turning_parameter.c:134:6: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:112: Core/Src/turning_parameter.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/maze_Turning.c: In function 'slalomR':
+../Core/Src/maze_Turning.c:139:20: error: 'MAZE_OFFSET' undeclared (first use in this function)
+  139 |    straight_table2(MAZE_OFFSET+turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~
+../Core/Src/maze_Turning.c:139:20: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/maze_Turning.c: In function 'slalomL':
+../Core/Src/maze_Turning.c:194:20: error: 'MAZE_OFFSET' undeclared (first use in this function)
+  194 |    straight_table2(MAZE_OFFSET+turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+      |                    ^~~~~~~~~~~
+../Core/Src/maze_Turning.c: In function 'testturning':
+../Core/Src/maze_Turning.c:1089:3: warning: implicit declaration of function 'reset_gyro' [-Wimplicit-function-declaration]
+ 1089 |   reset_gyro();
+      |   ^~~~~~~~~~
+../Core/Src/maze_Turning.c:1090:3: warning: implicit declaration of function 'reset_speed' [-Wimplicit-function-declaration]
+ 1090 |   reset_speed();
+      |   ^~~~~~~~~~~
+../Core/Src/maze_Turning.c:1091:3: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+ 1091 |   clear_Ierror();
+      |   ^~~~~~~~~~~~
+../Core/Src/maze_Turning.c:1092:3: error: 'angle' undeclared (first use in this function)
+ 1092 |   angle=0;
+      |   ^~~~~
+../Core/Src/maze_Turning.c:1103:2: error: 'record_mode' undeclared (first use in this function); did you mean 'error_mode'?
+ 1103 |  record_mode=2;
+      |  ^~~~~~~~~~~
+      |  error_mode
+make: *** [Core/Src/subdir.mk:112: Core/Src/maze_Turning.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:07:21 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:08:16 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/CL_sensor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/CL_sensor.d" -MT"Core/Src/CL_sensor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/CL_sensor.o"
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc "../Core/Src/PID_wall.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_wall.d" -MT"Core/Src/PID_wall.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_wall.o"
+arm-none-eabi-gcc "../Core/Src/PL_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_flash.d" -MT"Core/Src/PL_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_flash.o"
+arm-none-eabi-gcc "../Core/Src/PL_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_motor.d" -MT"Core/Src/PL_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_motor.o"
+arm-none-eabi-gcc "../Core/Src/fail_safe.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fail_safe.d" -MT"Core/Src/fail_safe.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fail_safe.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/CL_sensor.c: In function 'battcheak':
+../Core/Src/CL_sensor.c:41:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   41 |  printf("BATT=%f\n",g_V_battery_mean);
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:41:2: warning: incompatible implicit declaration of built-in function 'printf'
+../Core/Src/CL_sensor.c:15:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   14 | #include "define.h"
+  +++ |+#include <stdio.h>
+   15 | 
+../Core/Src/CL_sensor.c: In function 'sensor_line':
+../Core/Src/CL_sensor.c:115:2: warning: incompatible implicit declaration of built-in function 'printf'
+  115 |  printf("SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor[0][0],
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:115:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c:122:2: warning: implicit declaration of function 'pl_play_oneSound' [-Wimplicit-function-declaration]
+  122 |  pl_play_oneSound(ee);
+      |  ^~~~~~~~~~~~~~~~
+../Core/Src/CL_sensor.c:129:2: warning: incompatible implicit declaration of built-in function 'printf'
+  129 |  printf("L_SEN,L_dis,R_SEN,R_dis\n");
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:129:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c: In function 'sensor_line45':
+../Core/Src/CL_sensor.c:155:2: warning: incompatible implicit declaration of built-in function 'printf'
+  155 |  printf("SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor[0][0],
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:155:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c:169:2: warning: incompatible implicit declaration of built-in function 'printf'
+  169 |  printf("L_SEN,L_dis,R_SEN,R_dis\n");
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:169:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c: In function 'sensor_line45_slant':
+../Core/Src/CL_sensor.c:194:2: warning: incompatible implicit declaration of built-in function 'printf'
+  194 |  printf("SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor[0][0],
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:194:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/CL_sensor.c:208:2: warning: incompatible implicit declaration of built-in function 'printf'
+  208 |  printf("L_SEN,L_dis,R_SEN,R_dis\n");
+      |  ^~~~~~
+../Core/Src/CL_sensor.c:208:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+../Core/Src/PL_flash.c: In function 'writeFlash':
+../Core/Src/PL_flash.c:56:56: warning: passing argument 3 of 'HAL_FLASH_Program' makes integer from pointer without a cast [-Wint-conversion]
+   56 |   HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, add, (uint64_t *)data); // write byte
+      |                                                        ^~~~~~~~~~~~~~~~
+      |                                                        |
+      |                                                        uint64_t * {aka long long unsigned int *}
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:260,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Src/PL_flash.c:9:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h:820:87: note: expected 'uint64_t' {aka 'long long unsigned int'} but argument is of type 'uint64_t *' {aka 'long long unsigned int *'}
+  820 | HAL_StatusTypeDef  HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
+      |                                                                              ~~~~~~~~~^~~~
+../Core/Src/PL_flash.c: In function 'record_in':
+../Core/Src/PL_flash.c:88:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   88 |  writeFlash(address, (uint64_t*) record.row[0], 1, ON);
+      |                      ^
+../Core/Src/PL_flash.c:93:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   93 |  writeFlash(address, (uint64_t*) record.row[t], 1, OFF);
+      |                      ^
+../Core/Src/PL_flash.c:100:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  100 |  writeFlash(address, (uint64_t*) record.column[t], 1, OFF);
+      |                      ^
+../Core/Src/PL_flash.c:107:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  107 |  writeFlash(address, (uint64_t*) record.row_look[t], 1, OFF);
+      |                      ^
+../Core/Src/PL_flash.c:114:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  114 |  writeFlash(address, (uint64_t*) record.column_look[t], 1, OFF);
+      |                      ^
+../Core/Src/fail_safe.c: In function 'interrupt_FailSafe':
+../Core/Src/fail_safe.c:77:7: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+   77 |       clear_Ierror();
+      |       ^~~~~~~~~~~~
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+../Core/Src/maze_Turning.c: In function 'testturning':
+../Core/Src/maze_Turning.c:1089:3: warning: implicit declaration of function 'reset_gyro' [-Wimplicit-function-declaration]
+ 1089 |   reset_gyro();
+      |   ^~~~~~~~~~
+../Core/Src/maze_Turning.c:1090:3: warning: implicit declaration of function 'reset_speed' [-Wimplicit-function-declaration]
+ 1090 |   reset_speed();
+      |   ^~~~~~~~~~~
+../Core/Src/maze_Turning.c:1091:3: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+ 1091 |   clear_Ierror();
+      |   ^~~~~~~~~~~~
+../Core/Src/maze_Turning.c:1092:3: error: 'angle' undeclared (first use in this function)
+ 1092 |   angle=0;
+      |   ^~~~~
+../Core/Src/maze_Turning.c:1092:3: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/maze_Turning.c:1103:2: error: 'record_mode' undeclared (first use in this function); did you mean 'error_mode'?
+ 1103 |  record_mode=2;
+      |  ^~~~~~~~~~~
+      |  error_mode
+make: *** [Core/Src/subdir.mk:112: Core/Src/maze_Turning.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:08:18 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:09:06 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+../Core/Src/maze_Turning.c: In function 'testturning':
+../Core/Src/maze_Turning.c:1090:3: warning: implicit declaration of function 'reset_gyro' [-Wimplicit-function-declaration]
+ 1090 |   reset_gyro();
+      |   ^~~~~~~~~~
+../Core/Src/maze_Turning.c:1091:3: warning: implicit declaration of function 'reset_speed' [-Wimplicit-function-declaration]
+ 1091 |   reset_speed();
+      |   ^~~~~~~~~~~
+../Core/Src/maze_Turning.c:1092:3: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+ 1092 |   clear_Ierror();
+      |   ^~~~~~~~~~~~
+../Core/Src/maze_Turning.c:1100:3: error: 'angle' undeclared (first use in this function)
+ 1100 |   angle=0;
+      |   ^~~~~
+../Core/Src/maze_Turning.c:1100:3: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:112: Core/Src/maze_Turning.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:09:07 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:09:14 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+../Core/Src/maze_Turning.c: In function 'testturning':
+../Core/Src/maze_Turning.c:1090:3: warning: implicit declaration of function 'reset_gyro' [-Wimplicit-function-declaration]
+ 1090 |   reset_gyro();
+      |   ^~~~~~~~~~
+../Core/Src/maze_Turning.c:1091:3: warning: implicit declaration of function 'reset_speed' [-Wimplicit-function-declaration]
+ 1091 |   reset_speed();
+      |   ^~~~~~~~~~~
+../Core/Src/maze_Turning.c:1092:3: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+ 1092 |   clear_Ierror();
+      |   ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86028	    484	  51732	 138244	  21c04	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:09:17 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:09:54 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+../Core/Src/maze_Turning.c: In function 'testturning':
+../Core/Src/maze_Turning.c:1095:3: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+ 1095 |   clear_Ierror();
+      |   ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86028	    484	  51732	 138244	  21c04	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:09:57 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:10:29 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86028	    484	  51732	 138244	  21c04	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:10:31 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:17:55 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86028	    484	  51732	 138244	  21c04	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:17:56 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:18:31 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+../Core/Src/turning_parameter.c: In function 'input_parameter':
+../Core/Src/turning_parameter.c:303:4: error: 'speed1600_shortest_mollifier' undeclared (first use in this function); did you mean 'speed800_shortest_mollifier'?
+  303 |    speed1600_shortest_mollifier.SlalomCentervelocity;
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |    speed800_shortest_mollifier
+../Core/Src/turning_parameter.c:303:4: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:112: Core/Src/turning_parameter.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:18:32 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:18:50 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86028	    484	  51732	 138244	  21c04	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:18:52 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:19:11 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86028	    484	  51732	 138244	  21c04	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:19:13 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:19:19 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+  86028	    484	  51732	 138244	  21c04	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:19:21 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:19:50 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+../Core/Src/mode_select.c: In function 'mode_Tuning0':
+../Core/Src/mode_select.c:419:4: warning: implicit declaration of function 'testturning' [-Wimplicit-function-declaration]
+  419 |    testturning(speed500_exploration,0,0,0,0,0);
+      |    ^~~~~~~~~~~
+../Core/Src/mode_select.c:419:16: error: 'speed500_exploration' undeclared (first use in this function)
+  419 |    testturning(speed500_exploration,0,0,0,0,0);
+      |                ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/mode_select.c:419:16: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:112: Core/Src/mode_select.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:19:51 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:20:05 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+../Core/Src/mode_select.c: In function 'mode_Tuning0':
+../Core/Src/mode_select.c:419:16: error: 'speed500_exploration' undeclared (first use in this function); did you mean 'speed300_exploration'?
+  419 |    testturning(speed500_exploration,0,0,0,0,0);
+      |                ^~~~~~~~~~~~~~~~~~~~
+      |                speed300_exploration
+../Core/Src/mode_select.c:419:16: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:112: Core/Src/mode_select.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:20:06 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:20:40 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+../Core/Src/mode_select.c: In function 'mode_Tuning0':
+../Core/Src/mode_select.c:419:16: error: 'speed500_exploration' undeclared (first use in this function); did you mean 'speed300_exploration'?
+  419 |    testturning(speed500_exploration,0,0,0,0,0);
+      |                ^~~~~~~~~~~~~~~~~~~~
+      |                speed300_exploration
+../Core/Src/mode_select.c:419:16: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:112: Core/Src/mode_select.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:20:41 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:20:51 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 102588	    484	  52060	 155132	  25dfc	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:20:53 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:21:03 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 102588	    484	  52060	 155132	  25dfc	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+21:21:13 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 102588	    484	  52060	 155132	  25dfc	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+21:50:23 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:3: warning: implicit declaration of function 'input_parameter' [-Wimplicit-function-declaration]
+  129 |   input_parameter();
+      |   ^~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 105044	    484	  53044	 158572	  26b6c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:50:27 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:50:44 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 105044	    484	  53044	 158572	  26b6c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:50:47 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+22:27:36 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 105044	    484	  53044	 158572	  26b6c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+22:34:00 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 108084	    484	  53044	 161612	  2774c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+22:34:03 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+22:37:04 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 108084	    484	  53044	 161612	  2774c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+22:37:05 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+14:49:58 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+arm-none-eabi-gcc "../Core/Src/PID_wall.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_wall.d" -MT"Core/Src/PID_wall.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_wall.o"
+arm-none-eabi-gcc "../Core/Src/fail_safe.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fail_safe.d" -MT"Core/Src/fail_safe.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fail_safe.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
+../Core/Src/stm32g4xx_it.c: In function 'TIM6_DAC_IRQHandler':
+../Core/Src/stm32g4xx_it.c:259:3: warning: implicit declaration of function 'interrupt_WallCut'; did you mean 'interrupt_calGyro'? [-Wimplicit-function-declaration]
+  259 |   interrupt_WallCut();
+      |   ^~~~~~~~~~~~~~~~~
+      |   interrupt_calGyro
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+../Core/Src/fail_safe.c: In function 'interrupt_FailSafe':
+../Core/Src/fail_safe.c:77:7: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+   77 |       clear_Ierror();
+      |       ^~~~~~~~~~~~
+../Core/Src/PID_wall.c: In function 'calWallConrol':
+../Core/Src/PID_wall.c:311:40: error: 'CONTROLWALL_THRESHOLD_FRONT_L' undeclared (first use in this function); did you mean 'CONTROLWALL_THRESHOLD_SLANT_L'?
+  311 |   if (g_sensor[SENSOR_FRONT_LEFT][0] > CONTROLWALL_THRESHOLD_FRONT_L
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                        CONTROLWALL_THRESHOLD_SLANT_L
+../Core/Src/PID_wall.c:311:40: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/PID_wall.c:313:9: error: 'CONTROLWALL_THRESHOLD_FRONT_R' undeclared (first use in this function); did you mean 'CONTROLWALL_THRESHOLD_SLANT_R'?
+  313 |       > CONTROLWALL_THRESHOLD_FRONT_R) {
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |         CONTROLWALL_THRESHOLD_SLANT_R
+../Core/Src/PID_wall.c:319:15: error: 'SENSOR_GAIN_SLANT' undeclared (first use in this function); did you mean 'SENSOR_GAIN_SLANT45_D'?
+  319 |    PID_wall = SENSOR_GAIN_SLANT
+      |               ^~~~~~~~~~~~~~~~~
+      |               SENSOR_GAIN_SLANT45_D
+make: *** [Core/Src/subdir.mk:112: Core/Src/PID_wall.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:50:03 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+14:50:25 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/PID_wall.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_wall.d" -MT"Core/Src/PID_wall.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_wall.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 107876	    484	  53044	 161404	  2767c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+14:50:30 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+14:50:48 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 107876	    484	  53044	 161404	  2767c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+14:50:53 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:04:20 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109012	    484	  53044	 162540	  27aec	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+19:04:30 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:04:36 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109012	    484	  53044	 162540	  27aec	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+19:04:38 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:06:02 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/record.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/record.d" -MT"Core/Src/record.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/record.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109100	    484	  53044	 162628	  27b44	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+19:06:04 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:09:13 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109100	    484	  53044	 162628	  27b44	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+19:09:15 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:09:48 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109100	    484	  53044	 162628	  27b44	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+19:10:05 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109100	    484	  53044	 162628	  27b44	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+19:23:35 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109108	    484	  53044	 162636	  27b4c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+19:23:38 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:23:44 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109108	    484	  53044	 162636	  27b4c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+19:44:47 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/maze_Turning.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_Turning.d" -MT"Core/Src/maze_Turning.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_Turning.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+19:44:50 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:45:00 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+19:55:59 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+arm-none-eabi-gcc "../Core/Src/FF_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/FF_motor.d" -MT"Core/Src/FF_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/FF_motor.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+19:56:02 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:57:11 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+arm-none-eabi-gcc "../Core/Src/FF_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/FF_motor.d" -MT"Core/Src/FF_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/FF_motor.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+19:57:13 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:58:20 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+19:59:48 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+arm-none-eabi-gcc "../Core/Src/FF_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/FF_motor.d" -MT"Core/Src/FF_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/FF_motor.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+19:59:50 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+19:59:55 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:01:39 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+arm-none-eabi-gcc "../Core/Src/PID_wall.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_wall.d" -MT"Core/Src/PID_wall.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_wall.o"
+arm-none-eabi-gcc "../Core/Src/fail_safe.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fail_safe.d" -MT"Core/Src/fail_safe.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fail_safe.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
+../Core/Src/fail_safe.c: In function 'interrupt_FailSafe':
+../Core/Src/fail_safe.c:77:7: warning: implicit declaration of function 'clear_Ierror' [-Wimplicit-function-declaration]
+   77 |       clear_Ierror();
+      |       ^~~~~~~~~~~~
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:01:42 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:02:32 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:02:34 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:02:44 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:05:20 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:05:22 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:05:45 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109116	    484	  53044	 162644	  27b54	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:07:48 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/FF_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/FF_motor.d" -MT"Core/Src/FF_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/FF_motor.o"
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109132	    484	  53044	 162660	  27b64	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:07:50 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:07:55 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109132	    484	  53044	 162660	  27b64	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:12:05 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/Control_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Control_motor.d" -MT"Core/Src/Control_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Control_motor.o"
+../Core/Src/Control_motor.c: In function 'interupt_DriveMotor':
+../Core/Src/Control_motor.c:92:18: warning: unused variable 'PID_all_R' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |                  ^~~~~~~~~
+../Core/Src/Control_motor.c:92:8: warning: unused variable 'PID_all_L' [-Wunused-variable]
+   92 |  float PID_all_L,PID_all_R,PID_s,PID_t;
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109204	    484	  53044	 162732	  27bac	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:12:08 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:12:14 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109204	    484	  53044	 162732	  27bac	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:13:54 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/turning_parameter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/turning_parameter.d" -MT"Core/Src/turning_parameter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/turning_parameter.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109204	    484	  53044	 162732	  27bac	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:13:55 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:14:02 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109204	    484	  53044	 162732	  27bac	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:14:02 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:14:08 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109204	    484	  53044	 162732	  27bac	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:14:23 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109204	    484	  53044	 162732	  27bac	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:20:22 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/FF_motor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/FF_motor.d" -MT"Core/Src/FF_motor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/FF_motor.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:20:24 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:20:47 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:21:08 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:21:28 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:30:27 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109172	    484	  53044	 162700	  27b8c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:30:30 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:31:03 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109172	    484	  53044	 162700	  27b8c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:31:20 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109172	    484	  53044	 162700	  27b8c	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:33:08 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:33:10 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:33:16 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:44:51 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/record.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/record.d" -MT"Core/Src/record.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/record.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:44:55 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:45:03 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:53:26 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:53:28 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+20:53:42 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:53:53 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:54:19 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+20:55:19 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+20:56:48 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:04:29 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/PID_EncoderGyro.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PID_EncoderGyro.d" -MT"Core/Src/PID_EncoderGyro.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PID_EncoderGyro.o"
+arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: half_mouse2.elf
+ 
+arm-none-eabi-size   half_mouse2.elf 
+arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 
+Finished building: half_mouse2.list
+ 
+21:04:35 **** Incremental Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 
+21:04:40 **** Incremental Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-size   half_mouse2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 109196	    484	  53044	 162724	  27ba4	half_mouse2.elf
+Finished building: default.size.stdout
+ 

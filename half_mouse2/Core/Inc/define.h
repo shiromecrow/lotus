@@ -23,6 +23,8 @@
 #define SENSOR_FRONT 2
 
 
+#define MAZE_OFFSET 10
+
 #define BACK_TO_CENTER 51/2
 #define BACK_TO_CENTER_FRONT 39/2
 #define BACK_TO_CENTER_SLANT 97/2

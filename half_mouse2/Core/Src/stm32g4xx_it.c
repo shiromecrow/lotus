@@ -32,6 +32,7 @@
 #include "Control_motor.h"
 #include "record.h"
 #include "fail_safe.h"
+#include "PID_wall.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -256,8 +257,8 @@ void TIM6_DAC_IRQHandler(void)
   AS5047_DataUpdate();
   interupt_calEncoder();
   interupt_calFusion();
+  interrupt_WallCut();
   interupt_DriveMotor();
-
 
   interrupt_FailSafe();
   interrupt_record();

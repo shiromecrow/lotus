@@ -308,30 +308,7 @@ float calWallConrol(void) {
 
 	} else if (g_WallControl_mode == 2) {
 // 斜めの制御
-		if (g_sensor[SENSOR_FRONT_LEFT][0] > CONTROLWALL_THRESHOLD_FRONT_L
-				&& g_sensor[SENSOR_FRONT_RIGHT][0]
-						> CONTROLWALL_THRESHOLD_FRONT_R) {
-			PID_wall = 0;
-		} else if (g_sensor[SENSOR_FRONT_LEFT][0]
-				> CONTROLWALL_THRESHOLD_FRONT_L
-				&& g_sensor[SENSOR_FRONT_RIGHT][0]
-						<= CONTROLWALL_THRESHOLD_FRONT_R) {
-			PID_wall = SENSOR_GAIN_SLANT
-					* ((float) (g_sensor[SENSOR_FRONT_LEFT][0]
-							- CONTROLWALL_THRESHOLD_FRONT_L));
-		} else if (g_sensor[SENSOR_FRONT_LEFT][0]
-				<= CONTROLWALL_THRESHOLD_FRONT_L
-				&& g_sensor[SENSOR_FRONT_RIGHT][0]
-						> CONTROLWALL_THRESHOLD_FRONT_R) {
-			PID_wall = SENSOR_GAIN_SLANT
-					* (-(float) (g_sensor[SENSOR_FRONT_RIGHT][0]
-							- CONTROLWALL_THRESHOLD_FRONT_R));
-		} else if (g_sensor[SENSOR_FRONT_LEFT][0]
-				<= CONTROLWALL_THRESHOLD_FRONT_L
-				&& g_sensor[SENSOR_FRONT_RIGHT][0]
-						<= CONTROLWALL_THRESHOLD_FRONT_R) {
-			PID_wall = 0;
-		}
+
 
 	} else if (g_WallControl_mode == 3) {
 		// 斜めの制御(平松さん式)

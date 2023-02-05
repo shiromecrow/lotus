@@ -98,10 +98,10 @@ void interrupt_record(void) {
 			record_data(r_data, 4);
 		}
 	if (record_mode == 2) {
-				r_data[0] = angle_speed;
-				r_data[1] = angle;
-				r_data[2] = gf_speed;
-				r_data[3] = gf_distance;
+		r_data[0] = turning.velocity;
+		r_data[1] = turning.acceleration;
+		r_data[2] = angle_speed;
+		r_data[3] = angle; //g_V_R;
 				record_data(r_data, 4);
 		}
 	if (record_mode == 3) {
@@ -139,6 +139,13 @@ void interrupt_record(void) {
 				r_data[3] = gf_speed;
 				record_data(r_data, 4);
 			}
+	if (record_mode == 7) {
+			r_data[0] = (float) g_sensor[0][0];
+			r_data[1] = (float) g_sensor_diff[0];
+			r_data[2] = (float) g_sensor[4][0];
+			r_data[3] = (float) g_sensor_diff[4];
+			record_data(r_data, 4);
+		}
 /*	if (record_mode == 1) {
 		r_data[0] = straight.velocity;
 		r_data[1] = straight.displacement;
