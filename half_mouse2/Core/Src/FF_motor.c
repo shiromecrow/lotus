@@ -31,7 +31,7 @@ void feedforward_const_accel(float *feedforward_straight,
 				/ TIRE_DIAMETER) - Tw) * Rm / kt)
 				+ (turning_velocity / 1000 * ng * kb / TIRE_DIAMETER);
 	}
-	*feedforward_straight=0;
+	//*feedforward_straight=0;
 	//*feedforward_turning =0;
 
 }

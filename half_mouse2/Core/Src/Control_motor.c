@@ -71,7 +71,7 @@ void get_duty(float V_L, float V_R,int *duty_L,int *duty_R) {
 	    *duty_R = (int) (-V_R / g_V_battery_mean * MAXMOTOR);
 	}
 	*duty_L=*duty_L;
-	*duty_R=*duty_R*1.3*0.9;
+	*duty_R=*duty_R;
 	//XX
 	if (*duty_L >= (int)(MAXMOTOR*MAX_DUTY_RATIO)) {
 		*duty_L = (int)(MAXMOTOR*MAX_DUTY_RATIO);

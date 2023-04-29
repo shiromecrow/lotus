@@ -183,7 +183,7 @@ void mode_PLtest(unsigned char main_modeR) {
 		pl_r_blue_LED(ON);
 		pl_l_blue_LED(ON);
 		record_mode = 1;
-		pl_DriveMotor_duty(1200, 1200*1.3*0.9);
+		pl_DriveMotor_duty(900, 900);
 		pl_R_DriveMotor_mode(MOTOR_FRONT);
 		pl_L_DriveMotor_mode(MOTOR_FRONT);
 		pl_DriveMotor_start();
@@ -511,7 +511,7 @@ void mode_Tuning0(unsigned char main_modeR){
 		break;
 		case 14://宴会芸＋吸引
 			highspeed_mode = 1;
-			pl_FunMotor_duty(0.95);
+			pl_FunMotor_duty(0.99);
 			pl_FunMotor_start();
 			HAL_Delay(600);
 			reset_gyro();
@@ -522,7 +522,7 @@ void mode_Tuning0(unsigned char main_modeR){
 //			mode.WallControlMode=0;
 //			straight_table2(90*32, 0, 0, 4000, 17000,mode);
 			mode.WallControlMode=1;
-			straight_table2(90*8, 0, 0, 1000, 7000,mode);
+			straight_table2(90*8, 0, 0, 3000, 12000,mode);
 		break;
 		case 15:
 			highspeed_mode = 1;
