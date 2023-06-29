@@ -35277,3 +35277,81 @@ arm-none-eabi-size   half_mouse2.elf
  109132	    484	  53044	 162660	  27b64	half_mouse2.elf
 Finished building: default.size.stdout
  
+19:17:14 **** Build of configuration Debug for project half_mouse2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
+../Core/Src/mode_select.c: In function 'mode_Running':
+../Core/Src/mode_select.c:378:4: warning: implicit declaration of function 'create_StepCountMap_queue' [-Wimplicit-function-declaration]
+  378 |    create_StepCountMap_queue();
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/mode_select.c:379:4: warning: implicit declaration of function 'maze_display' [-Wimplicit-function-declaration]
+  379 |    maze_display();
+      |    ^~~~~~~~~~~~
+../Core/Src/mode_select.c:381:4: warning: implicit declaration of function 'create_DijkstraMap' [-Wimplicit-function-declaration]
+  381 |    create_DijkstraMap();
+      |    ^~~~~~~~~~~~~~~~~~
+../Core/Src/mode_select.c:382:4: warning: implicit declaration of function 'maze_display_Dijkstra' [-Wimplicit-function-declaration]
+  382 |    maze_display_Dijkstra();
+      |    ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/mode_select.c:384:4: warning: implicit declaration of function 'route_Dijkstra' [-Wimplicit-function-declaration]
+  384 |    route_Dijkstra();
+      |    ^~~~~~~~~~~~~~
+../Core/Src/mode_select.c:385:4: warning: implicit declaration of function 'create_StepCountMap_unknown' [-Wimplicit-function-declaration]
+  385 |    create_StepCountMap_unknown();
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/mode_select.c:410:4: warning: implicit declaration of function 'AdatiWayReturn' [-Wimplicit-function-declaration]
+  410 |    AdatiWayReturn(500,400,5000,3000,speed500_exploration,1,0);
+      |    ^~~~~~~~~~~~~~
+../Core/Src/mode_select.c:410:37: error: 'speed500_exploration' undeclared (first use in this function); did you mean 'speed300_exploration'?
+  410 |    AdatiWayReturn(500,400,5000,3000,speed500_exploration,1,0);
+      |                                     ^~~~~~~~~~~~~~~~~~~~
+      |                                     speed300_exploration
+../Core/Src/mode_select.c:410:37: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/mode_select.c:414:4: warning: implicit declaration of function 'record_out'; did you mean 'record_data'? [-Wimplicit-function-declaration]
+  414 |    record_out();
+      |    ^~~~~~~~~~
+      |    record_data
+../Core/Src/mode_select.c:422:4: warning: implicit declaration of function 'run_shortest' [-Wimplicit-function-declaration]
+  422 |    run_shortest(2000,6000,0,TURN_OFF,FUN_ON,SLANT_OFF,speed500_shortest,0.3,0);
+      |    ^~~~~~~~~~~~
+../Core/Src/mode_select.c:422:29: error: 'TURN_OFF' undeclared (first use in this function)
+  422 |    run_shortest(2000,6000,0,TURN_OFF,FUN_ON,SLANT_OFF,speed500_shortest,0.3,0);
+      |                             ^~~~~~~~
+../Core/Src/mode_select.c:422:38: error: 'FUN_ON' undeclared (first use in this function)
+  422 |    run_shortest(2000,6000,0,TURN_OFF,FUN_ON,SLANT_OFF,speed500_shortest,0.3,0);
+      |                                      ^~~~~~
+../Core/Src/mode_select.c:422:45: error: 'SLANT_OFF' undeclared (first use in this function)
+  422 |    run_shortest(2000,6000,0,TURN_OFF,FUN_ON,SLANT_OFF,speed500_shortest,0.3,0);
+      |                                             ^~~~~~~~~
+../Core/Src/mode_select.c:422:55: error: 'speed500_shortest' undeclared (first use in this function); did you mean 'speed800_shortest'?
+  422 |    run_shortest(2000,6000,0,TURN_OFF,FUN_ON,SLANT_OFF,speed500_shortest,0.3,0);
+      |                                                       ^~~~~~~~~~~~~~~~~
+      |                                                       speed800_shortest
+../Core/Src/mode_select.c:426:29: error: 'TURN_ON' undeclared (first use in this function)
+  426 |    run_shortest(2000,6000,0,TURN_ON,FUN_OFF,SLANT_OFF,speed500_shortest,0.3,0);
+      |                             ^~~~~~~
+../Core/Src/mode_select.c:426:37: error: 'FUN_OFF' undeclared (first use in this function)
+  426 |    run_shortest(2000,6000,0,TURN_ON,FUN_OFF,SLANT_OFF,speed500_shortest,0.3,0);
+      |                                     ^~~~~~~
+../Core/Src/mode_select.c:430:45: error: 'SLANT_ON' undeclared (first use in this function)
+  430 |    run_shortest(1800,8000,0,TURN_ON,FUN_OFF,SLANT_ON,speed500_shortest,0.3,0);
+      |                                             ^~~~~~~~
+../Core/Src/mode_select.c:442:54: error: 'speed1200_shortest' undeclared (first use in this function); did you mean 'speed800_shortest'?
+  442 |    run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+      |                                                      ^~~~~~~~~~~~~~~~~~
+      |                                                      speed800_shortest
+../Core/Src/mode_select.c:454:54: error: 'speed1600_shortest' undeclared (first use in this function); did you mean 'speed800_shortest'?
+  454 |    run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+      |                                                      ^~~~~~~~~~~~~~~~~~
+      |                                                      speed800_shortest
+make: *** [Core/Src/subdir.mk:112: Core/Src/mode_select.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+19:17:21 **** Build of configuration Debug for project half_mousef4 ****
+make -j8 all 
+arm-none-eabi-size   half_mousef4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4688	     20	   1572	   6280	   1888	half_mousef4.elf
+Finished building: default.size.stdout
+ 

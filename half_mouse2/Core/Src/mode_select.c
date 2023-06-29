@@ -128,7 +128,7 @@ switch (main_modeL) {
 		mode_PLtest(main_modeR);
 	break;
 	case 0b0001://実行モード1
-
+		mode_Running(main_modeR);
 	break;
 	case 0b0010://実行モード2
 	break;
@@ -367,6 +367,109 @@ void mode_PLtest(unsigned char main_modeR) {
 //
 
 }
+
+
+void mode_Running(unsigned char main_modeR){
+	switch (main_modeR) {
+		case 0b0000://迷路表示
+			//maze_maker2(1, 0, 0, 0, 7, 7);
+			//record_out();
+			//wall.row[8]=(1<<8);
+			create_StepCountMap_queue();
+			maze_display();
+
+			create_DijkstraMap();
+			maze_display_Dijkstra();
+
+			route_Dijkstra();
+			create_StepCountMap_unknown();
+			maze_display();
+
+//			tic_timer();
+//			for(int j=0;j<5000;j++){
+//			create_StepCountMap_queue();
+//			}
+//			float tim2 = toc_timer();
+//			maze_display();
+//			tic_timer();
+//			for(int j=0;j<5000;j++){
+//			//create_StepCountMap();
+//			//maze_clear();
+//			//create_DijkstraMap();
+//			route_Dijkstra();
+//			create_StepCountMap_unknown();
+//
+//			}
+//			float tim1 = toc_timer();
+//			maze_display();
+//			maze_display_Dijkstra();
+//			printf("tim1=%f,tim2=%f\n", tim1, tim2);
+		break;
+		case 0b0001://足立法(遅い)
+			tic_timer();
+			AdatiWayReturn(500,400,5000,3000,speed500_exploration,1,0);
+			//adati_wayreturn(400, 400, 3000, 13000);
+		break;
+		case 0b0010://Flashから
+			record_out();
+		break;
+		case 0b0011://ゴミ
+			tic_timer();
+			AdatiWayReturn(500,400,5000,3000,speed500_exploration,1,1);
+		break;
+		case 0b0100://ゴミ
+			record_out();
+			run_shortest(2000,6000,0,TURN_OFF,FUN_ON,SLANT_OFF,speed500_shortest,0.3,0);
+		break;
+		case 0b0101://
+			record_out();
+			run_shortest(2000,6000,0,TURN_ON,FUN_OFF,SLANT_OFF,speed500_shortest,0.3,0);
+		break;
+		case 0b0110://吸引なしで斜め走行
+			record_out();
+			run_shortest(1800,8000,0,TURN_ON,FUN_OFF,SLANT_ON,speed500_shortest,0.3,0);
+		break;
+		case 0b0111://吸引ありで斜め走行
+			record_out();
+			run_shortest(2000,15000,0,TURN_ON,FUN_OFF,SLANT_ON,speed500_shortest,0.3,0);
+		break;
+		case 0b1000://
+			record_out();
+			run_shortest(2000,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed500_shortest,0.3,0);
+		break;
+		case 0b1001:
+			record_out();
+			run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+		break;
+		case 0b1010:
+			record_out();
+			run_shortest(3000,18000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+		break;
+		case 0b1011:
+			record_out();
+			run_shortest(4000,20000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+		break;
+		case 0b1100:
+			record_out();
+			run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+		break;
+		case 0b1101:
+			record_out();
+			run_shortest(3000,18000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+		break;
+		case 0b1110:
+			record_out();
+			run_shortest(4000,20000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+		break;
+		case 0b1111:
+			AdatiWayReturn(500,400,5000,3000,speed500_exploration,0,0);
+		break;
+	}
+
+
+}
+
+
 
 
 
