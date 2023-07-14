@@ -13,6 +13,8 @@
 #define OFF 0
 #define CONNECT 2
 
+#define BATT_MAX 4.2
+
 
 #define MAXMOTOR 1679
 
@@ -22,12 +24,21 @@
 #define SENSOR_FRONT_RIGHT 3
 #define SENSOR_FRONT 2
 
+#define EXPLORATION 0
+#define SHORTEST 1
 
-#define MAZE_OFFSET 10
+#define MAZE_OFFSET 8
 
-#define BACK_TO_CENTER 51/2
-#define BACK_TO_CENTER_FRONT 39/2
-#define BACK_TO_CENTER_SLANT 97/2
-#define BACK_TO_CENTER_FRONT_SLANT 85/2
+#define BACK_TO_CENTER 20.5
+#define BACK_TO_CENTER_FRONT 12.5
+#define BACK_TO_CENTER_SLANT 42.5
+#define BACK_TO_CENTER_FRONT_SLANT 34.5
+
+#define GOAL_X 1
+#define GOAL_Y 0
+#define F_PRESENCE 150
+#define R_PRESENCE 500//180//900
+#define L_PRESENCE 500//180//900
+#define MAX_WALKCOUNT 255
 
 #endif /* INC_DEFINE_H_ */

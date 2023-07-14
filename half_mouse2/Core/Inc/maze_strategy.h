@@ -9,6 +9,7 @@
 #define INC_MAZE_STRATEGY_H_
 
 #include "turning_parameter.h"
+#include "stm32g4xx_hal.h"
 
 #define TURN_ON 1
 #define TURN_OFF 0
@@ -17,20 +18,11 @@
 #define SLANT_ON 1
 #define SLANT_OFF 0
 
-int x;
-int y;
-int wall_control;
-int SENF_maze, SENR_maze, SENL_maze;
-int direction;
-
-
-char maze_mode;
-int kitikukan;
 
 
 
 
-int pass[255]; //1f 2r 3l
+
 //unsigned short front_count;
 //unsigned short left_count;
 //unsigned short right_count;
@@ -40,11 +32,9 @@ int pass[255]; //1f 2r 3l
 //unsigned short column[15];
 //unsigned short row_look[15];
 //unsigned short column_look[15];
-int gg;
 
 
-void record_in(void);
-void record_out(void);
+
 
 void left_way(void);
 

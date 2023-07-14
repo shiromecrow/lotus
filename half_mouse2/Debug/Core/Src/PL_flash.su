@@ -1,8 +1,7 @@
-../Core/Src/PL_flash.c:23:6:test_flash	4	static
-../Core/Src/PL_flash.c:31:6:eraseFlash	32	static
-../Core/Src/PL_flash.c:50:6:writeFlash	40	static
-../Core/Src/PL_flash.c:64:6:loadFlash	24	static
-../Core/Src/PL_flash.c:71:6:record_in	16	static
-../Core/Src/PL_flash.c:134:6:record_out	16	static
-../Core/Src/PL_flash.c:191:6:flash_record_init	16	static
-../Core/Src/PL_flash.c:210:6:maze_display	16	static
+../Core/Src/PL_flash.c:22:6:test_flash	8	static
+../Core/Src/PL_flash.c:30:6:eraseFlash	32	static
+../Core/Src/PL_flash.c:49:6:writeFlash	40	static
+../Core/Src/PL_flash.c:63:6:loadFlash	24	static
+../Core/Src/PL_flash.c:70:6:record_in	16	static
+../Core/Src/PL_flash.c:133:6:record_out	16	static
+../Core/Src/PL_flash.c:190:6:flash_record_init	16	static

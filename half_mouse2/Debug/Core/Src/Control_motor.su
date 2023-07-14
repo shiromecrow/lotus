@@ -4,9 +4,9 @@
 ../Core/Src/Control_motor.c:216:7:straight_table2	40	static
 ../Core/Src/Control_motor.c:379:6:End_straight	24	static
 ../Core/Src/Control_motor.c:405:7:turning_table2	40	static
-../Core/Src/Control_motor.c:455:7:slalom_table2	40	static
-../Core/Src/Control_motor.c:500:6:no_angle	8	static
-../Core/Src/Control_motor.c:524:6:mollifier_slalom_table	32	static
-../Core/Src/Control_motor.c:557:6:no_frontwall_straight	8	static
-../Core/Src/Control_motor.c:586:7:straight_table_ff	40	static
-../Core/Src/Control_motor.c:651:7:turning_table_ff	40	static
+../Core/Src/Control_motor.c:457:7:slalom_table2	40	static
+../Core/Src/Control_motor.c:502:6:no_angle	8	static
+../Core/Src/Control_motor.c:528:6:mollifier_slalom_table	32	static
+../Core/Src/Control_motor.c:561:6:no_frontwall_straight	8	static
+../Core/Src/Control_motor.c:592:7:straight_table_ff	40	static
+../Core/Src/Control_motor.c:657:7:turning_table_ff	40	static

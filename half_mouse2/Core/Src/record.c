@@ -18,7 +18,9 @@
 #include "CL_encoder.h"
 #include "CL_gyro.h"
 #include "Control_motor.h"
+#include "PID_wall.h"
 #include "stdio.h"
+#include "define.h"
 
 //#include "motor_control.h"
 //#include "PID_wall.h"
@@ -99,9 +101,9 @@ void interrupt_record(void) {
 		}
 	if (record_mode == 2) {
 		r_data[0] = turning.velocity;
-		r_data[1] = turning.acceleration;
-		r_data[2] = angle_speed;
-		r_data[3] = angle; //g_V_R;
+		r_data[1] = angle_speed;
+		r_data[2] = straight.velocity;
+		r_data[3] = (fusion_speedR + fusion_speedL) / 2;
 				record_data(r_data, 4);
 		}
 	if (record_mode == 3) {
@@ -140,10 +142,31 @@ void interrupt_record(void) {
 				record_data(r_data, 4);
 			}
 	if (record_mode == 7) {
-			r_data[0] = (float) g_sensor[0][0];
-			r_data[1] = (float) g_sensor_diff[0];
-			r_data[2] = (float) g_sensor[4][0];
-			r_data[3] = (float) g_sensor_diff[4];
+			r_data[0] = (float) g_sensor[SENSOR_LEFT][0];
+			r_data[1] = (float) g_sensor_diff[SENSOR_LEFT];
+			r_data[2] = (float) g_sensor[SENSOR_RIGHT][0];
+			r_data[3] = (float) g_sensor_diff[SENSOR_RIGHT];
+			record_data(r_data, 4);
+		}
+	if (record_mode == 8) {
+			r_data[0] = (float) g_sensor[SENSOR_FRONT_LEFT][0];
+			r_data[1] = (float) g_sensor_diff_wallcut[SENSOR_FRONT_LEFT];
+			r_data[2] = (float) g_sensor[SENSOR_FRONT_RIGHT][0];
+			r_data[3] = (float) g_sensor_diff_wallcut[SENSOR_FRONT_RIGHT];
+			record_data(r_data, 4);
+		}
+	if (record_mode == 9) { //90
+			r_data[0] = (float) g_sensor[SENSOR_LEFT][0];
+			r_data[1] = (float) g_sensor[SENSOR_RIGHT][0];
+			r_data[2] = NoWallDisplacementL45slant;
+			r_data[3] = NoWallDisplacementR45slant;
+			record_data(r_data, 4);
+		}
+	if (record_mode == 10) { //90
+			r_data[0] = (float) g_sensor[SENSOR_FRONT_LEFT][0];
+			r_data[1] = (float) g_sensor[SENSOR_FRONT_RIGHT][0];
+			r_data[2] = NoWallDisplacementL45slant;
+			r_data[3] = NoWallDisplacementR45slant;
 			record_data(r_data, 4);
 		}
 /*	if (record_mode == 1) {

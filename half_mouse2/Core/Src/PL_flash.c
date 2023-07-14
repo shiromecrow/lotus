@@ -13,18 +13,17 @@
 #include "stdio.h"
 #include "define.h"
 
-WALL wall;
-WALL record;
-unsigned short walk_count[256];
+
+
 
 const uint32_t start_address = 0x807F000; //bank1 page last start address
 const uint32_t end_adress = 0x807FFFF; // bank1 page last end address
 
 void test_flash(void){
-	//	  record_out();
-	//	  maze_display();
-	//	  flash_record_init();
-	//	  record_in();
+		  record_out();
+		  maze_display();
+		  flash_record_init();
+		  record_in();
 }
 
 
@@ -86,33 +85,33 @@ void record_in(void) {
 	t = 0;
 
 	writeFlash(address, (uint64_t*) record.row[0], 1, ON);
-	address+=8;
+	address+=16;
 	t=1;
 
 	while (t <= 14) {
 	writeFlash(address, (uint64_t*) record.row[t], 1, OFF);
-	address+=8;
+	address+=16;
 	t++;
 	}
 
 	t=0;
 	while (t <= 14) {
 	writeFlash(address, (uint64_t*) record.column[t], 1, OFF);
-	address+=8;
+	address+=16;
 	t++;
 	}
 
 	t=0;
 	while (t <= 14) {
 	writeFlash(address, (uint64_t*) record.row_look[t], 1, OFF);
-	address+=8;
+	address+=16;
 	t++;
 	}
 
 	t=0;
 	while (t <= 14) {
 	writeFlash(address, (uint64_t*) record.column_look[t], 1, OFF);
-	address+=8;
+	address+=16;
 	t++;
 	}
 //	writeFlash(start_address + sizeof(record.row), (uint64_t*) record.column,
@@ -139,29 +138,29 @@ void record_out(void) {
 	int t=0;
 	uint32_t address=start_address;
 	while (t <= 14) {
-	loadFlash(address, (uint64_t*)&record.row[t], 1);
-	address+=8;
+	loadFlash(address, (uint64_t*)&record.row[t], 2);
+	address+=16;
 	t++;
 	}
 
 	t=0;
 	while (t <= 14) {
-	loadFlash(address, (uint64_t*)&record.column[t], 1);
-	address+=8;
+	loadFlash(address, (uint64_t*)&record.column[t], 2);
+	address+=16;
 	t++;
 	}
 
 	t=0;
 	while (t <= 14) {
-		loadFlash(address, (uint64_t*)&record.row_look[t], 1);
-		address+=8;
+		loadFlash(address, (uint64_t*)&record.row_look[t], 2);
+		address+=16;
 		t++;
 	}
 
 	t=0;
 	while (t <= 14) {
-		loadFlash(address, (uint64_t*)&record.column_look[t], 1);
-		address+=8;
+		loadFlash(address, (uint64_t*)&record.column_look[t], 2);
+		address+=16;
 		t++;
 	}
 //	loadFlash(start_address, (uint64_t*) record.row, sizeof(record.row));
@@ -191,7 +190,7 @@ void record_out(void) {
 void flash_record_init(void){
 	int t = 0;
 	while (t <= 14) {
-		wall.row[t] = t;
+		wall.row[t] = 0b111100011;
 		wall.column[t] = t*2;
 		t++;
 	}
@@ -203,79 +202,6 @@ void flash_record_init(void){
 	}
 
 }
-
-
-
-
-void maze_display(void) {
-
-	int tt = 14;
-	int ss = 0;
-
-	printf(
-			"+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n");
-	for (tt = 14;tt >= -1;tt--){
-
-		printf("|%5d", walk_count[tt + 1]);
-		for(ss = 0;ss < 15;ss++){
-			if ((wall.row[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
-				printf("|%5d", walk_count[tt + 1 + (ss + 1) * 16]);
-			}else{
-				printf(" %5d", walk_count[tt + 1 + (ss + 1) * 16]);
-			}
-		}
-		printf("|\n");
-		if (tt <= -1) {
-			break;
-		}
-		for(ss = 0;ss <= 15;ss++){
-			if ((wall.column[tt] & (1 << ss)) == (1 << ss)){
-				printf("+-----");
-			}else{
-				printf("+     ");
-			}
-		}
-
-		printf("+\n");
-
-	}
-
-	printf(
-			"+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n\n");
-
-
-	printf(
-			"+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n");
-
-	for (tt = 14;tt >= -1;tt--){
-		printf("|%5d", walk_count[tt + 1]);
-		for(ss = 0;ss < 15;ss++){
-			if ((wall.row_look[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
-				printf("|%5d", walk_count[tt + 1 + (ss + 1) * 16]);
-			}else{
-				printf(" %5d", walk_count[tt + 1 + (ss + 1) * 16]);
-			}
-		}
-		printf("|\n");
-		if (tt <= -1) {
-			break;
-		}
-		for(ss = 0;ss <= 15;ss++){
-			if ((wall.column_look[tt] & (1 << ss)) == (1 << ss)){
-				printf("+-----");
-			}else{
-				printf("+     ");
-			}
-		}
-		printf("+\n");
-	}
-
-	printf(
-			"+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n\n");
-
-}
-
-
 
 
 

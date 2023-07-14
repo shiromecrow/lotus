@@ -20,4 +20,6 @@ void mode_Tuning0(unsigned char);
 
 void mode_WallSensorTuning(unsigned char);
 
+void mode_WallSensorTuning_fast(unsigned char);
+
 #endif /* INC_MODE_SELECT_H_ */

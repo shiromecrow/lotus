@@ -446,6 +446,8 @@ float turning_table2(float input_displacement, float input_start_velocity,
 	angle = angle - input_displacement;
 
 	pl_DriveMotor_stop();
+	fusion_speedL = E_speedL;
+	fusion_speedR = E_speedR;
 
 	return turning.velocity;
 }
@@ -517,6 +519,8 @@ void no_angle(void){
 	modeacc = 0;
 
 	pl_DriveMotor_stop();
+	fusion_speedL = E_speedL;
+	fusion_speedR = E_speedR;
 
 }
 
@@ -577,6 +581,8 @@ void no_frontwall_straight(void){
 	modeacc = 0;
 
 	pl_DriveMotor_stop();
+	fusion_speedL = E_speedL;
+	fusion_speedR = E_speedR;
 
 }
 

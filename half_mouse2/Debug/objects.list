@@ -19,6 +19,8 @@
 "./Core/Src/gpio.o"
 "./Core/Src/main.o"
 "./Core/Src/maze_Turning.o"
+"./Core/Src/maze_strategy.o"
+"./Core/Src/maze_wall.o"
 "./Core/Src/mode_select.o"
 "./Core/Src/record.o"
 "./Core/Src/spi.o"

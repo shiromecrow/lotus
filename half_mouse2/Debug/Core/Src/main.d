@@ -37,9 +37,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/tim.h ../Core/Inc/usart.h ../Core/Inc/gpio.h \
  ../Core/Inc/PL_LED.h ../Core/Inc/PL_timer.h ../Core/Inc/PL_gyro.h \
  ../Core/Inc/PL_encoder.h ../Core/Inc/PL_sensor.h ../Core/Inc/PL_flash.h \
- ../Core/Inc/PL_motor.h ../Core/Inc/CL_gyro.h ../Core/Inc/CL_encoder.h \
- ../Core/Inc/CL_sensor.h ../Core/Inc/PID_EncoderGyro.h \
- ../Core/Inc/PID_wall.h ../Core/Inc/define.h ../Core/Inc/Control_motor.h \
+ ../Core/Inc/maze_wall.h ../Core/Inc/PL_motor.h ../Core/Inc/CL_gyro.h \
+ ../Core/Inc/CL_encoder.h ../Core/Inc/CL_sensor.h \
+ ../Core/Inc/PID_EncoderGyro.h ../Core/Inc/PID_wall.h \
+ ../Core/Inc/define.h ../Core/Inc/Control_motor.h \
  ../Core/Inc/cal_acceleration.h ../Core/Inc/record.h \
  ../Core/Inc/mode_select.h ../Core/Inc/turning_parameter.h \
  ../Core/Inc/fail_safe.h
@@ -91,6 +92,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/PL_encoder.h:
 ../Core/Inc/PL_sensor.h:
 ../Core/Inc/PL_flash.h:
+../Core/Inc/maze_wall.h:
 ../Core/Inc/PL_motor.h:
 ../Core/Inc/CL_gyro.h:
 ../Core/Inc/CL_encoder.h:

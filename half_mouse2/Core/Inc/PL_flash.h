@@ -9,16 +9,8 @@
 #define INC_PL_FLASH_H_
 
 
-typedef struct{
-	uint16_t row[15];
-	uint16_t column[15];
-	uint16_t row_look[15];
-	uint16_t column_look[15];
+#include"maze_wall.h"
 
-}WALL;
-
-extern WALL wall;
-extern WALL record;
 
 
 extern const uint32_t start_address; //sentor11 start address
@@ -35,6 +27,6 @@ void loadFlash(uint32_t, uint64_t *, uint32_t );
 void record_in();
 void record_out();
 void flash_record_init();
-void maze_display();
+
 
 #endif /* INC_PL_FLASH_H_ */

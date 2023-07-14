@@ -17,6 +17,7 @@
 #include "PL_encoder.h"
 #include "PL_gyro.h"
 #include "PL_motor.h"
+#include "PL_flash.h"
 
 #include "CL_gyro.h"
 #include "CL_encoder.h"
@@ -32,6 +33,9 @@
 #include "define.h"
 #include "math.h"
 #include "fail_safe.h"
+#include "maze_strategy.h"
+#include "maze_wall.h"
+
 
 
 
@@ -91,7 +95,7 @@ main_modeL=now_mode >> 4;
 	//printf("main_mode=%x L=%x R=%x\n",main_mode,main_modeL,main_modeR);
 
 			}
-			pl_yellow_LED_on();
+			pl_yellow_LED_off();
 			pl_r_blue_LED(ON);
 			pl_l_blue_LED(ON);
 			HAL_Delay(1000);
@@ -139,8 +143,10 @@ switch (main_modeL) {
 		mode_WallSensorTuning(main_modeR);
 	break;
 	case 0b0101://試験モード
+		testturning(speed600_shortest_mollifier,main_modeR,1,OFF,0.51,1);
 	break;
 	case 0b0110:
+		mode_WallSensorTuning_fast(main_modeR);
 	break;
 	case 0b0111:
 	break;
@@ -223,6 +229,9 @@ void mode_PLtest(unsigned char main_modeR) {
 			wait_ms(500);
 		}
 	break;
+	case 0b0101:
+		test_flash();
+		break;
 	case 0b1001://fun
 			pl_FunMotor_duty(0.5);
 			pl_FunMotor_start();
@@ -370,6 +379,12 @@ void mode_PLtest(unsigned char main_modeR) {
 
 
 void mode_Running(unsigned char main_modeR){
+	pl_L_DriveMotor_mode(MOTOR_BREAK);
+	pl_R_DriveMotor_mode(MOTOR_BREAK);
+	reset_gyro();
+	reset_speed();
+	reset_distance();
+	clear_Ierror();
 	switch (main_modeR) {
 		case 0b0000://迷路表示
 			//maze_maker2(1, 0, 0, 0, 7, 7);
@@ -407,7 +422,7 @@ void mode_Running(unsigned char main_modeR){
 		break;
 		case 0b0001://足立法(遅い)
 			tic_timer();
-			AdatiWayReturn(500,400,5000,3000,speed500_exploration,1,0);
+			AdatiWayReturn(300,400,2000,3000,speed300_exploration,1,0);
 			//adati_wayreturn(400, 400, 3000, 13000);
 		break;
 		case 0b0010://Flashから
@@ -415,54 +430,54 @@ void mode_Running(unsigned char main_modeR){
 		break;
 		case 0b0011://ゴミ
 			tic_timer();
-			AdatiWayReturn(500,400,5000,3000,speed500_exploration,1,1);
+			AdatiWayReturn(300,400,2000,3000,speed300_exploration,1,1);
 		break;
 		case 0b0100://ゴミ
 			record_out();
-			run_shortest(2000,6000,0,TURN_OFF,FUN_ON,SLANT_OFF,speed500_shortest,0.3,0);
+			run_shortest(1000,3000,0,TURN_OFF,FUN_OFF,SLANT_OFF,speed300_shortest,0.3,0);
 		break;
 		case 0b0101://
 			record_out();
-			run_shortest(2000,6000,0,TURN_ON,FUN_OFF,SLANT_OFF,speed500_shortest,0.3,0);
+			run_shortest(1000,3000,0,TURN_ON,FUN_OFF,SLANT_OFF,speed600_shortest_mollifier,0.3,1);
 		break;
 		case 0b0110://吸引なしで斜め走行
 			record_out();
-			run_shortest(1800,8000,0,TURN_ON,FUN_OFF,SLANT_ON,speed500_shortest,0.3,0);
+			run_shortest(1000,3000,0,TURN_ON,FUN_OFF,SLANT_ON,speed600_shortest_mollifier,0.3,1);
 		break;
 		case 0b0111://吸引ありで斜め走行
 			record_out();
-			run_shortest(2000,15000,0,TURN_ON,FUN_OFF,SLANT_ON,speed500_shortest,0.3,0);
+			run_shortest(3000,10000,0,TURN_ON,FUN_ON,SLANT_ON,speed600_shortest_mollifier,0.99,1);
 		break;
 		case 0b1000://
 			record_out();
-			run_shortest(2000,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed500_shortest,0.3,0);
+			//run_shortest(2000,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed500_shortest,0.3,0);
 		break;
 		case 0b1001:
 			record_out();
-			run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+			//run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
 		break;
 		case 0b1010:
 			record_out();
-			run_shortest(3000,18000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+			//run_shortest(3000,18000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
 		break;
 		case 0b1011:
 			record_out();
-			run_shortest(4000,20000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+			//run_shortest(4000,20000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
 		break;
 		case 0b1100:
 			record_out();
-			run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+			//run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
 		break;
 		case 0b1101:
 			record_out();
-			run_shortest(3000,18000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+			//run_shortest(3000,18000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
 		break;
 		case 0b1110:
 			record_out();
-			run_shortest(4000,20000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+			//run_shortest(4000,20000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
 		break;
 		case 0b1111:
-			AdatiWayReturn(500,400,5000,3000,speed500_exploration,0,0);
+			AdatiWayReturn(500,400,5000,3000,speed300_exploration,0,0);
 		break;
 	}
 
@@ -520,6 +535,7 @@ void mode_Tuning0(unsigned char main_modeR){
 //			straight_table2(180, 0, 300, 300,300 * 300  / 2 / 90,mode);
 //			mollifier_slalom_table(300,-90,500);
 //			straight_table2(180, 300, 0, 300,300 * 300  / 2 / 90,mode);
+
 			testturning(speed300_exploration,0,0,0,0,0);
 		break;
 		case 4://左スラローム(探索)
@@ -597,7 +613,7 @@ void mode_Tuning0(unsigned char main_modeR){
 		case 11:
 		record_mode=1;
 		mode.WallControlMode=0;
-		straight_table2(BACK_TO_CENTER, 0, 0, 300, 6000,mode);
+		straight_table2(BACK_TO_CENTER_FRONT_SLANT, 0, 0, 300, 6000,mode);
 		break;
 		case 12:
 		record_mode=17;
@@ -695,68 +711,69 @@ void mode_WallSensorTuning(unsigned char main_modeR){
 			}
 		break;
 		case 2://壁切れ90度
-			record_mode = 4;
+			record_mode = 7;
 			mode.WallControlMode=0;
 			mode.WallControlStatus=0;
 			mode.WallCutMode=0;
 			mode.calMazeMode=0;
-			straight_table2(BACK_TO_CENTER + 270, 0, 500, 500,1500,mode);
+			straight_table2(BACK_TO_CENTER + 135, 0, 300, 300,3000,mode);
 			mode.WallCutMode=1;
 			mode.WallControlMode=0;
-			straight_table2(45, 500, 500, 500,1500,mode);
+			straight_table2(22.5, 300, 300, 300,3000,mode);
 			mode.WallControlMode=0;
 			mode.WallCutMode=0;
-			straight_table2(90 + 45, 500, 0, 500,1500,mode);
+			straight_table2(45 + 22.5, 300, 0, 300,3000,mode);
 		break;
 		case 3://壁切れ45度//90°大回り
-			record_mode=1;
+			record_mode = 8;
 			mode.WallControlMode=0;
 			mode.WallControlStatus=0;
 			mode.WallCutMode=0;
 			mode.calMazeMode=0;
-			straight_table2(BACK_TO_CENTER_FRONT + 180, 0, 500, 500,1500,mode);
+			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 300, 300,3000,mode);
 			mode.WallCutMode=2;
 			mode.WallControlMode=0;
-			straight_table2(45, 500, 500, 500,1500,mode);
+			straight_table2(22.5, 300, 300, 300,3000,mode);
 			mode.WallControlMode=0;
 			mode.WallCutMode=0;
-			straight_table2(90+45, 500, 0, 500,1500,mode);
+			straight_table2(45+22.5, 300, 0, 300,3000,mode);
 		break;
 		case 4://壁切れ45度斜め(考え中)
+			record_mode = 8;
 			mode.WallControlMode=0;//3でもいいかも
 			mode.WallControlStatus=0;
 			mode.WallCutMode=0;
 			mode.calMazeMode=0;
-			straight_table2(BACK_TO_CENTER_SLANT + 180*sqrt(2), 0, 500, 500,1500,mode);
+			straight_table2(BACK_TO_CENTER_SLANT + 90*sqrt(2), 0, 300, 300,3000,mode);
 			mode.WallCutMode=3;
 			mode.WallControlMode=0;
-			straight_table2(45*sqrt(2), 500, 500, 500,1500,mode);
+			straight_table2(22.5*sqrt(2), 300, 300, 300,3000,mode);
 			mode.WallControlMode=0;
 			mode.WallCutMode=0;
-			straight_table2(90*sqrt(2) + 45*sqrt(2), 500, 0, 500,1500,mode);
+			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 300, 0, 300,3000,mode);
 		break;
 		case 5://壁切れ45度斜め(考え中)
 			mode.WallControlMode=0;//3でもいいかも
 			mode.WallControlStatus=0;
 			mode.WallCutMode=0;
 			mode.calMazeMode=0;
-			straight_table2(BACK_TO_CENTER_SLANT+180*sqrt(2), 0, 500, 500,1500,mode);
+			straight_table2(BACK_TO_CENTER_SLANT+90*sqrt(2), 0, 300, 300,3000,mode);
 			mode.WallCutMode=4;
 			mode.WallControlMode=0;
-			straight_table2(45*sqrt(2), 500, 500, 500,1500,mode);
+			straight_table2(22.5*sqrt(2), 300, 300, 300,3000,mode);
 			mode.WallControlMode=0;
 			mode.WallCutMode=0;
-			straight_table2(90*sqrt(2) + 45*sqrt(2), 500, 0, 500,1500,mode);
+			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 300, 0, 300,3000,mode);
 		break;
 		case 6://斜め直進(制御あり)
-			record_mode=7;
-			mode.WallControlMode=0;
-			straight_table2(180*3*sqrt(2), 0, 0, 500, 6000,mode);
-		break;
-		case 7://斜め直進(平松さん式制御あり)
 			record_mode=9;
 			mode.WallControlMode=0;
-			straight_table2(180*3*sqrt(2), 0, 0, 500, 6000,mode);
+			straight_table2(90*3*sqrt(2), 0, 0, 300, 3000,mode);
+		break;
+		case 7://斜め直進(平松さん式制御あり)
+			record_mode=10;
+			mode.WallControlMode=0;
+			straight_table2(90*3*sqrt(2), 0, 0, 300, 3000,mode);
 
 		break;
 		case 8://斜め直進(平松さん式制御あり)
@@ -807,4 +824,145 @@ void mode_WallSensorTuning(unsigned char main_modeR){
 
 
 }
+
+
+
+
+
+void mode_WallSensorTuning_fast(unsigned char main_modeR){
+	MOTOR_MODE mode;
+	mode.WallControlMode=0;
+	mode.WallControlStatus=0;
+	mode.WallCutMode=0;
+	mode.calMazeMode=0;
+	//pl_FunMotor_duty(150);
+	//pl_FunMotor_start();
+	//HAL_Delay(1000);
+	pl_DriveMotor_standby(ON);
+	pl_L_DriveMotor_mode(MOTOR_BREAK);
+	pl_R_DriveMotor_mode(MOTOR_BREAK);
+	pl_FunMotor_duty(0.56);
+	pl_FunMotor_start();
+	HAL_Delay(600);
+	reset_gyro();
+	reset_speed();
+	clear_Ierror();
+	angle=0;
+
+	switch (main_modeR) {
+		case 0://横壁追従制御
+			record_mode=15;
+			mode.WallControlMode=1;
+			highspeed_mode=1;
+			straight_table2(BACK_TO_CENTER+180*10, 0, 0, 5000, 24000,mode);
+			highspeed_mode=0;
+		break;
+		case 1://なし
+		break;
+		case 2://なし
+		break;
+		case 3://壁切れ45度//90°大回り
+			record_mode=8;
+			mode.WallControlMode=1;
+			mode.WallControlStatus=0;
+			mode.WallCutMode=0;
+			mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 600, 600,15000,mode);
+			mode.WallCutMode=2;
+			mode.WallControlMode=0;
+			straight_table2(22.5, 600, 600, 600,15000,mode);
+			mode.WallControlMode=1;
+			mode.WallCutMode=0;
+			straight_table2(90+22.5, 600, 0, 600,15000,mode);
+		break;
+		case 4://壁切れ45度斜め(考え中)右
+			record_mode=8;
+			mode.WallControlMode=0;//3でもいいかも
+			mode.WallControlStatus=0;
+			mode.WallCutMode=0;
+			mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT_SLANT + 90*sqrt(2), 0, 600, 600,10000,mode);
+			mode.WallCutMode=3;
+			mode.WallControlMode=0;
+			straight_table2(22.5*sqrt(2), 600, 600, 600,10000,mode);
+			mode.WallControlMode=0;
+			mode.WallCutMode=0;
+			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 600, 0, 600,10000,mode);
+		break;
+		case 5://壁切れ45度斜め(考え中)左
+			record_mode=8;
+			mode.WallControlMode=0;//3でもいいかも
+			mode.WallControlStatus=0;
+			mode.WallCutMode=0;
+			mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT_SLANT+90*sqrt(2), 0, 600, 600,10000,mode);
+			mode.WallCutMode=4;
+			mode.WallControlMode=0;
+			straight_table2(22.5*sqrt(2), 600, 600, 600,10000,mode);
+			mode.WallControlMode=0;
+			mode.WallCutMode=0;
+			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 600, 0, 600,10000,mode);
+		break;
+		case 6://斜め直進(制御あり)
+			record_mode=7;
+			mode.WallControlMode=0;
+			straight_table2(180*3*sqrt(2)+90*sqrt(2), 0, 0, 2000, 20000,mode);
+		break;
+		case 7://斜め直進(平松さん式制御あり)
+			record_mode=9;
+			mode.WallControlMode=0;
+			straight_table2(180*3*sqrt(2)+90*sqrt(2), 0, 0, 2000, 20000,mode);
+
+		break;
+		case 8://斜め直進(平松さん式制御あり)
+			record_mode=7;
+			mode.WallControlMode=3;
+			straight_table2(180*3*sqrt(2), 0, 0, 3500, 20000,mode);
+		break;
+		case 9:
+			record_mode=8;
+			mode.WallControlMode=3;
+			straight_table2(BACK_TO_CENTER_SLANT+180*4*sqrt(2), 0, 0, 3500, 20000,mode);
+		break;
+		case 10:
+			record_mode=10;
+			mode.WallControlMode=3;
+			straight_table2(180*3*sqrt(2), 0, 0, 3500, 20000,mode);
+		break;
+		case 11:
+			record_mode=11;
+			mode.WallControlMode=3;
+			straight_table2(180*3*sqrt(2), 0, 0, 3000, 15000,mode);
+		break;
+		case 12:
+			record_mode=12;
+			mode.WallControlMode=3;
+			straight_table2(180*3*sqrt(2), 0, 0, 3000, 15000,mode);
+		break;
+		case 15:
+		break;
+	}
+	record_mode=0;
+	pl_R_DriveMotor_mode(MOTOR_BREAK);
+	pl_L_DriveMotor_mode(MOTOR_BREAK);
+	wait_ms_NoReset(500);
+	pl_FunMotor_stop();
+	record_mode=0;
+	wait_ms_NoReset(500);
+	pl_DriveMotor_standby(OFF);
+
+	//pl_FunMotor_stop();
+	while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
+		HAL_Delay(1);
+	}
+	pl_r_blue_LED(ON);
+	pl_l_blue_LED(ON);
+	record_print();
+
+
+
+}
+
+
+
 

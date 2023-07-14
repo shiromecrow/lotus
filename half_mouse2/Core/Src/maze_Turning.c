@@ -97,7 +97,7 @@ void backTurn_controlWall(float input_TurningVelocity,float input_TurningAcceler
 		pl_L_DriveMotor_mode(MOTOR_BREAK);
 		//clear_Ierror();
 		wait_ms_NoReset(50);
-		turning_table2(45,0,0,input_TurningVelocity,input_TurningAcceleration);
+		turning_table2(90,0,0,input_TurningVelocity,input_TurningAcceleration);
 	}else if(left_wall==0 && right_wall){
 		turning_table2(-90,0,0,-input_TurningVelocity,input_TurningAcceleration);
 		pl_R_DriveMotor_mode(MOTOR_BREAK);

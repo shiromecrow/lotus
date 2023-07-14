@@ -35,7 +35,8 @@ Core/Src/record.o: ../Core/Src/record.c ../Core/Inc/record.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
  ../Core/Inc/CL_encoder.h ../Core/Inc/CL_gyro.h \
- ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h
+ ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h \
+ ../Core/Inc/PID_wall.h ../Core/Inc/define.h ../Core/Inc/define.h
 ../Core/Inc/record.h:
 ../Core/Inc/CL_sensor.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
@@ -76,3 +77,6 @@ Core/Src/record.o: ../Core/Src/record.c ../Core/Inc/record.h \
 ../Core/Inc/CL_gyro.h:
 ../Core/Inc/Control_motor.h:
 ../Core/Inc/cal_acceleration.h:
+../Core/Inc/PID_wall.h:
+../Core/Inc/define.h:
+../Core/Inc/define.h:

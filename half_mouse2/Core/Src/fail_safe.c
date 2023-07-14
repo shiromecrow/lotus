@@ -39,12 +39,12 @@ void init_FailSafe(void){
 	no_safty=0;
 	highspeed_mode = 0;
 	error_time_count=0;
-	encoder_PID_error=1200;
-	gyro_PID_error=1200;
-	gyro_x_error=1200;
+	encoder_PID_error=1500;
+	gyro_PID_error=800;
+	gyro_x_error=1500;
 
 	encoder_PID_error_highspeed=2000;//3000
-	gyro_PID_error_highspeed=2000;
+	gyro_PID_error_highspeed=1900;
 	gyro_x_error_highspeed=1500;
 }
 
