@@ -41,7 +41,7 @@ parameter V90_L;
 
 }parameter_speed;
 
-
+extern parameter_speed speed250_exploration;
 extern parameter_speed speed300_exploration;
 extern parameter_speed speed300_shortest;
 extern parameter_speed speed600_shortest_mollifier;

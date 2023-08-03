@@ -37,6 +37,7 @@ extern char modeacc;
 extern uint8_t noGoalPillarMode;
 
 void Control_mode_Init();
+void get_duty(float , float ,int *,int *);
 
 void interupt_DriveMotor();
 

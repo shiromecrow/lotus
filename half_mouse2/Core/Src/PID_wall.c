@@ -264,7 +264,7 @@ float calWallConrol(void) {
 					+ sensor_gain_d * wall_normal.delta_error;
 //			PID_wall = sensor_gain
 //					* (-2 * (float) (g_sensor[SENSOR_LEFT][0] - CENTER_L)/(float) (g_sensor[SENSOR_LEFT][0]));
-			pl_yellow_LED_count(240);
+			pl_yellow_LED_count(128);
 			break;
 		case 2:			//右壁のみ
 			wall_normal.error = (2 * (float) (sensorWall_R - CENTER_R)
@@ -275,7 +275,7 @@ float calWallConrol(void) {
 					+ sensor_gain_d * wall_normal.delta_error;
 //			PID_wall = sensor_gain
 //					* (2 * (float) (g_sensor[SENSOR_RIGHT][0] - CENTER_R)/(float) (g_sensor[SENSOR_RIGHT][0]));
-			pl_yellow_LED_count(15);
+			pl_yellow_LED_count(1);
 			break;
 		case 3:			//両壁あり
 			wall_normal.error =
@@ -289,7 +289,7 @@ float calWallConrol(void) {
 //			PID_wall = sensor_gain
 //					* (-(float) (g_sensor[SENSOR_LEFT][0] - CENTER_L)/(float) (g_sensor[SENSOR_LEFT][0])
 //							+ (float) (g_sensor[SENSOR_RIGHT][0] - CENTER_R)/(float) (g_sensor[SENSOR_RIGHT][0]));
-			pl_yellow_LED_count(255);
+			pl_yellow_LED_count(129);
 			if ((fabs(g_sensor_diff[SENSOR_LEFT]) < 30)
 					&& (fabs(g_sensor_diff[SENSOR_RIGHT]) < 30)) {
 				StabilityCount_reset++;

@@ -35,6 +35,7 @@ Core/Src/PID_EncoderGyro.o: ../Core/Src/PID_EncoderGyro.c \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
  ../Core/Inc/CL_gyro.h ../Core/Inc/CL_sensor.h ../Core/Inc/PL_LED.h \
+ ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h \
  ../Core/Inc/define.h
 ../Core/Inc/PID_EncoderGyro.h:
 ../Core/Inc/CL_encoder.h:
@@ -75,4 +76,6 @@ Core/Src/PID_EncoderGyro.o: ../Core/Src/PID_EncoderGyro.c \
 ../Core/Inc/CL_gyro.h:
 ../Core/Inc/CL_sensor.h:
 ../Core/Inc/PL_LED.h:
+../Core/Inc/Control_motor.h:
+../Core/Inc/cal_acceleration.h:
 ../Core/Inc/define.h:

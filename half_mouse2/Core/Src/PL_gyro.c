@@ -115,6 +115,9 @@ void pl_gyro_init(void)
 
 	HAL_Delay(50);
 
+	//gyro_write_byte(0x1D, 0x08);
+	//HAL_Delay(50);
+
 	set_flag = 1;
 
 }
