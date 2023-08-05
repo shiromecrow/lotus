@@ -1,7 +1,7 @@
 ../Core/Src/mode_select.c:43:15:mode_decision	24	static
 ../Core/Src/mode_select.c:121:6:mode_execution	360	static
 ../Core/Src/mode_select.c:174:6:mode_PLtest	104	static
-../Core/Src/mode_select.c:400:6:mode_Running	360	static
-../Core/Src/mode_select.c:510:6:mode_Tuning0	376	static
-../Core/Src/mode_select.c:717:6:mode_WallSensorTuning	24	static
-../Core/Src/mode_select.c:863:6:mode_WallSensorTuning_fast	24	static
+../Core/Src/mode_select.c:400:6:mode_Running	384	static
+../Core/Src/mode_select.c:520:6:mode_Tuning0	376	static
+../Core/Src/mode_select.c:731:6:mode_WallSensorTuning	24	static
+../Core/Src/mode_select.c:877:6:mode_WallSensorTuning_fast	24	static

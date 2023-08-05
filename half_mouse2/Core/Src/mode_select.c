@@ -398,6 +398,7 @@ void mode_PLtest(unsigned char main_modeR) {
 
 
 void mode_Running(unsigned char main_modeR){
+	int a=0;
 	pl_L_DriveMotor_mode(MOTOR_BREAK);
 	pl_R_DriveMotor_mode(MOTOR_BREAK);
 	reset_gyro();
@@ -409,35 +410,44 @@ void mode_Running(unsigned char main_modeR){
 			//maze_maker2(1, 0, 0, 0, 7, 7);
 			//record_out();
 			//wall.row[8]=(1<<8);
-			create_StepCountMap_queue();
-			maze_display();
 
-			create_DijkstraMap();
-			maze_display_Dijkstra();
-
-			route_Dijkstra();
-			create_StepCountMap_unknown();
-			maze_display();
-
-//			tic_timer();
-//			for(int j=0;j<5000;j++){
 //			create_StepCountMap_queue();
-//			}
-//			float tim2 = toc_timer();
 //			maze_display();
-//			tic_timer();
-//			for(int j=0;j<5000;j++){
-//			//create_StepCountMap();
-//			//maze_clear();
-//			//create_DijkstraMap();
+//
+//			create_DijkstraMap();
+//			maze_display_Dijkstra();
+//
 //			route_Dijkstra();
 //			create_StepCountMap_unknown();
-//
-//			}
-//			float tim1 = toc_timer();
 //			maze_display();
-//			maze_display_Dijkstra();
-//			printf("tim1=%f,tim2=%f\n", tim1, tim2);
+
+			tic_timer();
+			for(int j=0;j<50000;j++){
+				a=a+1;
+			}
+			float tim1 = toc_timer();
+			printf("tim1=%f\n", tim1);
+
+			tic_timer();
+			for(int j=0;j<5000;j++){
+			create_StepCountMap_queue();
+			}
+			float tim2 = toc_timer();
+			maze_display();
+			printf("tim2=%f\n", tim2);
+			tic_timer();
+			for(int j=0;j<5000;j++){
+			//create_StepCountMap();
+			//maze_clear();
+			//create_DijkstraMap();
+			route_Dijkstra();
+			create_StepCountMap_unknown();
+
+			}
+			tim1 = toc_timer();
+			maze_display();
+			maze_display_Dijkstra();
+			printf("tim1=%f,tim2=%f\n", tim1, tim2);
 		break;
 		case 0b0001://足立法(遅い)
 			tic_timer();
@@ -662,7 +672,7 @@ void mode_Tuning0(unsigned char main_modeR){
 		case 14://宴会芸＋吸引
 			record_mode=2;
 			for(int i=0;i<40;i++){
-			turning_table2(90, 0, 0, 930, 11000);
+			turning_table2(90, 0, 0, 400, 3000);
 			}
 //			highspeed_mode = 1;
 //			pl_FunMotor_duty(0.99);

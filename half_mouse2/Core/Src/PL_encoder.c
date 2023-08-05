@@ -29,19 +29,19 @@ uint16_t encoder_read_byte_R(uint16_t address,uint16_t data){
 	addBuffer[1]=address & 0x00FF;
 
 
-	HAL_SPI_Transmit(&hspi3, (uint8_t*)addBuffer, 2, 100);
+	HAL_SPI_Transmit(&hspi3, (uint8_t*)addBuffer, 2, 50);
 //	HAL_SPI_Transmit(&hspi3, address, 2, 100);
 
 	HAL_GPIO_WritePin( ENCODER_R_CS_GPIO_Port, ENCODER_R_CS_Pin, GPIO_PIN_SET); //cs = 1;
 
-	for(int i=0;i<150;i++){}
+	for(int i=0;i<50;i++){}
 
 	HAL_GPIO_WritePin( ENCODER_R_CS_GPIO_Port, ENCODER_R_CS_Pin, GPIO_PIN_RESET); //cs = 0;
 
 //	data=0xC000;
 	dataBuffer[0]=data>>8;
 	dataBuffer[1]=data & 0x00FF;
-	HAL_SPI_Receive(&hspi3, (uint8_t*)dataBuffer, 2, 100);
+	HAL_SPI_Receive(&hspi3, (uint8_t*)dataBuffer, 2, 50);
 	data=((uint16_t)(dataBuffer[0]) << 8) | (uint16_t)(dataBuffer[1]);
 //	HAL_SPI_Transmit(&hspi3, data, 2, 100);
 	HAL_GPIO_WritePin( ENCODER_R_CS_GPIO_Port, ENCODER_R_CS_Pin, GPIO_PIN_SET); //cs = 1;
@@ -66,11 +66,11 @@ void encoder_write_byte_R(uint16_t address, uint16_t data){
 	addBuffer[0]=address>>8;
 	addBuffer[1]=address & 0x00FF;
 
-	HAL_SPI_Transmit(&hspi3, addBuffer, 2, 100);
+	HAL_SPI_Transmit(&hspi3, addBuffer, 2, 50);
 
 	HAL_GPIO_WritePin( ENCODER_R_CS_GPIO_Port, ENCODER_R_CS_Pin, GPIO_PIN_SET); //cs = 1;
 
-	for(int i=0;i<100;i++){}
+	for(int i=0;i<50;i++){}
 
 	HAL_GPIO_WritePin( ENCODER_R_CS_GPIO_Port, ENCODER_R_CS_Pin, GPIO_PIN_RESET); //cs = 0;
 
@@ -80,7 +80,7 @@ void encoder_write_byte_R(uint16_t address, uint16_t data){
 	data = data | ((parity % 2) << 15);
 	dataBuffer[0]=data>>8;
 	dataBuffer[1]=data & 0x00FF;
-	HAL_SPI_Transmit(&hspi3, dataBuffer, 2, 100);
+	HAL_SPI_Transmit(&hspi3, dataBuffer, 2, 50);
 
 	HAL_GPIO_WritePin( ENCODER_R_CS_GPIO_Port, ENCODER_R_CS_Pin, GPIO_PIN_SET); //cs = 1;
 
@@ -103,18 +103,18 @@ uint16_t encoder_read_byte_L(uint16_t address,uint16_t data){
 	addBuffer[0]=address>>8;
 	addBuffer[1]=address & 0x00FF;
 
-	HAL_SPI_Transmit(&hspi3, (uint8_t*)addBuffer, 2, 100);
+	HAL_SPI_Transmit(&hspi3, (uint8_t*)addBuffer, 2, 50);
 
 	HAL_GPIO_WritePin( ENCODER_L_CS_GPIO_Port, ENCODER_L_CS_Pin, GPIO_PIN_SET); //cs = 1;
 
-	for(int i=0;i<150;i++){}
+	for(int i=0;i<50;i++){}
 
 	HAL_GPIO_WritePin( ENCODER_L_CS_GPIO_Port, ENCODER_L_CS_Pin, GPIO_PIN_RESET); //cs = 0;
 
 //	data=0x0000;
 	dataBuffer[0]=data>>8;
 	dataBuffer[1]=data & 0x00FF;
-	HAL_SPI_Receive(&hspi3, (uint8_t*)dataBuffer, 2, 100);
+	HAL_SPI_Receive(&hspi3, (uint8_t*)dataBuffer, 2, 50);
 	data=((uint16_t)(dataBuffer[0]) << 8) | (uint16_t)(dataBuffer[1]);
 	HAL_GPIO_WritePin( ENCODER_L_CS_GPIO_Port, ENCODER_L_CS_Pin, GPIO_PIN_SET); //cs = 1;
 
@@ -138,11 +138,11 @@ void encoder_write_byte_L(uint16_t address, uint16_t data){
 	addBuffer[0]=address>>8;
 	addBuffer[1]=address & 0x00FF;
 
-	HAL_SPI_Transmit(&hspi3, (uint8_t*)addBuffer, 2, 100);
+	HAL_SPI_Transmit(&hspi3, (uint8_t*)addBuffer, 2, 50);
 
 	HAL_GPIO_WritePin( ENCODER_L_CS_GPIO_Port, ENCODER_L_CS_Pin, GPIO_PIN_SET); //cs = 1;
 
-	for(int i=0;i<100;i++){}
+	for(int i=0;i<50;i++){}
 
 	HAL_GPIO_WritePin( ENCODER_L_CS_GPIO_Port, ENCODER_L_CS_Pin, GPIO_PIN_RESET); //cs = 0;
 
@@ -152,7 +152,7 @@ void encoder_write_byte_L(uint16_t address, uint16_t data){
 	data = data | ((parity % 2) << 15);
 	dataBuffer[0]=data>>8;
 	dataBuffer[1]=data & 0x00FF;
-	HAL_SPI_Transmit(&hspi3, (uint8_t*)dataBuffer, 2, 100);
+	HAL_SPI_Transmit(&hspi3, (uint8_t*)dataBuffer, 2, 50);
 
 	HAL_GPIO_WritePin( ENCODER_L_CS_GPIO_Port, ENCODER_L_CS_Pin, GPIO_PIN_SET); //cs = 1;
 

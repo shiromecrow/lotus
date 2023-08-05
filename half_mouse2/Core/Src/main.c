@@ -133,6 +133,7 @@ int main(void)
   //float PI=3.14;
   //uint8_t hoge = 3;
   int mode=0;
+  int a=0;
 	printf("ON_SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor_on[0],
 							g_sensor_on[1], g_sensor_on[2], g_sensor_on[3], g_sensor_on[4]);
 	printf("OFF_SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor_off[0],
@@ -160,6 +161,33 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		tic_timer();
+		for(int j=0;j<50000;j++){
+			a=a+1;
+		}
+		float tim1 = toc_timer();
+		printf("tim1=%f\n", tim1);
+
+		tic_timer();
+		for(int j=0;j<5000;j++){
+		create_StepCountMap_queue();
+		}
+		float tim2 = toc_timer();
+		maze_display();
+		printf("tim2=%f\n", tim2);
+		tic_timer();
+		for(int j=0;j<5000;j++){
+		//create_StepCountMap();
+		//maze_clear();
+		//create_DijkstraMap();
+		route_Dijkstra();
+		create_StepCountMap_unknown();
+
+		}
+		tim1 = toc_timer();
+		maze_display();
+		maze_display_Dijkstra();
+		printf("tim1=%f,tim2=%f\n", tim1, tim2);
 
 	  		mode=mode_decision(mode);
 //	  		clear_Ierror();
@@ -268,7 +296,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
   {
