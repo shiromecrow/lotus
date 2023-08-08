@@ -35,9 +35,9 @@ Core/Src/fail_safe.o: ../Core/Src/fail_safe.c ../Core/Inc/fail_safe.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- ../Core/Inc/CL_sensor.h ../Core/Inc/PL_LED.h ../Core/Inc/CL_encoder.h \
- ../Core/Inc/PL_motor.h ../Core/Inc/PID_wall.h ../Core/Inc/define.h \
- ../Core/Inc/record.h
+ ../Core/Inc/PID_EncoderGyro.h ../Core/Inc/CL_sensor.h \
+ ../Core/Inc/PL_LED.h ../Core/Inc/CL_encoder.h ../Core/Inc/PL_motor.h \
+ ../Core/Inc/PID_wall.h ../Core/Inc/define.h ../Core/Inc/record.h
 ../Core/Inc/fail_safe.h:
 ../Core/Inc/CL_gyro.h:
 ../Core/Inc/Control_motor.h:
@@ -76,6 +76,7 @@ Core/Src/fail_safe.o: ../Core/Src/fail_safe.c ../Core/Inc/fail_safe.h \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
+../Core/Inc/PID_EncoderGyro.h:
 ../Core/Inc/CL_sensor.h:
 ../Core/Inc/PL_LED.h:
 ../Core/Inc/CL_encoder.h:

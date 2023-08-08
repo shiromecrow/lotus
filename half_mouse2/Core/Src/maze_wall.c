@@ -623,8 +623,8 @@ void create_DijkstraMap(void){
 	int16_t discount_v[V_NUM_MAX]={180,118,100,91,90};
 	int16_t discount_d[D_NUM_MAX]={127,91,79,71,65,64};
 	int16_t dis_cost_in;
-	printf("%d,%d,%d,%d,%d\n",discount_v[0],discount_v[1],discount_v[2],discount_v[3],discount_v[4]);
-	printf("%d,%d,%d,%d,%d,%d\n",discount_d[0],discount_d[1],discount_d[2],discount_d[3],discount_d[4],discount_d[5]);
+	//printf("%d,%d,%d,%d,%d\n",discount_v[0],discount_v[1],discount_v[2],discount_v[3],discount_v[4]);
+	//printf("%d,%d,%d,%d,%d,%d\n",discount_d[0],discount_d[1],discount_d[2],discount_d[3],discount_d[4],discount_d[5]);
 	initStack_walk(&stack_x);
 	initStack_walk(&stack_y);
 	initStack_walk(&stack_matrix);

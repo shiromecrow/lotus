@@ -419,25 +419,26 @@ void mode_Running(unsigned char main_modeR){
 			create_StepCountMap_unknown();
 			maze_display();
 
-//			tic_timer();
-//			for(int j=0;j<5000;j++){
-//			create_StepCountMap_queue();
-//			}
-//			float tim2 = toc_timer();
-//			maze_display();
-//			tic_timer();
-//			for(int j=0;j<5000;j++){
-//			//create_StepCountMap();
-//			//maze_clear();
-//			//create_DijkstraMap();
-//			route_Dijkstra();
-//			create_StepCountMap_unknown();
-//
-//			}
-//			float tim1 = toc_timer();
-//			maze_display();
-//			maze_display_Dijkstra();
-//			printf("tim1=%f,tim2=%f\n", tim1, tim2);
+			tic_timer();
+			for(int j=0;j<5000;j++){
+			create_StepCountMap_queue();
+			}
+			float tim2 = toc_timer();
+			maze_display();
+			printf("tim2=%f\n", tim2);
+			tic_timer();
+			for(int j=0;j<5000;j++){
+			//create_StepCountMap();
+			//maze_clear();
+			//create_DijkstraMap();
+			route_Dijkstra();
+			create_StepCountMap_unknown();
+
+			}
+			float tim1 = toc_timer();
+			maze_display();
+			maze_display_Dijkstra();
+			printf("tim1=%f,tim2=%f\n", tim1, tim2);
 		break;
 		case 0b0001://足立法(遅い)
 			tic_timer();

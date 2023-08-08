@@ -88,10 +88,10 @@ void interupt_calFusion(void) {
 	E_lpf_distanceR += E_lpf_speedR * INTERRUPT_TIME;
 
 
-	G_hpf_speedL = straight_alpha * (G_hpf_speedL + INTERRUPT_TIME * gf_accel);
-	G_hpf_speedR = straight_alpha * (G_hpf_speedL + INTERRUPT_TIME * gf_accel);
-	G_hpf_distanceL += G_hpf_speedL * INTERRUPT_TIME;
-	G_hpf_distanceR += G_hpf_speedR * INTERRUPT_TIME;
+	//G_hpf_speedL = straight_alpha * (G_hpf_speedL + INTERRUPT_TIME * gf_accel);
+	//G_hpf_speedR = straight_alpha * (G_hpf_speedL + INTERRUPT_TIME * gf_accel);
+	//G_hpf_distanceL += G_hpf_speedL * INTERRUPT_TIME;
+	//G_hpf_distanceR += G_hpf_speedR * INTERRUPT_TIME;
 
 
 	fusion_speedL = straight_alpha * (fusion_speedL + INTERRUPT_TIME * gf_accel) + (1 - straight_alpha) * E_speedL;

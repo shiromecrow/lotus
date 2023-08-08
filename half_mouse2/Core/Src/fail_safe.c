@@ -9,7 +9,7 @@
 #include "fail_safe.h"
 #include "CL_gyro.h"
 #include "Control_motor.h"
-
+#include "PID_EncoderGyro.h"
 #include"CL_sensor.h"
 
 #include "PL_LED.h"
