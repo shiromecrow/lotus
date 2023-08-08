@@ -161,33 +161,33 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		tic_timer();
-		for(int j=0;j<50000;j++){
-			a=a+1;
-		}
-		float tim1 = toc_timer();
-		printf("tim1=%f\n", tim1);
-
-		tic_timer();
-		for(int j=0;j<5000;j++){
-		create_StepCountMap_queue();
-		}
-		float tim2 = toc_timer();
-		maze_display();
-		printf("tim2=%f\n", tim2);
-		tic_timer();
-		for(int j=0;j<5000;j++){
-		//create_StepCountMap();
-		//maze_clear();
-		//create_DijkstraMap();
-		route_Dijkstra();
-		create_StepCountMap_unknown();
-
-		}
-		tim1 = toc_timer();
-		maze_display();
-		maze_display_Dijkstra();
-		printf("tim1=%f,tim2=%f\n", tim1, tim2);
+//		tic_timer();
+//		for(int j=0;j<50000;j++){
+//			a=a+1;
+//		}
+//		float tim1 = toc_timer();
+//		printf("tim1=%f\n", tim1);
+//
+//		tic_timer();
+//		for(int j=0;j<5000;j++){
+//		create_StepCountMap_queue();
+//		}
+//		float tim2 = toc_timer();
+//		maze_display();
+//		printf("tim2=%f\n", tim2);
+//		tic_timer();
+//		for(int j=0;j<5000;j++){
+//		//create_StepCountMap();
+//		//maze_clear();
+//		//create_DijkstraMap();
+//		route_Dijkstra();
+//		create_StepCountMap_unknown();
+//
+//		}
+//		tim1 = toc_timer();
+//		maze_display();
+//		maze_display_Dijkstra();
+//		printf("tim1=%f,tim2=%f\n", tim1, tim2);
 
 	  		mode=mode_decision(mode);
 //	  		clear_Ierror();
