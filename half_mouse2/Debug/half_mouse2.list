@@ -17889,8 +17889,8 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
  8009e6e:	f44f 63a0 	mov.w	r3, #1280	; 0x500
  8009e72:	613b      	str	r3, [r7, #16]
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
- 8009e74:	f44f 6380 	mov.w	r3, #1024	; 0x400
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
+ 8009e74:	f44f 63a0 	mov.w	r3, #1280	; 0x500
  8009e78:	617b      	str	r3, [r7, #20]
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
@@ -41365,9 +41365,9 @@ void MX_TIM6_Init(void)
  8016932:	4b10      	ldr	r3, [pc, #64]	; (8016974 <MX_TIM6_Init+0x64>)
  8016934:	f240 32e7 	movw	r2, #999	; 0x3e7
  8016938:	60da      	str	r2, [r3, #12]
-  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
  801693a:	4b0e      	ldr	r3, [pc, #56]	; (8016974 <MX_TIM6_Init+0x64>)
- 801693c:	2200      	movs	r2, #0
+ 801693c:	2280      	movs	r2, #128	; 0x80
  801693e:	619a      	str	r2, [r3, #24]
   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
  8016940:	480c      	ldr	r0, [pc, #48]	; (8016974 <MX_TIM6_Init+0x64>)
