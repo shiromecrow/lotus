@@ -43,9 +43,9 @@ void init_FailSafe(void){
 	gyro_PID_error=800;
 	gyro_x_error=1500;
 
-	encoder_PID_error_highspeed=2000;//3000
+	encoder_PID_error_highspeed=3500;//3000
 	gyro_PID_error_highspeed=1900;
-	gyro_x_error_highspeed=1500;
+	gyro_x_error_highspeed=1900;
 }
 
 

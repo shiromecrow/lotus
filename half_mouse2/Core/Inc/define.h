@@ -34,8 +34,8 @@
 #define BACK_TO_CENTER_SLANT 42.5
 #define BACK_TO_CENTER_FRONT_SLANT 34.5
 
-#define GOAL_X 10
-#define GOAL_Y 11
+#define GOAL_X 1
+#define GOAL_Y 0
 #define F_PRESENCE 150
 #define R_PRESENCE 500//180//900
 #define L_PRESENCE 500//180//900

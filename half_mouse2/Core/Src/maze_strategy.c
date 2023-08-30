@@ -356,6 +356,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 	if(error_mode==0){
 	record_in();
 	}
+	create_DijkstraMap();
 	clear_Ierror();
 	reset_gyro();
 	//reset_speed();
@@ -378,7 +379,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 		straight_table2(MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 		update_wall(x,y,direction,front_wall,right_wall,left_wall);
 		if(Dijkstra_mode==1){
-			route_Dijkstra();
+			route_Dijkstra();//ダイクストラ法のマップを作成
 			create_StepCountMap_unknown();
 		}else{
 			create_StepCountMapBack_queue();
@@ -486,6 +487,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 					//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
 					no_safty = 0;
 					wait_ms_NoReset(100);
+					create_DijkstraMap();
 					//clear_Ierror();
 					mode.WallControlMode=0;
 					if(front_wall){

@@ -885,7 +885,7 @@ void route_Dijkstra(void){
 	int x = 0;
 	int y = 0;
 	int direction = 1;
-	create_DijkstraMap();
+
 
 	while (1) {
 //		if (mode_safty == 1) {break;}
@@ -1000,6 +1000,7 @@ void route_Dijkstra(void){
 		}
 
 	}
+
 	unsigned short Xcoordinate,Ycoordinate,Row_or_Column;
 	while (1) {
 

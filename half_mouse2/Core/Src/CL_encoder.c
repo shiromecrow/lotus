@@ -49,6 +49,8 @@ void reset_speed(void) {
 
 	G_hpf_speedL=0;
 	G_hpf_speedR=0;
+	E_lpf_speedL=0;
+	E_lpf_speedR=0;
 	fusion_speedL=0;
 	fusion_speedR=0;
 	straight_alpha=0.65;

@@ -427,6 +427,7 @@ void mode_Running(unsigned char main_modeR){
 			maze_display();
 			printf("tim2=%f\n", tim2);
 			tic_timer();
+			create_DijkstraMap();
 			for(int j=0;j<5000;j++){
 			//create_StepCountMap();
 			//maze_clear();
@@ -661,23 +662,23 @@ void mode_Tuning0(unsigned char main_modeR){
 			//pl_l_blue_LED(OFF);
 		break;
 		case 14://宴会芸＋吸引
-			record_mode=2;
-			for(int i=0;i<40;i++){
-			turning_table2(90, 0, 0, 930, 11000);
-			}
-//			highspeed_mode = 1;
-//			pl_FunMotor_duty(0.99);
-//			pl_FunMotor_start();
-//			HAL_Delay(600);
-//			reset_gyro();
-//			reset_speed();
-//			reset_distance();
-//			clear_Ierror();
-//			record_mode=3;
-////			mode.WallControlMode=0;
-////			straight_table2(90*32, 0, 0, 4000, 17000,mode);
-//			mode.WallControlMode=1;
-//			straight_table2(90*8, 0, 0, 3000, 12000,mode);
+//			record_mode=2;
+//			for(int i=0;i<40;i++){
+//			turning_table2(90, 0, 0, 930, 11000);
+//			}
+			highspeed_mode = 1;
+			pl_FunMotor_duty(0.99);
+			pl_FunMotor_start();
+			HAL_Delay(600);
+			reset_gyro();
+			reset_speed();
+			reset_distance();
+			clear_Ierror();
+			record_mode=3;
+//			mode.WallControlMode=0;
+//			straight_table2(90*32, 0, 0, 4000, 17000,mode);
+			mode.WallControlMode=1;
+			straight_table2(90*8, 0, 0, 3000, 12000,mode);
 		break;
 		case 15:
 			highspeed_mode = 1;
