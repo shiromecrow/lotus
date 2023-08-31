@@ -14,6 +14,7 @@
 WALL wall;
 WALL record;
 
+char Dijkstra_maker_flag;
 
 unsigned short walk_count[256]; //歩数いれる箱
 DIJKSTRA Dijkstra;
@@ -1065,6 +1066,13 @@ void create_StepCountMap_unknown(void){
 	if(stack_x.tail == stack_x.head){
 		walk_count[0] = 0;
 		pushStack_walk(&stack_x,0);pushStack_walk(&stack_y,0);
+		if (Dijkstra_maker_flag>=1){
+			Dijkstra_maker_flag=2;
+		}else{
+			Dijkstra_maker_flag=1;
+		}
+	}else{
+		Dijkstra_maker_flag=0;
 	}
 	//printf("(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n",stack_x.data[0],stack_y.data[0],stack_x.data[1],stack_y.data[1],stack_x.data[2],stack_y.data[2],stack_x.data[3],stack_y.data[3]);
 	//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);

@@ -1,4 +1,4 @@
 ../Core/Src/PID_wall.c:70:6:init_WallControl	4	static
 ../Core/Src/PID_wall.c:116:7:calWallConrol	200	static
 ../Core/Src/PID_wall.c:657:6:calFrontWallConrol	16	static
-../Core/Src/PID_wall.c:678:6:interrupt_WallCut	32	static
+../Core/Src/PID_wall.c:678:6:interrupt_WallCut	40	static

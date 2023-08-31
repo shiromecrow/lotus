@@ -149,6 +149,7 @@ switch (main_modeL) {
 		mode_WallSensorTuning_fast(main_modeR);
 	break;
 	case 0b0111:
+		testturning(speed600_shortest_mollifier,main_modeR,1,OFF,0.51,1);
 	break;
 	case 0b1000:
 	break;
@@ -897,6 +898,18 @@ void mode_WallSensorTuning_fast(unsigned char main_modeR){
 		case 1://なし
 		break;
 		case 2://なし
+			record_mode=8;
+			mode.WallControlMode=1;
+			mode.WallControlStatus=0;
+			mode.WallCutMode=0;
+			mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 1000, 1000,15000,mode);
+			mode.WallCutMode=2;
+			mode.WallControlMode=0;
+			straight_table2(22.5, 1000, 1000, 1000,15000,mode);
+			mode.WallControlMode=1;
+			mode.WallCutMode=0;
+			straight_table2(90+22.5, 1000, 0, 1000,15000,mode);
 		break;
 		case 3://壁切れ45度//90°大回り
 			record_mode=8;

@@ -64,7 +64,7 @@ extern WALL wall;
 extern WALL record;
 
 
-
+extern char Dijkstra_maker_flag;
 
 
 extern unsigned short walk_count[256]; //歩数いれる箱

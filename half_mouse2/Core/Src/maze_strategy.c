@@ -426,9 +426,85 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				break;
 			}
 
-			if(know_mode==0){
-				kitikukan = 0;
-			}
+
+			if(Dijkstra_maker_flag==1){
+				// 移動の優先順位 ： 前→右→左→後
+				mode.WallControlMode=1;
+				mode.calMazeMode=0;
+				mode.WallCutMode=0;
+				straight_table2(90/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
+				pl_R_DriveMotor_mode(MOTOR_BREAK);
+				pl_L_DriveMotor_mode(MOTOR_BREAK);
+				wait_ms_NoReset(100);
+				create_DijkstraMap();
+								if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
+								// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
+									error_mode=1;
+									break;
+								}
+								if (x<0 || y<0 || x>15 || y>15){
+												// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
+													error_mode=1;
+													break;
+								}
+								if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
+									// 直進
+									straight_table2(90/2, 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+								}
+								if(right_count < front_count && right_count <= left_count && right_count <= back_count){
+									// 右旋回
+									turning_table2(-90,0,0,-input_TurningVelocity,input_TurningAcceleration);
+									pl_R_DriveMotor_mode(MOTOR_BREAK);
+									pl_L_DriveMotor_mode(MOTOR_BREAK);
+									wait_ms_NoReset(50);
+									straight_table2(90/2, 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									direction++;
+								}
+								if(left_count < front_count && left_count < right_count && left_count <= back_count){
+									// 左旋回
+									turning_table2(90,0,0,input_TurningVelocity,input_TurningAcceleration);
+									pl_R_DriveMotor_mode(MOTOR_BREAK);
+									pl_L_DriveMotor_mode(MOTOR_BREAK);
+									wait_ms_NoReset(50);
+									straight_table2(90/2, 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									direction--;
+								}
+								if(back_count < front_count && back_count < right_count
+										&& back_count < left_count){
+									//180度旋回(前壁がある場合は尻当てを行うことで位置修正)
+									no_safty = 1;
+									backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
+									//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
+									no_safty = 0;
+									wait_ms_NoReset(100);
+									//clear_Ierror();
+									mode.WallControlMode=0;
+									if(front_wall){
+									straight_table2(-BACK_TO_CENTER, 0,0,-150,1000, mode);
+									pl_R_DriveMotor_mode(MOTOR_BREAK);
+									pl_L_DriveMotor_mode(MOTOR_BREAK);
+									wait_ms_NoReset(100);
+
+									clear_Ierror();
+									mode.WallControlMode=1;
+									straight_table2(BACK_TO_CENTER +90/2,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									}else{
+										clear_Ierror();
+										mode.WallControlMode=1;
+										straight_table2(90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+
+									}
+									//straight_table2(BACK_TO_CENTER + 90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									direction = direction + 2;
+
+								}
+
+
+			}else{
+
+				if(know_mode==0){
+					kitikukan = 0;
+				}
 			if (kitikukan == OFF) {
 
 				// 移動の優先順位 ： 前→右→左→後
@@ -482,12 +558,12 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 					pl_R_DriveMotor_mode(MOTOR_BREAK);
 					pl_L_DriveMotor_mode(MOTOR_BREAK);
 					wait_ms_NoReset(100);
+					create_DijkstraMap();
 					no_safty = 1;
 					backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
 					//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
 					no_safty = 0;
 					wait_ms_NoReset(100);
-					create_DijkstraMap();
 					//clear_Ierror();
 					mode.WallControlMode=0;
 					if(front_wall){
@@ -523,6 +599,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				mode.WallCutMode=0;
 				straight_table2((90/2 * kitiku_distance),input_StraightVelocity,input_StraightVelocity,1000,input_StraightAcceleration, mode);
 
+			}
 			}
 
 			if (direction >= 5) {
