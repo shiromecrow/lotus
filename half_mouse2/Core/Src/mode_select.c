@@ -805,12 +805,12 @@ void mode_WallSensorTuning(unsigned char main_modeR){
 			mode.WallCutMode=0;
 			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 300, 0, 300,3000,mode);
 		break;
-		case 6://斜め直進(制御あり)
+		case 6://斜め直進(90)
 			record_mode=9;
 			mode.WallControlMode=0;
 			straight_table2(90*3*sqrt(2), 0, 0, 300, 3000,mode);
 		break;
-		case 7://斜め直進(平松さん式制御あり)
+		case 7://斜め直進(45)
 			record_mode=10;
 			mode.WallControlMode=0;
 			straight_table2(90*3*sqrt(2), 0, 0, 300, 3000,mode);
@@ -819,7 +819,7 @@ void mode_WallSensorTuning(unsigned char main_modeR){
 		case 8://斜め直進(平松さん式制御あり)
 			record_mode=7;
 			mode.WallControlMode=3;
-			straight_table2(180*3*sqrt(2), 0, 0, 2000, 15000,mode);
+			straight_table2(90*3*sqrt(2), 0, 0, 300, 3000,mode);
 		break;
 		case 9:
 			record_mode=8;
@@ -881,7 +881,7 @@ void mode_WallSensorTuning_fast(unsigned char main_modeR){
 	pl_DriveMotor_standby(ON);
 	pl_L_DriveMotor_mode(MOTOR_BREAK);
 	pl_R_DriveMotor_mode(MOTOR_BREAK);
-	pl_FunMotor_duty(0.56);
+	pl_FunMotor_duty(0.99);
 	pl_FunMotor_start();
 	HAL_Delay(600);
 	reset_gyro();
@@ -905,20 +905,6 @@ void mode_WallSensorTuning_fast(unsigned char main_modeR){
 			mode.WallControlStatus=0;
 			mode.WallCutMode=0;
 			mode.calMazeMode=0;
-			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 1000, 1000,15000,mode);
-			mode.WallCutMode=2;
-			mode.WallControlMode=0;
-			straight_table2(22.5, 1000, 1000, 1000,15000,mode);
-			mode.WallControlMode=1;
-			mode.WallCutMode=0;
-			straight_table2(90+22.5, 1000, 0, 1000,15000,mode);
-		break;
-		case 3://壁切れ45度//90°大回り
-			record_mode=8;
-			mode.WallControlMode=1;
-			mode.WallControlStatus=0;
-			mode.WallCutMode=0;
-			mode.calMazeMode=0;
 			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 600, 600,15000,mode);
 			mode.WallCutMode=2;
 			mode.WallControlMode=0;
@@ -927,19 +913,33 @@ void mode_WallSensorTuning_fast(unsigned char main_modeR){
 			mode.WallCutMode=0;
 			straight_table2(90+22.5, 600, 0, 600,15000,mode);
 		break;
+		case 3://壁切れ45度//90°大回り
+			record_mode=8;
+			mode.WallControlMode=1;
+			mode.WallControlStatus=0;
+			mode.WallCutMode=0;
+			mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 1000, 1000,10000,mode);
+			mode.WallCutMode=2;
+			mode.WallControlMode=0;
+			straight_table2(22.5, 1000, 1000, 1000,10000,mode);
+			mode.WallControlMode=1;
+			mode.WallCutMode=0;
+			straight_table2(90+22.5, 1000, 0, 1000,10000,mode);
+		break;
 		case 4://壁切れ45度斜め(考え中)右
 			record_mode=8;
 			mode.WallControlMode=0;//3でもいいかも
 			mode.WallControlStatus=0;
 			mode.WallCutMode=0;
 			mode.calMazeMode=0;
-			straight_table2(BACK_TO_CENTER_FRONT_SLANT + 90*sqrt(2), 0, 600, 600,10000,mode);
+			straight_table2(BACK_TO_CENTER_FRONT_SLANT + 90*sqrt(2), 0, 1000, 1000,10000,mode);
 			mode.WallCutMode=3;
 			mode.WallControlMode=0;
-			straight_table2(22.5*sqrt(2), 600, 600, 600,10000,mode);
+			straight_table2(22.5*sqrt(2), 1000, 1000, 1000,10000,mode);
 			mode.WallControlMode=0;
 			mode.WallCutMode=0;
-			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 600, 0, 600,10000,mode);
+			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 1000, 0, 1000,10000,mode);
 		break;
 		case 5://壁切れ45度斜め(考え中)左
 			record_mode=8;
@@ -947,13 +947,13 @@ void mode_WallSensorTuning_fast(unsigned char main_modeR){
 			mode.WallControlStatus=0;
 			mode.WallCutMode=0;
 			mode.calMazeMode=0;
-			straight_table2(BACK_TO_CENTER_FRONT_SLANT+90*sqrt(2), 0, 600, 600,10000,mode);
+			straight_table2(BACK_TO_CENTER_FRONT_SLANT+90*sqrt(2), 0, 1000, 1000,10000,mode);
 			mode.WallCutMode=4;
 			mode.WallControlMode=0;
-			straight_table2(22.5*sqrt(2), 600, 600, 600,10000,mode);
+			straight_table2(22.5*sqrt(2), 1000, 1000, 1000,10000,mode);
 			mode.WallControlMode=0;
 			mode.WallCutMode=0;
-			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 600, 0, 600,10000,mode);
+			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 1000, 0, 1000,10000,mode);
 		break;
 		case 6://斜め直進(制御あり)
 			record_mode=7;

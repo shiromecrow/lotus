@@ -25,6 +25,8 @@ parameter_speed speed600_shortest;
 
 parameter_speed speed600_shortest_mollifier;
 
+parameter_speed speed1000_shortest_mollifier;
+
 float get_center_velocity(parameter_speed Howspeed, int pass_number) {
 	float End_velocity;
 	if (pass_number == -2) {
@@ -73,15 +75,15 @@ void input_parameter(void) {
 
 	speed300_exploration.slalom_R.g_speed =
 			speed300_exploration.SlalomCentervelocity;
-	speed300_exploration.slalom_R.t_speed = 930; //550
-	speed300_exploration.slalom_R.t_acc = 11000; //10000
+	speed300_exploration.slalom_R.t_speed = 980; //550
+	speed300_exploration.slalom_R.t_acc = 13000; //10000
 	speed300_exploration.slalom_R.f_ofset = 0.5; //55;
 	speed300_exploration.slalom_R.e_ofset = 20;
 
 	speed300_exploration.slalom_L.g_speed =
 			speed300_exploration.SlalomCentervelocity;
-	speed300_exploration.slalom_L.t_speed = 930;
-	speed300_exploration.slalom_L.t_acc = 11000;
+	speed300_exploration.slalom_L.t_speed = 980;
+	speed300_exploration.slalom_L.t_acc = 13000;
 	speed300_exploration.slalom_L.f_ofset = 0.5; //50;
 	speed300_exploration.slalom_L.e_ofset = 19;
 

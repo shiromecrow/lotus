@@ -1,10 +1,10 @@
-01:57:25 **** Incremental Build of configuration Debug for project half_mouse2 ****
+22:19:07 **** Incremental Build of configuration Debug for project half_mouse2 ****
 make -j8 all 
 arm-none-eabi-size   half_mouse2.elf 
    text	   data	    bss	    dec	    hex	filename
- 141476	    516	  58620	 200612	  30fa4	half_mouse2.elf
+ 141468	    516	  58620	 200604	  30f9c	half_mouse2.elf
 Finished building: default.size.stdout
  
 
-01:57:26 Build Finished. 0 errors, 0 warnings. (took 529ms)
+22:19:09 Build Finished. 0 errors, 0 warnings. (took 1s.111ms)
 
