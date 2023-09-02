@@ -544,7 +544,8 @@ void mode_Tuning0(unsigned char main_modeR){
 		case 1://トレッド幅??ジャイロ
 			record_mode = 5;
 			mode.WallControlMode=0;
-			straight_table2(400, 0, 0, 400, 3000,mode);
+//			straight_table2(400, 0, 0, 400, 3000,mode);
+			straight_table2(-BACK_TO_CENTER, 0,0,-150,1000, mode);
 			//turning_table2(360*10, 0, 0, 800, 8000);
 			//control_test_motor2(1,0,5);
 		break;
@@ -594,20 +595,21 @@ void mode_Tuning0(unsigned char main_modeR){
 			record_mode=6;
 			pl_r_blue_LED(ON);
 			pl_l_blue_LED(ON);
-			straight_table_ff(90, 0, 300, 300, 500);
-			straight_table_ff(90, 300, 600, 600, 1500);
-			straight_table_ff(90, 600, 300, 600, 1500);
-			straight_table_ff(90, 300, 0, 300, 500);
-			//get_duty(1, 1,&duty_L,&duty_R);
-			//pl_DriveMotor_duty(duty_L,duty_R);
-			//pl_DriveMotor_start();
-//			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
-//				wait_ms(1);
-//				if(record_rupe_flag==1){
-//					break;
-//				}
-//			}
-//			pl_DriveMotor_stop();
+//			straight_table_ff(90, 0, 300, 300, 500);
+//			straight_table_ff(90, 300, 600, 600, 1500);
+//			straight_table_ff(90, 600, 300, 600, 1500);
+//			straight_table_ff(90, 300, 0, 300, 500);
+
+			get_duty(1, 1,&duty_L,&duty_R);
+			pl_DriveMotor_duty(duty_L,duty_R);
+			pl_DriveMotor_start();
+			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
+				wait_ms(1);
+				if(record_rupe_flag==1){
+					break;
+				}
+			}
+			pl_DriveMotor_stop();
 			pl_r_blue_LED(OFF);
 			pl_l_blue_LED(OFF);
 		break;

@@ -137,7 +137,7 @@ void interrupt_record(void) {
 	if (record_mode == 6) { //距離の比較
 				r_data[0] = straight.velocity;
 				r_data[1] = E_lpf_speedL;
-				r_data[2] = E_lpf_speedR;
+				r_data[2] = E_speedL;
 				r_data[3] = gf_speed;
 				record_data(r_data, 4);
 			}

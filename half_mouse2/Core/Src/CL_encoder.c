@@ -41,7 +41,7 @@ void reset_distance(void) {
 	G_hpf_distanceR = 0;
 	fusion_distanceL=0;
 	fusion_distanceR=0;
-	straight_alpha=0.65;
+	straight_alpha=0.85;
 
 }
 
@@ -53,7 +53,7 @@ void reset_speed(void) {
 	E_lpf_speedR=0;
 	fusion_speedL=0;
 	fusion_speedR=0;
-	straight_alpha=0.65;
+	straight_alpha=0.85;
 
 }
 

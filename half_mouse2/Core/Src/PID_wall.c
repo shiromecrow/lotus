@@ -676,7 +676,7 @@ void calFrontWallConrol(float *PID_frontwall_l, float *PID_frontwall_r) {
 }
 
 void interrupt_WallCut(void) {
-	int del_time=ceil(3.5/INTERRUPT_TIME/straight.velocity);
+	int del_time=ceil(3.5/INTERRUPT_TIME/fabs(straight.velocity));
 	if(del_time>=11){del_time=11;}
 	for (int j = 0; j <= 4; j++) {
 		g_sensor_diff_wallcut[j]=g_sensor[j][0]-g_sensor[j][del_time];
