@@ -1,2 +1,2 @@
-../Core/Src/turning_parameter.c:28:7:get_center_velocity	16	static
-../Core/Src/turning_parameter.c:69:6:input_parameter	4	static
+../Core/Src/turning_parameter.c:30:7:get_center_velocity	16	static
+../Core/Src/turning_parameter.c:71:6:input_parameter	4	static

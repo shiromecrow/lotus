@@ -149,7 +149,7 @@ switch (main_modeL) {
 		mode_WallSensorTuning_fast(main_modeR);
 	break;
 	case 0b0111:
-		testturning(speed600_shortest_mollifier,main_modeR,1,OFF,0.51,1);
+		testturning(speed1000_shortest_mollifier,main_modeR,1,ON,0.99,1);
 	break;
 	case 0b1000:
 	break;
@@ -468,7 +468,7 @@ void mode_Running(unsigned char main_modeR){
 		break;
 		case 0b0111://吸引ありで斜め走行
 			record_out();
-			run_shortest(3000,10000,0,TURN_ON,FUN_ON,SLANT_ON,speed600_shortest_mollifier,0.99,1);
+			run_shortest(3000,10000,0,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1);
 		break;
 		case 0b1000://
 			record_out();

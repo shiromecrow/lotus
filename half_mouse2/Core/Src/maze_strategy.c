@@ -241,8 +241,8 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 			straight_table2(-BACK_TO_CENTER-20/2, 0,0,-150,1000, mode);
 			pl_R_DriveMotor_mode(MOTOR_BREAK);
 			pl_L_DriveMotor_mode(MOTOR_BREAK);
-			no_safty = 0;
 			wait_ms_NoReset(500);
+			no_safty = 0;
 			clear_Ierror();
 			maze_mode = 0;
 
@@ -301,8 +301,8 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				no_safty = 1;
 				backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
 				//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
-				no_safty = 0;
 				wait_ms_NoReset(100);
+				no_safty = 0;
 				//clear_Ierror();
 				mode.WallControlMode=0;
 				straight_table2(-BACK_TO_CENTER, 0,0,-150,1000, mode);
@@ -410,8 +410,8 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				straight_table2(-60/2, 0,0,-150,1000, mode);
 				pl_R_DriveMotor_mode(MOTOR_BREAK);
 				pl_L_DriveMotor_mode(MOTOR_BREAK);
-				no_safty = 0;
 				wait_ms_NoReset(500);
+				no_safty = 0;
 				clear_Ierror();
 
 				direction = direction + 2;
@@ -475,8 +475,8 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 									no_safty = 1;
 									backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
 									//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
-									no_safty = 0;
 									wait_ms_NoReset(100);
+									no_safty = 0;
 									//clear_Ierror();
 									mode.WallControlMode=0;
 									if(front_wall){
@@ -562,8 +562,8 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 					no_safty = 1;
 					backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
 					//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
-					no_safty = 0;
 					wait_ms_NoReset(100);
+					no_safty = 0;
 					//clear_Ierror();
 					mode.WallControlMode=0;
 					if(front_wall){
