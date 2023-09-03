@@ -152,6 +152,7 @@ switch (main_modeL) {
 		testturning(speed1000_shortest_mollifier,main_modeR,1,ON,0.99,1);
 	break;
 	case 0b1000:
+		testturning(speed1200_shortest_mollifier,main_modeR,1,ON,0.99,1);
 	break;
 	case 0b1001:
 	break;
@@ -472,11 +473,11 @@ void mode_Running(unsigned char main_modeR){
 		break;
 		case 0b1000://
 			record_out();
-			//run_shortest(2000,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed500_shortest,0.3,0);
+			run_shortest(3200,13000,0,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1);
 		break;
 		case 0b1001:
 			record_out();
-			//run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+			run_shortest(3200,13000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1);
 		break;
 		case 0b1010:
 			record_out();
@@ -652,6 +653,8 @@ void mode_Tuning0(unsigned char main_modeR){
 			straight_table2(BACK_TO_CENTER + 135, 0, speed300_exploration.slalom_R.g_speed, speed300_exploration.slalom_R.g_speed,
 					speed300_exploration.slalom_R.g_speed * speed300_exploration.slalom_R.g_speed  / 2 / 45,mode);
 			for(int i=0;i<40;i++){
+			straight_table2(MAZE_OFFSET, speed300_exploration.slalom_R.g_speed, speed300_exploration.slalom_R.g_speed, speed300_exploration.slalom_R.g_speed,
+									speed300_exploration.slalom_R.g_speed * speed300_exploration.slalom_R.g_speed  / 2 / 45,mode);
 			slalomR(speed300_exploration.slalom_R, OFF,EXPLORATION,0,300);
 			}
 			mode.WallControlMode=0;
@@ -681,7 +684,7 @@ void mode_Tuning0(unsigned char main_modeR){
 //			mode.WallControlMode=0;
 //			straight_table2(90*32, 0, 0, 4000, 17000,mode);
 			mode.WallControlMode=1;
-			straight_table2(90*8, 0, 0, 3000, 12000,mode);
+			straight_table2(90*8, 0, 0, 3200, 14000,mode);
 		break;
 		case 15:
 			highspeed_mode = 1;

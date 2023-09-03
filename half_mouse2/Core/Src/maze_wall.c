@@ -16,7 +16,7 @@ WALL record;
 
 char Dijkstra_maker_flag;
 
-unsigned short walk_count[256]; //歩数いれる箱
+uint16_t walk_count[16][16]; //歩数いれる箱
 DIJKSTRA Dijkstra;
 STACK_T g_Goal_x;
 STACK_T g_Goal_y;
@@ -29,7 +29,7 @@ unsigned char Yend_cheak = 15; //y終わりの判定15
 
 
 
-unsigned char walk_direction[256]; //歩数の方角
+
 unsigned char coordinate; //座標
 unsigned short count_number; //歩数の値
 
@@ -45,10 +45,7 @@ unsigned short front_count;
 unsigned short left_count;
 unsigned short right_count;
 unsigned short back_count;
-unsigned short count_box[40];
-unsigned char box;
-unsigned short count_boxnext[40];
-unsigned char boxnext;
+
 
 
 void maze_clear(void) { //初期化
@@ -63,12 +60,6 @@ void maze_clear(void) { //初期化
 	}
 	tt = 0;
 
-	while (tt <= 255) {
-		walk_count[tt] = 255;
-
-		tt++;
-	}
-	tt = 0;
 
 	for(int i=0;i<=15;i++){
 		for(int j=0;j<=14;j++){
@@ -83,53 +74,7 @@ void maze_clear(void) { //初期化
 
 
 //ここから歩数マップの初期状態を作る．
-
-	walk_count[(GOAL_X * 16) + GOAL_Y] = 0;
-	walk_count[((GOAL_X + 1) * 16) + GOAL_Y] = 0;
-	walk_count[(GOAL_X * 16) + GOAL_Y + 1] = 0;
-	walk_count[((GOAL_X + 1) * 16) + GOAL_Y + 1] = 0;
-	count_number = 1;
-	while (count_number <= 255) {
-		coordinate = 0;
-		while (coordinate <= 255) {
-			if (walk_count[coordinate] == count_number - 1) {
-				Xcheak_result = coordinate & Xend_cheak;
-				Ycheak_result = coordinate & Yend_cheak;
-				Xcoordinate = Xcheak_result >> 4;
-				Ycoordinate = Ycheak_result;
-
-				if (walk_count[coordinate + 1] <= 254 || Ycoordinate == 15) {
-				} else {
-					walk_count[coordinate + 1] = count_number;
-				}
-				if (walk_count[coordinate - 1] <= 254 || Ycoordinate == 0) {
-				} else {
-					walk_count[coordinate - 1] = count_number;
-				}
-				if (walk_count[coordinate + 16] <= 254 || Xcoordinate == 15) {
-				} else {
-					walk_count[coordinate + 16] = count_number;
-				}
-				if (walk_count[coordinate - 16] <= 254 || Xcoordinate == 0) {
-				} else {
-					walk_count[coordinate - 16] = count_number;
-				}
-
-			}
-			if (coordinate == 255) {
-				break;
-			}
-			coordinate++;
-
-		}
-
-		if (count_number == 255) {
-			break;
-		}
-		count_number++;
-	}
-
-	count_number = 1;
+create_StepCountMap_queue();
 
 //kokomade
 
@@ -332,16 +277,16 @@ void search_AroundWalkCount(unsigned short *front_count,unsigned short *right_co
 //	unsigned short front_count, right_count, back_count, left_count;
 
 	if (y >= 15) {north_count = MAX_WALKCOUNT;}
-	else {north_count = walk_count[16 * x + y + 1];}
+	else {north_count = walk_count[x][y + 1];}
 
 	if (x >= 15) {east_count = MAX_WALKCOUNT;}
-	else {east_count = walk_count[16 * (x + 1) + y];}
+	else {east_count = walk_count[x + 1][y];}
 
 	if (y <= 0) {south_count = MAX_WALKCOUNT;}
-	else {south_count = walk_count[16 * x + y - 1];}
+	else {south_count = walk_count[x][y - 1];}
 
 	if (x <= 0) {west_count = MAX_WALKCOUNT;}
-	else {west_count = walk_count[16 * (x - 1) + y];}
+	else {west_count = walk_count[x - 1][y];}
 
 
 	switch (direction) {		//
@@ -429,188 +374,6 @@ void search_AroundDijkstraCount(unsigned short *front_count,unsigned short *righ
 }
 
 
-
-
-
-
-void create_StepCountMap(void){
-	//ここから歩数マップを作る．*************************************
-		int tt = 0;
-		unsigned short count_box[40];
-		unsigned short count_boxnext[40];
-		while (tt <= 255) {
-			walk_count[tt] = 255;
-			tt++;
-		}
-		tt = 0;
-		while (tt <= 39) {
-			count_box[tt] = 256;
-			count_boxnext[tt] = 256;
-			tt++;
-		}
-
-		walk_count[(GOAL_X * 16) + GOAL_Y] = 0;
-		walk_count[((GOAL_X + 1) * 16) + GOAL_Y] = 0;
-		walk_count[(GOAL_X * 16) + GOAL_Y + 1] = 0;
-		walk_count[((GOAL_X + 1) * 16) + GOAL_Y + 1] = 0;
-		count_box[0] = (GOAL_X * 16) + GOAL_Y;
-		count_box[1] = ((GOAL_X + 1) * 16) + GOAL_Y;
-		count_box[2] = (GOAL_X * 16) + GOAL_Y + 1;
-		count_box[3] = ((GOAL_X + 1) * 16) + GOAL_Y + 1;
-		unsigned short coordinate;
-		unsigned short count_number = 1;
-		unsigned short Xcoordinate,Ycoordinate;
-		unsigned short wall_north,wall_south,wall_east,wall_west;
-		unsigned short box,boxnext;
-		while (count_number <= 255) {
-			box=0;boxnext=0;
-
-			while (box <= 39) {
-
-				coordinate = count_box[box];
-				Xcoordinate = (coordinate & 0xf0) >> 4;
-				Ycoordinate = coordinate & 0x0f;
-	//壁情報のときに使う
-				if (Ycoordinate <= 14) {
-					wall_north = wall.column[Ycoordinate] & (1 << Xcoordinate);
-				}
-				if (Ycoordinate >= 1) {
-					wall_south = wall.column[Ycoordinate - 1] & (1 << Xcoordinate);
-				}
-				if (Xcoordinate <= 14) {
-					wall_east = wall.row[Xcoordinate] & (1 << Ycoordinate);
-				}
-				if (Xcoordinate >= 1) {
-					wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
-				}
-
-				if (walk_count[coordinate + 1] <= 254 || Ycoordinate == 15
-						|| wall_north >= 1) {} else {
-					walk_count[coordinate + 1] = count_number;
-					count_boxnext[boxnext] = coordinate + 1;
-					boxnext++;
-				}
-				if (walk_count[coordinate - 1] <= 254 || Ycoordinate == 0
-						|| wall_south >= 1) {} else {
-					walk_count[coordinate - 1] = count_number;
-					count_boxnext[boxnext] = coordinate - 1;
-					boxnext++;
-				}
-				if (walk_count[coordinate + 16] <= 254 || Xcoordinate == 15
-						|| wall_east >= 1) {} else {
-					walk_count[coordinate + 16] = count_number;
-					count_boxnext[boxnext] = coordinate + 16;
-					boxnext++;
-				}
-				if (walk_count[coordinate - 16] <= 254 || Xcoordinate == 0
-						|| wall_west >= 1) {} else {
-					walk_count[coordinate - 16] = count_number;
-					count_boxnext[boxnext] = coordinate - 16;
-					boxnext++;
-				}
-				if (box == 39) {break;}
-				box++;
-				if (count_box[box] == 256) {break;}
-			}
-
-			tt = 0;
-			while (tt <= 39) {
-				count_box[tt] = count_boxnext[tt];
-				count_boxnext[tt] = 256;
-				tt++;
-			}
-			if (count_number == 255 || count_box[0] == 256) {break;}
-			count_number++;
-		}
-
-}
-
-
-void create_StepCountMapBack(void){
-	//ここから歩数マップを作る．*************************************
-		int tt = 0;
-		unsigned short count_box[40];
-		unsigned short count_boxnext[40];
-		while (tt <= 255) {
-			walk_count[tt] = 255;
-			tt++;
-		}
-		tt = 0;
-		while (tt <= 39) {
-			count_box[tt] = 256;
-			count_boxnext[tt] = 256;
-			tt++;
-		}
-
-		walk_count[0] = 0;
-		count_box[0] = 0;
-		unsigned short coordinate;
-		unsigned short count_number = 1;
-		unsigned short Xcoordinate,Ycoordinate;
-		unsigned short wall_north,wall_south,wall_east,wall_west;
-		unsigned short box,boxnext;
-		while (count_number <= 255) {
-			box=0;boxnext=0;
-
-			while (box <= 39) {
-
-				coordinate = count_box[box];
-				Xcoordinate = (coordinate & 0xf0) >> 4;
-				Ycoordinate = coordinate & 0x0f;
-	//壁情報のときに使う
-				if (Ycoordinate <= 14) {
-					wall_north = wall.column[Ycoordinate] & (1 << Xcoordinate);
-				}
-				if (Ycoordinate >= 1) {
-					wall_south = wall.column[Ycoordinate - 1] & (1 << Xcoordinate);
-				}
-				if (Xcoordinate <= 14) {
-					wall_east = wall.row[Xcoordinate] & (1 << Ycoordinate);
-				}
-				if (Xcoordinate >= 1) {
-					wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
-				}
-
-				if (walk_count[coordinate + 1] <= 254 || Ycoordinate == 15
-						|| wall_north >= 1) {} else {
-					walk_count[coordinate + 1] = count_number;
-					count_boxnext[boxnext] = coordinate + 1;
-					boxnext++;
-				}
-				if (walk_count[coordinate - 1] <= 254 || Ycoordinate == 0
-						|| wall_south >= 1) {} else {
-					walk_count[coordinate - 1] = count_number;
-					count_boxnext[boxnext] = coordinate - 1;
-					boxnext++;
-				}
-				if (walk_count[coordinate + 16] <= 254 || Xcoordinate == 15
-						|| wall_east >= 1) {} else {
-					walk_count[coordinate + 16] = count_number;
-					count_boxnext[boxnext] = coordinate + 16;
-					boxnext++;
-				}
-				if (walk_count[coordinate - 16] <= 254 || Xcoordinate == 0
-						|| wall_west >= 1) {} else {
-					walk_count[coordinate - 16] = count_number;
-					count_boxnext[boxnext] = coordinate - 16;
-					boxnext++;
-				}
-				if (box == 39) {break;}
-				box++;
-				if (count_box[box] == 256) {break;}
-			}
-
-			tt = 0;
-			while (tt <= 39) {
-				count_box[tt] = count_boxnext[tt];
-				count_boxnext[tt] = 256;
-				tt++;
-			}
-			if (count_number == 255 || count_box[0] == 256) {break;}
-			count_number++;
-		}
-
-}
 
 
 void create_DijkstraMap(void){
@@ -1018,8 +781,8 @@ void route_Dijkstra(void){
 				//pushStack_walk(&stack_x_unknow,Xcoordinate);
 				//pushStack_walk(&stack_y_unknow,Ycoordinate);
 				//pushStack_walk(&stack_matrix_unknow,Row_or_Column);
-				walk_count[(Xcoordinate * 16) + Ycoordinate] = 0;
-				walk_count[(Xcoordinate * 16) + Ycoordinate+1] = 0;
+				walk_count[Xcoordinate][Ycoordinate] = 0;
+				walk_count[Xcoordinate][Ycoordinate + 1] = 0;
 				pushStack_walk(&g_Goal_x,Xcoordinate);pushStack_walk(&g_Goal_y,Ycoordinate);
 				pushStack_walk(&g_Goal_x,Xcoordinate);pushStack_walk(&g_Goal_y,Ycoordinate+1);
 			}
@@ -1027,8 +790,8 @@ void route_Dijkstra(void){
 				//pushStack_walk(&stack_x_unknow,Xcoordinate);
 				//pushStack_walk(&stack_y_unknow,Ycoordinate);
 				//pushStack_walk(&stack_matrix_unknow,Row_or_Column);
-				walk_count[(Xcoordinate * 16) + Ycoordinate] = 0;
-				walk_count[((Xcoordinate+1) * 16) + Ycoordinate] = 0;
+				walk_count[Xcoordinate][Ycoordinate] = 0;
+				walk_count[Xcoordinate + 1][Ycoordinate] = 0;
 				pushStack_walk(&g_Goal_x,Xcoordinate);pushStack_walk(&g_Goal_y,Ycoordinate);
 				pushStack_walk(&g_Goal_x,Xcoordinate+1);pushStack_walk(&g_Goal_y,Ycoordinate);
 			}
@@ -1045,7 +808,11 @@ void create_StepCountMap_unknown(void){
 	STACK_T stack_x;
 	STACK_T stack_y;
 	unsigned short goalX,goalY;
-	for(int i=0;i<=255;i++){walk_count[i] = 255;}
+	for(uint8_t xx = 0;xx <= 15;xx++){
+		for(uint8_t yy = 0;yy <= 15;yy++){
+			walk_count[xx][yy] = 255;
+		}
+	}
 
 	initStack_walk(&stack_x);
 	initStack_walk(&stack_y);
@@ -1060,11 +827,11 @@ void create_StepCountMap_unknown(void){
 				//printf("stack_end\n");
 				break;
 			}
-			walk_count[(goalX * 16) + goalY] = 0;
+			walk_count[goalX][goalY] = 0;
 			pushStack_walk(&stack_x,goalX);pushStack_walk(&stack_y,goalY);
 	}
 	if(stack_x.tail == stack_x.head){
-		walk_count[0] = 0;
+		walk_count[0][0] = 0;
 		pushStack_walk(&stack_x,0);pushStack_walk(&stack_y,0);
 		if (Dijkstra_maker_flag>=1){
 			Dijkstra_maker_flag=2;
@@ -1076,7 +843,6 @@ void create_StepCountMap_unknown(void){
 	}
 	//printf("(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n",stack_x.data[0],stack_y.data[0],stack_x.data[1],stack_y.data[1],stack_x.data[2],stack_y.data[2],stack_x.data[3],stack_y.data[3]);
 	//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-	unsigned short coordinate;
 	unsigned short count_number = 1;
 	unsigned short Xcoordinate,Ycoordinate;
 	unsigned short wall_north=1,wall_south=1,wall_east=1,wall_west=1;
@@ -1091,7 +857,6 @@ void create_StepCountMap_unknown(void){
 			break;
 		}
 
-		coordinate = (Xcoordinate * 16) + Ycoordinate;
 		if (Ycoordinate <= 14) {
 			wall_north = wall.column[Ycoordinate] & (1 << Xcoordinate);
 		}
@@ -1105,27 +870,27 @@ void create_StepCountMap_unknown(void){
 			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
-		if (walk_count[coordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
-			walk_count[coordinate + 1] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate][Ycoordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
+			walk_count[Xcoordinate][Ycoordinate + 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate + 1);
 		}
-		if (walk_count[coordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
-			walk_count[coordinate - 1] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate][Ycoordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
+			walk_count[Xcoordinate][Ycoordinate - 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate - 1);
 		}
-		if (walk_count[coordinate + 16] == 255 && Xcoordinate != 15 && wall_east == 0) {
-			walk_count[coordinate + 16] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate + 1][Ycoordinate] == 255 && Xcoordinate != 15 && wall_east == 0) {
+			walk_count[Xcoordinate + 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate + 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		if (walk_count[coordinate - 16] == 255 && Xcoordinate != 0 && wall_west == 0) {
-			walk_count[coordinate - 16] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate - 1][Ycoordinate] == 255 && Xcoordinate != 0 && wall_west == 0) {
+			walk_count[Xcoordinate - 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate - 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		count_number=walk_count[coordinate] + 1;
+		count_number=walk_count[Xcoordinate][Ycoordinate] + 1;
 
 		}
 
@@ -1140,22 +905,25 @@ void create_StepCountMap_queue(void){
 	//ここから歩数マップを作る．*************************************
 	STACK_T stack_x;
 	STACK_T stack_y;
-	for(int i=0;i<=255;i++){walk_count[i] = 255;}
+	for(uint8_t xx = 0;xx <= 15;xx++){
+		for(uint8_t yy = 0;yy <= 15;yy++){
+			walk_count[xx][yy] = 255;
+		}
+	}
 	initStack_walk(&stack_x);
 	initStack_walk(&stack_y);
 
 
-	walk_count[(GOAL_X * 16) + GOAL_Y] = 0;
-	walk_count[((GOAL_X + 1) * 16) + GOAL_Y] = 0;
-	walk_count[(GOAL_X * 16) + GOAL_Y + 1] = 0;
-	walk_count[((GOAL_X + 1) * 16) + GOAL_Y + 1] = 0;
+	walk_count[GOAL_X][GOAL_Y] = 0;
+	walk_count[GOAL_X + 1][GOAL_Y] = 0;
+	walk_count[GOAL_X][GOAL_Y + 1] = 0;
+	walk_count[GOAL_X + 1][GOAL_Y + 1] = 0;
 	pushStack_walk(&stack_x,GOAL_X);pushStack_walk(&stack_y,GOAL_Y);
 	pushStack_walk(&stack_x,GOAL_X + 1);pushStack_walk(&stack_y,GOAL_Y);
 	pushStack_walk(&stack_x,GOAL_X);pushStack_walk(&stack_y,GOAL_Y + 1);
 	pushStack_walk(&stack_x,GOAL_X + 1);pushStack_walk(&stack_y,GOAL_Y + 1);
 	//printf("(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n",stack_x.data[0],stack_y.data[0],stack_x.data[1],stack_y.data[1],stack_x.data[2],stack_y.data[2],stack_x.data[3],stack_y.data[3]);
 	//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-	unsigned short coordinate;
 	unsigned short count_number = 1;
 	unsigned short Xcoordinate,Ycoordinate;
 	unsigned short wall_north=1,wall_south=1,wall_east=1,wall_west=1;
@@ -1170,7 +938,6 @@ void create_StepCountMap_queue(void){
 			break;
 		}
 
-		coordinate = (Xcoordinate * 16) + Ycoordinate;
 		if (Ycoordinate <= 14) {
 			wall_north = wall.column[Ycoordinate] & (1 << Xcoordinate);
 		}
@@ -1184,27 +951,27 @@ void create_StepCountMap_queue(void){
 			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
-		if (walk_count[coordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
-			walk_count[coordinate + 1] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate][Ycoordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
+			walk_count[Xcoordinate][Ycoordinate + 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate + 1);
 		}
-		if (walk_count[coordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
-			walk_count[coordinate - 1] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate][Ycoordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
+			walk_count[Xcoordinate][Ycoordinate - 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate - 1);
 		}
-		if (walk_count[coordinate + 16] == 255 && Xcoordinate != 15 && wall_east == 0) {
-			walk_count[coordinate + 16] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate + 1][Ycoordinate] == 255 && Xcoordinate != 15 && wall_east == 0) {
+			walk_count[Xcoordinate + 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate + 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		if (walk_count[coordinate - 16] == 255 && Xcoordinate != 0 && wall_west == 0) {
-			walk_count[coordinate - 16] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate - 1][Ycoordinate] == 255 && Xcoordinate != 0 && wall_west == 0) {
+			walk_count[Xcoordinate - 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate - 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		count_number=walk_count[coordinate] + 1;
+		count_number=walk_count[Xcoordinate][Ycoordinate] + 1;
 
 		}
 
@@ -1216,12 +983,16 @@ void create_StepCountMapBack_queue(void){
 	//ここから歩数マップを作る．*************************************
 	STACK_T stack_x;
 	STACK_T stack_y;
-	for(int i=0;i<=255;i++){walk_count[i] = 255;}
+	for(uint8_t xx = 0;xx <= 15;xx++){
+		for(uint8_t yy = 0;yy <= 15;yy++){
+			walk_count[xx][yy] = 255;
+		}
+	}
 	initStack_walk(&stack_x);
 	initStack_walk(&stack_y);
 
 
-	walk_count[0] = 0;
+	walk_count[0][0] = 0;
 	pushStack_walk(&stack_x,0);pushStack_walk(&stack_y,0);
 	//printf("(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n",stack_x.data[0],stack_y.data[0],stack_x.data[1],stack_y.data[1],stack_x.data[2],stack_y.data[2],stack_x.data[3],stack_y.data[3]);
 	//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
@@ -1254,27 +1025,27 @@ void create_StepCountMapBack_queue(void){
 			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
-		if (walk_count[coordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
-			walk_count[coordinate + 1] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate][Ycoordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
+			walk_count[Xcoordinate][Ycoordinate + 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate + 1);
 		}
-		if (walk_count[coordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
-			walk_count[coordinate - 1] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate][Ycoordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
+			walk_count[Xcoordinate][Ycoordinate - 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate - 1);
 		}
-		if (walk_count[coordinate + 16] == 255 && Xcoordinate != 15 && wall_east == 0) {
-			walk_count[coordinate + 16] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate + 1][Ycoordinate] == 255 && Xcoordinate != 15 && wall_east == 0) {
+			walk_count[Xcoordinate + 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate + 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		if (walk_count[coordinate - 16] == 255 && Xcoordinate != 0 && wall_west == 0) {
-			walk_count[coordinate - 16] = walk_count[coordinate] + 1;
+		if (walk_count[Xcoordinate - 1][Ycoordinate] == 255 && Xcoordinate != 0 && wall_west == 0) {
+			walk_count[Xcoordinate - 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate - 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		count_number=walk_count[coordinate] + 1;
+		count_number=walk_count[Xcoordinate][Ycoordinate] + 1;
 
 		}
 
@@ -1345,113 +1116,6 @@ unsigned short popStack_walk(STACK_T *stack){
 
 
 
-void create_StepCountMap_ST(int STmass){
-	//ここから歩数マップを作る．*************************************
-	STACK_T stack_x;
-	STACK_T stack_y;
-	STACK_T stack_direction;
-	for(int i=0;i<=255;i++){walk_count[i] = 255;}
-	initStack_walk(&stack_x);
-	initStack_walk(&stack_y);
-	initStack_walk(&stack_direction);
-
-
-	walk_count[(GOAL_X * 16) + GOAL_Y] = 0;
-	walk_count[((GOAL_X + 1) * 16) + GOAL_Y] = 0;
-	walk_count[(GOAL_X * 16) + GOAL_Y + 1] = 0;
-	walk_count[((GOAL_X + 1) * 16) + GOAL_Y + 1] = 0;
-	pushStack_walk(&stack_x,GOAL_X);pushStack_walk(&stack_y,GOAL_Y);pushStack_walk(&stack_direction,0);
-	pushStack_walk(&stack_x,GOAL_X + 1);pushStack_walk(&stack_y,GOAL_Y);pushStack_walk(&stack_direction,0);
-	pushStack_walk(&stack_x,GOAL_X);pushStack_walk(&stack_y,GOAL_Y + 1);pushStack_walk(&stack_direction,0);
-	pushStack_walk(&stack_x,GOAL_X + 1);pushStack_walk(&stack_y,GOAL_Y + 1);pushStack_walk(&stack_direction,0);
-	//printf("(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n",stack_x.data[0],stack_y.data[0],stack_x.data[1],stack_y.data[1],stack_x.data[2],stack_y.data[2],stack_x.data[3],stack_y.data[3]);
-	//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-	unsigned short coordinate;
-	unsigned short count_number = 1;
-	unsigned short Xcoordinate,Ycoordinate,Direction;
-	unsigned short wall_north=1,wall_south=1,wall_east=1,wall_west=1;
-	while (count_number <= 254) {
-
-		Xcoordinate = popStack_walk(&stack_x);
-		Ycoordinate = popStack_walk(&stack_y);
-		Direction = popStack_walk(&stack_direction);
-		//printf("x %d,y %d\n",Xcoordinate,Ycoordinate);
-		//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-		if (Xcoordinate == 65535 || Ycoordinate == 65535) {
-			//printf("stack_end\n");
-			break;
-		}
-
-		coordinate = (Xcoordinate * 16) + Ycoordinate;
-		if (Ycoordinate <= 14) {
-			wall_north = wall.column[Ycoordinate] & (1 << Xcoordinate);
-		}
-		if (Ycoordinate >= 1) {
-			wall_south = wall.column[Ycoordinate - 1] & (1 << Xcoordinate);
-		}
-		if (Xcoordinate <= 14) {
-			wall_east = wall.row[Xcoordinate] & (1 << Ycoordinate);
-		}
-		if (Xcoordinate >= 1) {
-			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
-		}
-
-		if (walk_count[coordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
-			//北
-			if(Direction==0 || Direction==1){
-				walk_count[coordinate + 1] = walk_count[coordinate] + 1;
-			}else{
-				walk_count[coordinate + 1] = walk_count[coordinate] + STmass;
-			}
-			pushStack_walk(&stack_x,Xcoordinate);
-			pushStack_walk(&stack_y,Ycoordinate + 1);
-			pushStack_walk(&stack_direction,1);
-		}
-		if (walk_count[coordinate + 16] == 255 && Xcoordinate != 15 && wall_east == 0) {
-			if(Direction==0 || Direction==2){
-				walk_count[coordinate + 1] = walk_count[coordinate] + 1;
-			}else{
-				walk_count[coordinate + 1] = walk_count[coordinate] + STmass;
-			}
-			pushStack_walk(&stack_x,Xcoordinate + 1);
-			pushStack_walk(&stack_y,Ycoordinate);
-			pushStack_walk(&stack_direction,2);
-		}
-		if (walk_count[coordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
-			if(Direction==0 || Direction==3){
-				walk_count[coordinate + 1] = walk_count[coordinate] + 1;
-			}else{
-				walk_count[coordinate + 1] = walk_count[coordinate] + STmass;
-			}
-			pushStack_walk(&stack_x,Xcoordinate);
-			pushStack_walk(&stack_y,Ycoordinate - 1);
-			pushStack_walk(&stack_direction,3);
-		}
-
-		if (walk_count[coordinate - 16] == 255 && Xcoordinate != 0 && wall_west == 0) {
-			if(Direction==0 || Direction==4){
-				walk_count[coordinate + 1] = walk_count[coordinate] + 1;
-			}else{
-				walk_count[coordinate + 1] = walk_count[coordinate] + STmass;
-			}
-			pushStack_walk(&stack_x,Xcoordinate - 1);
-			pushStack_walk(&stack_y,Ycoordinate);
-			pushStack_walk(&stack_direction,4);
-		}
-		count_number=walk_count[coordinate] + 1;
-
-		}
-
-}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1483,12 +1147,12 @@ void maze_display(void) {
 			"+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n");
 	for (tt = 14;tt >= -1;tt--){
 
-		printf("|%5d", walk_count[tt + 1]);
+		printf("|%5d", walk_count[0][tt + 1]);
 		for(ss = 0;ss < 15;ss++){
 			if ((wall.row[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
-				printf("|%5d", walk_count[tt + 1 + (ss + 1) * 16]);
+				printf("|%5d", walk_count[ss + 1][tt + 1]);
 			}else{
-				printf(" %5d", walk_count[tt + 1 + (ss + 1) * 16]);
+				printf(" %5d", walk_count[ss + 1][tt + 1]);
 			}
 		}
 		printf("|\n");
@@ -1515,12 +1179,12 @@ void maze_display(void) {
 			"+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n");
 
 	for (tt = 14;tt >= -1;tt--){
-		printf("|%5d", walk_count[tt + 1]);
+		printf("|%5d", walk_count[0][tt + 1]);
 		for(ss = 0;ss < 15;ss++){
 			if ((wall.row_look[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
-				printf("|%5d", walk_count[tt + 1 + (ss + 1) * 16]);
+				printf("|%5d", walk_count[ss + 1][tt + 1]);
 			}else{
-				printf(" %5d", walk_count[tt + 1 + (ss + 1) * 16]);
+				printf(" %5d", walk_count[ss + 1][tt + 1]);
 			}
 		}
 		printf("|\n");

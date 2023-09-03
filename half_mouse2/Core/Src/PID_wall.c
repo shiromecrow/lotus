@@ -123,9 +123,9 @@ float calWallConrol(void) {
 		wallcut_threshold_L = CONTROLWALLCUT_THRESHOLD_SHORT_L;
 		wallcut_threshold_R = CONTROLWALLCUT_THRESHOLD_SHORT_R;
 
-		if (straight.velocity > 2000) {
-			sensor_gain_p = SENSOR_GAIN_SHORT_P * 2000;
-			sensor_gain_d = SENSOR_GAIN_SHORT_D * 2000;
+		if (straight.velocity > 1000) {
+			sensor_gain_p = SENSOR_GAIN_SHORT_P * 1000;
+			sensor_gain_d = SENSOR_GAIN_SHORT_D * 1000;
 		} else {
 			sensor_gain_p = SENSOR_GAIN_SHORT_P * straight.velocity;
 			sensor_gain_d = SENSOR_GAIN_SHORT_D * straight.velocity;
@@ -318,9 +318,9 @@ float calWallConrol(void) {
 		float coefficientR[4];
 		float coefficientL[4];
 		float sensor_gain_slant90_p, sensor_gain_slant90_d;
-		if (straight.velocity > 2000) {
-			sensor_gain_slant90_p = SENSOR_GAIN_SLANT90_P * 2000;
-			sensor_gain_slant90_d = SENSOR_GAIN_SLANT90_D * 2000;
+		if (straight.velocity > 1000) {
+			sensor_gain_slant90_p = SENSOR_GAIN_SLANT90_P * 1000;
+			sensor_gain_slant90_d = SENSOR_GAIN_SLANT90_D * 1000;
 		} else {
 			sensor_gain_slant90_p = SENSOR_GAIN_SLANT90_P * straight.velocity;
 			sensor_gain_slant90_d = SENSOR_GAIN_SLANT90_D * straight.velocity;

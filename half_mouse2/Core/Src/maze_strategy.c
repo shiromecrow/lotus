@@ -9,6 +9,7 @@
 #include"Control_motor.h"
 #include"define.h"
 #include"maze_Turning.h"
+#include "PID_EncoderGyro.h"
 
 #include"maze_wall.h"
 #include"PL_flash.h"
@@ -621,7 +622,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 	HAL_Delay(100);
 	maze_display();
 	create_StepCountMap_queue();
-	if(walk_count[0] == 255){
+	if(walk_count[0][0] == 255){
 		error_mode = 1;
 	}
 	if (error_mode == 0) {
@@ -1373,7 +1374,7 @@ void compress_kitiku(int *x,int *y,int *direction) {
 		if (right_wall) {right_count = MAX_WALKCOUNT;}
 		if (left_wall) {left_count = MAX_WALKCOUNT;}
 		// 移動の優先順位 ： 前→右→左→後
-		if (walk_count[16 * x_now + y_now] <= 1) {
+		if (walk_count[x_now][y_now] <= 1) {
 			//goal間近で停止
 			break;
 		}

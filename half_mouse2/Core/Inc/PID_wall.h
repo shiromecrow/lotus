@@ -19,8 +19,8 @@
 #define SENSOR_GAIN_P 0.5//0.16横壁制御のゲイン
 #define SENSOR_GAIN_D 0.006//0.16横壁制御のゲイン
 //#define SENSOR_GAIN_SHORT 0.5*800/1200//0.16横壁制御のゲイン最短用
-#define SENSOR_GAIN_SHORT_P 0.4//0.16横壁制御のゲイン最短用
-#define SENSOR_GAIN_SHORT_D -0.01//0.16横壁制御のゲイン最短用
+#define SENSOR_GAIN_SHORT_P 0.3//0.16横壁制御のゲイン最短用
+#define SENSOR_GAIN_SHORT_D -0.004//0.16横壁制御のゲイン最短用
 #define CENTER_L 1685//左90
 #define CENTER_R 1451//右90
 #define CONTROLWALL_THRESHOLD_L 700//左壁制御の閾値110
