@@ -644,7 +644,7 @@ void mode_Tuning0(unsigned char main_modeR){
 		case 12:
 		record_mode=2;
 		for(int i=0;i<40;i++){
-		turning_table2(90, 0, 0, 930, 11000);
+		turning_table2(90, 0, 0, 400, 3000);
 		}
 		break;
 		case 13:
