@@ -162,8 +162,13 @@ void slalomR(parameter turnpara,char test_mode,char shortest_mode,char mollifier
 		wallmode.WallControlStatus=0;
 		wallmode.WallCutMode=1;
 		wallmode.calMazeMode=0;
-		straight_table2(turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
-													turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		if(shortest_mode==0){
+			straight_table2(MAZE_OFFSET+turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+														turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		}else{
+			straight_table2(turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+														turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		}
 		if(mollifier_mode == ON){
 			mollifier_slalom_table(turnpara.g_speed,-90,turnpara.t_speed);
 		}else{
@@ -217,8 +222,13 @@ void slalomL(parameter turnpara,char test_mode,char shortest_mode,char mollifier
 		wallmode.WallControlStatus=0;
 		wallmode.WallCutMode=1;
 		wallmode.calMazeMode=0;
-		straight_table2(turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
-													turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		if(shortest_mode==0){
+			straight_table2(MAZE_OFFSET+turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+														turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		}else{
+			straight_table2(turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+														turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		}
 		if(mollifier_mode == ON){
 			mollifier_slalom_table(turnpara.g_speed,90,turnpara.t_speed);
 		}else{

@@ -1,5 +1,6 @@
 Core/Src/PID_EncoderGyro.o: ../Core/Src/PID_EncoderGyro.c \
- ../Core/Inc/PID_EncoderGyro.h ../Core/Inc/CL_encoder.h \
+ ../Core/Inc/PID_EncoderGyro.h ../Core/Inc/fail_safe.h \
+ ../Core/Inc/CL_encoder.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
  ../Core/Inc/stm32g4xx_hal_conf.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
@@ -38,6 +39,7 @@ Core/Src/PID_EncoderGyro.o: ../Core/Src/PID_EncoderGyro.c \
  ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h \
  ../Core/Inc/define.h
 ../Core/Inc/PID_EncoderGyro.h:
+../Core/Inc/fail_safe.h:
 ../Core/Inc/CL_encoder.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:

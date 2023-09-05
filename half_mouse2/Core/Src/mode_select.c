@@ -155,6 +155,7 @@ switch (main_modeL) {
 		testturning(speed1200_shortest_mollifier,main_modeR,1,ON,0.99,1);
 	break;
 	case 0b1001:
+		testturning(speed1600_shortest_mollifier,main_modeR,1,ON,0.99,1);
 	break;
 	case 0b1010:
 	break;
