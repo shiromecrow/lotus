@@ -478,11 +478,11 @@ void mode_Running(unsigned char main_modeR){
 		break;
 		case 0b1001:
 			record_out();
-			run_shortest(3200,13000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1);
+			run_shortest(3000,10000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1);
 		break;
 		case 0b1010:
 			record_out();
-			//run_shortest(3000,18000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+			run_shortest(3200,13000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1);
 		break;
 		case 0b1011:
 			record_out();

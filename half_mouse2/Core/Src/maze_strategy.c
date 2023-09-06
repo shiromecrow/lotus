@@ -433,7 +433,8 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				mode.WallControlMode=1;
 				mode.calMazeMode=0;
 				mode.WallCutMode=0;
-				straight_table2(90/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
+				straight_table2(90/2-MAZE_OFFSET-(BACK_TO_CENTER-BACK_TO_CENTER_FRONT), input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
+
 				pl_R_DriveMotor_mode(MOTOR_BREAK);
 				pl_L_DriveMotor_mode(MOTOR_BREAK);
 				wait_ms_NoReset(100);
@@ -448,17 +449,20 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 													error_mode=1;
 													break;
 								}
+								mode.WallControlMode=0;
+								mode.WallCutMode=0;
+								mode.calMazeMode=0;
 								if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
 									// 直進
-									straight_table2(90/2, 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									straight_table2(90/2+(BACK_TO_CENTER-BACK_TO_CENTER_FRONT), 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 								}
 								if(right_count < front_count && right_count <= left_count && right_count <= back_count){
 									// 右旋回
 									turning_table2(-90,0,0,-input_TurningVelocity,input_TurningAcceleration);
 									pl_R_DriveMotor_mode(MOTOR_BREAK);
 									pl_L_DriveMotor_mode(MOTOR_BREAK);
-									wait_ms_NoReset(50);
-									straight_table2(90/2, 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									wait_ms_NoReset(100);
+									straight_table2(90/2+(BACK_TO_CENTER-BACK_TO_CENTER_FRONT), 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 									direction++;
 								}
 								if(left_count < front_count && left_count < right_count && left_count <= back_count){
@@ -466,8 +470,8 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 									turning_table2(90,0,0,input_TurningVelocity,input_TurningAcceleration);
 									pl_R_DriveMotor_mode(MOTOR_BREAK);
 									pl_L_DriveMotor_mode(MOTOR_BREAK);
-									wait_ms_NoReset(50);
-									straight_table2(90/2, 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									wait_ms_NoReset(100);
+									straight_table2(90/2+(BACK_TO_CENTER-BACK_TO_CENTER_FRONT), 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 									direction--;
 								}
 								if(back_count < front_count && back_count < right_count
@@ -492,7 +496,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 									}else{
 										clear_Ierror();
 										mode.WallControlMode=1;
-										straight_table2(90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+										straight_table2(90/2+(BACK_TO_CENTER-BACK_TO_CENTER_FRONT),0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 
 									}
 									//straight_table2(BACK_TO_CENTER + 90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
@@ -579,7 +583,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 					}else{
 						clear_Ierror();
 						mode.WallControlMode=1;
-						straight_table2(90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+						straight_table2(90/2,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 
 					}
 					//straight_table2(BACK_TO_CENTER + 90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);

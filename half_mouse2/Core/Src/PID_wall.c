@@ -492,9 +492,9 @@ float calWallConrol(void) {
 		float coefficientR45[4];
 		float coefficientL45[4];
 		float sensor_gain_slant45_p, sensor_gain_slant45_d;
-		if (straight.velocity > 2000) {
-			sensor_gain_slant45_p = SENSOR_GAIN_SLANT45_P * 2000;
-			sensor_gain_slant45_d = SENSOR_GAIN_SLANT45_D * 2000;
+		if (straight.velocity > 1000) {
+			sensor_gain_slant45_p = SENSOR_GAIN_SLANT45_P * 1000;
+			sensor_gain_slant45_d = SENSOR_GAIN_SLANT45_D * 1000;
 		} else {
 			sensor_gain_slant45_p = SENSOR_GAIN_SLANT45_P * straight.velocity;
 			sensor_gain_slant45_d = SENSOR_GAIN_SLANT45_D * straight.velocity;
