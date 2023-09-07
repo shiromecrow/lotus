@@ -7,11 +7,21 @@
 
 #include "FF_motor.h"
 #include "CL_encoder.h"
+#include "fail_safe.h"
 
 void feedforward_const_accel(float *feedforward_straight,
 		float straight_velocity, float straight_acceleration,
 		float *feedforward_turning, float turning_velocity,
 		float turning_acceleration) {
+
+float ImT;//0.00000116 //kg/m^2 ロータ慣性モーメントターン用
+
+if(highspeed_mode == 1){
+	ImT=0.00000052;
+}else{
+	ImT=0.00000035;
+
+}
 
 	if (straight_velocity >= 0) {
 		*feedforward_straight = (((Im * ng * straight_acceleration / 1000

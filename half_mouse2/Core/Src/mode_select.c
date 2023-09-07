@@ -486,19 +486,19 @@ void mode_Running(unsigned char main_modeR){
 		break;
 		case 0b1011:
 			record_out();
-			//run_shortest(4000,20000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest,0.35,0);
+			run_shortest(4000,17000,0,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1);
 		break;
 		case 0b1100:
 			record_out();
-			//run_shortest(2500,15000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+			run_shortest(4000,17000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1);
 		break;
 		case 0b1101:
 			record_out();
-			//run_shortest(3000,18000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+			run_shortest(3100,11000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest_mollifier,0.99,1);
 		break;
 		case 0b1110:
 			record_out();
-			//run_shortest(4000,20000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest,0.51,0);
+			run_shortest(4000,17000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest_mollifier,0.99,1);
 		break;
 		case 0b1111:
 			AdatiWayReturn(250,400,2000,3000,speed250_exploration,1,0);
@@ -685,22 +685,22 @@ void mode_Tuning0(unsigned char main_modeR){
 //			mode.WallControlMode=0;
 //			straight_table2(90*32, 0, 0, 4000, 17000,mode);
 			mode.WallControlMode=1;
-			straight_table2(90*8, 0, 0, 3200, 14000,mode);
+			straight_table2(90*8, 0, 0, 4000, 17000,mode);
 		break;
 		case 15:
 			highspeed_mode = 1;
-						pl_FunMotor_duty(0.95);
-						//pl_FunMotor_start();
-						HAL_Delay(600);
-						reset_gyro();
-						reset_speed();
-						reset_distance();
-						clear_Ierror();
-						record_mode=3;
-			//			mode.WallControlMode=0;
-			//			straight_table2(90*32, 0, 0, 4000, 17000,mode);
-						mode.WallControlMode=1;
-						straight_table2(90*8, 0, 0, 1000, 7000,mode);
+			pl_FunMotor_duty(0.99);
+			pl_FunMotor_start();
+			HAL_Delay(600);
+			reset_gyro();
+			reset_speed();
+			reset_distance();
+			clear_Ierror();
+			record_mode=3;
+//			mode.WallControlMode=0;
+//			straight_table2(90*32, 0, 0, 4000, 17000,mode);
+			mode.WallControlMode=3;
+			straight_table2(90*7.5*sqrt(2), 0, 0, 4000, 20000,mode);
 //			record_mode=1;
 //			mode.WallControlMode=0;
 //			straight_table2(BACK_TO_CENTER_SLANT, 0, 0, 300, 6000,mode);
@@ -902,22 +902,6 @@ void mode_WallSensorTuning_fast(unsigned char main_modeR){
 			highspeed_mode=0;
 		break;
 		case 1://なし
-		break;
-		case 2://なし
-			record_mode=8;
-			mode.WallControlMode=1;
-			mode.WallControlStatus=0;
-			mode.WallCutMode=0;
-			mode.calMazeMode=0;
-			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 600, 600,15000,mode);
-			mode.WallCutMode=2;
-			mode.WallControlMode=0;
-			straight_table2(22.5, 600, 600, 600,15000,mode);
-			mode.WallControlMode=1;
-			mode.WallCutMode=0;
-			straight_table2(90+22.5, 600, 0, 600,15000,mode);
-		break;
-		case 3://壁切れ45度//90°大回り
 			record_mode=8;
 			mode.WallControlMode=1;
 			mode.WallControlStatus=0;
@@ -930,6 +914,34 @@ void mode_WallSensorTuning_fast(unsigned char main_modeR){
 			mode.WallControlMode=1;
 			mode.WallCutMode=0;
 			straight_table2(90+22.5, 1000, 0, 1000,10000,mode);
+		break;
+		case 2://なし
+			record_mode=8;
+			mode.WallControlMode=1;
+			mode.WallControlStatus=0;
+			mode.WallCutMode=0;
+			mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 1200, 1200,10000,mode);
+			mode.WallCutMode=2;
+			mode.WallControlMode=0;
+			straight_table2(22.5, 1200, 1200, 1200,10000,mode);
+			mode.WallControlMode=1;
+			mode.WallCutMode=0;
+			straight_table2(90+22.5, 1200, 0, 1200,10000,mode);
+		break;
+		case 3://壁切れ45度//90°大回り
+			record_mode=8;
+			mode.WallControlMode=1;
+			mode.WallControlStatus=0;
+			mode.WallCutMode=0;
+			mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT + 90, 0, 1500, 1500,13000,mode);
+			mode.WallCutMode=2;
+			mode.WallControlMode=0;
+			straight_table2(22.5, 1500, 1500, 1500,13000,mode);
+			mode.WallControlMode=1;
+			mode.WallCutMode=0;
+			straight_table2(90+22.5, 1500, 0, 1500,13000,mode);
 		break;
 		case 4://壁切れ45度斜め(考え中)右
 			record_mode=8;
@@ -959,12 +971,12 @@ void mode_WallSensorTuning_fast(unsigned char main_modeR){
 			mode.WallCutMode=0;
 			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 1000, 0, 1000,10000,mode);
 		break;
-		case 6://斜め直進(制御あり)
+		case 6://斜め直進(制御なし計測用)
 			record_mode=7;
 			mode.WallControlMode=0;
 			straight_table2(180*3*sqrt(2)+90*sqrt(2), 0, 0, 2000, 20000,mode);
 		break;
-		case 7://斜め直進(平松さん式制御あり)
+		case 7://斜め直進(制御なし計測用)
 			record_mode=9;
 			mode.WallControlMode=0;
 			straight_table2(180*3*sqrt(2)+90*sqrt(2), 0, 0, 2000, 20000,mode);
