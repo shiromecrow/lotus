@@ -451,17 +451,17 @@ void input_parameter(void) {
 
 			speed1200_shortest_mollifier.turn45in_R.g_speed = 1200;
 			speed1200_shortest_mollifier.turn45in_R.t_speed = 1550;
-			speed1200_shortest_mollifier.turn45in_R.f_ofset = 19;
-			speed1200_shortest_mollifier.turn45in_R.e_ofset = 33;
+			speed1200_shortest_mollifier.turn45in_R.f_ofset = 8;
+			speed1200_shortest_mollifier.turn45in_R.e_ofset = 39;
 
 			speed1200_shortest_mollifier.turn45in_L.g_speed = 1200;
 			speed1200_shortest_mollifier.turn45in_L.t_speed = 1550;
-			speed1200_shortest_mollifier.turn45in_L.f_ofset = 19;
-			speed1200_shortest_mollifier.turn45in_L.e_ofset = 32;
+			speed1200_shortest_mollifier.turn45in_L.f_ofset = 16;
+			speed1200_shortest_mollifier.turn45in_L.e_ofset = 39;
 
 			speed1200_shortest_mollifier.turn135in_R.g_speed = 1200;
 			speed1200_shortest_mollifier.turn135in_R.t_speed = 1850;
-			speed1200_shortest_mollifier.turn135in_R.f_ofset = 15;
+			speed1200_shortest_mollifier.turn135in_R.f_ofset = 16;
 			speed1200_shortest_mollifier.turn135in_R.e_ofset = 22;
 
 			speed1200_shortest_mollifier.turn135in_L.g_speed = 1200;
@@ -496,7 +496,7 @@ void input_parameter(void) {
 
 			speed1200_shortest_mollifier.V90_L.g_speed = 1200;
 			speed1200_shortest_mollifier.V90_L.t_speed = 1950;
-			speed1200_shortest_mollifier.V90_L.f_ofset = 9;
+			speed1200_shortest_mollifier.V90_L.f_ofset = 8.5;
 			speed1200_shortest_mollifier.V90_L.e_ofset = 20;
 
 //********************************1600********************************************
