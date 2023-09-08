@@ -298,12 +298,13 @@ float straight_table2(float input_displacement, float input_start_velocity,
 	}else if(motor_mode.WallCutMode==3){
 		//斜めの右旋回
 		//左壁or右壁がstart～endの中にあれば抜ける
-		enc.sigma_error=0;
+
 		g_acc_flag=0;
 		straight.acceleration = 0;
 		while((NoWallDisplacementR45slant2<CUTPLACE_TO_CENTER_R45_SLANT ||
 				NoWallDisplacementR45slant2>CUTPLACE_THRESHOLD_END_R45_SLANT) &&
 				  front_wall_break_45slant==0){}
+		enc.sigma_error=0;
 		straight.displacement=0;
 		if (input_count_velocity>=0){straight.acceleration = input_acceleration;
 			}else{straight.acceleration = -input_acceleration;}
@@ -315,12 +316,13 @@ float straight_table2(float input_displacement, float input_start_velocity,
 	}else if(motor_mode.WallCutMode==4){
 		//斜めの左旋回
 		//左壁or右壁がstart～endの中にあれば抜ける
-		enc.sigma_error=0;
+
 		g_acc_flag=0;
 		straight.acceleration = 0;
 		while((NoWallDisplacementL45slant2<CUTPLACE_TO_CENTER_L45_SLANT ||
 			  NoWallDisplacementL45slant2>CUTPLACE_THRESHOLD_END_L45_SLANT) &&
 				  front_wall_break_45slant==0){}
+		enc.sigma_error=0;
 		straight.displacement=0;
 		if (input_count_velocity>=0){straight.acceleration = input_acceleration;
 			}else{straight.acceleration = -input_acceleration;}
