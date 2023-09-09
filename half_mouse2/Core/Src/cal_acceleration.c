@@ -191,6 +191,15 @@ float time_delay2=-15;
 //				target->acceleration = (2/mollifier_T)*input.displacement/MOLLIFIER_INTEGRAL*(-mollifier_T*mollifier_T/2*(mollifier_T/2/1.316)/(mollifier_T*mollifier_T/4-(mollifier_T/2/1.316)*(mollifier_T/2/1.316))/(mollifier_T*mollifier_T/4-(mollifier_T/2/1.316)*(mollifier_T/2/1.316)))*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-(mollifier_T/2/1.316)*(mollifier_T/2/1.316)));;
 				//target->acceleration = 0;
 			}
+//			if(mollifier_timer>-mollifier_T/2*0.35 && mollifier_timer<mollifier_T/2*0.45){
+//							target->acceleration = 0.7*target->acceleration;
+//			}
+//			if(mollifier_timer>mollifier_T/2*0.6){
+//							target->acceleration = 0.4*target->acceleration;
+//			}
+//			if(mollifier_timer>mollifier_T/2*0.9){
+//							target->acceleration = -0.6*target->acceleration;
+//			}
 		}else{
 			old_velocity=target->velocity;
 			target->velocity=0;

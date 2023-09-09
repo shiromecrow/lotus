@@ -144,6 +144,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 	_Bool front_wall;
 	_Bool right_wall;
 	_Bool left_wall;
+	char timer_end_mode=0;
 	MOTOR_MODE mode;
 	mode.WallControlMode=1;
 	mode.WallControlStatus=0;
@@ -347,7 +348,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 		if(error_mode==1){break;}
 		if (g_timCount_sec>240){
 					// 秒数エンド
-
+						timer_end_mode=1;
 						pl_DriveMotor_stop();
 						pl_DriveMotor_standby(OFF);
 						break;
@@ -619,6 +620,13 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 	//		}
 	//基地区間
 			if(error_mode==1){break;}
+			if (g_timCount_sec>240){
+						// 秒数エンド
+							timer_end_mode=1;
+							pl_DriveMotor_stop();
+							pl_DriveMotor_standby(OFF);
+							break;
+						}
 		}
 
 	pl_DriveMotor_standby(OFF); //MTU2.TSTR.BIT.CST0 = 0;
@@ -631,8 +639,10 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 	}
 	if (error_mode == 0) {
 		record_in();
-	} else {
+	} else if(timer_end_mode==0) {
 		record_out();
+	}else{
+		record_in();
 	}
 
 }

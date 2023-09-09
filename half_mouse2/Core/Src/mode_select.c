@@ -554,7 +554,7 @@ void mode_Tuning0(unsigned char main_modeR){
 		case 2://壁制御
 			record_mode=6;
 			mode.WallControlMode=1;
-			straight_table2(90*8, 0, 0, 300, 6000,mode);
+			straight_table2(90*15, 0, 0, 300, 6000,mode);
 			//control_test_motor2(0,1,6);
 		break;
 		case 3://右スラローム(探索)
