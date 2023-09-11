@@ -222,8 +222,10 @@ float straight_table2(float input_displacement, float input_start_velocity,
 					)/2/input_acceleration;
 	// 例外処理
 	if (input_acceleration < 0){input_acceleration=-input_acceleration;}//加速が負
-	if(noGoalPillarMode==1){
+
+	if(noGoalPillarMode==1 && motor_mode.WallCutMode==1){
 		motor_mode.WallCutMode=0;
+		input_displacement=input_displacement-MAZE_OFFSET;
 	}
 
 
@@ -379,6 +381,9 @@ float straight_table2(float input_displacement, float input_start_velocity,
 }
 
 void End_straight(float input_displacement,MOTOR_MODE motor_mode,_Bool right_wall,_Bool left_wall){
+	if(noGoalPillarMode==1){
+		motor_mode.WallCutMode=0;
+	}
 	while (g_acc_flag!=4){
 		if(right_wall == 0 || left_wall == 0){
 		if(motor_mode.WallCutMode==1){

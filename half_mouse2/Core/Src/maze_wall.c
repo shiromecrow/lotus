@@ -50,6 +50,7 @@ unsigned short back_count;
 
 void maze_clear(void) { //初期化
 
+	Dijkstra_maker_flag=0;
 	tt = 0;
 	while (tt <= 14) {
 		wall.row[tt] = 0;
@@ -659,11 +660,12 @@ void route_Dijkstra(void){
 					break;
 		}
 
-		get_wall(x,y,direction,&front_wall,&right_wall,&left_wall);
+
 		search_AroundDijkstraCount(&front_count,&right_count,&back_count,&left_count,x,y,direction);
-		if (front_wall) {front_count = MAX_WALKCOUNT_DIJKSTRA;}
-		if (right_wall) {right_count = MAX_WALKCOUNT_DIJKSTRA;}
-		if (left_wall) {left_count = MAX_WALKCOUNT_DIJKSTRA;}
+		//get_wall(x,y,direction,&front_wall,&right_wall,&left_wall);
+		//if (front_wall) {front_count = MAX_WALKCOUNT_DIJKSTRA;}
+		//if (right_wall) {right_count = MAX_WALKCOUNT_DIJKSTRA;}
+		//if (left_wall) {left_count = MAX_WALKCOUNT_DIJKSTRA;}
 
 		if (front_count==MAX_WALKCOUNT_DIJKSTRA && right_count==MAX_WALKCOUNT_DIJKSTRA && left_count==MAX_WALKCOUNT_DIJKSTRA && back_count==MAX_WALKCOUNT_DIJKSTRA){
 			// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
