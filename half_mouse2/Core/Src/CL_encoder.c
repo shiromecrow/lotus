@@ -61,7 +61,7 @@ void reset_speed(void) {
 	fusion_speedL=0;
 	fusion_speedR=0;
 	straight_alpha=0.85;
-
+	theta_comp_gain=1;
 }
 
 void interupt_calEncoder(void) {

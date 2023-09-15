@@ -76,10 +76,12 @@ void backTurn_hitWall(float input_TurningVelocity,float input_TurningAcceleratio
 		pl_R_DriveMotor_mode(MOTOR_BREAK);
 		pl_L_DriveMotor_mode(MOTOR_BREAK);
 	}
+	wait_ms_NoReset(150);
 
 }
 
 void backTurn_controlWall(float input_TurningVelocity,float input_TurningAcceleration,_Bool front_wall,_Bool left_wall,_Bool right_wall){
+	no_safty = 1;
 	if(front_wall){
 		no_frontwall_straight();
 		pl_R_DriveMotor_mode(MOTOR_BREAK);
@@ -118,8 +120,8 @@ void backTurn_controlWall(float input_TurningVelocity,float input_TurningAcceler
 	}
 	pl_R_DriveMotor_mode(MOTOR_BREAK);
 	pl_L_DriveMotor_mode(MOTOR_BREAK);
-	wait_ms_NoReset(50);
-
+	wait_ms_NoReset(150);
+	no_safty = 0;
 }
 
 

@@ -1,4 +1,4 @@
-23:52:54 **** Incremental Build of configuration Debug for project half_mousef4 ****
+23:38:22 **** Incremental Build of configuration Debug for project half_mousef4 ****
 make -j8 all 
 arm-none-eabi-size   half_mousef4.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size   half_mousef4.elf
 Finished building: default.size.stdout
  
 
-23:52:55 Build Finished. 0 errors, 0 warnings. (took 403ms)
+23:38:22 Build Finished. 0 errors, 0 warnings. (took 400ms)
 

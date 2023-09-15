@@ -365,6 +365,9 @@ float straight_table2(float input_displacement, float input_start_velocity,
 	if(input_end_velocity==0){//BREAK
 		wait_ms_NoReset(100);
 		modeacc = 0;
+		pl_R_DriveMotor_mode(MOTOR_BREAK);
+		pl_L_DriveMotor_mode(MOTOR_BREAK);
+		wait_ms_NoReset(100);
 	}
 //	modeacc = 0;
 
@@ -447,6 +450,9 @@ float turning_table2(float input_displacement, float input_start_velocity,
 	if(input_end_velocity==0){//BREAK
 		wait_ms_NoReset(300);
 		modeacc = 0;
+		pl_R_DriveMotor_mode(MOTOR_BREAK);
+		pl_L_DriveMotor_mode(MOTOR_BREAK);
+		wait_ms_NoReset(100);
 	}
 //	modeacc = 0;
 

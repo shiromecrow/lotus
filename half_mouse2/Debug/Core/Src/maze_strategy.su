@@ -1,7 +1,8 @@
-../Core/Src/maze_strategy.c:104:6:update_coordinate	24	static
-../Core/Src/maze_strategy.c:132:6:AdatiWayReturn	88	static
-../Core/Src/maze_strategy.c:665:6:pass_maker	64	static
-../Core/Src/maze_strategy.c:761:6:pass_maker_Dijkstra	64	static
-../Core/Src/maze_strategy.c:854:6:run_shortest	400	static
-../Core/Src/maze_strategy.c:1335:6:decision_kitiku	48	static
-../Core/Src/maze_strategy.c:1364:6:compress_kitiku	120	static
+../Core/Src/maze_strategy.c:38:6:get_wallData_sensor	24	static
+../Core/Src/maze_strategy.c:47:6:update_coordinate	24	static
+../Core/Src/maze_strategy.c:75:6:AdatiWayReturn	96	static
+../Core/Src/maze_strategy.c:540:6:pass_maker	64	static
+../Core/Src/maze_strategy.c:636:6:pass_maker_Dijkstra	64	static
+../Core/Src/maze_strategy.c:729:6:run_shortest	408	static
+../Core/Src/maze_strategy.c:1209:6:decision_kitiku	48	static
+../Core/Src/maze_strategy.c:1238:6:compress_kitiku	128	static
