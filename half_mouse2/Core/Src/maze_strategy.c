@@ -433,6 +433,20 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 
 				break;
 			}
+			// 移動の優先順位 ： 前→右→左→後
+			if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
+			// 迷路破損のため停止.ダイクストラ法更新
+				Dijkstra_maker_flag=1;
+			}
+			if (x<0 || y<0 || x>15 || y>15){
+							// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
+								error_mode=1;
+								g_WallControl_mode=0;
+								pl_yellow_LED_count(2*2*2*2);
+								pl_DriveMotor_stop();
+								pl_DriveMotor_standby(OFF);
+								break;
+			}
 
 
 			if(Dijkstra_maker_flag==1){
@@ -448,6 +462,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				create_DijkstraMap();
 				route_Dijkstra();//ダイクストラ法の結果から最短ルートをスタックに入れる
 				create_StepCountMap_unknown();
+				search_AroundWalkCount(&front_count,&right_count,&back_count,&left_count,x,y,direction);
 				if (front_wall) {front_count = MAX_WALKCOUNT;}
 				if (right_wall) {right_count = MAX_WALKCOUNT;}
 				if (left_wall) {left_count = MAX_WALKCOUNT;}
@@ -532,25 +547,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				}
 			if (kitikukan == OFF) {
 
-				// 移動の優先順位 ： 前→右→左→後
-				if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
-				// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
-					error_mode=1;
-					g_WallControl_mode=0;
-					pl_yellow_LED_count(2*2*2*2*2);
-					pl_DriveMotor_stop();
-					pl_DriveMotor_standby(OFF);
-					break;
-				}
-				if (x<0 || y<0 || x>15 || y>15){
-								// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
-									error_mode=1;
-									g_WallControl_mode=0;
-									pl_yellow_LED_count(2*2*2*2);
-									pl_DriveMotor_stop();
-									pl_DriveMotor_standby(OFF);
-									break;
-				}
+
 				if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
 					// 直進
 					mode.WallControlMode=1;

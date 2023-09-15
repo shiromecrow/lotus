@@ -1,2 +1,4 @@
 ../Core/Src/cal_acceleration.c:20:6:cal_table	32	static
-../Core/Src/cal_acceleration.c:169:6:cal_mollifier_table	80	static
+../Core/Src/cal_acceleration.c:169:6:cal_mollifier_table	56	static
+../Core/Src/cal_acceleration.c:213:7:cal_mollifier_velocity	40	static
+../Core/Src/cal_acceleration.c:218:7:cal_mollifier_acceleration	40	static

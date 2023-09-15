@@ -1,5 +1,5 @@
 Core/Src/record.o: ../Core/Src/record.c ../Core/Inc/record.h \
- ../Core/Inc/CL_sensor.h \
+ ../Core/Inc/PL_encoder.h ../Core/Inc/CL_sensor.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
  ../Core/Inc/stm32g4xx_hal_conf.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
@@ -38,6 +38,7 @@ Core/Src/record.o: ../Core/Src/record.c ../Core/Inc/record.h \
  ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h \
  ../Core/Inc/PID_wall.h ../Core/Inc/define.h ../Core/Inc/define.h
 ../Core/Inc/record.h:
+../Core/Inc/PL_encoder.h:
 ../Core/Inc/CL_sensor.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:

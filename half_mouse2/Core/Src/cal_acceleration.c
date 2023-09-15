@@ -170,26 +170,25 @@ void cal_mollifier_table(MOLLIFIER input,TARGET *target){
 
 float mollifier_T;
 float old_velocity;
-float time_delay=15;
-float time_delay2=-15;
+float time_delay=12;
+float time_delay2=-10;
 	mollifier_timer+=INTERRUPT_TIME;
 		mollifier_T=2*fabs(input.displacement)/MOLLIFIER_INTEGRAL*exp(-1)/input.max_turning_velocity;
 		if (mollifier_timer>-mollifier_T/2 && mollifier_timer<mollifier_T/2){
 			old_velocity=target->velocity;
-			target->velocity = (2/mollifier_T)*input.displacement/MOLLIFIER_INTEGRAL*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-mollifier_timer*mollifier_timer));
-			//if(mollifier_timer<0){
+			target->velocity = cal_mollifier_velocity(mollifier_timer,mollifier_T,input.displacement);
+
 			if(mollifier_timer<-mollifier_T/2/1.316+time_delay*INTERRUPT_TIME){
-				target->acceleration = (2/mollifier_T)*input.displacement/MOLLIFIER_INTEGRAL*(-mollifier_T*mollifier_T/2*(-mollifier_T/2/1.316)/(mollifier_T*mollifier_T/4-(-mollifier_T/2/1.316)*(-mollifier_T/2/1.316))/(mollifier_T*mollifier_T/4-(-mollifier_T/2/1.316)*(-mollifier_T/2/1.316)))*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-(-mollifier_T/2/1.316)*(-mollifier_T/2/1.316)));
+				target->acceleration = cal_mollifier_acceleration(-mollifier_T/2/1.316,mollifier_T,input.displacement);
 			}else if(mollifier_timer<0){
-				target->acceleration = (2/mollifier_T)*input.displacement/MOLLIFIER_INTEGRAL*(-mollifier_T*mollifier_T/2*(mollifier_timer-INTERRUPT_TIME*time_delay)/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay))/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay)))*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay)));
+				target->acceleration = cal_mollifier_acceleration(mollifier_timer-INTERRUPT_TIME*time_delay,mollifier_T,input.displacement);
 			}else if(mollifier_timer<mollifier_T/2/1.316+time_delay2*INTERRUPT_TIME){
-				//target->acceleration = (2/mollifier_T)*input.displacement/MOLLIFIER_INTEGRAL*(-mollifier_T*mollifier_T/2*(mollifier_timer-INTERRUPT_TIME*time_delay2)/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay2)*(mollifier_timer-INTERRUPT_TIME*time_delay2))/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay2)*(mollifier_timer-INTERRUPT_TIME*time_delay2)))*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay2)*(mollifier_timer-INTERRUPT_TIME*time_delay2)));
-				target->acceleration = (2/mollifier_T)*input.displacement/MOLLIFIER_INTEGRAL*(-mollifier_T*mollifier_T/2*(mollifier_timer-INTERRUPT_TIME*time_delay)/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay))/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay)))*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay)));
-			}else{
+				target->acceleration = cal_mollifier_acceleration(mollifier_timer-INTERRUPT_TIME*time_delay,mollifier_T,input.displacement);
+			}else if(mollifier_timer<mollifier_T/2+time_delay2*INTERRUPT_TIME){
 				time_delay=0;
-				target->acceleration = (2/mollifier_T)*input.displacement/MOLLIFIER_INTEGRAL*(-mollifier_T*mollifier_T/2*(mollifier_timer-INTERRUPT_TIME*time_delay)/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay))/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay)))*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-(mollifier_timer-INTERRUPT_TIME*time_delay)*(mollifier_timer-INTERRUPT_TIME*time_delay)));
-//				target->acceleration = (2/mollifier_T)*input.displacement/MOLLIFIER_INTEGRAL*(-mollifier_T*mollifier_T/2*(mollifier_T/2/1.316)/(mollifier_T*mollifier_T/4-(mollifier_T/2/1.316)*(mollifier_T/2/1.316))/(mollifier_T*mollifier_T/4-(mollifier_T/2/1.316)*(mollifier_T/2/1.316)))*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-(mollifier_T/2/1.316)*(mollifier_T/2/1.316)));;
-				//target->acceleration = 0;
+				target->acceleration = cal_mollifier_acceleration(mollifier_T/2/1.316,mollifier_T,input.displacement);
+			}else{
+				target->acceleration = cal_mollifier_acceleration(mollifier_T/2-INTERRUPT_TIME,mollifier_T,input.displacement);
 			}
 //			if(mollifier_timer>-mollifier_T/2*0.35 && mollifier_timer<mollifier_T/2*0.45){
 //							target->acceleration = 0.7*target->acceleration;
@@ -203,9 +202,21 @@ float time_delay2=-15;
 		}else{
 			old_velocity=target->velocity;
 			target->velocity=0;
-			target->acceleration = target->velocity-old_velocity;
+			target->acceleration = -target->velocity+old_velocity;
 			g_acc_flag=4;
+
 		}
 
 }
 
+
+float cal_mollifier_velocity(float t_now,float mollifier_T,float integral){
+	float velocity;
+	velocity=(2/mollifier_T)*integral/MOLLIFIER_INTEGRAL*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-t_now*t_now));
+	return velocity;
+}
+float cal_mollifier_acceleration(float t_now,float mollifier_T,float integral){
+	float acceleration;
+	acceleration= integral/MOLLIFIER_INTEGRAL*(-mollifier_T*t_now/(mollifier_T*mollifier_T/4-t_now*t_now)/(mollifier_T*mollifier_T/4-t_now*t_now))*exp(-mollifier_T*mollifier_T/4/(mollifier_T*mollifier_T/4-t_now*t_now));
+	return acceleration;
+}

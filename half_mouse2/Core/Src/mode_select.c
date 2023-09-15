@@ -571,9 +571,28 @@ void mode_Tuning0(unsigned char main_modeR){
 			testturning(speed300_exploration,1,0,0,0,0);
 		break;
 		case 5://直進(制御なし)
-			record_mode=7;
+			highspeed_mode = 1;
+			pl_FunMotor_duty(0.99);
+			pl_FunMotor_start();
+			HAL_Delay(600);
+			reset_gyro();
+			reset_speed();
+			reset_distance();
+			clear_Ierror();
+			record_mode=6;
+			mode.WallControlMode=1;
+			theta_comp_gain=0;
+			straight_table2(90*8, 0, 0, 2800, 18000,mode);
 			mode.WallControlMode=0;
-			straight_table2(180, 0, 0, 300, 6000,mode);
+			theta_comp_gain=0;
+			straight_table2(-90*8, 0, 0, -2000, 14000,mode);
+			mode.WallControlMode=1;
+			theta_comp_gain=1;
+			straight_table2(90*8, 0, 0, 2800, 18000,mode);
+			mode.WallControlMode=0;
+			theta_comp_gain=1;
+			straight_table2(-90*8, 0, 0, -2000, 14000,mode);
+
 		break;
 		case 6://斜め直進(制御あり)
 			record_mode=7;//or3
@@ -594,7 +613,7 @@ void mode_Tuning0(unsigned char main_modeR){
 			pl_l_blue_LED(OFF);
 		break;
 		case 9://システム同定enc
-			record_mode=6;
+
 			pl_r_blue_LED(ON);
 			pl_l_blue_LED(ON);
 //			straight_table_ff(90, 0, 300, 300, 500);
@@ -605,12 +624,15 @@ void mode_Tuning0(unsigned char main_modeR){
 			get_duty(1, 1,&duty_L,&duty_R);
 			pl_DriveMotor_duty(duty_L,duty_R);
 			pl_DriveMotor_start();
-			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
-				wait_ms(1);
-				if(record_rupe_flag==1){
-					break;
-				}
-			}
+			wait_ms(3000);
+			record_mode=11;
+			wait_ms(2000);
+//			while (g_sensor[0][0] <= SENSOR_FINGER_0 || g_sensor[2][0] <= SENSOR_FINGER_2 || g_sensor[4][0] <= SENSOR_FINGER_4) {
+//				wait_ms(1);
+//				if(record_rupe_flag==1){
+//					break;
+//				}
+//			}
 			pl_DriveMotor_stop();
 			pl_r_blue_LED(OFF);
 			pl_l_blue_LED(OFF);
