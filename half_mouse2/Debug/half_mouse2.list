@@ -24233,8 +24233,6 @@ void run_movement_continuity(int *direction,unsigned short front_count,unsigned 
 
 0800de78 <AdatiWayReturn>:
 
-
-
 void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, float input_StraightAcceleration,
 		float input_TurningAcceleration, parameter_speed howspeed,int know_mode,uint8_t Dijkstra_mode) {
  800de78:	b084      	sub	sp, #16
