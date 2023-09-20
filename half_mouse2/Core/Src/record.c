@@ -177,6 +177,13 @@ void interrupt_record(void) {
 				r_data[3] = encoder_R;
 				record_data(r_data, 4);
 			}
+	if (record_mode == 12) {
+		r_data[0] = turning.velocity;
+		r_data[1] = angle_speed;
+		r_data[2] = g_V_L;
+		r_data[3] = g_V_R;
+				record_data(r_data, 4);
+		}
 /*	if (record_mode == 1) {
 		r_data[0] = straight.velocity;
 		r_data[1] = straight.displacement;

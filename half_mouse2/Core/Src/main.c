@@ -111,7 +111,7 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM8_Init();
   MX_USART1_UART_Init();
-  //MX_DMA_Init();
+  MX_DMA_Init();
   MX_SPI3_Init();
   MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
