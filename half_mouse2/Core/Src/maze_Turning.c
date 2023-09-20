@@ -76,10 +76,12 @@ void backTurn_hitWall(float input_TurningVelocity,float input_TurningAcceleratio
 		pl_R_DriveMotor_mode(MOTOR_BREAK);
 		pl_L_DriveMotor_mode(MOTOR_BREAK);
 	}
+	wait_ms_NoReset(150);
 
 }
 
 void backTurn_controlWall(float input_TurningVelocity,float input_TurningAcceleration,_Bool front_wall,_Bool left_wall,_Bool right_wall){
+	no_safty = 1;
 	if(front_wall){
 		no_frontwall_straight();
 		pl_R_DriveMotor_mode(MOTOR_BREAK);
@@ -118,8 +120,8 @@ void backTurn_controlWall(float input_TurningVelocity,float input_TurningAcceler
 	}
 	pl_R_DriveMotor_mode(MOTOR_BREAK);
 	pl_L_DriveMotor_mode(MOTOR_BREAK);
-	wait_ms_NoReset(50);
-
+	wait_ms_NoReset(150);
+	no_safty = 0;
 }
 
 
@@ -162,8 +164,13 @@ void slalomR(parameter turnpara,char test_mode,char shortest_mode,char mollifier
 		wallmode.WallControlStatus=0;
 		wallmode.WallCutMode=1;
 		wallmode.calMazeMode=0;
-		straight_table2(turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
-													turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		if(shortest_mode==0){
+			straight_table2(MAZE_OFFSET+turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+														turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		}else{
+			straight_table2(turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+														turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		}
 		if(mollifier_mode == ON){
 			mollifier_slalom_table(turnpara.g_speed,-90,turnpara.t_speed);
 		}else{
@@ -217,8 +224,13 @@ void slalomL(parameter turnpara,char test_mode,char shortest_mode,char mollifier
 		wallmode.WallControlStatus=0;
 		wallmode.WallCutMode=1;
 		wallmode.calMazeMode=0;
-		straight_table2(turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
-													turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		if(shortest_mode==0){
+			straight_table2(MAZE_OFFSET+turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+														turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		}else{
+			straight_table2(turnpara.f_ofset, turnpara.g_speed, turnpara.g_speed, turnpara.g_speed,
+														turnpara.g_speed * turnpara.g_speed  / 2 / 45,wallmode);
+		}
 		if(mollifier_mode == ON){
 			mollifier_slalom_table(turnpara.g_speed,90,turnpara.t_speed);
 		}else{
@@ -1103,7 +1115,7 @@ void testturning(parameter_speed Howspeed,int turnmode,char shortest_mode,char f
 		clear_Ierror();
 
 	}
-	record_mode=2;
+	record_mode=12;
 //	if(turnmode==0){test_mollifier_slalomR(Howspeed.slalom_R);}
 	if(turnmode==0){slalomR(Howspeed.slalom_R,ON,shortest_mode,mollifier_mode,-100);}
 	if(turnmode==1){slalomL(Howspeed.slalom_L,ON,shortest_mode,mollifier_mode,-100);}

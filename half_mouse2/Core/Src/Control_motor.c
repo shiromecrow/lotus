@@ -222,8 +222,10 @@ float straight_table2(float input_displacement, float input_start_velocity,
 					)/2/input_acceleration;
 	// 例外処理
 	if (input_acceleration < 0){input_acceleration=-input_acceleration;}//加速が負
-	if(noGoalPillarMode==1){
+
+	if(noGoalPillarMode==1 && motor_mode.WallCutMode==1){
 		motor_mode.WallCutMode=0;
+		input_displacement=input_displacement-MAZE_OFFSET;
 	}
 
 
@@ -269,7 +271,6 @@ float straight_table2(float input_displacement, float input_start_velocity,
 		if (input_displacement<0 && MinRequired_displacement<input_displacement){g_acc_flag=6;straight.acceleration = input_acceleration;}
 	}else if(motor_mode.WallCutMode==2){
 		//左壁or右壁がstart～endの中にあれば抜ける
-		enc.sigma_error=0;
 		g_acc_flag=0;
 		straight.acceleration = 0;
 		while((NoWallDisplacementR45<=0 || NoWallDisplacementR45<=CUTPLACE_TO_CENTER_R45 ||
@@ -287,6 +288,7 @@ float straight_table2(float input_displacement, float input_start_velocity,
 //				(NoWallDisplacementL90<=0 ||
 //			  NoWallDisplacementL90>CUTPLACE_THRESHOLD_END_L45) &&
 //			  front_wall_break_90==0){}
+		enc.sigma_error=0;
 		straight.displacement=0;
 		if (input_count_velocity>=0){straight.acceleration = input_acceleration;
 			}else{straight.acceleration = -input_acceleration;}
@@ -298,12 +300,13 @@ float straight_table2(float input_displacement, float input_start_velocity,
 	}else if(motor_mode.WallCutMode==3){
 		//斜めの右旋回
 		//左壁or右壁がstart～endの中にあれば抜ける
-		enc.sigma_error=0;
+
 		g_acc_flag=0;
 		straight.acceleration = 0;
 		while((NoWallDisplacementR45slant2<CUTPLACE_TO_CENTER_R45_SLANT ||
 				NoWallDisplacementR45slant2>CUTPLACE_THRESHOLD_END_R45_SLANT) &&
 				  front_wall_break_45slant==0){}
+		enc.sigma_error=0;
 		straight.displacement=0;
 		if (input_count_velocity>=0){straight.acceleration = input_acceleration;
 			}else{straight.acceleration = -input_acceleration;}
@@ -315,12 +318,13 @@ float straight_table2(float input_displacement, float input_start_velocity,
 	}else if(motor_mode.WallCutMode==4){
 		//斜めの左旋回
 		//左壁or右壁がstart～endの中にあれば抜ける
-		enc.sigma_error=0;
+
 		g_acc_flag=0;
 		straight.acceleration = 0;
 		while((NoWallDisplacementL45slant2<CUTPLACE_TO_CENTER_L45_SLANT ||
 			  NoWallDisplacementL45slant2>CUTPLACE_THRESHOLD_END_L45_SLANT) &&
 				  front_wall_break_45slant==0){}
+		enc.sigma_error=0;
 		straight.displacement=0;
 		if (input_count_velocity>=0){straight.acceleration = input_acceleration;
 			}else{straight.acceleration = -input_acceleration;}
@@ -361,6 +365,9 @@ float straight_table2(float input_displacement, float input_start_velocity,
 	if(input_end_velocity==0){//BREAK
 		wait_ms_NoReset(100);
 		modeacc = 0;
+		pl_R_DriveMotor_mode(MOTOR_BREAK);
+		pl_L_DriveMotor_mode(MOTOR_BREAK);
+		wait_ms_NoReset(100);
 	}
 //	modeacc = 0;
 
@@ -377,6 +384,9 @@ float straight_table2(float input_displacement, float input_start_velocity,
 }
 
 void End_straight(float input_displacement,MOTOR_MODE motor_mode,_Bool right_wall,_Bool left_wall){
+	if(noGoalPillarMode==1){
+		motor_mode.WallCutMode=0;
+	}
 	while (g_acc_flag!=4){
 		if(right_wall == 0 || left_wall == 0){
 		if(motor_mode.WallCutMode==1){
@@ -440,6 +450,9 @@ float turning_table2(float input_displacement, float input_start_velocity,
 	if(input_end_velocity==0){//BREAK
 		wait_ms_NoReset(300);
 		modeacc = 0;
+		pl_R_DriveMotor_mode(MOTOR_BREAK);
+		pl_L_DriveMotor_mode(MOTOR_BREAK);
+		wait_ms_NoReset(100);
 	}
 //	modeacc = 0;
 

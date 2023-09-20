@@ -18,30 +18,19 @@
 #define SLANT_ON 1
 #define SLANT_OFF 0
 
+#define MAZE_SECTION 90
 
 
-
-
-
-//unsigned short front_count;
-//unsigned short left_count;
-//unsigned short right_count;
-//unsigned short back_count;
-//unsigned short walk_count[256];
-//unsigned short row[15];
-//unsigned short column[15];
-//unsigned short row_look[15];
-//unsigned short column_look[15];
-
-
-
-
-void left_way(void);
 
 void decision_kitiku(int,int,int,unsigned short,unsigned short,unsigned short,unsigned short);
-void compress_kitiku(int *,int *,int *);
+void compress_kitiku(int *,int *,int *,int *);
 
+
+void get_wallData_sensor(_Bool*,_Bool*,_Bool*);
 void update_coordinate(int *,int *,int);
+void run_movement_continuity(int *,unsigned short,unsigned short,unsigned short,unsigned short,float,float,float,float, parameter_speed,_Bool ,_Bool ,_Bool);
+
+
 void AdatiWayReturn(float,float,float,float, parameter_speed,int,uint8_t);
 
 void pass_maker();
@@ -49,9 +38,6 @@ void pass_maker_Dijkstra();
 
 void run_shortest(float,float,int,char,char,char,parameter_speed,float,char);
 
-
-void adati_wayreturnSL(float,float,float,float,float,float,float,float,float,float,float,float,float);
-void adati_wayonlybackSL(float,float,float,float,float,float,float,float,float,float,float,float,float,int);
 
 
 #endif /* INC_MAZE_STRATEGY_H_ */

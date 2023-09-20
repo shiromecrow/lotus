@@ -35,10 +35,12 @@ Core/Src/maze_strategy.o: ../Core/Src/maze_strategy.c \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
  ../Core/Inc/Control_motor.h ../Core/Inc/cal_acceleration.h \
- ../Core/Inc/define.h ../Core/Inc/maze_Turning.h ../Core/Inc/maze_wall.h \
- ../Core/Inc/main.h ../Core/Inc/PL_flash.h ../Core/Inc/maze_wall.h \
- ../Core/Inc/CL_sensor.h ../Core/Inc/PL_motor.h ../Core/Inc/PL_LED.h \
- ../Core/Inc/PL_timer.h ../Core/Inc/fail_safe.h ../Core/Inc/record.h
+ ../Core/Inc/define.h ../Core/Inc/maze_Turning.h \
+ ../Core/Inc/PID_EncoderGyro.h ../Core/Inc/PID_wall.h \
+ ../Core/Inc/define.h ../Core/Inc/maze_wall.h ../Core/Inc/main.h \
+ ../Core/Inc/PL_flash.h ../Core/Inc/maze_wall.h ../Core/Inc/CL_sensor.h \
+ ../Core/Inc/PL_motor.h ../Core/Inc/PL_LED.h ../Core/Inc/PL_timer.h \
+ ../Core/Inc/fail_safe.h ../Core/Inc/record.h
 ../Core/Inc/maze_strategy.h:
 ../Core/Inc/turning_parameter.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
@@ -79,6 +81,9 @@ Core/Src/maze_strategy.o: ../Core/Src/maze_strategy.c \
 ../Core/Inc/cal_acceleration.h:
 ../Core/Inc/define.h:
 ../Core/Inc/maze_Turning.h:
+../Core/Inc/PID_EncoderGyro.h:
+../Core/Inc/PID_wall.h:
+../Core/Inc/define.h:
 ../Core/Inc/maze_wall.h:
 ../Core/Inc/main.h:
 ../Core/Inc/PL_flash.h:

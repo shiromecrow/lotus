@@ -80,7 +80,7 @@ void interupt_calSensor(void){
 
 	for (j = 0; j <= 4; j++) {
 		g_sensor_diff[j]=g_sensor[j][0]-g_sensor[j][11];
-		g_sensor_diff_wallcut[j]=g_sensor[j][0]-g_sensor[j][6];
+		//g_sensor_diff_wallcut[j]=g_sensor[j][0]-g_sensor[j][6];
 		g_sensor_mean[j] = (g_sensor[j][0] + g_sensor[j][1] + g_sensor[j][2]) / 3;
 	}
 

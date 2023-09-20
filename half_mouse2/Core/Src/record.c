@@ -14,6 +14,7 @@
  */
 
 #include "record.h"
+#include "PL_encoder.h"
 #include "CL_sensor.h"
 #include "CL_encoder.h"
 #include "CL_gyro.h"
@@ -168,6 +169,20 @@ void interrupt_record(void) {
 			r_data[2] = NoWallDisplacementL45slant;
 			r_data[3] = NoWallDisplacementR45slant;
 			record_data(r_data, 4);
+		}
+	if (record_mode == 11) { //距離の比較
+				r_data[0] = E_speedL;
+				r_data[1] = encoder_L;
+				r_data[2] = E_speedR;
+				r_data[3] = encoder_R;
+				record_data(r_data, 4);
+			}
+	if (record_mode == 12) {
+		r_data[0] = turning.velocity;
+		r_data[1] = angle_speed;
+		r_data[2] = g_V_L;
+		r_data[3] = g_V_R;
+				record_data(r_data, 4);
 		}
 /*	if (record_mode == 1) {
 		r_data[0] = straight.velocity;

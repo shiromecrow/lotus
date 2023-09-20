@@ -20,7 +20,7 @@
 
 //
 
-#define ImT 0.00000030//0.00000116 //kg/m^2 ロータ慣性モーメントターン用
+
 #define TwT 0.00005 //7
 #define kbT 0.0024767//Vs/rad 逆起電力定数 deg->rad->m変換sitenai
 

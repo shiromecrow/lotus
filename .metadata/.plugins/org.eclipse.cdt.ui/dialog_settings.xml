@@ -14,8 +14,12 @@
 		<item key="caseSensitive" value="false"/>
 		<item key="searchFlags" value="227191"/>
 		<list key="previousPatterns">
+			<item value="E_lpf_speedL"/>
 			<item value="HAL_FLASH_Program"/>
 			<item value="HAL_ADC_Start_DMA"/>
 		</list>
+	</section>
+	<section name="OptionalMessageDialog.hide.">
+		<item key="askReindex.detail" value="0"/>
 	</section>
 </section>

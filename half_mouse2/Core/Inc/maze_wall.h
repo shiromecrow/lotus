@@ -11,11 +11,12 @@
 #include"main.h"
 
 
-#define MAX_QUEUE_NUM 350
+#define MAX_QUEUE_NUM 1000
 
 #define COLUMN 0
 #define ROW 1
 
+#define MAX_WALKCOUNT 255
 #define MAX_WALKCOUNT_DIJKSTRA 65535
 
 #define VERTICALCOST 180
@@ -64,10 +65,10 @@ extern WALL wall;
 extern WALL record;
 
 
+extern char Dijkstra_maker_flag;
 
 
-
-extern unsigned short walk_count[256]; //歩数いれる箱
+extern uint16_t walk_count[16][16]; //歩数いれる箱
 
 
 
@@ -79,8 +80,7 @@ void get_wall_look(int,int,int,_Bool*,_Bool*,_Bool*);
 void search_AroundWalkCount(unsigned short *,unsigned short *,unsigned short *,unsigned short *,int,int,int);
 void search_AroundDijkstraCount(unsigned short *,unsigned short *,unsigned short *,unsigned short *,int,int,int);
 
-void create_StepCountMap();
-void create_StepCountMapBack();
+
 
 void route_Dijkstra();
 void create_DijkstraMap();
@@ -91,7 +91,6 @@ void create_StepCountMapBack_queue();
 void initStack_walk(STACK_T *);
 void pushStack_walk(STACK_T *, unsigned short);
 unsigned short popStack_walk(STACK_T *);
-void create_StepCountMap_ST(int);
 
 
 void maze_maker(int,int,int,int,int,int);

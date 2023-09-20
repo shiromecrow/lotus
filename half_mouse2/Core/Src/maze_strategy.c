@@ -9,6 +9,8 @@
 #include"Control_motor.h"
 #include"define.h"
 #include"maze_Turning.h"
+#include "PID_EncoderGyro.h"
+#include "PID_wall.h"
 
 #include"maze_wall.h"
 #include"PL_flash.h"
@@ -22,80 +24,24 @@
 
 
 
-//extern char highspeed_mode;
-//extern int safe;
-//extern int mode_safty;
-//extern char slant_direction;
-//extern char slant_count;
-//
-//unsigned short row_record[15];
-//unsigned short column_record[15];
-//unsigned short row_record_look[15];
-//unsigned short column_record_look[15];
-int do_move;//ごみ
-unsigned short shift5 = 1;
-unsigned short kakuninn;
-unsigned short wall_N;
-unsigned short wall_S;
-unsigned short wall_E;
-unsigned short wall_W;
-unsigned short wall_f;
-unsigned short wall_r;
-unsigned short wall_l;
-unsigned short look_f;
-unsigned short look_l;
-unsigned short look_r;
-unsigned short fb_control;
-unsigned short rl_control;
-
-unsigned char min;
-unsigned char min_coordinate;
-
-unsigned char pass_count;
-
-int x_change;
-int y_change;
-
-int hosuu = 0;
-char first_most = 0;
-char kitiku;
-int kitiku_distance;
-char know_road = 0;
-float first_v;
-float last_v;
-
-
-int x;
-int y;
-int wall_control;
-int SENF_maze, SENR_maze, SENL_maze;
-int direction;
-
+unsigned short pass_count;
 
 char maze_mode;
 int kitikukan;
 
-int pass[255]; //1f 2r 3l
-int gg;
+int pass[500+1]; //1f 2r 3l
 
 
-//拡張左手法**************************************************
-//
-//unsigned short shift = 1;
-//
-//unsigned short aa;
-//unsigned short bb;
-//
-int t = 0;
 
-//int way = 0;
-//int p = 0;
-//int s = 0;
-//int q = 0;
-//char last_slant;
-//char slant_break;
-//拡張左手法***********************************************
 
+
+void get_wallData_sensor(_Bool* front_wall,_Bool* right_wall,_Bool* left_wall){
+
+	*front_wall = (g_sensor_mean[SENSOR_FRONT] >= F_PRESENCE);
+	*right_wall = (g_sensor_mean[SENSOR_RIGHT] >= R_PRESENCE);
+	*left_wall  = (g_sensor_mean[SENSOR_LEFT]  >= L_PRESENCE);
+
+}
 
 
 void update_coordinate(int *x,int *y,int direction){
@@ -123,97 +69,138 @@ void update_coordinate(int *x,int *y,int direction){
 
 }
 
+void run_movement_continuity(int *direction,unsigned short front_count,unsigned short right_count,
+		unsigned short back_count,unsigned short left_count,float input_StraightVelocity,
+		float input_TurningVelocity, float input_StraightAcceleration,
+		float input_TurningAcceleration, parameter_speed howspeed,_Bool front_wall,_Bool right_wall,_Bool left_wall){
+	MOTOR_MODE mode;
+	// 移動の優先順位 ： 前→右→左→後
+	if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
+		// 直進
+		mode.WallControlMode=1;
+		mode.calMazeMode=0;
+		mode.WallCutMode=0;
+		straight_table2(MAZE_SECTION-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+	}
+	if(right_count < front_count && right_count <= left_count && right_count <= back_count){
+		// 右旋回
+		slalomR(howspeed.slalom_R, OFF,EXPLORATION,0,input_StraightVelocity);
+		*direction += 1;
+	}
+	if(left_count < front_count && left_count < right_count && left_count <= back_count){
+		// 左旋回
+		slalomL(howspeed.slalom_L, OFF,EXPLORATION,0,input_StraightVelocity);
+		*direction -= 1;
+	}
+	if(back_count < front_count && back_count < right_count
+			&& back_count < left_count){
+		//180度旋回(前壁がある場合は尻当てを行うことで位置修正)
+		mode.WallControlMode=1;
+		mode.calMazeMode=0;
+		mode.WallCutMode=0;
+		straight_table2(MAZE_SECTION/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
+		create_DijkstraMap();
+		backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
+		//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
+		wait_ms_NoReset(100);
+		mode.WallControlMode=0;
+		if(front_wall){
+		straight_table2(-BACK_TO_CENTER, 0,0,-150,1000, mode);
+		wait_ms_NoReset(100);
+		clear_Ierror();
+		mode.WallControlMode=1;
+		straight_table2(BACK_TO_CENTER +MAZE_SECTION/2,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+		}else{
+			clear_Ierror();
+			mode.WallControlMode=0;
+			straight_table2(MAZE_SECTION/2+BACK_TO_CENTER-BACK_TO_CENTER_FRONT,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+		}
+		*direction = *direction + 2;
+	}
 
-
+}
 
 void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, float input_StraightAcceleration,
 		float input_TurningAcceleration, parameter_speed howspeed,int know_mode,uint8_t Dijkstra_mode) {
-	unsigned short front_count, right_count, back_count, left_count;
-//	float v_e,v_ea;
 
-	maze_mode = 1; //***************************************************************************************
-	//Avespeed = 700;
-	pl_DriveMotor_standby(ON);
-	HAL_Delay(500);
-//初期化
-	//構造体にする
-	int x=0;
+
+
+	//初期化
+	maze_mode = 1; //迷路探索開始フラグ
+	unsigned short front_count, right_count, back_count, left_count;
+	int x=0;//構造体にしたい
 	int y=0;
 	int direction=1;
-	_Bool front_wall;
-	_Bool right_wall;
-	_Bool left_wall;
+	_Bool front_wall,right_wall,left_wall;
+	char timer_end_mode=0;
+	int kitiku_distance;
 	MOTOR_MODE mode;
 	mode.WallControlMode=1;
 	mode.WallControlStatus=0;
 	mode.WallCutMode=0;
 	mode.calMazeMode=0;
 
-
-//初期位置のセンサー確認
-	front_wall=(g_sensor_mean[SENSOR_FRONT] >= F_PRESENCE);
-	right_wall=(g_sensor_mean[SENSOR_RIGHT] >= R_PRESENCE);
-	left_wall=(g_sensor_mean[SENSOR_LEFT] >= L_PRESENCE);
-
+	//モータenable
+	pl_DriveMotor_standby(ON);
+	wait_ms_NoReset(500);
+	//初期位置のセンサー確認
+	get_wallData_sensor(&front_wall,&right_wall,&left_wall);
+	//初期位置での壁更新
 	update_wall(x,y,direction,front_wall,right_wall,left_wall);
 	//初期位置での迷路展開
 	create_StepCountMap_queue();
-	HAL_Delay(100);
-	straight_table2(90/2+BACK_TO_CENTER,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+	straight_table2(MAZE_SECTION/2+BACK_TO_CENTER,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 
 	while (1) {
 
-		//straight_table2(90, 300, 300, 500);
-
 		update_coordinate(&x,&y,direction);
 
-
-		front_wall=(g_sensor_mean[SENSOR_FRONT] >= F_PRESENCE);
-		right_wall=(g_sensor_mean[SENSOR_RIGHT] >= R_PRESENCE);
-		left_wall=(g_sensor_mean[SENSOR_LEFT] >= L_PRESENCE);
+		get_wallData_sensor(&front_wall,&right_wall,&left_wall);
 
 		mode.WallControlMode=1;
 		mode.calMazeMode=1;
 		mode.WallCutMode=0;
 		straight_table2(MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+		//走行中計算
 		update_wall(x,y,direction,front_wall,right_wall,left_wall);
-		if(Dijkstra_mode==2){
-					route_Dijkstra();
-					create_StepCountMap_unknown();
-				}else{
-					create_StepCountMap_queue();
-				}
+		create_StepCountMap_queue();
 		search_AroundWalkCount(&front_count,&right_count,&back_count,&left_count,x,y,direction);
 		if (front_wall) {front_count = MAX_WALKCOUNT;}
 		if (right_wall) {right_count = MAX_WALKCOUNT;}
 		if (left_wall) {left_count = MAX_WALKCOUNT;}
 		decision_kitiku(x,y,direction,front_count,right_count,back_count,left_count);
+
 		mode.WallCutMode=1;
 		End_straight(MAZE_OFFSET, mode,right_wall,left_wall);
 
 
+		//異常終了
+		if (x == 0 && y == 0) {
+			error_mode=1;
+			pl_DriveMotor_stop();
+			pl_DriveMotor_standby(OFF);
+			break;
+		}
+		if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
+			// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
+			error_mode=1;
+			pl_DriveMotor_stop();
+			pl_DriveMotor_standby(OFF);
+			break;
+		}
 
-		if (x == 0 && y == 0) {break;}
-
+		//正常終了
 		if((x == GOAL_X || x == GOAL_X+1) && (y == GOAL_Y || y == GOAL_Y+1)){
-
 
 			while (front_wall==0) {
 				//直進
 				mode.WallControlMode=1;
 				mode.calMazeMode=0;
 				mode.WallCutMode=0;
-				straight_table2(180/2-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-
+				straight_table2(MAZE_SECTION-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 				update_coordinate(&x,&y,direction);
-
-				front_wall=(g_sensor_mean[SENSOR_FRONT] >= F_PRESENCE);
-				right_wall=(g_sensor_mean[SENSOR_RIGHT] >= R_PRESENCE);
-				left_wall=(g_sensor_mean[SENSOR_LEFT] >= L_PRESENCE);
-
-				mode.WallControlMode=1;
+				get_wallData_sensor(&front_wall,&right_wall,&left_wall);
 				mode.calMazeMode=1;
-				mode.WallCutMode=0;
 				straight_table2(MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 				update_wall(x,y,direction,front_wall,right_wall,left_wall);
 				create_StepCountMap_queue();
@@ -229,20 +216,11 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 			mode.WallControlMode=0;
 			mode.calMazeMode=0;
 			mode.WallCutMode=0;
-			straight_table2(90/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
-			pl_R_DriveMotor_mode(MOTOR_BREAK);
-			pl_L_DriveMotor_mode(MOTOR_BREAK);
-			wait_ms_NoReset(500);
+			straight_table2(MAZE_SECTION/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
 			no_safty = 1;
 			turning_table2(180,0,0,input_TurningVelocity,input_TurningAcceleration);
-			pl_R_DriveMotor_mode(MOTOR_BREAK);
-			pl_L_DriveMotor_mode(MOTOR_BREAK);
-			wait_ms_NoReset(500);
-			straight_table2(-BACK_TO_CENTER-20/2, 0,0,-150,1000, mode);
-			pl_R_DriveMotor_mode(MOTOR_BREAK);
-			pl_L_DriveMotor_mode(MOTOR_BREAK);
+			straight_table2(-BACK_TO_CENTER-5, 0,0,-150,1000, mode);
 			no_safty = 0;
-			wait_ms_NoReset(500);
 			clear_Ierror();
 			maze_mode = 0;
 
@@ -257,79 +235,23 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 
 			break;
 		}
-		if(know_mode==0){
-			kitikukan = 0;
-		}
+
+		if(know_mode==0){kitikukan = 0;}
 		if (kitikukan == OFF) {
 
-			// 移動の優先順位 ： 前→右→左→後
-			if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
-			// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
-				error_mode=1;
-				pl_DriveMotor_stop();
-				pl_DriveMotor_standby(OFF);
-
-				break;
-			}
-			if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
-				// 直進
-				mode.WallControlMode=1;
-				mode.calMazeMode=0;
-				mode.WallCutMode=0;
-				straight_table2(180/2-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-			}
-			if(right_count < front_count && right_count <= left_count && right_count <= back_count){
-				// 右旋回
-				slalomR(howspeed.slalom_R, OFF,EXPLORATION,0,input_StraightVelocity);
-				direction++;
-			}
-			if(left_count < front_count && left_count < right_count && left_count <= back_count){
-				// 左旋回
-				slalomL(howspeed.slalom_L, OFF,EXPLORATION,0,input_StraightVelocity);
-				direction--;
-			}
-			if(back_count < front_count && back_count < right_count
-					&& back_count < left_count){
-				//180度旋回(前壁がある場合は尻当てを行うことで位置修正)
-				mode.WallControlMode=1;
-				mode.calMazeMode=0;
-				mode.WallCutMode=0;
-				straight_table2(90/2-MAZE_OFFSET-3, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
-				pl_R_DriveMotor_mode(MOTOR_BREAK);
-				pl_L_DriveMotor_mode(MOTOR_BREAK);
-				wait_ms_NoReset(100);
-				no_safty = 1;
-				backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
-				//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
-				no_safty = 0;
-				wait_ms_NoReset(100);
-				//clear_Ierror();
-				mode.WallControlMode=0;
-				straight_table2(-BACK_TO_CENTER, 0,0,-150,1000, mode);
-				pl_R_DriveMotor_mode(MOTOR_BREAK);
-				pl_L_DriveMotor_mode(MOTOR_BREAK);
-				wait_ms_NoReset(100);
-				clear_Ierror();
-				mode.WallControlMode=1;
-				straight_table2(BACK_TO_CENTER +90/2,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-				//straight_table2(BACK_TO_CENTER + 90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-				direction = direction + 2;
-
-			}
+			run_movement_continuity(&direction,front_count,right_count,back_count,left_count,
+					input_StraightVelocity, input_TurningVelocity, input_StraightAcceleration, input_TurningAcceleration, howspeed,
+					front_wall, right_wall, left_wall);
 
 		} else {
 			mode.WallControlMode=1;
+			mode.calMazeMode=1;
+			mode.WallCutMode=0;
+			straight_table2(MAZE_SECTION/2-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+			compress_kitiku(&x,&y,&direction,&kitiku_distance);
+			End_straight(MAZE_SECTION/2-MAZE_OFFSET,mode,1,1);
 			mode.calMazeMode=0;
-			mode.WallCutMode=0;
-			straight_table2(90/2-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-			compress_kitiku(&x,&y,&direction);
-			mode.WallCutMode=0;
-			End_straight(90/2-MAZE_OFFSET,mode,1,1);
-			mode.WallControlMode=1;
-			mode.calMazeMode=0;
-			mode.WallCutMode=0;
-			straight_table2((90/2 * kitiku_distance),input_StraightVelocity,input_StraightVelocity,900,input_StraightAcceleration, mode);
-
+			straight_table2((MAZE_SECTION/2 * kitiku_distance),input_StraightVelocity,input_StraightVelocity,900,input_StraightAcceleration, mode);
 		}
 
 		if (direction >= 5) {
@@ -338,39 +260,38 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 		if (direction <= 0) {
 			direction = direction+4;
 		}
-//基地区間**********************************************************************
-//		if (know_road == 1) {
-//			most_speed_kitikukan_play(850, 1600);
-//		}
-//基地区間
+
 		if(error_mode==1){break;}
 		if (g_timCount_sec>240){
-					// 秒数エンド
-
-						pl_DriveMotor_stop();
-						pl_DriveMotor_standby(OFF);
-						break;
-					}
+			// 秒数エンド
+			timer_end_mode=1;
+			pl_DriveMotor_stop();
+			pl_DriveMotor_standby(OFF);
+			break;
+		}
 
 	}
+
 	if(error_mode==0){
 	record_in();
 	}
+	create_DijkstraMap();
 	clear_Ierror();
 	reset_gyro();
-	//reset_speed();
+	reset_speed();
 	maze_mode = 1;
-	straight_table2(90/2+BACK_TO_CENTER,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+	straight_table2(MAZE_SECTION/2+BACK_TO_CENTER,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 
 	while (1) {
-
-		//straight_table2(90, 300, 300, 500);
-
 		update_coordinate(&x,&y,direction);
 
-		front_wall=(g_sensor_mean[SENSOR_FRONT] >= F_PRESENCE);
-		right_wall=(g_sensor_mean[SENSOR_RIGHT] >= R_PRESENCE);
-		left_wall=(g_sensor_mean[SENSOR_LEFT] >= L_PRESENCE);
+		if((x == GOAL_X || x == GOAL_X+1) && (y == GOAL_Y || y == GOAL_Y+1)){
+			noGoalPillarMode=1;
+		}else{
+			noGoalPillarMode=0;
+		}
+
+		get_wallData_sensor(&front_wall,&right_wall,&left_wall);
 
 		mode.WallControlMode=1;
 		mode.calMazeMode=1;
@@ -378,7 +299,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 		straight_table2(MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
 		update_wall(x,y,direction,front_wall,right_wall,left_wall);
 		if(Dijkstra_mode==1){
-			route_Dijkstra();
+			route_Dijkstra();//ダイクストラ法の結果から最短ルートをスタックに入れる
 			create_StepCountMap_unknown();
 		}else{
 			create_StepCountMapBack_queue();
@@ -397,20 +318,11 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				mode.WallControlMode=0;
 				mode.calMazeMode=0;
 				mode.WallCutMode=0;
-				straight_table2(90/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
-				pl_R_DriveMotor_mode(MOTOR_BREAK);
-				pl_L_DriveMotor_mode(MOTOR_BREAK);
-				wait_ms_NoReset(500);
+				straight_table2(MAZE_SECTION/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
 				no_safty = 1;
 				turning_table2(180,0,0,input_TurningVelocity,input_TurningAcceleration);
-				pl_R_DriveMotor_mode(MOTOR_BREAK);
-				pl_L_DriveMotor_mode(MOTOR_BREAK);
-				wait_ms_NoReset(500);
 				straight_table2(-60/2, 0,0,-150,1000, mode);
-				pl_R_DriveMotor_mode(MOTOR_BREAK);
-				pl_L_DriveMotor_mode(MOTOR_BREAK);
 				no_safty = 0;
-				wait_ms_NoReset(500);
 				clear_Ierror();
 
 				direction = direction + 2;
@@ -425,101 +337,122 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 				break;
 			}
 
-			if(know_mode==0){
-				kitikukan = 0;
+
+			if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
+				// 迷路破損のため、ダイクストラ法更新
+				Dijkstra_maker_flag=1;
 			}
+			if (x<0 || y<0 || x>15 || y>15){
+				// 自己位置の破損
+				error_mode=1;
+				g_WallControl_mode=0;
+				pl_yellow_LED_count(2*2*2*2);
+				pl_DriveMotor_stop();
+				pl_DriveMotor_standby(OFF);
+				break;
+			}
+
+
+			if(Dijkstra_maker_flag==1){
+				// 移動の優先順位 ： 前→右→左→後
+				mode.WallControlMode=1;
+				mode.calMazeMode=0;
+				mode.WallCutMode=0;
+				straight_table2(MAZE_SECTION/2-MAZE_OFFSET-(BACK_TO_CENTER-BACK_TO_CENTER_FRONT), input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
+
+				create_DijkstraMap();
+				route_Dijkstra();//ダイクストラ法の結果から最短ルートをスタックに入れる
+				create_StepCountMap_unknown();
+				search_AroundWalkCount(&front_count,&right_count,&back_count,&left_count,x,y,direction);
+				if (front_wall) {front_count = MAX_WALKCOUNT;}
+				if (right_wall) {right_count = MAX_WALKCOUNT;}
+				if (left_wall) {left_count = MAX_WALKCOUNT;}
+								if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
+								// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
+									error_mode=1;
+									g_WallControl_mode=0;
+									pl_yellow_LED_count(2*2*2*2*2);
+									pl_DriveMotor_stop();
+									pl_DriveMotor_standby(OFF);
+									break;
+								}
+								if (x<0 || y<0 || x>15 || y>15){
+								// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
+									error_mode=1;
+									g_WallControl_mode=0;
+									pl_yellow_LED_count(2*2*2*2);
+									pl_DriveMotor_stop();
+									pl_DriveMotor_standby(OFF);
+									break;
+								}
+								mode.WallControlMode=0;
+								mode.WallCutMode=0;
+								mode.calMazeMode=0;
+								if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
+									// 直進
+									straight_table2(MAZE_SECTION/2+(BACK_TO_CENTER-BACK_TO_CENTER_FRONT), 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+								}
+								if(right_count < front_count && right_count <= left_count && right_count <= back_count){
+									// 右旋回
+									turning_table2(-90,0,0,-input_TurningVelocity,input_TurningAcceleration);
+									straight_table2(MAZE_SECTION/2+(BACK_TO_CENTER-BACK_TO_CENTER_FRONT), 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									direction++;
+								}
+								if(left_count < front_count && left_count < right_count && left_count <= back_count){
+									// 左旋回
+									turning_table2(90,0,0,input_TurningVelocity,input_TurningAcceleration);
+									straight_table2(MAZE_SECTION/2+(BACK_TO_CENTER-BACK_TO_CENTER_FRONT), 0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									direction--;
+								}
+								if(back_count < front_count && back_count < right_count
+										&& back_count < left_count){
+									//180度旋回(前壁がある場合は尻当てを行うことで位置修正)
+									no_safty = 1;
+									backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
+									//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
+									wait_ms_NoReset(100);
+									no_safty = 0;
+									//clear_Ierror();
+									mode.WallControlMode=0;
+									if(front_wall){
+									straight_table2(-BACK_TO_CENTER, 0,0,-150,1000, mode);
+									clear_Ierror();
+									mode.WallControlMode=1;
+									straight_table2(BACK_TO_CENTER +MAZE_SECTION/2,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									}else{
+										clear_Ierror();
+										mode.WallControlMode=0;
+										straight_table2(MAZE_SECTION/2+(BACK_TO_CENTER-BACK_TO_CENTER_FRONT),0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+
+									}
+									//straight_table2(BACK_TO_CENTER + 90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+									direction = direction + 2;
+
+								}
+
+
+			}else{
+
+				if(know_mode==0){
+					kitikukan = 0;
+				}
 			if (kitikukan == OFF) {
 
-				// 移動の優先順位 ： 前→右→左→後
-				if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
-				// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
 
-					error_mode=1;
-					break;
-				}
-				if (x<0 || y<0 || x>15 || y>15){
-								// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
-
-									error_mode=1;
-									break;
-				}
-				if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
-					// 直進
-					mode.WallControlMode=1;
-					mode.calMazeMode=0;
-					mode.WallCutMode=0;
-					straight_table2(180/2-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-				}
-				if(right_count < front_count && right_count <= left_count && right_count <= back_count){
-					// 右旋回
-					if((x == GOAL_X || x == GOAL_X+1) && (y == GOAL_Y || y == GOAL_Y+1)){
-						noGoalPillarMode=1;
-					}else{
-						noGoalPillarMode=0;
-					}
-					slalomR(speed300_exploration.slalom_R, OFF,EXPLORATION,0,input_StraightVelocity);
-					direction++;
-				}
-				if(left_count < front_count && left_count < right_count && left_count <= back_count){
-					// 左旋回
-					if((x == GOAL_X || x == GOAL_X+1) && (y == GOAL_Y || y == GOAL_Y+1)){
-						noGoalPillarMode=1;
-					}else{
-						noGoalPillarMode=0;
-					}
-					slalomL(speed300_exploration.slalom_L, OFF,EXPLORATION,0,input_StraightVelocity);
-					direction--;
-				}
-				if(back_count < front_count && back_count < right_count
-						&& back_count < left_count){
-					//180度旋回(前壁がある場合は尻当てを行うことで位置修正)
-					//180度旋回(前壁がある場合は尻当てを行うことで位置修正)
-					mode.WallControlMode=1;
-					mode.calMazeMode=0;
-					mode.WallCutMode=0;
-					straight_table2(90/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
-					pl_R_DriveMotor_mode(MOTOR_BREAK);
-					pl_L_DriveMotor_mode(MOTOR_BREAK);
-					wait_ms_NoReset(100);
-					no_safty = 1;
-					backTurn_controlWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
-					//backTurn_hitWall(input_TurningVelocity, input_TurningAcceleration, front_wall, left_wall, right_wall);
-					no_safty = 0;
-					wait_ms_NoReset(100);
-					//clear_Ierror();
-					mode.WallControlMode=0;
-					if(front_wall){
-					straight_table2(-BACK_TO_CENTER, 0,0,-150,1000, mode);
-					pl_R_DriveMotor_mode(MOTOR_BREAK);
-					pl_L_DriveMotor_mode(MOTOR_BREAK);
-					wait_ms_NoReset(100);
-
-					clear_Ierror();
-					mode.WallControlMode=1;
-					straight_table2(BACK_TO_CENTER +90/2,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-					}else{
-						clear_Ierror();
-						mode.WallControlMode=1;
-						straight_table2(90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-
-					}
-					//straight_table2(BACK_TO_CENTER + 90,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-					direction = direction + 2;
-
-				}
+				run_movement_continuity(&direction,front_count,right_count,back_count,left_count,
+						input_StraightVelocity, input_TurningVelocity, input_StraightAcceleration, input_TurningAcceleration, howspeed,
+						front_wall, right_wall, left_wall);
 
 			} else {
 				mode.WallControlMode=1;
 				mode.calMazeMode=1;
 				mode.WallCutMode=0;
-				straight_table2(90/2-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
-				compress_kitiku(&x,&y,&direction);
-				mode.WallCutMode=0;
-				End_straight(90/2-MAZE_OFFSET,mode,1,1);
-				mode.WallControlMode=1;
+				straight_table2(MAZE_SECTION/2-MAZE_OFFSET, input_StraightVelocity,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+				compress_kitiku(&x,&y,&direction,&kitiku_distance);
+				End_straight(MAZE_SECTION/2-MAZE_OFFSET,mode,1,1);
 				mode.calMazeMode=0;
-				mode.WallCutMode=0;
-				straight_table2((90/2 * kitiku_distance),input_StraightVelocity,input_StraightVelocity,1000,input_StraightAcceleration, mode);
+				straight_table2((MAZE_SECTION/2 * kitiku_distance),input_StraightVelocity,input_StraightVelocity,1000,input_StraightAcceleration, mode);
+			}
 
 			}
 
@@ -529,26 +462,31 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 			if (direction <= 0) {
 				direction = direction+4;
 			}
-	//基地区間**********************************************************************
-	//		if (know_road == 1) {
-	//			most_speed_kitikukan_play(850, 1600);
-	//		}
-	//基地区間
+
 			if(error_mode==1){break;}
+			if (g_timCount_sec>240){
+				// 秒数エンド
+				timer_end_mode=1;
+				pl_DriveMotor_stop();
+				pl_DriveMotor_standby(OFF);
+				break;
+			}
 		}
 
 	pl_DriveMotor_standby(OFF); //MTU2.TSTR.BIT.CST0 = 0;
 	maze_mode = 0;
-	HAL_Delay(100);
+	wait_ms_NoReset(100);
 	maze_display();
 	create_StepCountMap_queue();
-	if(walk_count[0] == 255){
+	if(walk_count[0][0] == MAX_WALKCOUNT){
 		error_mode = 1;
 	}
 	if (error_mode == 0) {
 		record_in();
-	} else {
+	} else if(timer_end_mode==0) {
 		record_out();
+	}else{
+		record_in();
 	}
 
 }
@@ -1028,7 +966,7 @@ if(pass_mode==1){
 	end_velocity=get_center_velocity(howspeed,pass[pass_count2]);
 	printf("%d,%f\n",pass_count2, end_velocity);
 
-	HAL_Delay(500);
+	wait_ms_NoReset(500);
 	pl_DriveMotor_standby(ON);
 	pl_R_DriveMotor_mode(MOTOR_BREAK);
 	pl_L_DriveMotor_mode(MOTOR_BREAK);
@@ -1040,17 +978,17 @@ if(pass_mode==1){
 	if (fun_mode == 1) {
 		pl_FunMotor_duty(fun_ratio*BATT_MAX/g_V_battery_mean);
 		pl_FunMotor_start();
-		HAL_Delay(600);
+		wait_ms_NoReset(600);
 		reset_gyro();
 		reset_speed();
 		clear_Ierror();
-//		HAL_Delay(1000);
+//		wait_ms_NoReset(1000);
 //				reset_gyro();
 //				enc.sigma_error = 0;
 //					Gyro.sigma_error = 0;
 //				pl_FunMotor_duty(160);
 //		pl_FunMotor_start();
-//						HAL_Delay(2000);	//候補1
+//						wait_ms_NoReset(2000);	//候補1
 
 	}
 	maze_mode = 1;
@@ -1059,7 +997,6 @@ if(pass_mode==1){
 	record_mode=18;
 //	encoder_PID_error=2500;
 //	gyro_PID_error=1800;
-	wall_control = 0;
 	pass_count = 0;
 
 
@@ -1075,7 +1012,7 @@ if(pass_mode==1){
 	straight_table2(BACK_TO_CENTER_FRONT,0,end_velocity,end_velocity,end_velocity*end_velocity/ BACK_TO_CENTER_FRONT/2, mode);
 
 
-	while (pass_count <= 255) {
+	while (pass_count <= 500) {
 		pass_count2=pass_count+1;
 		while(pass[pass_count2] == -1){
 			pass_count2++;
@@ -1191,8 +1128,8 @@ if(pass_mode==1){
 
 		mode.WallControlMode=1;
 		mode.WallControlStatus=0;
-		straight_table2(90,end_velocity, 0,inspeed, inacc, mode);
-		HAL_Delay(700);
+		straight_table2(MAZE_SECTION,end_velocity, 0,inspeed, inacc, mode);
+		wait_ms_NoReset(700);
 		pl_FunMotor_stop();
 //		turning_table(180, 0, 0, 400, 5000);
 
@@ -1200,7 +1137,7 @@ if(pass_mode==1){
 	highspeed_mode = 0;
 	record_mode=0;
 	pl_DriveMotor_standby(OFF);
-	t = 0;
+	int t = 0;
 
 	while (t <= 14) {
 		wall.row[t] = record.row[t];
@@ -1255,9 +1192,9 @@ void decision_kitiku(int x,int y,int direction,unsigned short front_count,unsign
 
 }
 
-void compress_kitiku(int *x,int *y,int *direction) {
-	kitiku_distance = 1;
-	kitiku = 1;
+void compress_kitiku(int *x,int *y,int *direction,int *kitiku_distance) {
+	*kitiku_distance = 1;
+	int kitiku = 1;
 	_Bool front_wall;
 	_Bool right_wall;
 	_Bool left_wall;
@@ -1294,7 +1231,7 @@ void compress_kitiku(int *x,int *y,int *direction) {
 		if (right_wall) {right_count = MAX_WALKCOUNT;}
 		if (left_wall) {left_count = MAX_WALKCOUNT;}
 		// 移動の優先順位 ： 前→右→左→後
-		if (walk_count[16 * x_now + y_now] <= 1) {
+		if (walk_count[x_now][y_now] <= 1) {
 			//goal間近で停止
 			break;
 		}
@@ -1310,7 +1247,7 @@ void compress_kitiku(int *x,int *y,int *direction) {
 		if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
 		// 直進
 			if(look_f){
-				kitiku_distance += 2;
+				*kitiku_distance += 2;
 			}else{
 				kitiku = 0;
 				break;
