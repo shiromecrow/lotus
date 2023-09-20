@@ -1,48 +1,10 @@
-23:26:33 **** Incremental Build of configuration Debug for project half_mouse2 ****
+00:01:36 **** Incremental Build of configuration Debug for project half_mouse2 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/PL_encoder.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/PL_encoder.d" -MT"Core/Src/PL_encoder.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/PL_encoder.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/maze_strategy.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_strategy.d" -MT"Core/Src/maze_strategy.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_strategy.o"
-arm-none-eabi-gcc "../Core/Src/mode_select.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/mode_select.d" -MT"Core/Src/mode_select.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mode_select.o"
-arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
-../Core/Src/maze_strategy.c: In function 'AdatiWayReturn':
-../Core/Src/maze_strategy.c:280:2: warning: implicit declaration of function 'reset_gyro' [-Wimplicit-function-declaration]
-  280 |  reset_gyro();
-      |  ^~~~~~~~~~
-../Core/Src/maze_strategy.c:281:2: warning: implicit declaration of function 'reset_speed' [-Wimplicit-function-declaration]
-  281 |  reset_speed();
-      |  ^~~~~~~~~~~
-../Core/Src/maze_strategy.c: In function 'pass_maker':
-../Core/Src/maze_strategy.c:552:4: warning: implicit declaration of function 'pl_play_oneSound' [-Wimplicit-function-declaration]
-  552 |    pl_play_oneSound(1);
-      |    ^~~~~~~~~~~~~~~~
-../Core/Src/maze_strategy.c: In function 'run_shortest':
-../Core/Src/maze_strategy.c:958:3: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-  958 |   printf("pass_count %d pass %d\n", j, pass[j]);
-      |   ^~~~~~
-../Core/Src/maze_strategy.c:958:3: warning: incompatible implicit declaration of built-in function 'printf'
-../Core/Src/maze_strategy.c:24:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-   23 | #include "record.h"
-  +++ |+#include <stdio.h>
-   24 | 
-../Core/Src/maze_strategy.c:967:2: warning: incompatible implicit declaration of built-in function 'printf'
-  967 |  printf("%d,%f\n",pass_count2, end_velocity);
-      |  ^~~~~~
-../Core/Src/maze_strategy.c:967:2: note: include '<stdio.h>' or provide a declaration of 'printf'
-../Core/Src/maze_strategy.c:690:16: warning: variable 'last_v' set but not used [-Wunused-but-set-variable]
-  690 |  float first_v,last_v;
-      |                ^~~~~~
-arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: half_mouse2.elf
- 
 arm-none-eabi-size   half_mouse2.elf 
-arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
    text	   data	    bss	    dec	    hex	filename
- 149948	    516	  65772	 216236	  34cac	half_mouse2.elf
+ 149956	    516	  65772	 216244	  34cb4	half_mouse2.elf
 Finished building: default.size.stdout
  
-Finished building: half_mouse2.list
- 
 
-23:26:38 Build Finished. 0 errors, 7 warnings. (took 4s.255ms)
+00:01:37 Build Finished. 0 errors, 0 warnings. (took 909ms)
 
