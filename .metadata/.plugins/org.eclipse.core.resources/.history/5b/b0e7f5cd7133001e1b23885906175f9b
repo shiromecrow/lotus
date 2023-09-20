@@ -149,6 +149,7 @@ switch (main_modeL) {
 		mode_WallSensorTuning_fast(main_modeR);
 	break;
 	case 0b0111:
+		testturning(speed600_shortest_mollifier,main_modeR,1,OFF,0.51,1);
 	break;
 	case 0b1000:
 	break;
@@ -409,35 +410,44 @@ void mode_Running(unsigned char main_modeR){
 			//maze_maker2(1, 0, 0, 0, 7, 7);
 			//record_out();
 			//wall.row[8]=(1<<8);
-			create_StepCountMap_queue();
-			maze_display();
 
-			create_DijkstraMap();
-			maze_display_Dijkstra();
-
-			route_Dijkstra();
-			create_StepCountMap_unknown();
-			maze_display();
-
-//			tic_timer();
-//			for(int j=0;j<5000;j++){
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/63/e0abbf5cfc47001e1c52a78b59114074
+=======
 //			create_StepCountMap_queue();
-//			}
-//			float tim2 = toc_timer();
 //			maze_display();
-//			tic_timer();
-//			for(int j=0;j<5000;j++){
-//			//create_StepCountMap();
-//			//maze_clear();
-//			//create_DijkstraMap();
+//
+//			create_DijkstraMap();
+//			maze_display_Dijkstra();
+//
 //			route_Dijkstra();
 //			create_StepCountMap_unknown();
-//
-//			}
-//			float tim1 = toc_timer();
 //			maze_display();
-//			maze_display_Dijkstra();
-//			printf("tim1=%f,tim2=%f\n", tim1, tim2);
+
+>>>>>>> master:.metadata/.plugins/org.eclipse.core.resources/.history/5b/b0e7f5cd7133001e1b23885906175f9b
+			tic_timer();
+			for(int j=0;j<5000;j++){
+			create_StepCountMap_queue();
+			}
+			float tim2 = toc_timer();
+			maze_display();
+			printf("tim2=%f\n", tim2);
+			tic_timer();
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/63/e0abbf5cfc47001e1c52a78b59114074
+			create_DijkstraMap();
+=======
+>>>>>>> master:.metadata/.plugins/org.eclipse.core.resources/.history/5b/b0e7f5cd7133001e1b23885906175f9b
+			for(int j=0;j<5000;j++){
+			//create_StepCountMap();
+			//maze_clear();
+			//create_DijkstraMap();
+			route_Dijkstra();
+			create_StepCountMap_unknown();
+
+			}
+			float tim1 = toc_timer();
+			maze_display();
+			maze_display_Dijkstra();
+			printf("tim1=%f,tim2=%f\n", tim1, tim2);
 		break;
 		case 0b0001://足立法(遅い)
 			tic_timer();
@@ -660,6 +670,11 @@ void mode_Tuning0(unsigned char main_modeR){
 			//pl_l_blue_LED(OFF);
 		break;
 		case 14://宴会芸＋吸引
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/63/e0abbf5cfc47001e1c52a78b59114074
+//			record_mode=2;
+//			for(int i=0;i<40;i++){
+//			turning_table2(90, 0, 0, 930, 11000);
+//			}
 			highspeed_mode = 1;
 			pl_FunMotor_duty(0.99);
 			pl_FunMotor_start();
@@ -673,6 +688,25 @@ void mode_Tuning0(unsigned char main_modeR){
 //			straight_table2(90*32, 0, 0, 4000, 17000,mode);
 			mode.WallControlMode=1;
 			straight_table2(90*8, 0, 0, 3000, 12000,mode);
+=======
+			record_mode=2;
+			for(int i=0;i<40;i++){
+			turning_table2(90, 0, 0, 400, 3000);
+			}
+//			highspeed_mode = 1;
+//			pl_FunMotor_duty(0.99);
+//			pl_FunMotor_start();
+//			HAL_Delay(600);
+//			reset_gyro();
+//			reset_speed();
+//			reset_distance();
+//			clear_Ierror();
+//			record_mode=3;
+////			mode.WallControlMode=0;
+////			straight_table2(90*32, 0, 0, 4000, 17000,mode);
+//			mode.WallControlMode=1;
+//			straight_table2(90*8, 0, 0, 3000, 12000,mode);
+>>>>>>> master:.metadata/.plugins/org.eclipse.core.resources/.history/5b/b0e7f5cd7133001e1b23885906175f9b
 		break;
 		case 15:
 			highspeed_mode = 1;

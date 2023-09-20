@@ -184,10 +184,10 @@ int main(void)
 //		create_StepCountMap_unknown();
 //
 //		}
-//		tim1 = toc_timer();
-//		maze_display();
-//		maze_display_Dijkstra();
-//		printf("tim1=%f,tim2=%f\n", tim1, tim2);
+		tim1 = toc_timer();
+		maze_display();
+		maze_display_Dijkstra();
+		printf("tim1=%f,tim2=%f\n", tim1, tim2);
 
 	  		mode=mode_decision(mode);
 //	  		clear_Ierror();
