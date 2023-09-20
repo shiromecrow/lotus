@@ -409,15 +409,25 @@ void mode_Running(unsigned char main_modeR){
 			//maze_maker2(1, 0, 0, 0, 7, 7);
 			//record_out();
 			//wall.row[8]=(1<<8);
-			create_StepCountMap_queue();
-			maze_display();
 
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/1d/a08fb7cb2947001e1c52a78b59114074
 			create_DijkstraMap();
 			maze_display_Dijkstra();
 
 			route_Dijkstra();
 			create_StepCountMap_unknown();
 			maze_display();
+=======
+//			create_StepCountMap_queue();
+//			maze_display();
+//
+//			create_DijkstraMap();
+//			maze_display_Dijkstra();
+//
+//			route_Dijkstra();
+//			create_StepCountMap_unknown();
+//			maze_display();
+>>>>>>> master:.metadata/.plugins/org.eclipse.core.resources/.history/32/202133566c33001e1b23885906175f9b
 
 			tic_timer();
 			for(int j=0;j<5000;j++){
@@ -425,7 +435,10 @@ void mode_Running(unsigned char main_modeR){
 			}
 			float tim2 = toc_timer();
 			maze_display();
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/1d/a08fb7cb2947001e1c52a78b59114074
 			printf("tim2=%f\n", tim2);
+=======
+>>>>>>> master:.metadata/.plugins/org.eclipse.core.resources/.history/32/202133566c33001e1b23885906175f9b
 			tic_timer();
 			for(int j=0;j<5000;j++){
 			//create_StepCountMap();
@@ -661,6 +674,7 @@ void mode_Tuning0(unsigned char main_modeR){
 			//pl_l_blue_LED(OFF);
 		break;
 		case 14://宴会芸＋吸引
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/1d/a08fb7cb2947001e1c52a78b59114074
 //			record_mode=2;
 //			for(int i=0;i<40;i++){
 //			turning_table2(90, 0, 0, 930, 11000);
@@ -678,6 +692,25 @@ void mode_Tuning0(unsigned char main_modeR){
 //			straight_table2(90*32, 0, 0, 4000, 17000,mode);
 			mode.WallControlMode=1;
 			straight_table2(90*8, 0, 0, 3000, 12000,mode);
+=======
+			record_mode=2;
+			for(int i=0;i<40;i++){
+			turning_table2(90, 0, 0, 400, 3000);
+			}
+//			highspeed_mode = 1;
+//			pl_FunMotor_duty(0.99);
+//			pl_FunMotor_start();
+//			HAL_Delay(600);
+//			reset_gyro();
+//			reset_speed();
+//			reset_distance();
+//			clear_Ierror();
+//			record_mode=3;
+////			mode.WallControlMode=0;
+////			straight_table2(90*32, 0, 0, 4000, 17000,mode);
+//			mode.WallControlMode=1;
+//			straight_table2(90*8, 0, 0, 3000, 12000,mode);
+>>>>>>> master:.metadata/.plugins/org.eclipse.core.resources/.history/32/202133566c33001e1b23885906175f9b
 		break;
 		case 15:
 			highspeed_mode = 1;

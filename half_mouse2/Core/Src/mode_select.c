@@ -401,6 +401,7 @@ void mode_PLtest(unsigned char main_modeR) {
 
 
 void mode_Running(unsigned char main_modeR){
+	int a=0;
 	pl_L_DriveMotor_mode(MOTOR_BREAK);
 	pl_R_DriveMotor_mode(MOTOR_BREAK);
 	reset_gyro();
@@ -412,16 +413,27 @@ void mode_Running(unsigned char main_modeR){
 			//maze_maker2(1, 0, 0, 0, 7, 7);
 			//record_out();
 			//wall.row[8]=(1<<8);
-			create_StepCountMap_queue();
-			maze_display();
 
-			create_DijkstraMap();
-			maze_display_Dijkstra();
+<<<<<<< HEAD
+=======
+//			create_StepCountMap_queue();
+//			maze_display();
+//
+//			create_DijkstraMap();
+//			maze_display_Dijkstra();
+//
+//			route_Dijkstra();
+//			create_StepCountMap_unknown();
+//			maze_display();
 
-			route_Dijkstra();
-			create_StepCountMap_unknown();
-			maze_display();
+			tic_timer();
+			for(int j=0;j<50000;j++){
+				a=a+1;
+			}
+			float tim1 = toc_timer();
+			printf("tim1=%f\n", tim1);
 
+>>>>>>> master
 			tic_timer();
 			for(int j=0;j<5000;j++){
 			create_StepCountMap_queue();
@@ -430,7 +442,10 @@ void mode_Running(unsigned char main_modeR){
 			maze_display();
 			printf("tim2=%f\n", tim2);
 			tic_timer();
+<<<<<<< HEAD
 			create_DijkstraMap();
+=======
+>>>>>>> master
 			for(int j=0;j<5000;j++){
 			//create_StepCountMap();
 			//maze_clear();
@@ -439,7 +454,11 @@ void mode_Running(unsigned char main_modeR){
 			create_StepCountMap_unknown();
 
 			}
+<<<<<<< HEAD
 			float tim1 = toc_timer();
+=======
+			tim1 = toc_timer();
+>>>>>>> master
 			maze_display();
 			maze_display_Dijkstra();
 			printf("tim1=%f,tim2=%f\n", tim1, tim2);
@@ -691,6 +710,7 @@ void mode_Tuning0(unsigned char main_modeR){
 			//pl_l_blue_LED(OFF);
 		break;
 		case 14://宴会芸＋吸引
+<<<<<<< HEAD
 //			record_mode=2;
 //			for(int i=0;i<40;i++){
 //			turning_table2(90, 0, 0, 930, 11000);
@@ -708,6 +728,25 @@ void mode_Tuning0(unsigned char main_modeR){
 //			straight_table2(90*32, 0, 0, 4000, 17000,mode);
 			mode.WallControlMode=1;
 			straight_table2(90*8, 0, 0, 4000, 17000,mode);
+=======
+			record_mode=2;
+			for(int i=0;i<40;i++){
+			turning_table2(90, 0, 0, 400, 3000);
+			}
+//			highspeed_mode = 1;
+//			pl_FunMotor_duty(0.99);
+//			pl_FunMotor_start();
+//			HAL_Delay(600);
+//			reset_gyro();
+//			reset_speed();
+//			reset_distance();
+//			clear_Ierror();
+//			record_mode=3;
+////			mode.WallControlMode=0;
+////			straight_table2(90*32, 0, 0, 4000, 17000,mode);
+//			mode.WallControlMode=1;
+//			straight_table2(90*8, 0, 0, 3000, 12000,mode);
+>>>>>>> master
 		break;
 		case 15:
 			highspeed_mode = 1;

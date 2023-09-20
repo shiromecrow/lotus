@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ../Core/Src/maze_wall.c:28:6:maze_clear	24	static
 ../Core/Src/maze_wall.c:93:6:update_wall	24	static
 ../Core/Src/maze_wall.c:174:6:get_wall	24	static
@@ -20,3 +21,30 @@
 ../Core/Src/maze_wall.c:1142:6:maze_makerback	24	static
 ../Core/Src/maze_wall.c:1146:6:maze_display	16	static
 ../Core/Src/maze_wall.c:1219:6:maze_display_Dijkstra	16	static
+=======
+../Core/Src/maze_wall.c:53:6:maze_clear	16	static
+../Core/Src/maze_wall.c:139:6:update_wall	24	static
+../Core/Src/maze_wall.c:220:6:get_wall	24	static
+../Core/Src/maze_wall.c:274:6:get_wall_look	24	static
+../Core/Src/maze_wall.c:328:6:search_AroundWalkCount	32	static
+../Core/Src/maze_wall.c:381:6:search_AroundDijkstraCount	32	static
+../Core/Src/maze_wall.c:435:6:create_StepCountMap	192	static
+../Core/Src/maze_wall.c:528:6:create_StepCountMapBack	192	static
+../Core/Src/maze_wall.c:615:6:create_DijkstraMap	7112	static
+../Core/Src/maze_wall.c:863:6:route_Dijkstra	8520	static
+../Core/Src/maze_wall.c:1041:6:create_StepCountMap_unknown	2848	static
+../Core/Src/maze_wall.c:1130:6:create_StepCountMap_queue	2848	static
+../Core/Src/maze_wall.c:1206:6:create_StepCountMapBack_queue	2848	static
+../Core/Src/maze_wall.c:1277:6:initStack_walk	16	static
+../Core/Src/maze_wall.c:1288:6:pushStack_walk	16	static
+../Core/Src/maze_wall.c:1307:16:popStack_walk	24	static
+../Core/Src/maze_wall.c:1339:6:create_StepCountMap_ST	4264	static
+../Core/Src/maze_wall.c:1452:6:maze_maker	24	static
+../Core/Src/maze_wall.c:1454:6:maze_maker2	24	static
+../Core/Src/maze_wall.c:1456:6:maze_makerhosuu	24	static
+../Core/Src/maze_wall.c:1458:6:maze_makerRun	24	static
+../Core/Src/maze_wall.c:1461:6:maze_makeronly	24	static
+../Core/Src/maze_wall.c:1464:6:maze_makerback	24	static
+../Core/Src/maze_wall.c:1468:6:maze_display	16	static
+../Core/Src/maze_wall.c:1541:6:maze_display_Dijkstra	16	static
+>>>>>>> master

@@ -4097,6 +4097,7 @@ org.eclipse.core.runtime.CoreException: Target not available.
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 !SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2023-07-30 19:06:14.062
 !MESSAGE Target not available.
+<<<<<<< HEAD
 !SESSION 2023-08-08 21:20:34.544 -----------------------------------------------
 eclipse.buildId=Version 1.9.0
 java.version=11.0.11
@@ -4135,19 +4136,31 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 !MESSAGE Started RMI Server, listening on port 41337
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-21 21:20:20.053
+=======
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-03 19:23:50.922
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+Remote communication error.  Target disconnected.: (undocumented errno 10061).
+>>>>>>> master
 !STACK 1
 org.eclipse.core.runtime.CoreException: Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+Remote communication error.  Target disconnected.: (undocumented errno 10061).
+>>>>>>> master
 	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
@@ -4158,14 +4171,22 @@ Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-m
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 Caused by: java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-08-21 21:20:20.054
+=======
+Caused by: java.lang.Exception: Remote communication error.  Target disconnected.: (undocumented errno 10061).
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-08-03 19:23:50.923
+>>>>>>> master
 !MESSAGE Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 !STACK 0
 java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
@@ -4234,19 +4255,36 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-01 23:04:10.507
+=======
+Remote communication error.  Target disconnected.: (undocumented errno 10061).
+!STACK 0
+java.lang.Exception: Remote communication error.  Target disconnected.: (undocumented errno 10061).
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 16:41:44.406
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote communication error.  Target disconnected.: (undocumented errno 10061).
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 !STACK 1
 org.eclipse.core.runtime.CoreException: Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote communication error.  Target disconnected.: (undocumented errno 10061).
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
@@ -4257,14 +4295,22 @@ Remote communication error.  Target disconnected.: (undocumented errno 10061).
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 Caused by: java.lang.Exception: Remote communication error.  Target disconnected.: (undocumented errno 10061).
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-01 23:04:10.507
+=======
+Caused by: java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-08-05 16:41:44.407
+>>>>>>> master
 !MESSAGE Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote communication error.  Target disconnected.: (undocumented errno 10061).
 !STACK 0
 java.lang.Exception: Remote communication error.  Target disconnected.: (undocumented errno 10061).
@@ -4272,19 +4318,36 @@ java.lang.Exception: Remote communication error.  Target disconnected.: (undocum
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-02 00:00:39.537
+=======
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 18:32:18.316
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 !STACK 1
 org.eclipse.core.runtime.CoreException: Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
@@ -4295,14 +4358,22 @@ Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-m
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 Caused by: java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-02 00:00:39.538
+=======
+Caused by: java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-08-05 18:32:18.316
+>>>>>>> master
 !MESSAGE Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 !STACK 0
 java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
@@ -4313,6 +4384,15 @@ java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSiz
 !MESSAGE Could not verify ST device!
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-02 01:22:27.217
+=======
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 18:32:52.118
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Setup exceptions
@@ -4328,10 +4408,17 @@ org.eclipse.core.runtime.CoreException: Setup exceptions
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 !SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2023-09-02 01:22:27.217
 !MESSAGE Setup exceptions
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-02 21:50:54.192
+=======
+!SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2023-08-05 18:32:52.118
+!MESSAGE Setup exceptions
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 18:53:51.700
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Setup exceptions
@@ -4347,10 +4434,17 @@ org.eclipse.core.runtime.CoreException: Setup exceptions
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 !SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2023-09-02 21:50:54.193
 !MESSAGE Setup exceptions
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-02 22:19:04.330
+=======
+!SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2023-08-05 18:53:51.700
+!MESSAGE Setup exceptions
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 19:14:02.818
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Setup exceptions
@@ -4366,6 +4460,7 @@ org.eclipse.core.runtime.CoreException: Setup exceptions
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 !SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2023-09-02 22:19:04.330
 !MESSAGE Setup exceptions
 
@@ -4392,6 +4487,14 @@ org.eclipse.core.runtime.CoreException: Setup exceptions
 !MESSAGE An internal error occurred during: "Suspend monitor job.".
 !STACK 0
 java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@42be1bd3[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@6517c65e[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@63e216e4]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@4ba66e99[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2854]
+=======
+!SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2023-08-05 19:14:02.818
+!MESSAGE Setup exceptions
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 20:16:28.930
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@3ecb84cf[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@1435cb8c[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@6fc87486]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@5d5380a[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3122]
 	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
@@ -4402,7 +4505,40 @@ java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.Sched
 	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 20:16:29.604
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@6f238552[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@4f394840[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@a34deee]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@5d5380a[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3122]
+>>>>>>> master
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+<<<<<<< HEAD
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-10 01:04:37.371
+=======
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 20:16:30.589
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@6fd0ed3e[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@6eaebcb9[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@5f36bee1]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@5d5380a[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3122]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 20:16:44.374
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Failed to execute MI command:
@@ -4429,7 +4565,11 @@ localhost:2331: Connection timed out.
 Caused by: java.lang.Exception: localhost:2331: Connection timed out.
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+<<<<<<< HEAD
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-10 01:04:37.372
+=======
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-08-05 20:16:44.376
+>>>>>>> master
 !MESSAGE Failed to execute MI command:
 target remote localhost:2331
 
@@ -4440,6 +4580,7 @@ java.lang.Exception: localhost:2331: Connection timed out.
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-10 01:30:56.826
 !MESSAGE Error in final launch sequence:
 
@@ -4536,6 +4677,9 @@ org.eclipse.core.runtime.CoreException: Setup exceptions
 !MESSAGE Setup exceptions
 
 !ENTRY org.eclipse.ui 4 0 2023-09-13 20:07:48.001
+=======
+!ENTRY org.eclipse.ui 4 0 2023-08-05 20:27:45.643
+>>>>>>> master
 !MESSAGE Unhandled event loop exception
 !STACK 0
 org.eclipse.swt.SWTException: Widget is disposed
@@ -4574,6 +4718,7 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.cdt.ui 4 0 2023-09-13 20:40:59.382
 !MESSAGE Error in CDT UI during reconcile
 !STACK 1
@@ -4635,19 +4780,72 @@ org.eclipse.core.runtime.CoreException: Setup exceptions
 !MESSAGE Setup exceptions
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-15 21:11:24.468
+=======
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 20:28:58.727
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@136e5ce3[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@5511b6b9[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@7347b79a]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@5e9a5acc[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2525]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 20:28:59.380
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@2c8b81dc[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@a11898[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@5aec2594]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@5e9a5acc[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2525]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 20:29:00.794
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@1f578ee[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@370fba[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@4ed38301]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@5e9a5acc[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2525]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 20:29:10.510
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 !STACK 1
 org.eclipse.core.runtime.CoreException: Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
@@ -4658,14 +4856,22 @@ Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-m
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 Caused by: java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-15 21:11:24.469
+=======
+Caused by: java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-08-05 20:29:10.511
+>>>>>>> master
 !MESSAGE Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 !STACK 0
 java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
@@ -4694,19 +4900,50 @@ C Model Exception: C Model Status [Element maze_Turning.c does not exist.]
 !MESSAGE Element maze_Turning.c does not exist.
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-18 22:00:05.486
+=======
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 21:32:59.621
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@5c26280b[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@374b5e75[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@4dade308]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@15ca24ab[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3428]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 21:33:14.262
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 !STACK 1
 org.eclipse.core.runtime.CoreException: Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
@@ -4717,14 +4954,22 @@ Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-m
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 Caused by: java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-18 22:00:05.487
+=======
+Caused by: java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-08-05 21:33:14.263
+>>>>>>> master
 !MESSAGE Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 !STACK 0
 java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
@@ -4732,19 +4977,103 @@ java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSiz
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-09-20 22:38:43.011
+=======
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY org.eclipse.ui 4 0 2023-08-05 21:40:12.085
+!MESSAGE Unhandled event loop exception
+!STACK 0
+org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4907)
+	at org.eclipse.swt.SWT.error(SWT.java:4822)
+	at org.eclipse.swt.SWT.error(SWT.java:4793)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:445)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:364)
+	at org.eclipse.swt.custom.StyledText.getCharCount(StyledText.java:4022)
+	at org.eclipse.swt.custom.StyledText$7.getCharacterCount(StyledText.java:6824)
+	at org.eclipse.swt.accessibility.Accessible.getCharacterCount(Accessible.java:5016)
+	at org.eclipse.swt.accessibility.Accessible.get_nCharacters(Accessible.java:4649)
+	at org.eclipse.swt.accessibility.Accessible$5.method17(Accessible.java:375)
+	at org.eclipse.swt.internal.ole.win32.COMObject.callback17(COMObject.java:219)
+	at org.eclipse.swt.internal.win32.OS.PeekMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3627)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1154)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1045)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 21:48:07.439
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@6e6f2b3c[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@73255259[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@7e8a2ca3]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@56912c08[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3036]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 21:48:08.923
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@72062889[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@53bb5e2a[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@77135d2c]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@56912c08[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3036]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2023-08-05 21:48:18.936
+>>>>>>> master
 !MESSAGE Error in final launch sequence:
 
 Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 !STACK 1
 org.eclipse.core.runtime.CoreException: Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
+=======
+localhost:2331: Connection timed out.
+>>>>>>> master
 	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
 	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
@@ -4755,14 +5084,22 @@ Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-m
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+<<<<<<< HEAD
 Caused by: java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-09-20 22:38:43.012
+=======
+Caused by: java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-08-05 21:48:18.936
+>>>>>>> master
 !MESSAGE Failed to execute MI command:
 target remote localhost:2331
 
 Error message from debugger back end:
+<<<<<<< HEAD
 Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
 !STACK 0
 java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSize=4000;qXfer:memory-map:read-;QStartNoAckMode+;hwbreak+;qXfer:features:read+
@@ -4774,3 +5111,24 @@ java.lang.Exception: Remote replied unexpectedly to 'vMustReplyEmpty': PacketSiz
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2023-09-20 23:05:28.900
 !MESSAGE Could not verify ST device!
+=======
+localhost:2331: Connection timed out.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection timed out.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1013)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:842)
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-08-05 21:55:47.756
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@6a9c03b4[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@b6cd327[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@4e6e4c2e]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@65dedd7d[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 2997]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+>>>>>>> master
