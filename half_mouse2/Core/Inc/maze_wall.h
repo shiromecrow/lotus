@@ -16,6 +16,7 @@
 #define COLUMN 0
 #define ROW 1
 
+#define MAX_WALKCOUNT 255
 #define MAX_WALKCOUNT_DIJKSTRA 65535
 
 #define VERTICALCOST 180

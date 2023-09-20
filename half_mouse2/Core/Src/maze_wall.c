@@ -21,37 +21,14 @@ DIJKSTRA Dijkstra;
 STACK_T g_Goal_x;
 STACK_T g_Goal_y;
 
-int tt = 0;
-int ss = 0;
-int mode_255 = 0;
-unsigned char Xend_cheak = 240; //x終わりの判定240
-unsigned char Yend_cheak = 15; //y終わりの判定15
 
-
-
-
-unsigned char coordinate; //座標
-unsigned short count_number; //歩数の値
-
-unsigned char Xcheak_result;
-unsigned char Ycheak_result;
-unsigned char Xcoordinate;
-unsigned char Ycoordinate;
-unsigned short wall_north;
-unsigned short wall_south;
-unsigned short wall_east;
-unsigned short wall_west;
-unsigned short front_count;
-unsigned short left_count;
-unsigned short right_count;
-unsigned short back_count;
 
 
 
 void maze_clear(void) { //初期化
 
 	Dijkstra_maker_flag=0;
-	tt = 0;
+	int tt = 0;
 	while (tt <= 14) {
 		wall.row[tt] = 0;
 		wall.column[tt] = 0;
@@ -94,8 +71,8 @@ void maze_clear(void) { //初期化
 
 	for(int i=0;i<=15;i++){
 		for(int j=0;j<=14;j++){
-			Dijkstra.column_count[i][j]=65535;
-			Dijkstra.row_count[i][j]=65535;
+			Dijkstra.column_count[i][j]=MAX_WALKCOUNT_DIJKSTRA;
+			Dijkstra.row_count[i][j]=MAX_WALKCOUNT_DIJKSTRA;
 		}
 	}
 	Dijkstra.column_count[GOAL_X][GOAL_Y]=0;
@@ -360,16 +337,16 @@ void search_AroundDijkstraCount(unsigned short *front_count,unsigned short *righ
 	unsigned short north_count,east_count,south_count,west_count;
 //	unsigned short front_count, right_count, back_count, left_count;
 
-	if (y >= 15) {north_count = 65535;}
+	if (y >= 15) {north_count = MAX_WALKCOUNT_DIJKSTRA;}
 	else {north_count = Dijkstra.column_count[x][y];}
 
-	if (x >= 15) {east_count = 65535;}
+	if (x >= 15) {east_count = MAX_WALKCOUNT_DIJKSTRA;}
 	else {east_count = Dijkstra.row_count[y][x];}
 
-	if (y <= 0) {south_count = 65535;}
+	if (y <= 0) {south_count = MAX_WALKCOUNT_DIJKSTRA;}
 	else {south_count = Dijkstra.column_count[x][y-1];}
 
-	if (x <= 0) {west_count = 65535;}
+	if (x <= 0) {west_count = MAX_WALKCOUNT_DIJKSTRA;}
 	else {west_count = Dijkstra.row_count[y][x-1];}
 
 
@@ -427,8 +404,8 @@ void create_DijkstraMap(void){
 	initStack_walk(&stack_cost);
 	for(int i=0;i<=15;i++){
 		for(int j=0;j<=14;j++){
-			Dijkstra.column_count[i][j]=65535;
-			Dijkstra.row_count[i][j]=65535;
+			Dijkstra.column_count[i][j]=MAX_WALKCOUNT_DIJKSTRA;
+			Dijkstra.row_count[i][j]=MAX_WALKCOUNT_DIJKSTRA;
 		}
 	}
 	Dijkstra.column_count[GOAL_X][GOAL_Y]=0;
@@ -458,7 +435,7 @@ void create_DijkstraMap(void){
 		//printf("x %d,y %d,C(0)R(1) %d\n",Xcoordinate,Ycoordinate,Row_or_Column);
 		//printf("cost_num %d\n",dis_cost);
 		//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-		if (Xcoordinate == 65535 || Ycoordinate == 65535) {
+		if (Xcoordinate == MAX_WALKCOUNT_DIJKSTRA || Ycoordinate == MAX_WALKCOUNT_DIJKSTRA) {
 			//printf("stack_end\n");
 			break;
 		}
@@ -805,7 +782,7 @@ void route_Dijkstra(void){
 			Row_or_Column = popStack_walk(&stack_matrix);
 			//printf("x %d,y %d,C(0)R(1) %d\n",Xcoordinate,Ycoordinate,Row_or_Column);
 			//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-			if (Xcoordinate == 65535 || Ycoordinate == 65535) {
+			if (Xcoordinate == MAX_WALKCOUNT_DIJKSTRA || Ycoordinate == MAX_WALKCOUNT_DIJKSTRA) {
 				//printf("stack_end\n");
 				break;
 			}
@@ -842,7 +819,7 @@ void create_StepCountMap_unknown(void){
 	unsigned short goalX,goalY;
 	for(uint8_t xx = 0;xx <= 15;xx++){
 		for(uint8_t yy = 0;yy <= 15;yy++){
-			walk_count[xx][yy] = 255;
+			walk_count[xx][yy] = MAX_WALKCOUNT;
 		}
 	}
 
@@ -855,7 +832,7 @@ void create_StepCountMap_unknown(void){
 			goalY = popStack_walk(&g_Goal_y);
 			//printf("x %d,y %d,C(0)R(1) %d\n",Xcoordinate,Ycoordinate,Row_or_Column);
 			//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-			if (goalX == 65535 || goalY == 65535) {
+			if (goalX == MAX_WALKCOUNT_DIJKSTRA || goalY == MAX_WALKCOUNT_DIJKSTRA) {
 				//printf("stack_end\n");
 				break;
 			}
@@ -884,7 +861,7 @@ void create_StepCountMap_unknown(void){
 		Ycoordinate = popStack_walk(&stack_y);
 		//printf("x %d,y %d\n",Xcoordinate,Ycoordinate);
 		//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-		if (Xcoordinate == 65535 || Ycoordinate == 65535) {
+		if (Xcoordinate == MAX_WALKCOUNT_DIJKSTRA || Ycoordinate == MAX_WALKCOUNT_DIJKSTRA) {
 			//printf("stack_end\n");
 			break;
 		}
@@ -902,22 +879,22 @@ void create_StepCountMap_unknown(void){
 			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
-		if (walk_count[Xcoordinate][Ycoordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
+		if (walk_count[Xcoordinate][Ycoordinate + 1] == MAX_WALKCOUNT && Ycoordinate != 15 && wall_north == 0) {
 			walk_count[Xcoordinate][Ycoordinate + 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate + 1);
 		}
-		if (walk_count[Xcoordinate][Ycoordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
+		if (walk_count[Xcoordinate][Ycoordinate - 1] == MAX_WALKCOUNT && Ycoordinate != 0 && wall_south == 0) {
 			walk_count[Xcoordinate][Ycoordinate - 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate - 1);
 		}
-		if (walk_count[Xcoordinate + 1][Ycoordinate] == 255 && Xcoordinate != 15 && wall_east == 0) {
+		if (walk_count[Xcoordinate + 1][Ycoordinate] == MAX_WALKCOUNT && Xcoordinate != 15 && wall_east == 0) {
 			walk_count[Xcoordinate + 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate + 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		if (walk_count[Xcoordinate - 1][Ycoordinate] == 255 && Xcoordinate != 0 && wall_west == 0) {
+		if (walk_count[Xcoordinate - 1][Ycoordinate] == MAX_WALKCOUNT && Xcoordinate != 0 && wall_west == 0) {
 			walk_count[Xcoordinate - 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate - 1);
 			pushStack_walk(&stack_y,Ycoordinate);
@@ -939,7 +916,7 @@ void create_StepCountMap_queue(void){
 	STACK_T stack_y;
 	for(uint8_t xx = 0;xx <= 15;xx++){
 		for(uint8_t yy = 0;yy <= 15;yy++){
-			walk_count[xx][yy] = 255;
+			walk_count[xx][yy] = MAX_WALKCOUNT;
 		}
 	}
 	initStack_walk(&stack_x);
@@ -965,7 +942,7 @@ void create_StepCountMap_queue(void){
 		Ycoordinate = popStack_walk(&stack_y);
 		//printf("x %d,y %d\n",Xcoordinate,Ycoordinate);
 		//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-		if (Xcoordinate == 65535 || Ycoordinate == 65535) {
+		if (Xcoordinate == MAX_WALKCOUNT_DIJKSTRA || Ycoordinate == MAX_WALKCOUNT_DIJKSTRA) {
 			//printf("stack_end\n");
 			break;
 		}
@@ -983,22 +960,22 @@ void create_StepCountMap_queue(void){
 			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
-		if (walk_count[Xcoordinate][Ycoordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
+		if (walk_count[Xcoordinate][Ycoordinate + 1] == MAX_WALKCOUNT && Ycoordinate != 15 && wall_north == 0) {
 			walk_count[Xcoordinate][Ycoordinate + 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate + 1);
 		}
-		if (walk_count[Xcoordinate][Ycoordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
+		if (walk_count[Xcoordinate][Ycoordinate - 1] == MAX_WALKCOUNT && Ycoordinate != 0 && wall_south == 0) {
 			walk_count[Xcoordinate][Ycoordinate - 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate - 1);
 		}
-		if (walk_count[Xcoordinate + 1][Ycoordinate] == 255 && Xcoordinate != 15 && wall_east == 0) {
+		if (walk_count[Xcoordinate + 1][Ycoordinate] == MAX_WALKCOUNT && Xcoordinate != 15 && wall_east == 0) {
 			walk_count[Xcoordinate + 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate + 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		if (walk_count[Xcoordinate - 1][Ycoordinate] == 255 && Xcoordinate != 0 && wall_west == 0) {
+		if (walk_count[Xcoordinate - 1][Ycoordinate] == MAX_WALKCOUNT && Xcoordinate != 0 && wall_west == 0) {
 			walk_count[Xcoordinate - 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate - 1);
 			pushStack_walk(&stack_y,Ycoordinate);
@@ -1017,7 +994,7 @@ void create_StepCountMapBack_queue(void){
 	STACK_T stack_y;
 	for(uint8_t xx = 0;xx <= 15;xx++){
 		for(uint8_t yy = 0;yy <= 15;yy++){
-			walk_count[xx][yy] = 255;
+			walk_count[xx][yy] = MAX_WALKCOUNT;
 		}
 	}
 	initStack_walk(&stack_x);
@@ -1038,7 +1015,7 @@ void create_StepCountMapBack_queue(void){
 		Ycoordinate = popStack_walk(&stack_y);
 		//printf("x %d,y %d\n",Xcoordinate,Ycoordinate);
 		//printf("x head %d tail %d\n y head %d tail %d\n",stack_x.head,stack_x.tail,stack_y.head,stack_y.tail);
-		if (Xcoordinate == 65535 || Ycoordinate == 65535) {
+		if (Xcoordinate == MAX_WALKCOUNT_DIJKSTRA || Ycoordinate == MAX_WALKCOUNT_DIJKSTRA) {
 			//printf("stack_end\n");
 			break;
 		}
@@ -1057,22 +1034,22 @@ void create_StepCountMapBack_queue(void){
 			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
-		if (walk_count[Xcoordinate][Ycoordinate + 1] == 255 && Ycoordinate != 15 && wall_north == 0) {
+		if (walk_count[Xcoordinate][Ycoordinate + 1] == MAX_WALKCOUNT && Ycoordinate != 15 && wall_north == 0) {
 			walk_count[Xcoordinate][Ycoordinate + 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate + 1);
 		}
-		if (walk_count[Xcoordinate][Ycoordinate - 1] == 255 && Ycoordinate != 0 && wall_south == 0) {
+		if (walk_count[Xcoordinate][Ycoordinate - 1] == MAX_WALKCOUNT && Ycoordinate != 0 && wall_south == 0) {
 			walk_count[Xcoordinate][Ycoordinate - 1] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate);
 			pushStack_walk(&stack_y,Ycoordinate - 1);
 		}
-		if (walk_count[Xcoordinate + 1][Ycoordinate] == 255 && Xcoordinate != 15 && wall_east == 0) {
+		if (walk_count[Xcoordinate + 1][Ycoordinate] == MAX_WALKCOUNT && Xcoordinate != 15 && wall_east == 0) {
 			walk_count[Xcoordinate + 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate + 1);
 			pushStack_walk(&stack_y,Ycoordinate);
 		}
-		if (walk_count[Xcoordinate - 1][Ycoordinate] == 255 && Xcoordinate != 0 && wall_west == 0) {
+		if (walk_count[Xcoordinate - 1][Ycoordinate] == MAX_WALKCOUNT && Xcoordinate != 0 && wall_west == 0) {
 			walk_count[Xcoordinate - 1][Ycoordinate] = walk_count[Xcoordinate][Ycoordinate] + 1;
 			pushStack_walk(&stack_x,Xcoordinate - 1);
 			pushStack_walk(&stack_y,Ycoordinate);
@@ -1122,7 +1099,7 @@ unsigned short popStack_walk(STACK_T *stack){
     /* スタックが空なら何もせずに関数終了 */
     if(stack->tail == stack->head){
     	//printf("stack_empty\n");
-        return 65535;
+        return MAX_WALKCOUNT_DIJKSTRA;
     }
 
     /* データの最前列からデータを取得 */
@@ -1137,10 +1114,6 @@ unsigned short popStack_walk(STACK_T *stack){
     /* 取得したデータを返却 */
     return ret;
 }
-
-
-
-
 
 
 

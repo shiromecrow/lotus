@@ -28,6 +28,9 @@ void compress_kitiku(int *,int *,int *,int *);
 
 void get_wallData_sensor(_Bool*,_Bool*,_Bool*);
 void update_coordinate(int *,int *,int);
+void run_movement_continuity(int *,unsigned short,unsigned short,unsigned short,unsigned short,float,float,float,float, parameter_speed,_Bool ,_Bool ,_Bool);
+
+
 void AdatiWayReturn(float,float,float,float, parameter_speed,int,uint8_t);
 
 void pass_maker();

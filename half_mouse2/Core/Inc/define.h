@@ -35,10 +35,11 @@
 #define BACK_TO_CENTER_FRONT_SLANT 34.5
 
 #define GOAL_X 5
-#define GOAL_Y 4
+#define GOAL_Y 2
 #define F_PRESENCE 135
 #define R_PRESENCE 500//180//900
 #define L_PRESENCE 500//180//900
-#define MAX_WALKCOUNT 255
+
+
 
 #endif /* INC_DEFINE_H_ */
