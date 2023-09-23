@@ -1,0 +1,43 @@
+/*
+ * maze_strategy.h
+ *
+ *  Created on: 2023/06/29
+ *      Author: sf199
+ */
+
+#ifndef INC_MAZE_STRATEGY_H_
+#define INC_MAZE_STRATEGY_H_
+
+#include "turning_parameter.h"
+#include "stm32g4xx_hal.h"
+
+#define TURN_ON 1
+#define TURN_OFF 0
+#define FUN_ON 1
+#define FUN_OFF 0
+#define SLANT_ON 1
+#define SLANT_OFF 0
+
+#define MAZE_SECTION 90
+
+
+
+void decision_kitiku(int,int,int,unsigned short,unsigned short,unsigned short,unsigned short);
+void compress_kitiku(int *,int *,int *,int *);
+
+
+void get_wallData_sensor(_Bool*,_Bool*,_Bool*);
+void update_coordinate(int *,int *,int);
+void run_movement_continuity(int *,unsigned short,unsigned short,unsigned short,unsigned short,float,float,float,float, parameter_speed,_Bool ,_Bool ,_Bool);
+
+
+void AdatiWayReturn(float,float,float,float, parameter_speed,int,uint8_t);
+
+void pass_maker();
+void pass_maker_Dijkstra();
+
+void run_shortest(float,float,int,char,char,char,parameter_speed,float,char);
+
+
+
+#endif /* INC_MAZE_STRATEGY_H_ */
