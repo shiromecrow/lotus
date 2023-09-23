@@ -13,8 +13,8 @@
 
 #define MAX_QUEUE_NUM 1000
 
-#define COLUMN 0
-#define ROW 1
+#define ROW 0
+#define COLUMN 1
 
 #define MAX_WALKCOUNT 255
 #define MAX_WALKCOUNT_DIJKSTRA 65535

@@ -37,36 +37,36 @@ void maze_clear(void) { //初期化
 		tt++;
 	}
 	tt = 0;
-//	wall.row[0] = 0b0000011000011011;
-//	wall.row[1] = 0b0000000011001000;
-//	wall.row[2] = 0b0000000110000100;
-//	wall.row[3] = 0b0000011110110000;
-//	wall.row[4] = 0b0000100100011000;
-//	wall.row[5] = 0b0000000000000000;
-//	wall.row[6] = 0b0000000101000000;
-//	wall.row[7] = 0b0011101111111110;
-//	wall.row[8] = 0b0011111001011100;
-//	wall.row[9] = 0b0000000000000000;
-//	wall.row[10] = 0b0000110110000000;
-//	wall.row[11] = 0b0000001001000100;
-//	wall.row[12] = 0b0110111001101010;
-//	wall.row[13] = 0b0011111111010100;
-//	wall.row[14] = 0b0111011010101000;
-//	wall.column[14] = 0b0110000000000000;
-//	wall.column[13] = 0b0000000100000000;
-//	wall.column[12] = 0b0000000000000000;
-//	wall.column[11] = 0b0000100000000110;
-//	wall.column[10] = 0b0000000011101110;
-//	wall.column[9] = 0b0000000011110000;
-//	wall.column[8] = 0b0001011001100110;
-//	wall.column[7] = 0b0011001100000010;
-//	wall.column[6] = 0b1011011000001000;
-//	wall.column[5] = 0b0100111001111000;
-//	wall.column[4] = 0b0101111001100001;
-//	wall.column[3] = 0b0010000000001100;
-//	wall.column[2] = 0b0101000000011010;
-//	wall.column[1] = 0b0010011000000010;
-//	wall.column[0] = 0b0001101100000000;
+//	wall.column[0] = 0b0000011000011011;
+//	wall.column[1] = 0b0000000011001000;
+//	wall.column[2] = 0b0000000110000100;
+//	wall.column[3] = 0b0000011110110000;
+//	wall.column[4] = 0b0000100100011000;
+//	wall.column[5] = 0b0000000000000000;
+//	wall.column[6] = 0b0000000101000000;
+//	wall.column[7] = 0b0011101111111110;
+//	wall.column[8] = 0b0011111001011100;
+//	wall.column[9] = 0b0000000000000000;
+//	wall.column[10] = 0b0000110110000000;
+//	wall.column[11] = 0b0000001001000100;
+//	wall.column[12] = 0b0110111001101010;
+//	wall.column[13] = 0b0011111111010100;
+//	wall.column[14] = 0b0111011010101000;
+//	wall.row[14] = 0b0110000000000000;
+//	wall.row[13] = 0b0000000100000000;
+//	wall.row[12] = 0b0000000000000000;
+//	wall.row[11] = 0b0000100000000110;
+//	wall.row[10] = 0b0000000011101110;
+//	wall.row[9] = 0b0000000011110000;
+//	wall.row[8] = 0b0001011001100110;
+//	wall.row[7] = 0b0011001100000010;
+//	wall.row[6] = 0b1011011000001000;
+//	wall.row[5] = 0b0100111001111000;
+//	wall.row[4] = 0b0101111001100001;
+//	wall.row[3] = 0b0010000000001100;
+//	wall.row[2] = 0b0101000000011010;
+//	wall.row[1] = 0b0010011000000010;
+//	wall.row[0] = 0b0001101100000000;
 
 
 	for(int i=0;i<=15;i++){
@@ -75,10 +75,10 @@ void maze_clear(void) { //初期化
 			Dijkstra.row_count[i][j]=MAX_WALKCOUNT_DIJKSTRA;
 		}
 	}
-	Dijkstra.column_count[GOAL_X][GOAL_Y]=0;
-	Dijkstra.column_count[GOAL_X+1][GOAL_Y]=0;
-	Dijkstra.row_count[GOAL_Y][GOAL_X]=0;
-	Dijkstra.row_count[GOAL_Y+1][GOAL_X]=0;
+	Dijkstra.row_count[GOAL_X][GOAL_Y]=0;
+	Dijkstra.row_count[GOAL_X+1][GOAL_Y]=0;
+	Dijkstra.column_count[GOAL_Y][GOAL_X]=0;
+	Dijkstra.column_count[GOAL_Y+1][GOAL_X]=0;
 
 
 //ここから歩数マップの初期状態を作る．
@@ -97,69 +97,69 @@ void update_wall(int x,int y,int direction,_Bool front_wall,_Bool right_wall,_Bo
 	switch (direction) {
 	case 1:
 		if (y <= 14) {
-			wall.column_look[y] = wall.column_look[y] | (1 << x);
-			if(front_wall){wall.column[y] = wall.column[y] | (1 << x);}
+			wall.row_look[y] = wall.row_look[y] | (1 << x);
+			if(front_wall){wall.row[y] = wall.row[y] | (1 << x);}
 		}
 
 		if (x >= 1) {
-			wall.row_look[x - 1] = wall.row_look[x - 1] | (1 << y);
-			if(left_wall){wall.row[x - 1] = wall.row[x - 1] | (1 << y);}
+			wall.column_look[x - 1] = wall.column_look[x - 1] | (1 << y);
+			if(left_wall){wall.column[x - 1] = wall.column[x - 1] | (1 << y);}
 		}
 
 		if (x <= 14) {
-			wall.row_look[x] = wall.row_look[x] | (1 << y);
-			if(right_wall){wall.row[x] = wall.row[x] | (1 << y);}
+			wall.column_look[x] = wall.column_look[x] | (1 << y);
+			if(right_wall){wall.column[x] = wall.column[x] | (1 << y);}
 		}
 
 		break;
 	case 2:
 		if (x <= 14) {
-			wall.row_look[x] = wall.row_look[x] | (1 << y);
-			if(front_wall){wall.row[x] = wall.row[x] | (1 << y);}
+			wall.column_look[x] = wall.column_look[x] | (1 << y);
+			if(front_wall){wall.column[x] = wall.column[x] | (1 << y);}
 		}
 
 		if (y <= 14) {
-			wall.column_look[y] = wall.column_look[y] | (1 << x);
-			if(left_wall){wall.column[y] = wall.column[y] | (1 << x);}
+			wall.row_look[y] = wall.row_look[y] | (1 << x);
+			if(left_wall){wall.row[y] = wall.row[y] | (1 << x);}
 		}
 
 		if (y >= 1) {
-			wall.column_look[y - 1] = wall.column_look[y - 1] | (1 << x);
-			if(right_wall){wall.column[y - 1] = wall.column[y - 1] | (1 << x);}
+			wall.row_look[y - 1] = wall.row_look[y - 1] | (1 << x);
+			if(right_wall){wall.row[y - 1] = wall.row[y - 1] | (1 << x);}
 		}
 
 		break;
 	case 3:
 		if (y >= 1) {
-			wall.column_look[y - 1] = wall.column_look[y - 1] | (1 << x);
-			if(front_wall){wall.column[y - 1] = wall.column[y - 1] | (1 << x);}
+			wall.row_look[y - 1] = wall.row_look[y - 1] | (1 << x);
+			if(front_wall){wall.row[y - 1] = wall.row[y - 1] | (1 << x);}
 		}
 
 		if (x <= 14) {
-			wall.row_look[x] = wall.row_look[x] | (1 << y);
-			if(left_wall){wall.row[x] = wall.row[x] | (1 << y);}
+			wall.column_look[x] = wall.column_look[x] | (1 << y);
+			if(left_wall){wall.column[x] = wall.column[x] | (1 << y);}
 		}
 
 		if (x >= 1) {
-			wall.row_look[x - 1] = wall.row_look[x - 1] | (1 << y);
-			if(right_wall){wall.row[x - 1] = wall.row[x - 1] | (1 << y);}
+			wall.column_look[x - 1] = wall.column_look[x - 1] | (1 << y);
+			if(right_wall){wall.column[x - 1] = wall.column[x - 1] | (1 << y);}
 		}
 
 		break;
 	case 4:
 		if (x >= 1) {
-			wall.row_look[x - 1] = wall.row_look[x - 1] | (1 << y);
-			if(front_wall){wall.row[x - 1] = wall.row[x - 1] | (1 << y);}
+			wall.column_look[x - 1] = wall.column_look[x - 1] | (1 << y);
+			if(front_wall){wall.column[x - 1] = wall.column[x - 1] | (1 << y);}
 		}
 
 		if (y >= 1) {
-			wall.column_look[y - 1] = wall.column_look[y - 1] | (1 << x);
-			if(left_wall){wall.column[y - 1] = wall.column[y - 1] | (1 << x);}
+			wall.row_look[y - 1] = wall.row_look[y - 1] | (1 << x);
+			if(left_wall){wall.row[y - 1] = wall.row[y - 1] | (1 << x);}
 		}
 
 		if (y <= 14) {
-			wall.column_look[y] = wall.column_look[y] | (1 << x);
-			if(right_wall){wall.column[y] = wall.column[y] | (1 << x);}
+			wall.row_look[y] = wall.row_look[y] | (1 << x);
+			if(right_wall){wall.row[y] = wall.row[y] | (1 << x);}
 		}
 
 		break;
@@ -178,46 +178,46 @@ void get_wall(int x,int y,int direction,_Bool* front_wall,_Bool* right_wall,_Boo
 	switch (direction) {
 	case 1:
 		if (y <= 14) {
-			*front_wall=((wall.column[y] & (1 << x)) == (1 << x));
+			*front_wall=((wall.row[y] & (1 << x)) == (1 << x));
 		}
 		if (x >= 1) {
-			*left_wall=((wall.row[x - 1] & (1 << y)) == (1 << y));
+			*left_wall=((wall.column[x - 1] & (1 << y)) == (1 << y));
 		}
 		if (x <= 14) {
-			*right_wall=((wall.row[x] & (1 << y)) == (1 << y));
+			*right_wall=((wall.column[x] & (1 << y)) == (1 << y));
 		}
 		break;
 	case 2:
 		if (x <= 14) {
-			*front_wall=((wall.row[x] & (1 << y)) == (1 << y));
+			*front_wall=((wall.column[x] & (1 << y)) == (1 << y));
 		}
 		if (y <= 14) {
-			*left_wall=((wall.column[y] & (1 << x)) == (1 << x));
+			*left_wall=((wall.row[y] & (1 << x)) == (1 << x));
 		}
 		if (y >= 1) {
-			*right_wall=((wall.column[y - 1] & (1 << x)) == (1 << x));
+			*right_wall=((wall.row[y - 1] & (1 << x)) == (1 << x));
 		}
 		break;
 	case 3:
 		if (y >= 1) {
-			*front_wall=((wall.column[y - 1] & (1 << x)) == (1 << x));
+			*front_wall=((wall.row[y - 1] & (1 << x)) == (1 << x));
 		}
 		if (x <= 14) {
-			*left_wall=((wall.row[x] & (1 << y)) == (1 << y));
+			*left_wall=((wall.column[x] & (1 << y)) == (1 << y));
 		}
 		if (x >= 1) {
-			*right_wall=((wall.row[x - 1] & (1 << y)) == (1 << y));
+			*right_wall=((wall.column[x - 1] & (1 << y)) == (1 << y));
 		}
 		break;
 	case 4:
 		if (x >= 1) {
-			*front_wall=((wall.row[x - 1] & (1 << y)) == (1 << y));
+			*front_wall=((wall.column[x - 1] & (1 << y)) == (1 << y));
 		}
 		if (y >= 1) {
-			*left_wall=((wall.column[y - 1] & (1 << x)) == (1 << x));
+			*left_wall=((wall.row[y - 1] & (1 << x)) == (1 << x));
 		}
 		if (y <= 14) {
-			*right_wall=((wall.column[y] & (1 << x)) == (1 << x));
+			*right_wall=((wall.row[y] & (1 << x)) == (1 << x));
 		}
 		break;
 	}
@@ -232,46 +232,46 @@ void get_wall_look(int x,int y,int direction,_Bool* front_wall,_Bool* right_wall
 	switch (direction) {
 	case 1:
 		if (y <= 14) {
-			*front_wall=((wall.column_look[y] & (1 << x)) == (1 << x));
+			*front_wall=((wall.row_look[y] & (1 << x)) == (1 << x));
 		}
 		if (x >= 1) {
-			*left_wall=((wall.row_look[x - 1] & (1 << y)) == (1 << y));
+			*left_wall=((wall.column_look[x - 1] & (1 << y)) == (1 << y));
 		}
 		if (x <= 14) {
-			*right_wall=((wall.row_look[x] & (1 << y)) == (1 << y));
+			*right_wall=((wall.column_look[x] & (1 << y)) == (1 << y));
 		}
 		break;
 	case 2:
 		if (x <= 14) {
-			*front_wall=((wall.row_look[x] & (1 << y)) == (1 << y));
+			*front_wall=((wall.column_look[x] & (1 << y)) == (1 << y));
 		}
 		if (y <= 14) {
-			*left_wall=((wall.column_look[y] & (1 << x)) == (1 << x));
+			*left_wall=((wall.row_look[y] & (1 << x)) == (1 << x));
 		}
 		if (y >= 1) {
-			*right_wall=((wall.column_look[y - 1] & (1 << x)) == (1 << x));
+			*right_wall=((wall.row_look[y - 1] & (1 << x)) == (1 << x));
 		}
 		break;
 	case 3:
 		if (y >= 1) {
-			*front_wall=((wall.column_look[y - 1] & (1 << x)) == (1 << x));
+			*front_wall=((wall.row_look[y - 1] & (1 << x)) == (1 << x));
 		}
 		if (x <= 14) {
-			*left_wall=((wall.row_look[x] & (1 << y)) == (1 << y));
+			*left_wall=((wall.column_look[x] & (1 << y)) == (1 << y));
 		}
 		if (x >= 1) {
-			*right_wall=((wall.row_look[x - 1] & (1 << y)) == (1 << y));
+			*right_wall=((wall.column_look[x - 1] & (1 << y)) == (1 << y));
 		}
 		break;
 	case 4:
 		if (x >= 1) {
-			*front_wall=((wall.row_look[x - 1] & (1 << y)) == (1 << y));
+			*front_wall=((wall.column_look[x - 1] & (1 << y)) == (1 << y));
 		}
 		if (y >= 1) {
-			*left_wall=((wall.column_look[y - 1] & (1 << x)) == (1 << x));
+			*left_wall=((wall.row_look[y - 1] & (1 << x)) == (1 << x));
 		}
 		if (y <= 14) {
-			*right_wall=((wall.column_look[y] & (1 << x)) == (1 << x));
+			*right_wall=((wall.row_look[y] & (1 << x)) == (1 << x));
 		}
 		break;
 	}
@@ -338,16 +338,16 @@ void search_AroundDijkstraCount(unsigned short *front_count,unsigned short *righ
 //	unsigned short front_count, right_count, back_count, left_count;
 
 	if (y >= 15) {north_count = MAX_WALKCOUNT_DIJKSTRA;}
-	else {north_count = Dijkstra.column_count[x][y];}
+	else {north_count = Dijkstra.row_count[x][y];}
 
 	if (x >= 15) {east_count = MAX_WALKCOUNT_DIJKSTRA;}
-	else {east_count = Dijkstra.row_count[y][x];}
+	else {east_count = Dijkstra.column_count[y][x];}
 
 	if (y <= 0) {south_count = MAX_WALKCOUNT_DIJKSTRA;}
-	else {south_count = Dijkstra.column_count[x][y-1];}
+	else {south_count = Dijkstra.row_count[x][y-1];}
 
 	if (x <= 0) {west_count = MAX_WALKCOUNT_DIJKSTRA;}
-	else {west_count = Dijkstra.row_count[y][x-1];}
+	else {west_count = Dijkstra.column_count[y][x-1];}
 
 
 	switch (direction) {		//
@@ -408,18 +408,18 @@ void create_DijkstraMap(void){
 			Dijkstra.row_count[i][j]=MAX_WALKCOUNT_DIJKSTRA;
 		}
 	}
-	Dijkstra.column_count[GOAL_X][GOAL_Y]=0;
-	Dijkstra.column_count[GOAL_X+1][GOAL_Y]=0;
-	Dijkstra.row_count[GOAL_Y][GOAL_X]=0;
-	Dijkstra.row_count[GOAL_Y+1][GOAL_X]=0;
+	Dijkstra.row_count[GOAL_X][GOAL_Y]=0;
+	Dijkstra.row_count[GOAL_X+1][GOAL_Y]=0;
+	Dijkstra.column_count[GOAL_Y][GOAL_X]=0;
+	Dijkstra.column_count[GOAL_Y+1][GOAL_X]=0;
 	pushStack_walk(&stack_x,GOAL_X);pushStack_walk(&stack_y,GOAL_Y);
-	pushStack_walk(&stack_matrix,COLUMN);pushStack_walk(&stack_direction,8);pushStack_walk(&stack_cost,0);
+	pushStack_walk(&stack_matrix,ROW);pushStack_walk(&stack_direction,8);pushStack_walk(&stack_cost,0);
 	pushStack_walk(&stack_x,GOAL_X+1);pushStack_walk(&stack_y,GOAL_Y);
-	pushStack_walk(&stack_matrix,COLUMN);pushStack_walk(&stack_direction,8);pushStack_walk(&stack_cost,0);
+	pushStack_walk(&stack_matrix,ROW);pushStack_walk(&stack_direction,8);pushStack_walk(&stack_cost,0);
 	pushStack_walk(&stack_x,GOAL_X);pushStack_walk(&stack_y,GOAL_Y);
-	pushStack_walk(&stack_matrix,ROW);pushStack_walk(&stack_direction,8);pushStack_walk(&stack_cost,0);
+	pushStack_walk(&stack_matrix,COLUMN);pushStack_walk(&stack_direction,8);pushStack_walk(&stack_cost,0);
 	pushStack_walk(&stack_x,GOAL_X);pushStack_walk(&stack_y,GOAL_Y+1);
-	pushStack_walk(&stack_matrix,ROW);pushStack_walk(&stack_direction,8);pushStack_walk(&stack_cost,0);
+	pushStack_walk(&stack_matrix,COLUMN);pushStack_walk(&stack_direction,8);pushStack_walk(&stack_cost,0);
 
 
 
@@ -439,18 +439,18 @@ void create_DijkstraMap(void){
 			//printf("stack_end\n");
 			break;
 		}
-		if(Row_or_Column==COLUMN){
+		if(Row_or_Column==ROW){
 			if(Ycoordinate <= 13){
 				if(Direction==SLANT_NORTH){
 					dis_cost_in=dis_cost+DISCOUNTCOST_V;
 					if(dis_cost_in>=V_NUM_MAX){dis_cost_in=V_NUM_MAX-1;}
 					VerticalCost=discount_v[dis_cost_in];
 				}else{VerticalCost=discount_v[0];dis_cost_in=0;}
-				if((wall.column[Ycoordinate+1] & (1 << Xcoordinate))==0 && Dijkstra.column_count[Xcoordinate][Ycoordinate+1]>Dijkstra.column_count[Xcoordinate][Ycoordinate]+VerticalCost){
-					Dijkstra.column_count[Xcoordinate][Ycoordinate+1]=Dijkstra.column_count[Xcoordinate][Ycoordinate]+VerticalCost;
+				if((wall.row[Ycoordinate+1] & (1 << Xcoordinate))==0 && Dijkstra.row_count[Xcoordinate][Ycoordinate+1]>Dijkstra.row_count[Xcoordinate][Ycoordinate]+VerticalCost){
+					Dijkstra.row_count[Xcoordinate][Ycoordinate+1]=Dijkstra.row_count[Xcoordinate][Ycoordinate]+VerticalCost;
 					pushStack_walk(&stack_x,Xcoordinate);
 					pushStack_walk(&stack_y,Ycoordinate + 1);
-					pushStack_walk(&stack_matrix,COLUMN);
+					pushStack_walk(&stack_matrix,ROW);
 					pushStack_walk(&stack_direction,SLANT_NORTH);
 					pushStack_walk(&stack_cost,dis_cost_in);
 				}
@@ -461,11 +461,11 @@ void create_DijkstraMap(void){
 					if(dis_cost_in>=V_NUM_MAX){dis_cost_in=V_NUM_MAX-1;}
 					VerticalCost=discount_v[dis_cost_in];
 				}else{VerticalCost=discount_v[0];dis_cost_in=0;}
-				if((wall.column[Ycoordinate-1] & (1 << Xcoordinate))==0 && Dijkstra.column_count[Xcoordinate][Ycoordinate-1]>Dijkstra.column_count[Xcoordinate][Ycoordinate]+VerticalCost){
-					Dijkstra.column_count[Xcoordinate][Ycoordinate-1]=Dijkstra.column_count[Xcoordinate][Ycoordinate]+VerticalCost;
+				if((wall.row[Ycoordinate-1] & (1 << Xcoordinate))==0 && Dijkstra.row_count[Xcoordinate][Ycoordinate-1]>Dijkstra.row_count[Xcoordinate][Ycoordinate]+VerticalCost){
+					Dijkstra.row_count[Xcoordinate][Ycoordinate-1]=Dijkstra.row_count[Xcoordinate][Ycoordinate]+VerticalCost;
 					pushStack_walk(&stack_x,Xcoordinate);
 					pushStack_walk(&stack_y,Ycoordinate - 1);
-					pushStack_walk(&stack_matrix,COLUMN);
+					pushStack_walk(&stack_matrix,ROW);
 					pushStack_walk(&stack_direction,SLANT_SOUTH);
 					pushStack_walk(&stack_cost,dis_cost_in);
 				}
@@ -476,11 +476,11 @@ void create_DijkstraMap(void){
 					if(dis_cost_in>=D_NUM_MAX){dis_cost_in=D_NUM_MAX-1;}
 					DiagonalCost=discount_d[dis_cost_in];
 				}else{DiagonalCost=discount_d[0];dis_cost_in=0;}
-				if((wall.row[Xcoordinate] & (1 << Ycoordinate))==0 && Dijkstra.row_count[Ycoordinate][Xcoordinate]>Dijkstra.column_count[Xcoordinate][Ycoordinate]+DiagonalCost){
-					Dijkstra.row_count[Ycoordinate][Xcoordinate]=Dijkstra.column_count[Xcoordinate][Ycoordinate]+DiagonalCost;
+				if((wall.column[Xcoordinate] & (1 << Ycoordinate))==0 && Dijkstra.column_count[Ycoordinate][Xcoordinate]>Dijkstra.row_count[Xcoordinate][Ycoordinate]+DiagonalCost){
+					Dijkstra.column_count[Ycoordinate][Xcoordinate]=Dijkstra.row_count[Xcoordinate][Ycoordinate]+DiagonalCost;
 					pushStack_walk(&stack_x,Xcoordinate);
 					pushStack_walk(&stack_y,Ycoordinate);
-					pushStack_walk(&stack_matrix,ROW);
+					pushStack_walk(&stack_matrix,COLUMN);
 					pushStack_walk(&stack_direction,SLANT_SOUTH_EAST);
 					pushStack_walk(&stack_cost,dis_cost_in);
 				}
@@ -489,11 +489,11 @@ void create_DijkstraMap(void){
 					if(dis_cost_in>=D_NUM_MAX){dis_cost_in=D_NUM_MAX-1;}
 					DiagonalCost=discount_d[dis_cost_in];
 				}else{DiagonalCost=discount_d[0];dis_cost_in=0;}
-				if((wall.row[Xcoordinate] & (1 << (Ycoordinate+1)))==0 && Dijkstra.row_count[Ycoordinate+1][Xcoordinate]>Dijkstra.column_count[Xcoordinate][Ycoordinate]+DiagonalCost){
-					Dijkstra.row_count[Ycoordinate+1][Xcoordinate]=Dijkstra.column_count[Xcoordinate][Ycoordinate]+DiagonalCost;
+				if((wall.column[Xcoordinate] & (1 << (Ycoordinate+1)))==0 && Dijkstra.column_count[Ycoordinate+1][Xcoordinate]>Dijkstra.row_count[Xcoordinate][Ycoordinate]+DiagonalCost){
+					Dijkstra.column_count[Ycoordinate+1][Xcoordinate]=Dijkstra.row_count[Xcoordinate][Ycoordinate]+DiagonalCost;
 					pushStack_walk(&stack_x,Xcoordinate);
 					pushStack_walk(&stack_y,Ycoordinate+1);
-					pushStack_walk(&stack_matrix,ROW);
+					pushStack_walk(&stack_matrix,COLUMN);
 					pushStack_walk(&stack_direction,SLANT_NORTH_EAST);
 					pushStack_walk(&stack_cost,dis_cost_in);
 				}
@@ -504,11 +504,11 @@ void create_DijkstraMap(void){
 					if(dis_cost_in>=D_NUM_MAX){dis_cost_in=D_NUM_MAX-1;}
 					DiagonalCost=discount_d[dis_cost_in];
 				}else{DiagonalCost=discount_d[0];dis_cost_in=0;}
-				if((wall.row[Xcoordinate-1] & (1 << Ycoordinate))==0 && Dijkstra.row_count[Ycoordinate][Xcoordinate-1]>Dijkstra.column_count[Xcoordinate][Ycoordinate]+DiagonalCost){
-					Dijkstra.row_count[Ycoordinate][Xcoordinate-1]=Dijkstra.column_count[Xcoordinate][Ycoordinate]+DiagonalCost;
+				if((wall.column[Xcoordinate-1] & (1 << Ycoordinate))==0 && Dijkstra.column_count[Ycoordinate][Xcoordinate-1]>Dijkstra.row_count[Xcoordinate][Ycoordinate]+DiagonalCost){
+					Dijkstra.column_count[Ycoordinate][Xcoordinate-1]=Dijkstra.row_count[Xcoordinate][Ycoordinate]+DiagonalCost;
 					pushStack_walk(&stack_x,Xcoordinate-1);
 					pushStack_walk(&stack_y,Ycoordinate);
-					pushStack_walk(&stack_matrix,ROW);
+					pushStack_walk(&stack_matrix,COLUMN);
 					pushStack_walk(&stack_direction,SLANT_SOUTH_WEST);
 					pushStack_walk(&stack_cost,dis_cost_in);
 				}
@@ -517,29 +517,29 @@ void create_DijkstraMap(void){
 					if(dis_cost_in>=D_NUM_MAX){dis_cost_in=D_NUM_MAX-1;}
 					DiagonalCost=discount_d[dis_cost_in];
 				}else{DiagonalCost=discount_d[0];dis_cost_in=0;}
-				if((wall.row[Xcoordinate-1] & (1 << (Ycoordinate+1)))==0 && Dijkstra.row_count[Ycoordinate+1][Xcoordinate-1]>Dijkstra.column_count[Xcoordinate][Ycoordinate]+DiagonalCost){
-					Dijkstra.row_count[Ycoordinate+1][Xcoordinate-1]=Dijkstra.column_count[Xcoordinate][Ycoordinate]+DiagonalCost;
+				if((wall.column[Xcoordinate-1] & (1 << (Ycoordinate+1)))==0 && Dijkstra.column_count[Ycoordinate+1][Xcoordinate-1]>Dijkstra.row_count[Xcoordinate][Ycoordinate]+DiagonalCost){
+					Dijkstra.column_count[Ycoordinate+1][Xcoordinate-1]=Dijkstra.row_count[Xcoordinate][Ycoordinate]+DiagonalCost;
 					pushStack_walk(&stack_x,Xcoordinate-1);
 					pushStack_walk(&stack_y,Ycoordinate+1);
-					pushStack_walk(&stack_matrix,ROW);
+					pushStack_walk(&stack_matrix,COLUMN);
 					pushStack_walk(&stack_direction,SLANT_NORTH_WEST);
 					pushStack_walk(&stack_cost,dis_cost_in);
 				}
 			}
 
 		}
-		if(Row_or_Column==ROW){
+		if(Row_or_Column==COLUMN){
 					if(Xcoordinate <= 13){
 						if(Direction==SLANT_EAST){
 							dis_cost_in=dis_cost+DISCOUNTCOST_V;
 							if(dis_cost_in>=V_NUM_MAX){dis_cost_in=V_NUM_MAX-1;}
 							VerticalCost=discount_v[dis_cost_in];
 						}else{VerticalCost=discount_v[0];dis_cost_in=0;}
-						if((wall.row[Xcoordinate+1] & (1 << Ycoordinate))==0 && Dijkstra.row_count[Ycoordinate][Xcoordinate+1]>Dijkstra.row_count[Ycoordinate][Xcoordinate]+VerticalCost){
-							Dijkstra.row_count[Ycoordinate][Xcoordinate+1]=Dijkstra.row_count[Ycoordinate][Xcoordinate]+VerticalCost;
+						if((wall.column[Xcoordinate+1] & (1 << Ycoordinate))==0 && Dijkstra.column_count[Ycoordinate][Xcoordinate+1]>Dijkstra.column_count[Ycoordinate][Xcoordinate]+VerticalCost){
+							Dijkstra.column_count[Ycoordinate][Xcoordinate+1]=Dijkstra.column_count[Ycoordinate][Xcoordinate]+VerticalCost;
 							pushStack_walk(&stack_x,Xcoordinate + 1);
 							pushStack_walk(&stack_y,Ycoordinate);
-							pushStack_walk(&stack_matrix,ROW);
+							pushStack_walk(&stack_matrix,COLUMN);
 							pushStack_walk(&stack_direction,SLANT_EAST);
 							pushStack_walk(&stack_cost,dis_cost_in);
 						}
@@ -550,11 +550,11 @@ void create_DijkstraMap(void){
 							if(dis_cost_in>=V_NUM_MAX){dis_cost_in=V_NUM_MAX-1;}
 							VerticalCost=discount_v[dis_cost_in];
 						}else{VerticalCost=discount_v[0];dis_cost_in=0;}
-						if((wall.row[Xcoordinate-1] & (1 << Ycoordinate))==0 && Dijkstra.row_count[Ycoordinate][Xcoordinate-1]>Dijkstra.row_count[Ycoordinate][Xcoordinate]+VerticalCost){
-							Dijkstra.row_count[Ycoordinate][Xcoordinate-1]=Dijkstra.row_count[Ycoordinate][Xcoordinate]+VerticalCost;
+						if((wall.column[Xcoordinate-1] & (1 << Ycoordinate))==0 && Dijkstra.column_count[Ycoordinate][Xcoordinate-1]>Dijkstra.column_count[Ycoordinate][Xcoordinate]+VerticalCost){
+							Dijkstra.column_count[Ycoordinate][Xcoordinate-1]=Dijkstra.column_count[Ycoordinate][Xcoordinate]+VerticalCost;
 							pushStack_walk(&stack_x,Xcoordinate - 1);
 							pushStack_walk(&stack_y,Ycoordinate);
-							pushStack_walk(&stack_matrix,ROW);
+							pushStack_walk(&stack_matrix,COLUMN);
 							pushStack_walk(&stack_direction,SLANT_WEST);
 							pushStack_walk(&stack_cost,dis_cost_in);
 						}
@@ -565,11 +565,11 @@ void create_DijkstraMap(void){
 							if(dis_cost_in>=D_NUM_MAX){dis_cost_in=D_NUM_MAX-1;}
 							DiagonalCost=discount_d[dis_cost_in];
 						}else{DiagonalCost=discount_d[0];dis_cost_in=0;}
-						if((wall.column[Ycoordinate] & (1 << Xcoordinate))==0 && Dijkstra.column_count[Xcoordinate][Ycoordinate]>Dijkstra.row_count[Ycoordinate][Xcoordinate]+DiagonalCost){
-							Dijkstra.column_count[Xcoordinate][Ycoordinate]=Dijkstra.row_count[Ycoordinate][Xcoordinate]+DiagonalCost;
+						if((wall.row[Ycoordinate] & (1 << Xcoordinate))==0 && Dijkstra.row_count[Xcoordinate][Ycoordinate]>Dijkstra.column_count[Ycoordinate][Xcoordinate]+DiagonalCost){
+							Dijkstra.row_count[Xcoordinate][Ycoordinate]=Dijkstra.column_count[Ycoordinate][Xcoordinate]+DiagonalCost;
 							pushStack_walk(&stack_x,Xcoordinate);
 							pushStack_walk(&stack_y,Ycoordinate);
-							pushStack_walk(&stack_matrix,COLUMN);
+							pushStack_walk(&stack_matrix,ROW);
 							pushStack_walk(&stack_direction,SLANT_NORTH_WEST);
 							pushStack_walk(&stack_cost,dis_cost_in);
 						}
@@ -578,11 +578,11 @@ void create_DijkstraMap(void){
 							if(dis_cost_in>=D_NUM_MAX){dis_cost_in=D_NUM_MAX-1;}
 							DiagonalCost=discount_d[dis_cost_in];
 						}else{DiagonalCost=discount_d[0];dis_cost_in=0;}
-						if((wall.column[Ycoordinate] & (1 << (Xcoordinate+1)))==0 && Dijkstra.column_count[Xcoordinate+1][Ycoordinate]>Dijkstra.row_count[Ycoordinate][Xcoordinate]+DiagonalCost){
-							Dijkstra.column_count[Xcoordinate+1][Ycoordinate]=Dijkstra.row_count[Ycoordinate][Xcoordinate]+DiagonalCost;
+						if((wall.row[Ycoordinate] & (1 << (Xcoordinate+1)))==0 && Dijkstra.row_count[Xcoordinate+1][Ycoordinate]>Dijkstra.column_count[Ycoordinate][Xcoordinate]+DiagonalCost){
+							Dijkstra.row_count[Xcoordinate+1][Ycoordinate]=Dijkstra.column_count[Ycoordinate][Xcoordinate]+DiagonalCost;
 							pushStack_walk(&stack_x,Xcoordinate + 1);
 							pushStack_walk(&stack_y,Ycoordinate);
-							pushStack_walk(&stack_matrix,COLUMN);
+							pushStack_walk(&stack_matrix,ROW);
 							pushStack_walk(&stack_direction,SLANT_NORTH_EAST);
 							pushStack_walk(&stack_cost,dis_cost_in);
 						}
@@ -593,11 +593,11 @@ void create_DijkstraMap(void){
 							if(dis_cost_in>=D_NUM_MAX){dis_cost_in=D_NUM_MAX-1;}
 							DiagonalCost=discount_d[dis_cost_in];
 						}else{DiagonalCost=discount_d[0];dis_cost_in=0;}
-						if((wall.column[Ycoordinate-1] & (1 << Xcoordinate))==0 && Dijkstra.column_count[Xcoordinate][Ycoordinate-1]>Dijkstra.row_count[Ycoordinate][Xcoordinate]+DiagonalCost){
-							Dijkstra.column_count[Xcoordinate][Ycoordinate-1]=Dijkstra.row_count[Ycoordinate][Xcoordinate]+DiagonalCost;
+						if((wall.row[Ycoordinate-1] & (1 << Xcoordinate))==0 && Dijkstra.row_count[Xcoordinate][Ycoordinate-1]>Dijkstra.column_count[Ycoordinate][Xcoordinate]+DiagonalCost){
+							Dijkstra.row_count[Xcoordinate][Ycoordinate-1]=Dijkstra.column_count[Ycoordinate][Xcoordinate]+DiagonalCost;
 							pushStack_walk(&stack_x,Xcoordinate);
 							pushStack_walk(&stack_y,Ycoordinate - 1);
-							pushStack_walk(&stack_matrix,COLUMN);
+							pushStack_walk(&stack_matrix,ROW);
 							pushStack_walk(&stack_direction,SLANT_SOUTH_WEST);
 							pushStack_walk(&stack_cost,dis_cost_in);
 						}
@@ -606,11 +606,11 @@ void create_DijkstraMap(void){
 							if(dis_cost_in>=D_NUM_MAX){dis_cost_in=D_NUM_MAX-1;}
 							DiagonalCost=discount_d[dis_cost_in];
 						}else{DiagonalCost=discount_d[0];dis_cost_in=0;}
-						if((wall.column[Ycoordinate-1] & (1 << (Xcoordinate+1)))==0 && Dijkstra.column_count[Xcoordinate+1][Ycoordinate-1]>Dijkstra.row_count[Ycoordinate][Xcoordinate]+DiagonalCost){
-							Dijkstra.column_count[Xcoordinate+1][Ycoordinate-1]=Dijkstra.row_count[Ycoordinate][Xcoordinate]+DiagonalCost;
+						if((wall.row[Ycoordinate-1] & (1 << (Xcoordinate+1)))==0 && Dijkstra.row_count[Xcoordinate+1][Ycoordinate-1]>Dijkstra.column_count[Ycoordinate][Xcoordinate]+DiagonalCost){
+							Dijkstra.row_count[Xcoordinate+1][Ycoordinate-1]=Dijkstra.column_count[Ycoordinate][Xcoordinate]+DiagonalCost;
 							pushStack_walk(&stack_x,Xcoordinate+1);
 							pushStack_walk(&stack_y,Ycoordinate-1);
-							pushStack_walk(&stack_matrix,COLUMN);
+							pushStack_walk(&stack_matrix,ROW);
 							pushStack_walk(&stack_direction,SLANT_SOUTH_EAST);
 							pushStack_walk(&stack_cost,dis_cost_in);
 						}
@@ -646,7 +646,7 @@ void route_Dijkstra(void){
 	initStack_walk(&g_Goal_y);
 
 	pushStack_walk(&stack_x,0);pushStack_walk(&stack_y,0);
-	pushStack_walk(&stack_matrix,COLUMN);
+	pushStack_walk(&stack_matrix,ROW);
 
 	unsigned short front_count, right_count, back_count, left_count;
 
@@ -685,22 +685,22 @@ void route_Dijkstra(void){
 			case 1:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,COLUMN);
+				pushStack_walk(&stack_matrix,ROW);
 				break;
 			case 2:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,ROW);
+				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 3:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y-1);
-				pushStack_walk(&stack_matrix,COLUMN);
+				pushStack_walk(&stack_matrix,ROW);
 				break;
 			case 4:
 				pushStack_walk(&stack_x,x-1);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,ROW);
+				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			}
 
@@ -712,22 +712,22 @@ void route_Dijkstra(void){
 			case 1:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,ROW);
+				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 2:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y-1);
-				pushStack_walk(&stack_matrix,COLUMN);
+				pushStack_walk(&stack_matrix,ROW);
 				break;
 			case 3:
 				pushStack_walk(&stack_x,x-1);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,ROW);
+				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 4:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,COLUMN);
+				pushStack_walk(&stack_matrix,ROW);
 				break;
 			}
 			direction++;
@@ -738,22 +738,22 @@ void route_Dijkstra(void){
 			case 1:
 				pushStack_walk(&stack_x,x-1);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,ROW);
+				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 2:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,COLUMN);
+				pushStack_walk(&stack_matrix,ROW);
 				break;
 			case 3:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y);
-				pushStack_walk(&stack_matrix,ROW);
+				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 4:
 				pushStack_walk(&stack_x,x);
 				pushStack_walk(&stack_y,y-1);
-				pushStack_walk(&stack_matrix,COLUMN);
+				pushStack_walk(&stack_matrix,ROW);
 				break;
 			}
 			direction--;
@@ -786,7 +786,7 @@ void route_Dijkstra(void){
 				//printf("stack_end\n");
 				break;
 			}
-			if(Row_or_Column==COLUMN && ((wall.column_look[Ycoordinate] & (1 << Xcoordinate)) == 0)){
+			if(Row_or_Column==ROW && ((wall.row_look[Ycoordinate] & (1 << Xcoordinate)) == 0)){
 				//pushStack_walk(&stack_x_unknow,Xcoordinate);
 				//pushStack_walk(&stack_y_unknow,Ycoordinate);
 				//pushStack_walk(&stack_matrix_unknow,Row_or_Column);
@@ -795,7 +795,7 @@ void route_Dijkstra(void){
 				pushStack_walk(&g_Goal_x,Xcoordinate);pushStack_walk(&g_Goal_y,Ycoordinate);
 				pushStack_walk(&g_Goal_x,Xcoordinate);pushStack_walk(&g_Goal_y,Ycoordinate+1);
 			}
-			if(Row_or_Column==ROW && ((wall.row_look[Xcoordinate] & (1 << Ycoordinate)) == 0)){
+			if(Row_or_Column==COLUMN && ((wall.column_look[Xcoordinate] & (1 << Ycoordinate)) == 0)){
 				//pushStack_walk(&stack_x_unknow,Xcoordinate);
 				//pushStack_walk(&stack_y_unknow,Ycoordinate);
 				//pushStack_walk(&stack_matrix_unknow,Row_or_Column);
@@ -867,16 +867,16 @@ void create_StepCountMap_unknown(void){
 		}
 
 		if (Ycoordinate <= 14) {
-			wall_north = wall.column[Ycoordinate] & (1 << Xcoordinate);
+			wall_north = wall.row[Ycoordinate] & (1 << Xcoordinate);
 		}
 		if (Ycoordinate >= 1) {
-			wall_south = wall.column[Ycoordinate - 1] & (1 << Xcoordinate);
+			wall_south = wall.row[Ycoordinate - 1] & (1 << Xcoordinate);
 		}
 		if (Xcoordinate <= 14) {
-			wall_east = wall.row[Xcoordinate] & (1 << Ycoordinate);
+			wall_east = wall.column[Xcoordinate] & (1 << Ycoordinate);
 		}
 		if (Xcoordinate >= 1) {
-			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
+			wall_west = wall.column[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
 		if (walk_count[Xcoordinate][Ycoordinate + 1] == MAX_WALKCOUNT && Ycoordinate != 15 && wall_north == 0) {
@@ -948,16 +948,16 @@ void create_StepCountMap_queue(void){
 		}
 
 		if (Ycoordinate <= 14) {
-			wall_north = wall.column[Ycoordinate] & (1 << Xcoordinate);
+			wall_north = wall.row[Ycoordinate] & (1 << Xcoordinate);
 		}
 		if (Ycoordinate >= 1) {
-			wall_south = wall.column[Ycoordinate - 1] & (1 << Xcoordinate);
+			wall_south = wall.row[Ycoordinate - 1] & (1 << Xcoordinate);
 		}
 		if (Xcoordinate <= 14) {
-			wall_east = wall.row[Xcoordinate] & (1 << Ycoordinate);
+			wall_east = wall.column[Xcoordinate] & (1 << Ycoordinate);
 		}
 		if (Xcoordinate >= 1) {
-			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
+			wall_west = wall.column[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
 		if (walk_count[Xcoordinate][Ycoordinate + 1] == MAX_WALKCOUNT && Ycoordinate != 15 && wall_north == 0) {
@@ -1022,16 +1022,16 @@ void create_StepCountMapBack_queue(void){
 
 		coordinate = (Xcoordinate * 16) + Ycoordinate;
 		if (Ycoordinate <= 14) {
-			wall_north = wall.column[Ycoordinate] & (1 << Xcoordinate);
+			wall_north = wall.row[Ycoordinate] & (1 << Xcoordinate);
 		}
 		if (Ycoordinate >= 1) {
-			wall_south = wall.column[Ycoordinate - 1] & (1 << Xcoordinate);
+			wall_south = wall.row[Ycoordinate - 1] & (1 << Xcoordinate);
 		}
 		if (Xcoordinate <= 14) {
-			wall_east = wall.row[Xcoordinate] & (1 << Ycoordinate);
+			wall_east = wall.column[Xcoordinate] & (1 << Ycoordinate);
 		}
 		if (Xcoordinate >= 1) {
-			wall_west = wall.row[Xcoordinate - 1] & (1 << Ycoordinate);
+			wall_west = wall.column[Xcoordinate - 1] & (1 << Ycoordinate);
 		}
 
 		if (walk_count[Xcoordinate][Ycoordinate + 1] == MAX_WALKCOUNT && Ycoordinate != 15 && wall_north == 0) {
@@ -1154,7 +1154,7 @@ void maze_display(void) {
 
 		printf("|%5d", walk_count[0][tt + 1]);
 		for(ss = 0;ss < 15;ss++){
-			if ((wall.row[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
+			if ((wall.column[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
 				printf("|%5d", walk_count[ss + 1][tt + 1]);
 			}else{
 				printf(" %5d", walk_count[ss + 1][tt + 1]);
@@ -1165,7 +1165,7 @@ void maze_display(void) {
 			break;
 		}
 		for(ss = 0;ss <= 15;ss++){
-			if ((wall.column[tt] & (1 << ss)) == (1 << ss)){
+			if ((wall.row[tt] & (1 << ss)) == (1 << ss)){
 				printf("+-----");
 			}else{
 				printf("+     ");
@@ -1186,7 +1186,7 @@ void maze_display(void) {
 	for (tt = 14;tt >= -1;tt--){
 		printf("|%5d", walk_count[0][tt + 1]);
 		for(ss = 0;ss < 15;ss++){
-			if ((wall.row_look[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
+			if ((wall.column_look[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
 				printf("|%5d", walk_count[ss + 1][tt + 1]);
 			}else{
 				printf(" %5d", walk_count[ss + 1][tt + 1]);
@@ -1197,7 +1197,7 @@ void maze_display(void) {
 			break;
 		}
 		for(ss = 0;ss <= 15;ss++){
-			if ((wall.column_look[tt] & (1 << ss)) == (1 << ss)){
+			if ((wall.row_look[tt] & (1 << ss)) == (1 << ss)){
 				printf("+-----");
 			}else{
 				printf("+     ");
@@ -1227,10 +1227,10 @@ void maze_display_Dijkstra(void) {
 
 		printf("|   ");//walk_count[tt + 1]
 		for(ss = 0;ss < 15;ss++){
-			if ((wall.row[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
+			if ((wall.column[ss] & (1 << (tt + 1))) == (1 << (tt + 1))){
 				printf("  |   ");
 			}else{
-				printf("%5d ", Dijkstra.row_count[(tt + 1)][ss]);
+				printf("%5d ", Dijkstra.column_count[(tt + 1)][ss]);
 			}
 		}
 		printf("   |\n");
@@ -1238,10 +1238,10 @@ void maze_display_Dijkstra(void) {
 			break;
 		}
 		for(ss = 0;ss <= 15;ss++){
-			if ((wall.column[tt] & (1 << ss)) == (1 << ss)){
+			if ((wall.row[tt] & (1 << ss)) == (1 << ss)){
 				printf("+-----");
 			}else{
-				printf("+%5d",Dijkstra.column_count[ss][tt]);
+				printf("+%5d",Dijkstra.row_count[ss][tt]);
 			}
 		}
 
@@ -1260,7 +1260,7 @@ void maze_display_Dijkstra(void) {
 		printf("|   ");//walk_count[tt + 1]
 		for(ss = 0;ss < 15;ss++){
 
-				printf("%5d ", Dijkstra.row_count[(tt + 1)][ss]);
+				printf("%5d ", Dijkstra.column_count[(tt + 1)][ss]);
 
 		}
 		printf("   |\n");
@@ -1268,7 +1268,7 @@ void maze_display_Dijkstra(void) {
 			break;
 		}
 		for(ss = 0;ss <= 15;ss++){
-				printf("+%5d",Dijkstra.column_count[ss][tt]);
+				printf("+%5d",Dijkstra.row_count[ss][tt]);
 		}
 
 		printf("+\n");
