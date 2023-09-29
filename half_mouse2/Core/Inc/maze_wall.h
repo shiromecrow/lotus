@@ -71,7 +71,7 @@ extern char Dijkstra_maker_flag;
 extern uint16_t walk_count[16][16]; //歩数いれる箱
 
 
-
+void maze_out_matlab();
 void maze_clear();
 void update_wall(int,int,int,_Bool,_Bool,_Bool);
 void get_wall(int,int,int,_Bool*,_Bool*,_Bool*);

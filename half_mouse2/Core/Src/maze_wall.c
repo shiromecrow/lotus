@@ -21,7 +21,17 @@ DIJKSTRA Dijkstra;
 STACK_T g_Goal_x;
 STACK_T g_Goal_y;
 
+void maze_out_matlab(void){
 
+	int tt=0;
+	while (tt <= 14) {
+		printf("g_maze_row(%d) = %d;\n",tt+1,wall.row[tt]);
+		printf("g_maze_column(%d) = %d;\n",tt+1,wall.column[tt]);
+		tt++;
+	}
+	tt = 0;
+
+}
 
 
 
@@ -37,36 +47,40 @@ void maze_clear(void) { //初期化
 		tt++;
 	}
 	tt = 0;
-//	wall.column[0] = 0b0000011000011011;
-//	wall.column[1] = 0b0000000011001000;
-//	wall.column[2] = 0b0000000110000100;
-//	wall.column[3] = 0b0000011110110000;
-//	wall.column[4] = 0b0000100100011000;
-//	wall.column[5] = 0b0000000000000000;
-//	wall.column[6] = 0b0000000101000000;
-//	wall.column[7] = 0b0011101111111110;
-//	wall.column[8] = 0b0011111001011100;
-//	wall.column[9] = 0b0000000000000000;
-//	wall.column[10] = 0b0000110110000000;
-//	wall.column[11] = 0b0000001001000100;
-//	wall.column[12] = 0b0110111001101010;
-//	wall.column[13] = 0b0011111111010100;
-//	wall.column[14] = 0b0111011010101000;
-//	wall.row[14] = 0b0110000000000000;
-//	wall.row[13] = 0b0000000100000000;
-//	wall.row[12] = 0b0000000000000000;
-//	wall.row[11] = 0b0000100000000110;
-//	wall.row[10] = 0b0000000011101110;
-//	wall.row[9] = 0b0000000011110000;
-//	wall.row[8] = 0b0001011001100110;
-//	wall.row[7] = 0b0011001100000010;
-//	wall.row[6] = 0b1011011000001000;
-//	wall.row[5] = 0b0100111001111000;
-//	wall.row[4] = 0b0101111001100001;
-//	wall.row[3] = 0b0010000000001100;
-//	wall.row[2] = 0b0101000000011010;
-//	wall.row[1] = 0b0010011000000010;
-//	wall.row[0] = 0b0001101100000000;
+//	wall.row[0]=0;wall.row[1]=2;wall.row[2]=32762;wall.row[3]=50;wall.row[4]=16320;wall.row[5]=423;wall.row[6]=105;wall.row[7]=32490;
+//	wall.row[8]=469;wall.row[9]=533;wall.row[10]=1258;wall.row[11]=3182;wall.row[12]=7837;wall.row[13]=13818;wall.row[14]=57342;
+//	wall.column[0] = 20499;wall.column[1] = 8301;wall.column[2] = 61;wall.column[3] = 50;wall.column[4] = 6261;wall.column[5] = 10130;wall.column[6] = 4117;wall.column[7] = 3149;
+//	wall.column[8] = 16085;wall.column[9] = 365;wall.column[10] = 725;wall.column[11] = 9837;wall.column[12] = 2773;wall.column[13] = 23149;wall.column[14] = 16381;
+	wall.column[0] = 0b0111011011011011;
+	wall.column[1] = 0b0010000011001011;
+	wall.column[2] = 0b0111000110100110;
+	wall.column[3] = 0b0111011110110000;
+	wall.column[4] = 0b0000100100011110;
+	wall.column[5] = 0b0110000000000011;
+	wall.column[6] = 0b1011000101010011;
+	wall.column[7] = 0b0011101111111110;
+	wall.column[8] = 0b1011111001011100;
+	wall.column[9] = 0b1101100000001000;
+	wall.column[10] = 0b0000110110001101;
+	wall.column[11] = 0b1100001001010100;
+	wall.column[12] = 0b0110111001101010;
+	wall.column[13] = 0b0011111111110111;
+	wall.column[14] = 0b0111011010101110;
+	wall.row[14] = 0b0110010110110110;
+	wall.row[13] = 0b0000110110010000;
+	wall.row[12] = 0b0001110000110000;
+	wall.row[11] = 0b0001100001100110;
+	wall.row[10] = 0b0000000011101110;
+	wall.row[9] = 0b0001010011110100;
+	wall.row[8] = 0b0001011001100110;
+	wall.row[7] = 0b1011001101100010;
+	wall.row[6] = 0b1011111001101000;
+	wall.row[5] = 0b0100111001111010;
+	wall.row[4] = 0b0101111001100111;
+	wall.row[3] = 0b0010100001101100;
+	wall.row[2] = 0b0101000011111010;
+	wall.row[1] = 0b0010011001001010;
+	wall.row[0] = 0b0001101100011000;
 
 
 	for(int i=0;i<=15;i++){
@@ -654,21 +668,21 @@ void route_Dijkstra(void){
 	_Bool right_wall;
 	_Bool left_wall;
 
-	int x = 0;
-	int y = 0;
-	int direction = 1;
+	int xd = 0;
+	int yd = 0;
+	int direction_d = 1;
 
 
 	while (1) {
 //		if (mode_safty == 1) {break;}
-		update_coordinate(&x,&y,direction);
+		update_coordinate(&xd,&yd,direction_d);
 
-		if((x == GOAL_X || x == GOAL_X+1) && (y == GOAL_Y || y == GOAL_Y+1)){
+		if((xd == GOAL_X || xd == GOAL_X+1) && (yd == GOAL_Y || yd == GOAL_Y+1)){
 					break;
 		}
 
 
-		search_AroundDijkstraCount(&front_count,&right_count,&back_count,&left_count,x,y,direction);
+		search_AroundDijkstraCount(&front_count,&right_count,&back_count,&left_count,xd,yd,direction_d);
 		//get_wall(x,y,direction,&front_wall,&right_wall,&left_wall);
 		//if (front_wall) {front_count = MAX_WALKCOUNT_DIJKSTRA;}
 		//if (right_wall) {right_count = MAX_WALKCOUNT_DIJKSTRA;}
@@ -681,25 +695,25 @@ void route_Dijkstra(void){
 		}
 		if (front_count <= right_count && front_count <= left_count && front_count <= back_count){
 			// 直進
-			switch (direction) {		//
+			switch (direction_d) {		//
 			case 1:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,ROW);
 				break;
 			case 2:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 3:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y-1);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd-1);
 				pushStack_walk(&stack_matrix,ROW);
 				break;
 			case 4:
-				pushStack_walk(&stack_x,x-1);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd-1);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			}
@@ -708,68 +722,68 @@ void route_Dijkstra(void){
 
 		if(right_count < front_count && right_count <= left_count && right_count <= back_count){
 			// 右旋回
-			switch (direction) {		//
+			switch (direction_d) {		//
 			case 1:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 2:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y-1);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd-1);
 				pushStack_walk(&stack_matrix,ROW);
 				break;
 			case 3:
-				pushStack_walk(&stack_x,x-1);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd-1);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 4:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,ROW);
 				break;
 			}
-			direction++;
+			direction_d++;
 		}
 		if(left_count < front_count && left_count < right_count && left_count <= back_count){
 			// 左旋回
-			switch (direction) {		//
+			switch (direction_d) {		//
 			case 1:
-				pushStack_walk(&stack_x,x-1);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd-1);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 2:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,ROW);
 				break;
 			case 3:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd);
 				pushStack_walk(&stack_matrix,COLUMN);
 				break;
 			case 4:
-				pushStack_walk(&stack_x,x);
-				pushStack_walk(&stack_y,y-1);
+				pushStack_walk(&stack_x,xd);
+				pushStack_walk(&stack_y,yd-1);
 				pushStack_walk(&stack_matrix,ROW);
 				break;
 			}
-			direction--;
+			direction_d--;
 		}
 
-		if (direction == 5) {
-			direction = 1;
+		if (direction_d == 5) {
+			direction_d = 1;
 		}
-		if (direction == 6) {
-			direction = 2;
+		if (direction_d == 6) {
+			direction_d = 2;
 		}
-		if (direction == 0) {
-			direction = 4;
+		if (direction_d == 0) {
+			direction_d = 4;
 		}
-		if (direction == -1) {
-			direction = 3;
+		if (direction_d == -1) {
+			direction_d = 3;
 		}
 
 	}

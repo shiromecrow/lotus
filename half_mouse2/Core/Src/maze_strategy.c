@@ -300,6 +300,11 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 		}
 		//正常終了
 		if((x == GOAL_X || x == GOAL_X+1) && (y == GOAL_Y || y == GOAL_Y+1)){
+			run_movement_suspension(&direction,front_count,right_count,back_count,left_count,
+					input_StraightVelocity, input_TurningVelocity, input_StraightAcceleration, input_TurningAcceleration, howspeed,
+					front_wall, right_wall, left_wall, x, y, 1, 1);
+			if (direction >= 5) {direction = direction-4;}
+			if (direction <= 0) {direction = direction+4;}
 			break;
 		}
 
@@ -328,12 +333,9 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 
 	}
 
-	run_movement_suspension(&direction,front_count,right_count,back_count,left_count,
-			input_StraightVelocity, input_TurningVelocity, input_StraightAcceleration, input_TurningAcceleration, howspeed,
-			front_wall, right_wall, left_wall, x, y, 1, 1);
-	if (direction >= 5) {direction = direction-4;}
-	if (direction <= 0) {direction = direction+4;}
-	//straight_table2(MAZE_SECTION/2+BACK_TO_CENTER,0,input_StraightVelocity,input_StraightVelocity,input_StraightAcceleration, mode);
+
+
+
 
 	while (1) {
 		update_coordinate(&x,&y,direction);
@@ -388,6 +390,11 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 		}
 		//正常終了
 		if(x == 0 && y == 0) {
+			mode.WallControlMode=0;
+			mode.calMazeMode=0;
+			mode.WallCutMode=0;
+			straight_table2(MAZE_SECTION/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
+			turning_table2(180,0,0,input_TurningVelocity,input_TurningAcceleration);
 			break;
 		}
 
@@ -424,11 +431,7 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 		}
 
 
-	mode.WallControlMode=0;
-	mode.calMazeMode=0;
-	mode.WallCutMode=0;
-	straight_table2(MAZE_SECTION/2-MAZE_OFFSET, input_StraightVelocity,0,input_StraightVelocity,input_StraightAcceleration, mode);
-	turning_table2(180,0,0,input_TurningVelocity,input_TurningAcceleration);
+
 	pl_DriveMotor_standby(OFF); //MTU2.TSTR.BIT.CST0 = 0;
 	maze_mode = 0;
 	wait_ms_NoReset(100);

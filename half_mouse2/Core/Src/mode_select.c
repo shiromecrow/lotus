@@ -412,6 +412,9 @@ void mode_Running(unsigned char main_modeR){
 			//maze_maker2(1, 0, 0, 0, 7, 7);
 			//record_out();
 			//wall.row[8]=(1<<8);
+			maze_clear();
+			maze_out_matlab();
+
 			create_StepCountMap_queue();
 			maze_display();
 
