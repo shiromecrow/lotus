@@ -9,6 +9,9 @@
 #include "CL_encoder.h"
 #include "PL_timer.h"
 
+#include "define.h"
+#include "FF_motor.h"
+
 
 
 float mollifier_timer;
@@ -169,7 +172,8 @@ void cal_table_dis(TRAPEZOID input,TARGET *target){
 float time_over;
 float acc_distance;//初速度から現在の速度に達するまでに使った距離
 float dec_distance;//現在の速度から終端速度になるのに必要なた距離
-
+float velocity=(fusion_speedL+fusion_speedR)/2;
+float distance=(fusion_distanceL+fusion_distanceL)/2;
 if (input.displacement>=0){
 	switch (g_acc_flag) {
 	case 0:
@@ -177,17 +181,20 @@ if (input.displacement>=0){
 		break;
 	case 1:
 		//加速(減速)
-			acc_distance = (target->velocity*target->velocity-input.start_velocity*input.start_velocity)/2/input.acceleration;
-			dec_distance = (target->velocity*target->velocity-input.end_velocity*input.end_velocity)/2/input.deceleration;
-			if (target->velocity >= input.count_velocity){
-				target->velocity = input.count_velocity;
-				target->acceleration = 0;
-				g_acc_flag=2;
+			acc_distance = distance;
+			dec_distance = (velocity*velocity-input.end_velocity*input.end_velocity)/2/input.deceleration;
+			target->displacement = distance;
+			target->velocity = velocity;
+			target->acceleration = 10000000;
+			if (velocity >= input.count_velocity){
+//				velocity = input.count_velocity;
+//				target->acceleration = 0;
+//				g_acc_flag=2;
 			}
 			else if(input.displacement <= (acc_distance + dec_distance)){
-				time_over=(acc_distance + dec_distance - input.displacement)/target->velocity;
-				target->displacement -= 1/2*INTERRUPT_TIME*input.acceleration*(2*time_over);
-				target->velocity -= input.acceleration*(2*time_over);
+//				time_over=(acc_distance + dec_distance - input.displacement)/velocity;
+//				target->displacement -= 1/2*INTERRUPT_TIME*input.acceleration*(2*time_over);
+//				velocity -= input.acceleration*(2*time_over);
 
 				target->acceleration = -input.deceleration;
 				g_acc_flag=3;

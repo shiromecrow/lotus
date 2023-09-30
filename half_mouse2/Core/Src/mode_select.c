@@ -481,11 +481,11 @@ void mode_Running(unsigned char main_modeR){
 		break;
 		case 0b0101://
 			record_out();
-			run_shortest(1000,3000,0,TURN_ON,FUN_OFF,SLANT_OFF,speed600_shortest_mollifier,0.3,1);
+			run_shortest(1000,3000,0,TURN_ON,FUN_OFF,SLANT_OFF,speed600_shortest_mollifier,0.99,1);
 		break;
 		case 0b0110://吸引なしで斜め走行
 			record_out();
-			run_shortest(1000,3000,0,TURN_ON,FUN_OFF,SLANT_ON,speed600_shortest_mollifier,0.3,1);
+			run_shortest(1000,3000,0,TURN_ON,FUN_OFF,SLANT_ON,speed600_shortest_mollifier,0.99,1);
 		break;
 		case 0b0111://吸引ありで斜め走行
 			record_out();
@@ -571,9 +571,9 @@ void mode_Tuning0(unsigned char main_modeR){
 			//control_test_motor2(1,0,5);
 		break;
 		case 2://壁制御
-			record_mode=6;
+			record_mode=4;
 			mode.WallControlMode=1;
-			straight_table2(90*15, 0, 0, 300, 6000,mode);
+			straight_table2(90*8, 0, 0, 300, 6000,mode);
 			//control_test_motor2(0,1,6);
 		break;
 		case 3://右スラローム(探索)
@@ -624,7 +624,7 @@ void mode_Tuning0(unsigned char main_modeR){
 			clear_Ierror();
 			record_mode=3;
 			mode.WallControlMode=1;
-			straight_table_max(90*8, 0, 0, 4000, 17000,40000,mode);
+			straight_table_max(90*8, 0, 0, 4000, 17000,38000,mode);
 		break;
 		case 7://斜め直進(平松さん式制御あり)
 			record_mode=7;

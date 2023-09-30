@@ -929,7 +929,7 @@ if(pass_mode==1){
 	clear_Ierror();
 	////wall_control_mode = 1;
 	if (fun_mode == 1) {
-		pl_FunMotor_duty(fun_ratio*BATT_MAX/g_V_battery_mean);
+		pl_FunMotor_duty(fun_ratio);
 		pl_FunMotor_start();
 		wait_ms_NoReset(600);
 		reset_gyro();
@@ -1058,13 +1058,13 @@ if(pass_mode==1){
 			if (pass[pass_count] >= 50) {
 				mode.WallControlMode=3;
 				mode.WallControlStatus=0;
-				//straight_table2((45 * sqrt(2) * (pass[pass_count] - 50)),first_v, end_velocity,inspeed, inacc, mode);
-				straight_table_max((45 * sqrt(2) * (pass[pass_count] - 50)),first_v, end_velocity,inspeed, inacc,35000, mode);
+				straight_table2((45 * sqrt(2) * (pass[pass_count] - 50)),first_v, end_velocity,inspeed, inacc, mode);
+				//straight_table_max((45 * sqrt(2) * (pass[pass_count] - 50)),first_v, end_velocity,inspeed, inacc,35000, mode);
 			} else {
 				mode.WallControlMode=1;
 				mode.WallControlStatus=0;
-				//straight_table2((45 * pass[pass_count]),first_v, end_velocity,inspeed, inacc, mode);
-				straight_table_max((45 * pass[pass_count]),first_v, end_velocity,inspeed, inacc,35000, mode);
+				straight_table2((45 * pass[pass_count]),first_v, end_velocity,inspeed, inacc, mode);
+				//straight_table_max((45 * pass[pass_count]),first_v, end_velocity,inspeed, inacc,35000, mode);
 			}
 
 			pass_count++;

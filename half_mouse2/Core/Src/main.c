@@ -138,7 +138,7 @@ int main(void)
 							g_sensor_on[1], g_sensor_on[2], g_sensor_on[3], g_sensor_on[4]);
 	printf("OFF_SEN1=%d,SEN2=%d,SEN3=%d,SEN4=%d,SEN5=%d\n", g_sensor_off[0],
 							g_sensor_off[1], g_sensor_off[2], g_sensor_off[3], g_sensor_off[4]);
-	battcheak();
+
 
 //起動cheak
 	int yellow_count=1;
@@ -152,6 +152,7 @@ int main(void)
 			HAL_Delay(50);
 			yellow_count=yellow_count/2;
 	}
+	battcheak();
   /* USER CODE END 2 */
 
   /* Infinite loop */

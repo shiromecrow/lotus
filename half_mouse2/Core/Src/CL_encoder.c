@@ -47,7 +47,7 @@ void reset_distance(void) {
 	G_hpf_distanceR = 0;
 	fusion_distanceL=0;
 	fusion_distanceR=0;
-	straight_alpha=0.85;
+	straight_alpha=0.65;
 	theta_comp_gain=1;
 
 }
@@ -60,7 +60,7 @@ void reset_speed(void) {
 	E_lpf_speedR=0;
 	fusion_speedL=0;
 	fusion_speedR=0;
-	straight_alpha=0.85;
+	straight_alpha=0.65;
 	theta_comp_gain=1;
 }
 
@@ -126,6 +126,10 @@ void interupt_calFusion(void) {
 
 	fusion_speedL = straight_alpha * (fusion_speedL + INTERRUPT_TIME * gf_accel) + (1 - straight_alpha) * E_speedL;
 	fusion_speedR = straight_alpha * (fusion_speedL + INTERRUPT_TIME * gf_accel) + (1 - straight_alpha) * E_speedR;
+//	fusion_speedL = straight_alpha * (fusion_speedL + INTERRUPT_TIME * gf_accel);
+//	fusion_speedR = straight_alpha * (fusion_speedL + INTERRUPT_TIME * gf_accel);
+//	fusion_speedL = straight_alpha * (fusion_speedL) + (1 - straight_alpha) * E_speedL;
+//	fusion_speedR = straight_alpha * (fusion_speedL) + (1 - straight_alpha) * E_speedR;
 	fusion_distanceL += fusion_speedL * INTERRUPT_TIME;
 	fusion_distanceR += fusion_speedR * INTERRUPT_TIME;
 

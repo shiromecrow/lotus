@@ -243,6 +243,10 @@ float straight_table_max(float input_displacement, float input_start_velocity,
 			(input_end_velocity*input_end_velocity
 					-input_start_velocity*input_start_velocity
 					)/2/input_acceleration;
+	fusion_distanceL=0;
+	fusion_distanceR=0;
+	//straight_alpha=0.99;
+
 	// 例外処理
 	if (input_acceleration < 0){input_acceleration=-input_acceleration;}//加速が負
 	if (input_deceleration < 0){input_deceleration=-input_deceleration;}//減速が負
@@ -453,13 +457,14 @@ float straight_table2(float input_displacement, float input_start_velocity,
 		modeacc = 0;
 		pl_R_DriveMotor_mode(MOTOR_BREAK);
 		pl_L_DriveMotor_mode(MOTOR_BREAK);
+		pl_DriveMotor_stop();//これは必要か？
 		wait_ms_NoReset(100);
 	}
 //	modeacc = 0;
 
 	E_distanceL = E_distanceL - input_displacement;
 	E_distanceR = E_distanceR - input_displacement;
-	pl_DriveMotor_stop();//これは必要か？
+
 
 	}
 
