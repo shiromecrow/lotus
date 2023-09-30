@@ -203,6 +203,7 @@ void interupt_DriveMotor(void){
 		turning.displacement += turning.velocity*INTERRUPT_TIME + turning.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
 		turning.velocity += turning.acceleration*INTERRUPT_TIME;
 		cal_table_dis(Trapezoid_straight,&straight);
+		if(straight.velocity>3200){straight_alpha=0.8;}else{straight_alpha=0.65;}
 		EncoderGyro_PID(&PID_s,&PID_t,straight.velocity,turning.velocity);
 		feedforward_const_accel(&feedforward_straight,(E_lpf_speedL+E_lpf_speedR)/2,
 				straight.acceleration,&feedforward_turning,
@@ -285,13 +286,14 @@ float straight_table_max(float input_displacement, float input_start_velocity,
 		modeacc = 0;
 		pl_R_DriveMotor_mode(MOTOR_BREAK);
 		pl_L_DriveMotor_mode(MOTOR_BREAK);
+		pl_DriveMotor_stop();//これは必要か？
 		wait_ms_NoReset(100);
 	}
 //	modeacc = 0;
 
 	E_distanceL = E_distanceL - input_displacement;
 	E_distanceR = E_distanceR - input_displacement;
-	pl_DriveMotor_stop();//これは必要か？
+
 
 
 

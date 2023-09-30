@@ -3,5 +3,5 @@
 ../Core/Src/mode_select.c:177:6:mode_PLtest	104	static
 ../Core/Src/mode_select.c:418:6:mode_Running	376	static
 ../Core/Src/mode_select.c:534:6:mode_Tuning0	376	static
-../Core/Src/mode_select.c:779:6:mode_WallSensorTuning	24	static
-../Core/Src/mode_select.c:925:6:mode_WallSensorTuning_fast	24	static
+../Core/Src/mode_select.c:787:6:mode_WallSensorTuning	24	static
+../Core/Src/mode_select.c:933:6:mode_WallSensorTuning_fast	24	static

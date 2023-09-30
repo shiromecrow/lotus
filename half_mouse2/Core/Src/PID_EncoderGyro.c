@@ -56,9 +56,9 @@ void EncoderGyro_PID(float *PID_s, float *PID_t,float straight_velocity,float tu
 		Ktd = -0.01; //205//D項の制御量旋回*****************************************************
 	}
 
-	if (straight_velocity == 0) {
-		reset_speed();
-	}
+//	if (straight_velocity == 0) {
+//		reset_speed();
+//	}
 	//straight.velocity>=2500 && fabs(angle_speed)<100
 	if (fabs(angle_speed) < 120 && straight_velocity >= 100 && modeacc!=4) {
 		enc.error = (straight_velocity - (fusion_speedR + fusion_speedL) / 2);

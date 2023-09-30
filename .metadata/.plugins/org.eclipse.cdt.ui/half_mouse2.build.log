@@ -1,37 +1,10 @@
-22:06:23 **** Incremental Build of configuration Debug for project half_mouse2 ****
+00:09:29 **** Incremental Build of configuration Debug for project half_mouse2 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/maze_strategy.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G491xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/maze_strategy.d" -MT"Core/Src/maze_strategy.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/maze_strategy.o"
-../Core/Src/maze_strategy.c: In function 'pass_maker':
-../Core/Src/maze_strategy.c:505:4: warning: implicit declaration of function 'pl_play_oneSound' [-Wimplicit-function-declaration]
-  505 |    pl_play_oneSound(1);
-      |    ^~~~~~~~~~~~~~~~
-../Core/Src/maze_strategy.c: In function 'run_shortest':
-../Core/Src/maze_strategy.c:911:3: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-  911 |   printf("pass_count %d pass %d\n", j, pass[j]);
-      |   ^~~~~~
-../Core/Src/maze_strategy.c:911:3: warning: incompatible implicit declaration of built-in function 'printf'
-../Core/Src/maze_strategy.c:26:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-   25 | #include "record.h"
-  +++ |+#include <stdio.h>
-   26 | 
-../Core/Src/maze_strategy.c:920:2: warning: incompatible implicit declaration of built-in function 'printf'
-  920 |  printf("%d,%f\n",pass_count2, end_velocity);
-      |  ^~~~~~
-../Core/Src/maze_strategy.c:920:2: note: include '<stdio.h>' or provide a declaration of 'printf'
-../Core/Src/maze_strategy.c:643:16: warning: variable 'last_v' set but not used [-Wunused-but-set-variable]
-  643 |  float first_v,last_v;
-      |                ^~~~~~
-arm-none-eabi-gcc -o "half_mouse2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\sf199\Documents\Mice\halfmouce_workspace\half_mouse2\STM32G491CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="half_mouse2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: half_mouse2.elf
- 
 arm-none-eabi-size   half_mouse2.elf 
-arm-none-eabi-objdump -h -S  half_mouse2.elf  > "half_mouse2.list"
    text	   data	    bss	    dec	    hex	filename
- 153588	    516	  66020	 220124	  35bdc	half_mouse2.elf
+ 153668	    516	  66020	 220204	  35c2c	half_mouse2.elf
 Finished building: default.size.stdout
  
-Finished building: half_mouse2.list
- 
 
-22:06:26 Build Finished. 0 errors, 5 warnings. (took 2s.72ms)
+00:09:30 Build Finished. 0 errors, 0 warnings. (took 1s.164ms)
 
