@@ -39,10 +39,10 @@
 
 
 typedef struct{
-	uint16_t row[15];
-	uint16_t column[15];
-	uint16_t row_look[15];
-	uint16_t column_look[15];
+	uint32_t row[15];
+	uint32_t column[15];
+	uint32_t row_look[15];
+	uint32_t column_look[15];
 
 }WALL;
 

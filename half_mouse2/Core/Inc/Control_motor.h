@@ -43,6 +43,7 @@ void interupt_DriveMotor();
 
 void End_straight(float,MOTOR_MODE,_Bool,_Bool);
 float straight_table2(float,float,float,float,float,MOTOR_MODE);
+float straight_table_max(float,float,float,float,float,float,MOTOR_MODE);
 float turning_table2(float,float,float,float,float);
 float slalom_table2(float,float,float,float,float,float);
 void mollifier_slalom_table(float,float, float);

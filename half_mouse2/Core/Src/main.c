@@ -197,7 +197,10 @@ int main(void)
 
 	  		mode_execution(mode);
 
-	  		error_mode = 0;
+// failsafe後の修理
+	  		Control_mode_Init();
+	  		init_WallControl();
+	  		init_FailSafe();
 
 	  		// test USART
 	  	//HAL_UART_Transmit(&huart1, hello, sizeof(hello), 1000);

@@ -286,6 +286,21 @@ void mode_PLtest(unsigned char main_modeR) {
 			pl_l_blue_LED(OFF);
 			pl_FunMotor_stop();
 		break;
+	case 0b1011://fun
+			pl_FunMotor_duty(0.99);
+			pl_FunMotor_start();
+			HAL_Delay(2000);
+			reset_gyro();
+			reset_speed();
+			clear_Ierror();
+			record_mode=2;
+			pl_r_blue_LED(ON);
+			pl_l_blue_LED(ON);
+			no_angle();
+			pl_r_blue_LED(OFF);
+			pl_l_blue_LED(OFF);
+			pl_FunMotor_stop();
+		break;
 	case 0b1111:	//record_out
 		record_print();
 		break;
@@ -401,6 +416,7 @@ void mode_PLtest(unsigned char main_modeR) {
 
 
 void mode_Running(unsigned char main_modeR){
+
 	pl_L_DriveMotor_mode(MOTOR_BREAK);
 	pl_R_DriveMotor_mode(MOTOR_BREAK);
 	reset_gyro();
@@ -598,9 +614,17 @@ void mode_Tuning0(unsigned char main_modeR){
 
 		break;
 		case 6://斜め直進(制御あり)
-			record_mode=7;//or3
-			mode.WallControlMode=0;
-			straight_table2(180*3*sqrt(2), 0, 0, 500, 6000,mode);
+			highspeed_mode = 1;
+			pl_FunMotor_duty(0.99);
+			pl_FunMotor_start();
+			HAL_Delay(600);
+			reset_gyro();
+			reset_speed();
+			reset_distance();
+			clear_Ierror();
+			record_mode=3;
+			mode.WallControlMode=1;
+			straight_table_max(90*8, 0, 0, 4000, 17000,40000,mode);
 		break;
 		case 7://斜め直進(平松さん式制御あり)
 			record_mode=7;

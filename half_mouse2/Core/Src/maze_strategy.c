@@ -165,15 +165,6 @@ void run_movement_suspension(int *direction, unsigned short front_count,
 			pl_DriveMotor_standby(OFF);
 			//break;
 		}
-		if (x < 0 || y < 0 || x > 15 || y > 15) {
-			// 迷路破損のため停止(一時停止後に周辺の地図情報を初期化して再探索に変更予定)
-			error_mode = 1;
-			g_WallControl_mode = 0;
-			pl_yellow_LED_count(2 * 2 * 2 * 2);
-			pl_DriveMotor_stop();
-			pl_DriveMotor_standby(OFF);
-			//break;
-		}
 	}
 
 if(error_mode==0){
@@ -368,6 +359,9 @@ void AdatiWayReturn(float input_StraightVelocity, float input_TurningVelocity, f
 		End_straight(MAZE_OFFSET,mode,right_wall,left_wall);
 
 		//異常終了
+        if(back_count < front_count && back_count < right_count && back_count < left_count){
+            Dijkstra_maker_flag=1;
+        }
 		if (front_count==MAX_WALKCOUNT && right_count==MAX_WALKCOUNT && left_count==MAX_WALKCOUNT && back_count==MAX_WALKCOUNT){
 			// 迷路破損のため、ダイクストラ法更新
 			Dijkstra_maker_flag=1;
@@ -1064,11 +1058,13 @@ if(pass_mode==1){
 			if (pass[pass_count] >= 50) {
 				mode.WallControlMode=3;
 				mode.WallControlStatus=0;
-				straight_table2((45 * sqrt(2) * (pass[pass_count] - 50)),first_v, end_velocity,inspeed, inacc, mode);
+				//straight_table2((45 * sqrt(2) * (pass[pass_count] - 50)),first_v, end_velocity,inspeed, inacc, mode);
+				straight_table_max((45 * sqrt(2) * (pass[pass_count] - 50)),first_v, end_velocity,inspeed, inacc,35000, mode);
 			} else {
 				mode.WallControlMode=1;
 				mode.WallControlStatus=0;
-				straight_table2((45 * pass[pass_count]),first_v, end_velocity,inspeed, inacc, mode);
+				//straight_table2((45 * pass[pass_count]),first_v, end_velocity,inspeed, inacc, mode);
+				straight_table_max((45 * pass[pass_count]),first_v, end_velocity,inspeed, inacc,35000, mode);
 			}
 
 			pass_count++;

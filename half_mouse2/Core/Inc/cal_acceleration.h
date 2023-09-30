@@ -22,6 +22,7 @@ typedef struct{
 	float end_velocity;
 	float count_velocity;
 	float acceleration;
+	float deceleration;
 
 }TRAPEZOID;
 
@@ -39,6 +40,7 @@ extern volatile char g_acc_flag;
 extern volatile char g_MotorEnd_flag;
 
 void cal_table(TRAPEZOID,TARGET *);
+void cal_table_dis(TRAPEZOID,TARGET *);
 void cal_mollifier_table(MOLLIFIER,TARGET *);
 float cal_mollifier_velocity(float,float,float);
 float cal_mollifier_acceleration(float,float,float);

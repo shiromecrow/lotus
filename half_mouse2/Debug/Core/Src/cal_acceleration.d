@@ -1,5 +1,5 @@
 Core/Src/cal_acceleration.o: ../Core/Src/cal_acceleration.c \
- ../Core/Inc/cal_acceleration.h ../Core/Inc/PL_timer.h \
+ ../Core/Inc/cal_acceleration.h ../Core/Inc/CL_encoder.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
  ../Core/Inc/stm32g4xx_hal_conf.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
@@ -33,9 +33,10 @@ Core/Src/cal_acceleration.o: ../Core/Src/cal_acceleration.c \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
- ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h
+ ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
+ ../Core/Inc/PL_timer.h ../Core/Inc/define.h ../Core/Inc/FF_motor.h
 ../Core/Inc/cal_acceleration.h:
-../Core/Inc/PL_timer.h:
+../Core/Inc/CL_encoder.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h:
@@ -70,3 +71,6 @@ Core/Src/cal_acceleration.o: ../Core/Src/cal_acceleration.c \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
+../Core/Inc/PL_timer.h:
+../Core/Inc/define.h:
+../Core/Inc/FF_motor.h:
