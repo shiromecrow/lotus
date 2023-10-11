@@ -14,13 +14,19 @@ void feedforward_const_accel(float *feedforward_straight,
 		float *feedforward_turning, float turning_velocity,
 		float turning_acceleration) {
 
+float Im;
 float ImT;//0.00000116 //kg/m^2 ロータ慣性モーメントターン用
 
 if(highspeed_mode == 1){
-	ImT=0.00000052;
+	Im = 0.00000301;
+	ImT = 0.00000052;
 }else{
-	ImT=0.00000035;
+	Im = 0.00000121;
+	ImT = 0.00000035;
 
+}
+if(straight_velocity>3000){
+	Im = 0.00000401;
 }
 
 	if (straight_velocity >= 0) {

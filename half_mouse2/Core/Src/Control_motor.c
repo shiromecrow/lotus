@@ -203,7 +203,32 @@ void interupt_DriveMotor(void){
 		turning.displacement += turning.velocity*INTERRUPT_TIME + turning.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
 		turning.velocity += turning.acceleration*INTERRUPT_TIME;
 		cal_table_dis(Trapezoid_straight,&straight);
-		if(straight.velocity>3200){straight_alpha=0.8;}else{straight_alpha=0.65;}
+		EncoderGyro_PID(&PID_s,&PID_t,straight.velocity,turning.velocity);
+		feedforward_const_accel(&feedforward_straight,(E_lpf_speedL+E_lpf_speedR)/2,
+				straight.acceleration,&feedforward_turning,
+					angle_speed,turning.acceleration);
+		PID_w = calWallConrol();
+		V_L = PID_s-PID_t-PID_w+feedforward_straight-feedforward_turning;
+		V_R = PID_s+PID_t+PID_w+feedforward_straight+feedforward_turning;
+		if(PID_s+feedforward_straight>g_V_battery_mean*MAX_DUTY_RATIO_ST){
+			V_L+=g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
+			V_R+=g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
+		}else if(PID_s+feedforward_straight<-g_V_battery_mean*MAX_DUTY_RATIO_ST){
+			V_L+=-g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
+			V_R+=-g_V_battery_mean*MAX_DUTY_RATIO_ST-(PID_s+feedforward_straight);
+		}
+		get_duty(V_L, V_R,&duty_L,&duty_R);
+		pl_DriveMotor_duty(duty_L,duty_R);
+	}if (modeacc == 8) {
+		g_wallCut_mode=1;
+		g_MotorTimCount++;
+
+		straight.displacement += straight.velocity*INTERRUPT_TIME + straight.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
+		straight.velocity += straight.acceleration*INTERRUPT_TIME;
+
+		turning.displacement += turning.velocity*INTERRUPT_TIME + turning.acceleration*INTERRUPT_TIME*INTERRUPT_TIME/2;
+		turning.velocity += turning.acceleration*INTERRUPT_TIME;
+		cal_table_max(Trapezoid_straight,&straight);
 		EncoderGyro_PID(&PID_s,&PID_t,straight.velocity,turning.velocity);
 		feedforward_const_accel(&feedforward_straight,(E_lpf_speedL+E_lpf_speedR)/2,
 				straight.acceleration,&feedforward_turning,
@@ -237,7 +262,7 @@ void interupt_DriveMotor(void){
 
 }
 
-float straight_table_max(float input_displacement, float input_start_velocity,
+float straight_table_dis(float input_displacement, float input_start_velocity,
 	float input_end_velocity, float input_count_velocity, float input_acceleration, float input_deceleration,MOTOR_MODE motor_mode) {
 
 	float MinRequired_displacement=
@@ -288,6 +313,74 @@ float straight_table_max(float input_displacement, float input_start_velocity,
 		pl_L_DriveMotor_mode(MOTOR_BREAK);
 		pl_DriveMotor_stop();//これは必要か？
 		wait_ms_NoReset(100);
+
+	}
+//	modeacc = 0;
+
+	E_distanceL = E_distanceL - input_displacement;
+	E_distanceR = E_distanceR - input_displacement;
+
+
+
+
+	return straight.velocity;
+
+
+
+}
+
+float straight_table_max(float input_displacement, float input_start_velocity,
+	float input_end_velocity, float input_count_velocity, float input_acceleration, float input_deceleration,MOTOR_MODE motor_mode) {
+
+	float MinRequired_displacement=
+			(input_end_velocity*input_end_velocity
+					-input_start_velocity*input_start_velocity
+					)/2/input_acceleration;
+	fusion_distanceL=0;
+	fusion_distanceR=0;
+	//straight_alpha=0.99;
+
+	// 例外処理
+	if (input_acceleration < 0){input_acceleration=-input_acceleration;}//加速が負
+	if (input_deceleration < 0){input_deceleration=-input_deceleration;}//減速が負
+
+
+	Trapezoid_straight.displacement = input_displacement;
+	Trapezoid_straight.start_velocity = input_start_velocity;
+	Trapezoid_straight.end_velocity = input_end_velocity;
+	Trapezoid_straight.count_velocity = input_count_velocity;
+	Trapezoid_straight.acceleration = input_acceleration;
+	Trapezoid_straight.deceleration = input_deceleration;
+
+	if (input_count_velocity>=0){straight.acceleration = input_acceleration;
+	}else{straight.acceleration = -input_acceleration;}
+	straight.velocity = input_start_velocity;
+	straight.displacement = 0;
+	turning.velocity = 0;
+	turning.acceleration = 0;
+	turning.displacement = 0;
+	g_MotorEnd_flag=0;
+	g_acc_flag=1;
+		if (input_displacement>0 && MinRequired_displacement>input_displacement){g_acc_flag=5;straight.acceleration = input_acceleration;}
+		if (input_displacement>0 && MinRequired_displacement<-input_displacement){g_acc_flag=6;straight.acceleration = -input_acceleration;}
+		if (input_displacement<0 && MinRequired_displacement>-input_displacement){g_acc_flag=5;straight.acceleration = -input_acceleration;}
+		if (input_displacement<0 && MinRequired_displacement<input_displacement){g_acc_flag=6;straight.acceleration = input_acceleration;}
+	modeacc = 8;
+	g_WallControl_mode=motor_mode.WallControlMode;
+	pl_DriveMotor_start();
+
+	while (g_acc_flag!=4){
+
+
+	}
+	if(input_end_velocity==0){//BREAK
+		wait_ms_NoReset(100);
+		modeacc = 0;
+		pl_R_DriveMotor_mode(MOTOR_BREAK);
+		pl_L_DriveMotor_mode(MOTOR_BREAK);
+		pl_DriveMotor_stop();//これは必要か？
+		wait_ms_NoReset(100);
+
 	}
 //	modeacc = 0;
 

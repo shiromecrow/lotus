@@ -1,5 +1,6 @@
 ../Core/Src/cal_acceleration.c:23:6:cal_table	32	static
 ../Core/Src/cal_acceleration.c:171:6:cal_table_dis	48	static
-../Core/Src/cal_acceleration.c:314:6:cal_mollifier_table	56	static
-../Core/Src/cal_acceleration.c:358:7:cal_mollifier_velocity	40	static
-../Core/Src/cal_acceleration.c:363:7:cal_mollifier_acceleration	40	static
+../Core/Src/cal_acceleration.c:310:6:cal_table_max	48	static
+../Core/Src/cal_acceleration.c:470:6:cal_mollifier_table	56	static
+../Core/Src/cal_acceleration.c:520:7:cal_mollifier_velocity	40	static
+../Core/Src/cal_acceleration.c:525:7:cal_mollifier_acceleration	40	static

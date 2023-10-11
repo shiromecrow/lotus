@@ -477,47 +477,48 @@ void mode_Running(unsigned char main_modeR){
 		break;
 		case 0b0100://ゴミ
 			record_out();
-			run_shortest(1000,3000,0,TURN_OFF,FUN_OFF,SLANT_OFF,speed300_shortest,0.3,0);
+			run_shortest(1000,3000,3000,TURN_OFF,FUN_OFF,SLANT_OFF,speed300_shortest,0.3,0,0);
 		break;
 		case 0b0101://
 			record_out();
-			run_shortest(1000,3000,0,TURN_ON,FUN_OFF,SLANT_OFF,speed600_shortest_mollifier,0.99,1);
+			run_shortest(1000,3000,3000,TURN_ON,FUN_OFF,SLANT_OFF,speed600_shortest_mollifier,0.99,1,0);
 		break;
 		case 0b0110://吸引なしで斜め走行
 			record_out();
-			run_shortest(1000,3000,0,TURN_ON,FUN_OFF,SLANT_ON,speed600_shortest_mollifier,0.99,1);
+			run_shortest(1000,3000,3000,TURN_ON,FUN_OFF,SLANT_ON,speed600_shortest_mollifier,0.99,1,0);
 		break;
 		case 0b0111://吸引ありで斜め走行
 			record_out();
-			run_shortest(3000,10000,0,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1);
+			run_shortest(3000,10000,10000,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1,0);
 		break;
 		case 0b1000://
 			record_out();
-			run_shortest(3200,13000,0,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1);
+			run_shortest(3200,13000,10000,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1,0);
 		break;
 		case 0b1001:
 			record_out();
-			run_shortest(3000,10000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1);
+			run_shortest(3000,10000,10000,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1,0);
 		break;
 		case 0b1010:
 			record_out();
-			run_shortest(3200,13000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1);
+			run_shortest(3200,13000,13000,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1,0);
 		break;
 		case 0b1011:
 			record_out();
-			run_shortest(4000,17000,0,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1);
+			run_shortest(4000,17000,17000,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1,0);
 		break;
 		case 0b1100:
 			record_out();
-			run_shortest(4000,17000,0,TURN_ON,FUN_ON,SLANT_ON,speed1200_shortest_mollifier,0.99,1);
+//			run_shortest(3500,15000,15000,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1,2);
+			run_shortest(4000,17000,40000,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1,2);
 		break;
 		case 0b1101:
 			record_out();
-			run_shortest(3100,11000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest_mollifier,0.99,1);
+			run_shortest(4000,20000,40000,TURN_ON,FUN_ON,SLANT_ON,speed1000_shortest_mollifier,0.99,1,1);
 		break;
 		case 0b1110:
 			record_out();
-			run_shortest(4000,17000,0,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest_mollifier,0.99,1);
+			run_shortest(3100,11000,11000,TURN_ON,FUN_ON,SLANT_ON,speed1600_shortest_mollifier,0.99,1,0);
 		break;
 		case 0b1111:
 			AdatiWayReturn(250,400,2000,3000,speed250_exploration,1,0);
@@ -590,27 +591,29 @@ void mode_Tuning0(unsigned char main_modeR){
 			testturning(speed300_exploration,1,0,0,0,0);
 		break;
 		case 5://直進(制御なし)
-			highspeed_mode = 1;
-			pl_FunMotor_duty(0.99);
-			pl_FunMotor_start();
-			HAL_Delay(600);
-			reset_gyro();
-			reset_speed();
-			reset_distance();
-			clear_Ierror();
-			record_mode=6;
-			mode.WallControlMode=1;
-			theta_comp_gain=0;
-			straight_table2(90*8, 0, 0, 2800, 18000,mode);
-			mode.WallControlMode=0;
-			theta_comp_gain=0;
-			straight_table2(-90*8, 0, 0, -2000, 14000,mode);
-			mode.WallControlMode=1;
-			theta_comp_gain=1;
-			straight_table2(90*8, 0, 0, 2800, 18000,mode);
-			mode.WallControlMode=0;
-			theta_comp_gain=1;
-			straight_table2(-90*8, 0, 0, -2000, 14000,mode);
+			testturning(speed300_exploration,6,1,0,0,1);
+
+//			highspeed_mode = 1;
+//			pl_FunMotor_duty(0.99);
+//			pl_FunMotor_start();
+//			HAL_Delay(600);
+//			reset_gyro();
+//			reset_speed();
+//			reset_distance();
+//			clear_Ierror();
+//			record_mode=6;
+//			mode.WallControlMode=1;
+//			theta_comp_gain=0;
+//			straight_table2(90*8, 0, 0, 2800, 18000,mode);
+//			mode.WallControlMode=0;
+//			theta_comp_gain=0;
+//			straight_table2(-90*8, 0, 0, -2000, 14000,mode);
+//			mode.WallControlMode=1;
+//			theta_comp_gain=1;
+//			straight_table2(90*8, 0, 0, 2800, 18000,mode);
+//			mode.WallControlMode=0;
+//			theta_comp_gain=1;
+//			straight_table2(-90*8, 0, 0, -2000, 14000,mode);
 
 		break;
 		case 6://斜め直進(制御あり)
@@ -624,7 +627,8 @@ void mode_Tuning0(unsigned char main_modeR){
 			clear_Ierror();
 			record_mode=3;
 			mode.WallControlMode=1;
-			straight_table_max(90*8, 0, 0, 4000, 17000,30000,mode);
+			straight_table2(BACK_TO_CENTER_FRONT,0,1000,1000,1000*1000/ BACK_TO_CENTER_FRONT/2, mode);
+			straight_table_max(90*8-BACK_TO_CENTER_FRONT, 1000, 0, 4000, 17000,30000,mode);
 		break;
 		case 7://斜め直進(平松さん式制御あり)
 			highspeed_mode = 1;
@@ -637,7 +641,7 @@ void mode_Tuning0(unsigned char main_modeR){
 			clear_Ierror();
 			record_mode=3;
 			mode.WallControlMode=1;
-			straight_table2(90*8, 0, 0, 3000, 10000,mode);
+			straight_table_dis(90*8, 0, 0, 4000, 17000,30000,mode);
 		break;
 		case 8://宴会芸
 			record_mode=2;
@@ -867,14 +871,23 @@ void mode_WallSensorTuning(unsigned char main_modeR){
 			straight_table2(45*sqrt(2) + 22.5*sqrt(2), 300, 0, 300,3000,mode);
 		break;
 		case 6://斜め直進(90)
-			record_mode=9;
+			mode.WallControlMode=1;
+			mode.WallControlStatus=0;mode.WallCutMode=0;mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT, 0, 300,300,300*300/2/BACK_TO_CENTER_FRONT,mode);
+			turn45inR(speed300_exploration.turn45in_R,OFF,1,300);
 			mode.WallControlMode=0;
-			straight_table2(90*3*sqrt(2), 0, 0, 300, 3000,mode);
+			record_mode=9;
+			straight_table2(90*3*sqrt(2), 300, 0, 300, 3000,mode);
 		break;
 		case 7://斜め直進(45)
-			record_mode=10;
+
+			mode.WallControlMode=1;
+			mode.WallControlStatus=0;mode.WallCutMode=0;mode.calMazeMode=0;
+			straight_table2(BACK_TO_CENTER_FRONT, 0, 300,300,300*300/2/BACK_TO_CENTER_FRONT,mode);
+			turn45inR(speed300_exploration.turn45in_R,OFF,1,300);
 			mode.WallControlMode=0;
-			straight_table2(90*3*sqrt(2), 0, 0, 300, 3000,mode);
+			record_mode=10;
+			straight_table2(90*3*sqrt(2), 300, 0, 300, 3000,mode);
 
 		break;
 		case 8://斜め直進(平松さん式制御あり)

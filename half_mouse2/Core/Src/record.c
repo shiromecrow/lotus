@@ -110,8 +110,8 @@ void interrupt_record(void) {
 	if (record_mode == 3) {
 			r_data[0] = straight.velocity;
 			r_data[1] = straight.displacement;
-			r_data[2] = (fusion_speedR + fusion_speedL) / 2;
-			r_data[3] = (fusion_distanceR + fusion_distanceL) / 2;
+			r_data[2] = (fusion_speedL + fusion_speedR) / 2;
+			r_data[3] = (fusion_distanceL + fusion_distanceR) / 2;
 			record_data(r_data, 4);
 		}
 	if (record_mode == 4) { //距離の比較

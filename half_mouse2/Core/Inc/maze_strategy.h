@@ -37,7 +37,7 @@ void AdatiWayReturn(float,float,float,float, parameter_speed,int,uint8_t);
 void pass_maker();
 void pass_maker_Dijkstra();
 
-void run_shortest(float,float,int,char,char,char,parameter_speed,float,char);
+void run_shortest(float,float,float,char,char,char,parameter_speed,float,char,char);
 
 
 

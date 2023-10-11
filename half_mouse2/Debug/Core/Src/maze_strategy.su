@@ -6,5 +6,5 @@
 ../Core/Src/maze_strategy.c:450:6:pass_maker	64	static
 ../Core/Src/maze_strategy.c:546:6:pass_maker_Dijkstra	64	static
 ../Core/Src/maze_strategy.c:639:6:run_shortest	400	static
-../Core/Src/maze_strategy.c:1121:6:decision_kitiku	48	static
-../Core/Src/maze_strategy.c:1150:6:compress_kitiku	128	static
+../Core/Src/maze_strategy.c:1131:6:decision_kitiku	48	static
+../Core/Src/maze_strategy.c:1160:6:compress_kitiku	128	static

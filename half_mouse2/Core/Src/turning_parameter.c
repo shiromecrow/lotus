@@ -90,7 +90,12 @@ void input_parameter(void) {
 	speed300_exploration.slalom_L.f_ofset = 2; //50;
 	speed300_exploration.slalom_L.e_ofset = 24;
 
-
+	speed300_exploration.turn45in_R.g_speed =
+			speed300_exploration.SlalomCentervelocity;
+	speed300_exploration.turn45in_R.t_speed = 570;
+	speed300_exploration.turn45in_R.t_acc = 10000;
+	speed300_exploration.turn45in_R.f_ofset = 30; //50;
+	speed300_exploration.turn45in_R.e_ofset = 24;
 
 	speed250_exploration.SlalomCentervelocity = 250;
 	speed250_exploration.TurnCentervelocity = 250;
